@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>320 Historical Figures - Master List</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { 
+            font-size: 2rem; 
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        .subtitle { color: #888; margin-bottom: 24px; text-align: center; }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: rgba(255,255,255,0.05);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .stat-label { font-size: 0.8rem; color: #888; }
+        
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+        .cat-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .cat-btn:hover, .cat-btn.active {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            color: #fff;
+        }
+        
+        .category {
+            margin-bottom: 32px;
+        }
+        .category-header {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-count {
+            font-size: 0.8rem;
+            background: rgba(124, 58, 237, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        .figure-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.2s;
+        }
+        .figure-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        .figure-name {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .figure-num {
+            color: #7c3aed;
+            font-size: 0.8rem;
+            margin-right: 6px;
+        }
+        .figure-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 24px;
+            display: block;
+            padding: 12px 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 1rem;
+        }
+        .search-box::placeholder { color: #666; }
+        .search-box:focus { outline: none; border-color: #7c3aed; }
+        
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 48px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 320 Historical Figures</h1>
+        <p class="subtitle">Master list for Knowledge Quest — one sentence each</p>
+        
+        <div class="stats-bar">
+            <div class="stat"><div class="stat-num">320</div><div class="stat-label">Total Figures</div></div>
+            <div class="stat"><div class="stat-num">11</div><div class="stat-label">Categories</div></div>
+            <div class="stat"><div class="stat-num">3000+</div><div class="stat-label">Years of History</div></div>
+        </div>
+        
+        <input type="text" class="search-box" placeholder="🔍 Search figures..." id="search">
+        
+        <div class="category-nav" id="nav"></div>
+        
+        <div id="content"></div>
+        
+        <div class="footer">
+            Knowledge Quest · Built by Nova ✨
+        </div>
+    </div>
+
+    <script>
+        const figures = [
+            // Conquerors & Military Leaders
+            {cat: "conquerors", name: "Alexander the Great", desc: "Macedonian king who conquered Persia, Egypt, and reached India by age 30"},
+            {cat: "conquerors", name: "Julius Caesar", desc: "Roman dictator who conquered Gaul; assassinated on the Ides of March"},
+            {cat: "conquerors", name: "Napoleon Bonaparte", desc: "French emperor who conquered most of Europe; exiled to Elba, then St. Helena"},
+            {cat: "conquerors", name: "Genghis Khan", desc: "Mongol founder of the largest contiguous land empire in history"},
+            {cat: "conquerors", name: "Hannibal Barca", desc: "Carthaginian general who crossed the Alps with elephants to attack Rome"},
+            {cat: "conquerors", name: "Attila the Hun", desc: "\"Scourge of God\" who terrorized the Roman Empire in the 5th century"},
+            {cat: "conquerors", name: "Charlemagne", desc: "Frankish king crowned first Holy Roman Emperor in 800 AD"},
+            {cat: "conquerors", name: "William the Conqueror", desc: "Norman duke who invaded England in 1066 (Battle of Hastings)"},
+            {cat: "conquerors", name: "Saladin", desc: "Muslim sultan who recaptured Jerusalem from the Crusaders in 1187"},
+            {cat: "conquerors", name: "Richard the Lionheart", desc: "English king and Crusader, rival of Saladin"},
+            {cat: "conquerors", name: "Tamerlane (Timur)", desc: "Central Asian conqueror who built an empire from Turkey to India"},
+            {cat: "conquerors", name: "Cyrus the Great", desc: "Founder of the Persian Empire; known for religious tolerance"},
+            {cat: "conquerors", name: "Sun Tzu", desc: "Chinese general who wrote The Art of War"},
+            {cat: "conquerors", name: "Spartacus", desc: "Gladiator who led a massive slave revolt against Rome"},
+            {cat: "conquerors", name: "Leonidas I", desc: "Spartan king who died defending Thermopylae against Persia (300 Spartans)"},
+            {cat: "conquerors", name: "Xerxes I", desc: "Persian king who invaded Greece; defeated at Salamis"},
+            {cat: "conquerors", name: "Frederick the Great", desc: "Prussian king who transformed Prussia into a military power"},
+            {cat: "conquerors", name: "Duke of Wellington", desc: "British general who defeated Napoleon at Waterloo"},
+            {cat: "conquerors", name: "Ulysses S. Grant", desc: "Union general who won the American Civil War; later president"},
+            {cat: "conquerors", name: "Robert E. Lee", desc: "Confederate general; surrendered at Appomattox"},
+            {cat: "conquerors", name: "Erwin Rommel", desc: "\"Desert Fox,\" German WWII general in North Africa"},
+            {cat: "conquerors", name: "Dwight D. Eisenhower", desc: "Supreme Allied Commander in WWII; later president"},
+            {cat: "conquerors", name: "George Patton", desc: "Aggressive American WWII general; \"Old Blood and Guts\""},
+            {cat: "conquerors", name: "Douglas MacArthur", desc: "American general in Pacific WWII; \"I shall return\""},
+            {cat: "conquerors", name: "Shaka Zulu", desc: "Zulu king who revolutionized warfare in southern Africa"},
+            {cat: "conquerors", name: "Boudicca", desc: "Celtic queen who led a revolt against Roman Britain"},
+            {cat: "conquerors", name: "Suleiman the Magnificent", desc: "Ottoman sultan who expanded empire to its peak"},
+            {cat: "conquerors", name: "Ashoka", desc: "Indian emperor who converted to Buddhism after bloody conquest"},
+            {cat: "conquerors", name: "Tokugawa Ieyasu", desc: "Unified Japan; founded the Tokugawa shogunate"},
+            {cat: "conquerors", name: "Simón Bolívar", desc: "\"El Libertador,\" freed much of South America from Spain"},
+            
+            // Explorers
+            {cat: "explorers", name: "Christopher Columbus", desc: "Italian explorer who reached the Americas in 1492 for Spain"},
+            {cat: "explorers", name: "Amerigo Vespucci", desc: "Italian explorer America is named after; realized it was a new continent"},
+            {cat: "explorers", name: "Ferdinand Magellan", desc: "Portuguese explorer whose expedition first circumnavigated Earth"},
+            {cat: "explorers", name: "Roald Amundsen", desc: "Norwegian first to reach the South Pole (1911)"},
+            {cat: "explorers", name: "Marco Polo", desc: "Venetian merchant who traveled to China and served Kublai Khan"},
+            {cat: "explorers", name: "Vasco da Gama", desc: "Portuguese explorer first to sail directly to India"},
+            {cat: "explorers", name: "James Cook", desc: "British explorer who mapped Pacific; killed in Hawaii"},
+            {cat: "explorers", name: "Hernán Cortés", desc: "Spanish conquistador who conquered the Aztec Empire"},
+            {cat: "explorers", name: "Francisco Pizarro", desc: "Spanish conquistador who conquered the Inca Empire"},
+            {cat: "explorers", name: "Lewis and Clark", desc: "American explorers who crossed North America to the Pacific"},
+            {cat: "explorers", name: "Ernest Shackleton", desc: "Antarctic explorer; legendary survival after Endurance sank"},
+            {cat: "explorers", name: "Robert Scott", desc: "British explorer who reached South Pole second; died on return"},
+            {cat: "explorers", name: "Ibn Battuta", desc: "Moroccan traveler who explored more of the world than Marco Polo"},
+            {cat: "explorers", name: "Zheng He", desc: "Chinese admiral who led massive treasure fleets across Indian Ocean"},
+            {cat: "explorers", name: "David Livingstone", desc: "Scottish missionary and explorer of Africa; \"Dr. Livingstone, I presume?\""},
+            {cat: "explorers", name: "Henry Hudson", desc: "English explorer; Hudson River and Hudson Bay named after him"},
+            {cat: "explorers", name: "Jacques Cartier", desc: "French explorer who claimed Canada for France"},
+            {cat: "explorers", name: "Leif Erikson", desc: "Viking explorer who reached North America ~500 years before Columbus"},
+            {cat: "explorers", name: "Neil Armstrong", desc: "First human to walk on the Moon (1969)"},
+            {cat: "explorers", name: "Yuri Gagarin", desc: "Soviet cosmonaut, first human in space (1961)"},
+            
+            // Scientists
+            {cat: "scientists", name: "Isaac Newton", desc: "Discovered gravity, laws of motion, invented calculus"},
+            {cat: "scientists", name: "Charles Darwin", desc: "Theory of evolution by natural selection; Origin of Species"},
+            {cat: "scientists", name: "Albert Einstein", desc: "Relativity, E=mc², revolutionized physics"},
+            {cat: "scientists", name: "Marie Curie", desc: "Discovered radioactivity; only person to win Nobel in two sciences"},
+            {cat: "scientists", name: "Nicolaus Copernicus", desc: "Proposed heliocentric model; published on deathbed"},
+            {cat: "scientists", name: "Galileo Galilei", desc: "Proved heliocentrism with telescope; house arrest by Church"},
+            {cat: "scientists", name: "Alexander Fleming", desc: "Discovered penicillin by accident (mold in petri dish)"},
+            {cat: "scientists", name: "Louis Pasteur", desc: "Germ theory, pasteurization, rabies vaccine"},
+            {cat: "scientists", name: "Nikola Tesla", desc: "AC electricity, wireless transmission; rival of Edison"},
+            {cat: "scientists", name: "Sigmund Freud", desc: "Founded psychoanalysis; unconscious mind, dream interpretation"},
+            {cat: "scientists", name: "Carl Jung", desc: "Analytical psychology, archetypes, collective unconscious"},
+            {cat: "scientists", name: "Gregor Mendel", desc: "Father of genetics; experiments with pea plants"},
+            {cat: "scientists", name: "Dmitri Mendeleev", desc: "Created the periodic table of elements"},
+            {cat: "scientists", name: "Michael Faraday", desc: "Electromagnetic induction; made electricity practical"},
+            {cat: "scientists", name: "James Clerk Maxwell", desc: "Unified electricity, magnetism, and light"},
+            {cat: "scientists", name: "Werner Heisenberg", desc: "Uncertainty principle; quantum mechanics pioneer"},
+            {cat: "scientists", name: "Niels Bohr", desc: "Atomic model; quantum theory pioneer"},
+            {cat: "scientists", name: "Erwin Schrödinger", desc: "Wave equation; Schrödinger's cat thought experiment"},
+            {cat: "scientists", name: "Max Planck", desc: "Quantum theory; Planck constant"},
+            {cat: "scientists", name: "Stephen Hawking", desc: "Black holes, A Brief History of Time; ALS survivor"},
+            {cat: "scientists", name: "Richard Feynman", desc: "Quantum electrodynamics; legendary teacher; bongo player"},
+            {cat: "scientists", name: "Carl Sagan", desc: "Popularized astronomy; Cosmos TV series; \"billions and billions\""},
+            {cat: "scientists", name: "Johannes Kepler", desc: "Laws of planetary motion; worked with Tycho Brahe"},
+            {cat: "scientists", name: "Tycho Brahe", desc: "Danish astronomer with golden nose; precise observations"},
+            {cat: "scientists", name: "Edwin Hubble", desc: "Discovered galaxies beyond Milky Way; universe is expanding"},
+            {cat: "scientists", name: "Archimedes", desc: "Greek mathematician; \"Eureka!\"; levers and buoyancy"},
+            {cat: "scientists", name: "Euclid", desc: "\"Father of Geometry\"; Elements textbook used for 2,000 years"},
+            {cat: "scientists", name: "Pythagoras", desc: "Pythagorean theorem; music and mathematics connection"},
+            {cat: "scientists", name: "Hippocrates", desc: "\"Father of Medicine\"; Hippocratic Oath"},
+            {cat: "scientists", name: "Galen", desc: "Roman physician whose ideas dominated medicine for 1,500 years"},
+            {cat: "scientists", name: "William Harvey", desc: "Discovered blood circulation"},
+            {cat: "scientists", name: "Edward Jenner", desc: "Invented vaccination (smallpox)"},
+            {cat: "scientists", name: "Robert Koch", desc: "Identified bacteria causing tuberculosis, cholera"},
+            {cat: "scientists", name: "Jonas Salk", desc: "Developed polio vaccine; refused to patent it"},
+            {cat: "scientists", name: "Rosalind Franklin", desc: "X-ray crystallography crucial to discovering DNA structure"},
+            {cat: "scientists", name: "James Watson & Francis Crick", desc: "Discovered DNA double helix structure"},
+            {cat: "scientists", name: "Alan Turing", desc: "Father of computer science; cracked Enigma code; tragic end"},
+            {cat: "scientists", name: "Ada Lovelace", desc: "First computer programmer (for Babbage's Analytical Engine)"},
+            {cat: "scientists", name: "Charles Babbage", desc: "Designed first mechanical computer (never completed)"},
+            
+            // Philosophers
+            {cat: "philosophers", name: "Socrates", desc: "Greek philosopher; Socratic method; drank hemlock"},
+            {cat: "philosophers", name: "Plato", desc: "Socrates' student; founded Academy; wrote The Republic"},
+            {cat: "philosophers", name: "Aristotle", desc: "Plato's student; founded Lyceum; taught Alexander the Great"},
+            {cat: "philosophers", name: "Confucius", desc: "Chinese philosopher; filial piety, social harmony"},
+            {cat: "philosophers", name: "Friedrich Nietzsche", desc: "\"God is dead\"; Thus Spoke Zarathustra; will to power"},
+            {cat: "philosophers", name: "René Descartes", desc: "\"I think, therefore I am\"; Cartesian coordinates"},
+            {cat: "philosophers", name: "Karl Marx", desc: "Communist Manifesto; class struggle; influenced 20th century"},
+            {cat: "philosophers", name: "Immanuel Kant", desc: "Categorical imperative; Critique of Pure Reason"},
+            {cat: "philosophers", name: "John Locke", desc: "Social contract; natural rights; influenced American founders"},
+            {cat: "philosophers", name: "Thomas Hobbes", desc: "Leviathan; life is \"nasty, brutish, and short\""},
+            {cat: "philosophers", name: "Jean-Jacques Rousseau", desc: "Social contract; \"noble savage\"; influenced French Revolution"},
+            {cat: "philosophers", name: "Voltaire", desc: "Enlightenment wit; religious tolerance; \"I disapprove of what you say...\""},
+            {cat: "philosophers", name: "David Hume", desc: "Scottish skeptic; problem of induction; is-ought problem"},
+            {cat: "philosophers", name: "Baruch Spinoza", desc: "Pantheism; ethics derived from geometry"},
+            {cat: "philosophers", name: "Gottfried Leibniz", desc: "Co-invented calculus; \"best of all possible worlds\""},
+            {cat: "philosophers", name: "Arthur Schopenhauer", desc: "Pessimism; influenced Nietzsche; will and representation"},
+            {cat: "philosophers", name: "Georg Hegel", desc: "Dialectics (thesis-antithesis-synthesis); influenced Marx"},
+            {cat: "philosophers", name: "Søren Kierkegaard", desc: "Father of existentialism; \"leap of faith\""},
+            {cat: "philosophers", name: "Jean-Paul Sartre", desc: "Existentialism; \"existence precedes essence\"; refused Nobel"},
+            {cat: "philosophers", name: "Simone de Beauvoir", desc: "The Second Sex; feminist existentialism"},
+            {cat: "philosophers", name: "Martin Heidegger", desc: "Being and Time; \"Dasein\"; controversial Nazi ties"},
+            {cat: "philosophers", name: "Ludwig Wittgenstein", desc: "Language games; \"whereof one cannot speak...\""},
+            {cat: "philosophers", name: "Bertrand Russell", desc: "Logic, analytic philosophy; pacifist; Nobel in Literature"},
+            {cat: "philosophers", name: "John Stuart Mill", desc: "Utilitarianism; On Liberty; women's rights advocate"},
+            {cat: "philosophers", name: "Epicurus", desc: "Pleasure as highest good (but simple pleasures); atomism"},
+            {cat: "philosophers", name: "Diogenes", desc: "Cynic who lived in a barrel; told Alexander to move out of his sunlight"},
+            {cat: "philosophers", name: "Marcus Aurelius", desc: "Roman emperor and Stoic philosopher; Meditations"},
+            {cat: "philosophers", name: "Seneca", desc: "Stoic philosopher; tutor to Nero; forced suicide"},
+            {cat: "philosophers", name: "Lao Tzu", desc: "Founder of Taoism; wrote Tao Te Ching"},
+            {cat: "philosophers", name: "Zhuangzi", desc: "Taoist philosopher; butterfly dream paradox"},
+            
+            // Artists
+            {cat: "artists", name: "Leonardo da Vinci", desc: "Mona Lisa, Last Supper; Renaissance polymath; mirror writing"},
+            {cat: "artists", name: "Michelangelo", desc: "Sistine Chapel ceiling, David sculpture; complained about neck"},
+            {cat: "artists", name: "Raphael", desc: "School of Athens; Madonnas; died at 37"},
+            {cat: "artists", name: "Sandro Botticelli", desc: "Birth of Venus; Primavera; Early Renaissance"},
+            {cat: "artists", name: "Vincent van Gogh", desc: "Starry Night; cut off ear; post-impressionist; sold 1 painting in life"},
+            {cat: "artists", name: "Pablo Picasso", desc: "Cubism; Guernica; most prolific artist; 50,000+ works"},
+            {cat: "artists", name: "Claude Monet", desc: "Impressionism founder; Water Lilies series; Giverny gardens"},
+            {cat: "artists", name: "Rembrandt", desc: "Dutch Golden Age master; self-portraits; Night Watch"},
+            {cat: "artists", name: "Johannes Vermeer", desc: "Girl with a Pearl Earring; only 34 known paintings"},
+            {cat: "artists", name: "Caravaggio", desc: "Dramatic lighting (chiaroscuro); violent life; killed a man"},
+            {cat: "artists", name: "Titian", desc: "Venetian master of color; lived to ~90"},
+            {cat: "artists", name: "Donatello", desc: "Early Renaissance sculptor; bronze David"},
+            {cat: "artists", name: "Albrecht Dürer", desc: "German Renaissance; woodcuts; self-portrait pioneer"},
+            {cat: "artists", name: "El Greco", desc: "Mannerist; elongated figures; View of Toledo"},
+            {cat: "artists", name: "Diego Velázquez", desc: "Spanish court painter; Las Meninas"},
+            {cat: "artists", name: "Francisco Goya", desc: "Spanish Romantic; dark paintings; Saturn Devouring His Son"},
+            {cat: "artists", name: "Édouard Manet", desc: "Pre-Impressionist; Olympia scandal; Luncheon on the Grass"},
+            {cat: "artists", name: "Edgar Degas", desc: "Impressionist; ballet dancers; pastels"},
+            {cat: "artists", name: "Pierre-Auguste Renoir", desc: "Impressionist; joyful scenes; painted despite arthritis"},
+            {cat: "artists", name: "Paul Cézanne", desc: "Post-Impressionist; \"father of modern art\"; geometric forms"},
+            {cat: "artists", name: "Henri Matisse", desc: "Fauvism; colorist; paper cut-outs in old age"},
+            {cat: "artists", name: "Salvador Dalí", desc: "Surrealist; melting clocks; flamboyant personality"},
+            {cat: "artists", name: "Frida Kahlo", desc: "Mexican surrealist; self-portraits; pain and identity"},
+            {cat: "artists", name: "Andy Warhol", desc: "Pop art; Campbell's Soup; \"15 minutes of fame\""},
+            {cat: "artists", name: "Jackson Pollock", desc: "Abstract Expressionism; drip paintings; alcoholism"},
+            {cat: "artists", name: "Gustav Klimt", desc: "Art Nouveau; The Kiss; golden phase"},
+            {cat: "artists", name: "Edvard Munch", desc: "The Scream; Norwegian expressionist"},
+            {cat: "artists", name: "Hieronymus Bosch", desc: "Surreal religious paintings; Garden of Earthly Delights"},
+            {cat: "artists", name: "Auguste Rodin", desc: "The Thinker; The Kiss; modern sculpture pioneer"},
+            {cat: "artists", name: "Georgia O'Keeffe", desc: "American modernist; large flowers; New Mexico landscapes"},
+            
+            // Writers
+            {cat: "writers", name: "William Shakespeare", desc: "Greatest English writer; Hamlet, Macbeth, Romeo & Juliet"},
+            {cat: "writers", name: "Dante Alighieri", desc: "Divine Comedy; Italian language founder"},
+            {cat: "writers", name: "Leo Tolstoy", desc: "War and Peace, Anna Karenina; epic Russian novels"},
+            {cat: "writers", name: "Fyodor Dostoevsky", desc: "Crime and Punishment, Brothers Karamazov; psychological depth"},
+            {cat: "writers", name: "George Orwell", desc: "1984, Animal Farm; \"Big Brother\"; real name Eric Blair"},
+            {cat: "writers", name: "Miguel de Cervantes", desc: "Don Quixote; first modern novel"},
+            {cat: "writers", name: "Homer", desc: "Iliad, Odyssey; may not have existed"},
+            {cat: "writers", name: "Virgil", desc: "Aeneid; Rome's national epic; guided Dante through Hell"},
+            {cat: "writers", name: "Charles Dickens", desc: "Oliver Twist, Great Expectations; Victorian social critic"},
+            {cat: "writers", name: "Jane Austen", desc: "Pride and Prejudice; witty social commentary; died at 41"},
+            {cat: "writers", name: "Mark Twain", desc: "Tom Sawyer, Huckleberry Finn; American humor; \"Samuel Clemens\""},
+            {cat: "writers", name: "Ernest Hemingway", desc: "Old Man and the Sea; sparse style; Nobel winner; suicide"},
+            {cat: "writers", name: "F. Scott Fitzgerald", desc: "Great Gatsby; Jazz Age chronicler"},
+            {cat: "writers", name: "James Joyce", desc: "Ulysses; stream of consciousness; difficult modernist"},
+            {cat: "writers", name: "Franz Kafka", desc: "Metamorphosis, The Trial; \"Kafkaesque\" bureaucratic nightmares"},
+            {cat: "writers", name: "Marcel Proust", desc: "In Search of Lost Time; longest novel; madeleine memory"},
+            {cat: "writers", name: "Virginia Woolf", desc: "Mrs Dalloway; stream of consciousness; Bloomsbury Group"},
+            {cat: "writers", name: "Gabriel García Márquez", desc: "One Hundred Years of Solitude; magical realism"},
+            {cat: "writers", name: "Jorge Luis Borges", desc: "Argentine short stories; labyrinths and libraries"},
+            {cat: "writers", name: "Oscar Wilde", desc: "Dorian Gray; witty plays; imprisoned for homosexuality"},
+            {cat: "writers", name: "Victor Hugo", desc: "Les Misérables, Hunchback of Notre-Dame; French Romantic"},
+            {cat: "writers", name: "Alexandre Dumas", desc: "Three Musketeers, Count of Monte Cristo"},
+            {cat: "writers", name: "Johann Wolfgang von Goethe", desc: "Faust; German literary giant"},
+            {cat: "writers", name: "Honoré de Balzac", desc: "Human Comedy; 90+ novels depicting French society"},
+            {cat: "writers", name: "Gustave Flaubert", desc: "Madame Bovary; perfectionist prose stylist"},
+            {cat: "writers", name: "Émile Zola", desc: "Naturalism; \"J'accuse\" (Dreyfus affair)"},
+            {cat: "writers", name: "Anton Chekhov", desc: "Russian short stories and plays; The Cherry Orchard"},
+            {cat: "writers", name: "Henrik Ibsen", desc: "A Doll's House; father of modern drama"},
+            {cat: "writers", name: "Samuel Beckett", desc: "Waiting for Godot; absurdist; Nobel winner"},
+            {cat: "writers", name: "Albert Camus", desc: "The Stranger; absurdism; \"one must imagine Sisyphus happy\""},
+            {cat: "writers", name: "Hermann Hesse", desc: "Siddhartha, Steppenwolf; Eastern philosophy meets West"},
+            {cat: "writers", name: "Thomas Mann", desc: "Magic Mountain; German Nobel winner"},
+            {cat: "writers", name: "John Milton", desc: "Paradise Lost; blind poet; English epic"},
+            {cat: "writers", name: "Geoffrey Chaucer", desc: "Canterbury Tales; father of English literature"},
+            {cat: "writers", name: "Edgar Allan Poe", desc: "The Raven; inventor of detective fiction; mysterious death"},
+            {cat: "writers", name: "Emily Dickinson", desc: "Reclusive American poet; published after death"},
+            {cat: "writers", name: "Walt Whitman", desc: "Leaves of Grass; free verse; American bard"},
+            {cat: "writers", name: "Lord Byron", desc: "Romantic poet; \"mad, bad, and dangerous to know\""},
+            
+            // Composers
+            {cat: "composers", name: "Ludwig van Beethoven", desc: "9 symphonies while going deaf; bridge to Romantic era"},
+            {cat: "composers", name: "Wolfgang Amadeus Mozart", desc: "Child prodigy; 600+ works; died at 35"},
+            {cat: "composers", name: "Johann Sebastian Bach", desc: "Baroque master; mathematical complexity; rediscovered later"},
+            {cat: "composers", name: "Frédéric Chopin", desc: "Piano poet; Polish nationalist; died of tuberculosis at 39"},
+            {cat: "composers", name: "Franz Schubert", desc: "600+ songs; symphonies; died at 31"},
+            {cat: "composers", name: "Johannes Brahms", desc: "German Romantic; completed first symphony at 43"},
+            {cat: "composers", name: "Richard Wagner", desc: "Massive operas; Ring Cycle; controversial legacy"},
+            {cat: "composers", name: "Giuseppe Verdi", desc: "Italian opera; Rigoletto, La Traviata, Aida"},
+            {cat: "composers", name: "Pyotr Tchaikovsky", desc: "Swan Lake, Nutcracker; Russian Romantic; mysterious death"},
+            {cat: "composers", name: "Antonio Vivaldi", desc: "Four Seasons; Venetian priest; rediscovered 20th century"},
+            {cat: "composers", name: "George Frideric Handel", desc: "Messiah (\"Hallelujah\"); German-British Baroque"},
+            {cat: "composers", name: "Franz Liszt", desc: "Piano virtuoso; rock star persona; invented recital format"},
+            {cat: "composers", name: "Claude Debussy", desc: "Impressionist music; Clair de Lune; new harmonies"},
+            {cat: "composers", name: "Igor Stravinsky", desc: "Rite of Spring riot; revolutionized rhythm"},
+            {cat: "composers", name: "Sergei Rachmaninoff", desc: "Romantic piano concertos; huge hands"},
+            {cat: "composers", name: "Gustav Mahler", desc: "Epic symphonies; conducted Vienna Opera"},
+            {cat: "composers", name: "Antonín Dvořák", desc: "New World Symphony; Czech nationalist"},
+            {cat: "composers", name: "Felix Mendelssohn", desc: "Child prodigy; revived Bach; Wedding March"},
+            {cat: "composers", name: "Robert Schumann", desc: "Romantic; music criticism; mental illness"},
+            {cat: "composers", name: "Giacomo Puccini", desc: "La Bohème, Tosca, Madama Butterfly; emotional operas"},
+            
+            // Political Leaders
+            {cat: "leaders", name: "Augustus (Octavian)", desc: "First Roman Emperor; Pax Romana; adopted son of Caesar"},
+            {cat: "leaders", name: "Winston Churchill", desc: "WWII British PM; \"blood, toil, tears and sweat\""},
+            {cat: "leaders", name: "Mahatma Gandhi", desc: "Indian independence through nonviolent resistance"},
+            {cat: "leaders", name: "Abraham Lincoln", desc: "Freed slaves; preserved Union; assassinated"},
+            {cat: "leaders", name: "George Washington", desc: "First US President; refused to be king"},
+            {cat: "leaders", name: "Franklin D. Roosevelt", desc: "New Deal; WWII; only 4-term president"},
+            {cat: "leaders", name: "Vladimir Lenin", desc: "Bolshevik Revolution; founded Soviet Union"},
+            {cat: "leaders", name: "Joseph Stalin", desc: "Soviet dictator; industrialization; millions killed"},
+            {cat: "leaders", name: "Mao Zedong", desc: "Communist China founder; Cultural Revolution; millions died"},
+            {cat: "leaders", name: "Elizabeth I", desc: "Virgin Queen; defeated Spanish Armada; English Renaissance"},
+            {cat: "leaders", name: "Henry VIII", desc: "6 wives; broke from Rome; Church of England founder"},
+            {cat: "leaders", name: "Queen Victoria", desc: "63-year reign; British Empire at peak; Victorian Era"},
+            {cat: "leaders", name: "Catherine the Great", desc: "Expanded Russian Empire; enlightened despot"},
+            {cat: "leaders", name: "Peter the Great", desc: "Modernized Russia; built St. Petersburg; beard tax"},
+            {cat: "leaders", name: "Louis XIV", desc: "\"Sun King\"; Versailles; \"L'état, c'est moi\" (I am the state)"},
+            {cat: "leaders", name: "Marie Antoinette", desc: "French queen; guillotined; never said \"let them eat cake\""},
+            {cat: "leaders", name: "Cleopatra", desc: "Last pharaoh; Greek (Ptolemaic); Caesar's and Antony's lover"},
+            {cat: "leaders", name: "Nero", desc: "Roman emperor; fiddled while Rome burned (myth); persecuted Christians"},
+            {cat: "leaders", name: "Caligula", desc: "Insane Roman emperor; made horse a consul"},
+            {cat: "leaders", name: "Constantine the Great", desc: "First Christian emperor; founded Constantinople"},
+            {cat: "leaders", name: "Justinian I", desc: "Byzantine emperor; Hagia Sophia; legal code"},
+            {cat: "leaders", name: "Otto von Bismarck", desc: "Unified Germany; \"Iron Chancellor\"; Realpolitik"},
+            {cat: "leaders", name: "Theodore Roosevelt", desc: "Trust-buster; Rough Rider; teddy bear; Nobel Peace Prize"},
+            {cat: "leaders", name: "John F. Kennedy", desc: "Camelot; Cuban Missile Crisis; assassinated in Dallas"},
+            {cat: "leaders", name: "Nelson Mandela", desc: "27 years imprisoned; ended apartheid; South African president"},
+            {cat: "leaders", name: "Margaret Thatcher", desc: "\"Iron Lady\"; British PM; conservative revolution"},
+            {cat: "leaders", name: "Charles de Gaulle", desc: "Free French leader; Fifth Republic founder"},
+            {cat: "leaders", name: "Benito Mussolini", desc: "Italian fascist dictator; made trains run on time (myth)"},
+            {cat: "leaders", name: "Adolf Hitler", desc: "Nazi dictator; Holocaust; WWII; suicide in bunker"},
+            {cat: "leaders", name: "Francisco Franco", desc: "Spanish dictator; won civil war; ruled until 1975"},
+            {cat: "leaders", name: "Fidel Castro", desc: "Cuban Revolution; communist; 49-year rule"},
+            {cat: "leaders", name: "Che Guevara", desc: "Argentine revolutionary; icon on t-shirts"},
+            {cat: "leaders", name: "Ho Chi Minh", desc: "Vietnamese independence leader; defeated France and US"},
+            {cat: "leaders", name: "Jawaharlal Nehru", desc: "First Indian PM; Non-Aligned Movement"},
+            {cat: "leaders", name: "Deng Xiaoping", desc: "Opened China's economy; Tiananmen crackdown"},
+            {cat: "leaders", name: "Mikhail Gorbachev", desc: "Glasnost, Perestroika; ended Cold War; USSR collapsed"},
+            {cat: "leaders", name: "Ronald Reagan", desc: "\"Tear down this wall\"; conservative revolution; actor"},
+            {cat: "leaders", name: "Joan of Arc", desc: "French peasant girl who led armies; burned as heretic; saint"},
+            
+            // Religious Figures
+            {cat: "religious", name: "Jesus Christ", desc: "Central figure of Christianity; crucified and resurrected"},
+            {cat: "religious", name: "Muhammad", desc: "Prophet of Islam; Quran revealed; united Arabia"},
+            {cat: "religious", name: "Moses", desc: "Led Israelites from Egypt; received Ten Commandments"},
+            {cat: "religious", name: "Buddha (Siddhartha Gautama)", desc: "Founder of Buddhism; enlightenment; Four Noble Truths"},
+            {cat: "religious", name: "Martin Luther", desc: "95 Theses; Protestant Reformation; translated Bible to German"},
+            {cat: "religious", name: "Saint Paul", desc: "Spread Christianity; wrote much of New Testament"},
+            {cat: "religious", name: "Saint Augustine", desc: "City of God; Confessions; shaped Christian theology"},
+            {cat: "religious", name: "Saint Thomas Aquinas", desc: "Summa Theologica; merged Aristotle with Christianity"},
+            {cat: "religious", name: "John Calvin", desc: "Predestination; Calvinism; Geneva theocracy"},
+            {cat: "religious", name: "Saint Francis of Assisi", desc: "Founded Franciscans; talked to animals; poverty vow"},
+            {cat: "religious", name: "Pope John Paul II", desc: "Polish pope; fought communism; long papacy"},
+            {cat: "religious", name: "Mother Teresa", desc: "Served poor in Calcutta; Nobel Peace Prize; saint"},
+            {cat: "religious", name: "Dalai Lama (14th)", desc: "Tibetan Buddhist leader; exiled; Nobel Peace Prize"},
+            {cat: "religious", name: "Zoroaster", desc: "Founded Zoroastrianism; influenced Judaism, Christianity, Islam"},
+            {cat: "religious", name: "Joseph Smith", desc: "Founded Mormonism; Book of Mormon; killed by mob"},
+            {cat: "religious", name: "John Wesley", desc: "Founded Methodism; revival movement"},
+            {cat: "religious", name: "Guru Nanak", desc: "Founded Sikhism; one God; equality"},
+            {cat: "religious", name: "Maimonides", desc: "Jewish philosopher; Guide for the Perplexed"},
+            
+            // Inventors & Entrepreneurs
+            {cat: "inventors", name: "Johannes Gutenberg", desc: "Printing press (~1440); enabled Reformation"},
+            {cat: "inventors", name: "James Watt", desc: "Improved steam engine; Industrial Revolution"},
+            {cat: "inventors", name: "Eli Whitney", desc: "Cotton gin; interchangeable parts"},
+            {cat: "inventors", name: "Alexander Graham Bell", desc: "Invented telephone"},
+            {cat: "inventors", name: "Wright Brothers", desc: "First powered flight (1903)"},
+            {cat: "inventors", name: "Henry Ford", desc: "Assembly line; Model T; made cars affordable"},
+            {cat: "inventors", name: "Thomas Edison", desc: "Lightbulb, phonograph; \"genius is 1% inspiration...\""},
+            {cat: "inventors", name: "Guglielmo Marconi", desc: "Radio; transatlantic transmission"},
+            {cat: "inventors", name: "John D. Rockefeller", desc: "Standard Oil; first billionaire; ruthless then philanthropic"},
+            {cat: "inventors", name: "Andrew Carnegie", desc: "Steel; \"Gospel of Wealth\"; libraries everywhere"},
+            {cat: "inventors", name: "J.P. Morgan", desc: "Banking titan; bailed out US government; art collector"},
+            {cat: "inventors", name: "Steve Jobs", desc: "Apple; iPhone; \"Think Different\"; died too young"},
+            {cat: "inventors", name: "Bill Gates", desc: "Microsoft; richest man; now philanthropist"},
+            {cat: "inventors", name: "Elon Musk", desc: "Tesla, SpaceX; controversial; \"real-life Tony Stark\""},
+            {cat: "inventors", name: "Jeff Bezos", desc: "Amazon; Blue Origin; Washington Post"},
+            {cat: "inventors", name: "Tim Berners-Lee", desc: "Invented World Wide Web; gave it away free"},
+            {cat: "inventors", name: "Walt Disney", desc: "Animation pioneer; theme parks; media empire"},
+            
+            // Other Notable Figures
+            {cat: "other", name: "Tutankhamun", desc: "Egyptian boy pharaoh; tomb discovered 1922"},
+            {cat: "other", name: "Ramesses II", desc: "Egyptian pharaoh; Moses's adversary (tradition); great builder"},
+            {cat: "other", name: "Nefertiti", desc: "Egyptian queen; famous bust"},
+            {cat: "other", name: "Hammurabi", desc: "Babylonian king; first written law code"},
+            {cat: "other", name: "Florence Nightingale", desc: "Founded modern nursing; Crimean War; \"Lady with the Lamp\""},
+            {cat: "other", name: "Henri Dunant", desc: "Founded Red Cross; first Nobel Peace Prize"},
+            {cat: "other", name: "Clara Barton", desc: "Founded American Red Cross"},
+            {cat: "other", name: "Harriet Tubman", desc: "Underground Railroad conductor; freed ~70 slaves"},
+            {cat: "other", name: "Frederick Douglass", desc: "Escaped slave; abolitionist leader; powerful orator"},
+            {cat: "other", name: "Martin Luther King Jr.", desc: "Civil rights leader; \"I Have a Dream\"; assassinated"},
+            {cat: "other", name: "Rosa Parks", desc: "Refused to give up bus seat; sparked Montgomery boycott"},
+            {cat: "other", name: "Anne Frank", desc: "Jewish girl; Holocaust diary; died in Bergen-Belsen"},
+            {cat: "other", name: "Alfred Nobel", desc: "Dynamite inventor; funded Nobel Prizes to improve legacy"},
+            {cat: "other", name: "Coco Chanel", desc: "Fashion designer; little black dress; Chanel No. 5"},
+            {cat: "other", name: "Marilyn Monroe", desc: "Hollywood icon; Kennedy rumors; tragic death"},
+            {cat: "other", name: "Elvis Presley", desc: "\"King of Rock and Roll\"; changed popular music"},
+            {cat: "other", name: "Muhammad Ali", desc: "Greatest boxer; \"float like a butterfly\"; refused Vietnam draft"},
+            {cat: "other", name: "Michael Jordan", desc: "Greatest basketball player; 6 championships; Nike empire"}
+        ];
+
+        const categories = {
+            conquerors: {name: "🗡️ Conquerors & Military", color: "#f87171"},
+            explorers: {name: "🧭 Explorers", color: "#60a5fa"},
+            scientists: {name: "🔬 Scientists", color: "#4ade80"},
+            philosophers: {name: "💭 Philosophers", color: "#22d3ee"},
+            artists: {name: "🎨 Artists", color: "#c084fc"},
+            writers: {name: "✍️ Writers", color: "#facc15"},
+            composers: {name: "🎼 Composers", color: "#f472b6"},
+            leaders: {name: "👑 Political Leaders", color: "#fb923c"},
+            religious: {name: "⛪ Religious Figures", color: "#a78bfa"},
+            inventors: {name: "💡 Inventors & Entrepreneurs", color: "#34d399"},
+            other: {name: "🌍 Other Notable", color: "#94a3b8"}
+        };
+
+        let currentFilter = 'all';
+
+        function render() {
+            // Nav buttons
+            let navHtml = '<button class="cat-btn active" data-cat="all">All (320)</button>';
+            for (const [key, val] of Object.entries(categories)) {
+                const count = figures.filter(f => f.cat === key).length;
+                navHtml += `<button class="cat-btn" data-cat="${key}">${val.name.split(' ')[0]} (${count})</button>`;
+            }
+            document.getElementById('nav').innerHTML = navHtml;
+
+            renderFigures();
+
+            // Nav click handlers
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.cat;
+                    renderFigures();
+                });
+            });
+
+            // Search
+            document.getElementById('search').addEventListener('input', (e) => {
+                renderFigures(e.target.value.toLowerCase());
+            });
+        }
+
+        function renderFigures(search = '') {
+            let filtered = currentFilter === 'all' ? figures : figures.filter(f => f.cat === currentFilter);
+            if (search) {
+                filtered = filtered.filter(f => 
+                    f.name.toLowerCase().includes(search) || 
+                    f.desc.toLowerCase().includes(search)
+                );
+            }
+
+            let html = '';
+            let currentCat = '';
+            let num = 0;
+
+            filtered.forEach(f => {
+                if (currentFilter === 'all' && f.cat !== currentCat) {
+                    currentCat = f.cat;
+                    const catCount = filtered.filter(x => x.cat === currentCat).length;
+                    html += `
+                        <div class="category">
+                            <div class="category-header">
+                                ${categories[currentCat].name}
+                                <span class="category-count">${catCount}</span>
+                            </div>
+                            <div class="figures-grid">
+                    `;
+                }
+
+                num++;
+                html += `
+                    <div class="figure-card">
+                        <div class="figure-name"><span class="figure-num">${num}.</span>${f.name}</div>
+                        <div class="figure-desc">${f.desc}</div>
+                    </div>
+                `;
+
+                const nextFig = filtered[filtered.indexOf(f) + 1];
+                if (currentFilter === 'all' && (!nextFig || nextFig.cat !== currentCat)) {
+                    html += '</div></div>';
+                }
+            });
+
+            if (currentFilter !== 'all') {
+                html = `<div class="figures-grid">${html}</div>`;
+            }
+
+            document.getElementById('content').innerHTML = html || '<p style="text-align:center;color:#888;">No figures found</p>';
+        }
+
+        render();
+    </script>
+</body>
+</html>
