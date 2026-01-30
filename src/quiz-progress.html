@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Quest - Progress</title>
+    <title>Knowledge Quiz Dashboard</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -11,388 +11,328 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #e0e0e0;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px;
         }
         .container { max-width: 1200px; margin: 0 auto; }
         h1 { 
-            text-align: center; 
-            margin-bottom: 30px; 
-            color: #fff;
-            font-size: 2.5rem;
+            font-size: 2rem; 
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        h1 span { color: #ffd700; }
+        .subtitle { color: #888; margin-bottom: 24px; }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
         }
         .stat-card {
             background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .stat-card .number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ffd700;
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .stat-card .label {
-            color: #888;
-            margin-top: 8px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .stat-label { font-size: 0.85rem; color: #888; margin-top: 4px; }
         
-        .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
+        .boxes-section { margin-bottom: 32px; }
+        .section-title { font-size: 1.25rem; margin-bottom: 16px; color: #fff; }
+        .leitner-boxes {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .leitner-box {
+            min-width: 200px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 16px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .section h2 {
-            margin-bottom: 20px;
-            color: #fff;
-            font-size: 1.4rem;
-        }
-        
-        .sessions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .session-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-        }
-        .session-date { font-weight: 600; }
-        .session-score {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .session-score.high { color: #4ade80; }
-        .session-score.medium { color: #fbbf24; }
-        .session-score.low { color: #f87171; }
-        
-        .figures-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 12px;
-        }
-        .figure-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            border-left: 4px solid;
-        }
-        .figure-card.box-0 { border-color: #f87171; }
-        .figure-card.box-1 { border-color: #fbbf24; }
-        .figure-card.box-2 { border-color: #4ade80; }
-        .figure-card.box-3 { border-color: #22d3ee; }
-        .figure-card.box-4 { border-color: #a78bfa; }
-        
-        .figure-name { font-weight: 500; }
-        .figure-category {
-            font-size: 0.75rem;
-            color: #888;
-            text-transform: uppercase;
-        }
-        .figure-box {
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .category-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .filter-btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.1);
-            color: #e0e0e0;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: #ffd700;
-            color: #1a1a2e;
-        }
-        
-        .review-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .review-tag {
-            padding: 8px 16px;
-            background: rgba(248, 113, 113, 0.2);
-            border: 1px solid #f87171;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .boxes-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-        }
-        @media (max-width: 900px) {
-            .boxes-container { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .boxes-container { grid-template-columns: 1fr; }
-        }
-        .box-column {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 16px;
-            border-top: 4px solid;
-        }
-        .box-column.box-0 { border-color: #f87171; }
-        .box-column.box-1 { border-color: #fbbf24; }
-        .box-column.box-2 { border-color: #4ade80; }
-        .box-column.box-3 { border-color: #22d3ee; }
-        .box-column.box-4 { border-color: #a78bfa; }
         .box-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .box-title { font-weight: 600; font-size: 0.95rem; }
+        .box-title { font-weight: 600; }
         .box-count {
-            background: rgba(255,255,255,0.1);
-            padding: 2px 8px;
-            border-radius: 10px;
+            background: rgba(124, 58, 237, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 0.8rem;
         }
-        .box-interval { font-size: 0.75rem; color: #888; }
-        .box-figures {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        .box-figure {
+        .box-interval { font-size: 0.75rem; color: #666; margin-bottom: 12px; }
+        .box-items { display: flex; flex-direction: column; gap: 8px; }
+        .figure-chip {
+            background: rgba(255,255,255,0.08);
+            padding: 8px 12px;
+            border-radius: 8px;
             font-size: 0.85rem;
-            padding: 6px 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .figure-chip.needs-review { border-left: 3px solid #f59e0b; }
+        .category-badge {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .category-conqueror { background: #dc262630; color: #f87171; }
+        .category-explorer { background: #2563eb30; color: #60a5fa; }
+        .category-scientist { background: #16a34a30; color: #4ade80; }
+        .category-artist { background: #9333ea30; color: #c084fc; }
+        .category-philosopher { background: #0891b230; color: #22d3ee; }
+        .category-writer { background: #ca8a0430; color: #facc15; }
+        .category-composer { background: #be185d30; color: #f472b6; }
+        .category-leader { background: #ea580c30; color: #fb923c; }
+        .category-religious { background: #7c3aed30; color: #a78bfa; }
+        .category-inventor { background: #059669 30; color: #34d399; }
+        
+        .history-section { margin-bottom: 32px; }
+        .session-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 12px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .session-date { font-weight: 600; }
+        .session-score {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .score-good { background: #10b98130; color: #10b981; }
+        .score-ok { background: #f59e0b30; color: #f59e0b; }
+        .score-needs-work { background: #ef444430; color: #ef4444; }
+        
+        .due-section { margin-bottom: 32px; }
+        .due-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .due-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 3px solid #f59e0b;
+        }
+        .due-name { font-weight: 600; margin-bottom: 4px; }
+        .due-fact { font-size: 0.8rem; color: #888; line-height: 1.4; }
+        
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
+        .progress-section { margin-bottom: 32px; }
         .progress-bar {
-            height: 8px;
+            height: 24px;
             background: rgba(255,255,255,0.1);
-            border-radius: 4px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-top: 10px;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ffd700, #ff8c00);
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        .chart-container {
-            height: 200px;
             display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            padding-top: 20px;
         }
-        .chart-bar {
-            flex: 1;
-            background: linear-gradient(180deg, #ffd700, #ff8c00);
-            border-radius: 4px 4px 0 0;
-            position: relative;
-            min-width: 40px;
-        }
-        .chart-bar .label {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
+        .progress-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .seg-box0 { background: #ef4444; }
+        .seg-box1 { background: #f59e0b; }
+        .seg-box2 { background: #eab308; }
+        .seg-box3 { background: #84cc16; }
+        .seg-box4 { background: #22c55e; }
+        .seg-box5 { background: #10b981; }
+        .progress-legend {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 0.75rem;
             color: #888;
-            white-space: nowrap;
         }
-        .chart-bar .value {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #ffd700;
-        }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 4px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🧠 Knowledge <span>Quest</span></h1>
+        <h1>📚 Knowledge Quest</h1>
         
-        <div class="stats-grid" id="stats"></div>
-        
-        <div class="section">
-            <h2>📈 Session History</h2>
-            <div class="chart-container" id="chart"></div>
-            <div style="height: 40px;"></div>
-            <div class="sessions-list" id="sessions"></div>
+        <div class="mission-box" style="background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+            <h2 style="font-size: 1.1rem; margin-bottom: 12px; color: #c084fc;">🎯 The Goal: 300+ Figures</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.85rem;">
+                <div>
+                    <strong style="color: #00d4ff;">What 300+ figures gets you:</strong>
+                    <ul style="margin-top: 8px; padding-left: 20px; color: #aaa; line-height: 1.6;">
+                        <li>Never blank in conversations about history, culture, art</li>
+                        <li>More mental models ("this is like when Napoleon...")</li>
+                        <li>Pattern recognition across eras (history rhymes)</li>
+                        <li>Credibility — people assume you're educated</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong style="color: #00d4ff;">What makes someone "really smart":</strong>
+                    <ol style="margin-top: 8px; padding-left: 20px; color: #aaa; line-height: 1.6;">
+                        <li><b>Connecting ideas</b> — "Gutenberg enabled Luther"</li>
+                        <li><b>First principles</b> — understanding why, not just what</li>
+                        <li><b>Applying knowledge</b> — predict business, markets, life</li>
+                    </ol>
+                </div>
+            </div>
         </div>
+        <p class="subtitle">General knowledge spaced repetition tracker</p>
         
-        <div class="section">
-            <h2>🔴 Need Review</h2>
-            <div class="review-list" id="review"></div>
-        </div>
+        <div id="dashboard"></div>
         
-        <div class="section">
-            <h2>📦 Spaced Repetition Boxes</h2>
-            <p style="color:#888;margin-bottom:20px;font-size:0.9rem">Figures move up a box when answered correctly, down when missed. Higher box = longer review interval.</p>
-            <div class="boxes-container" id="boxes"></div>
-        </div>
-        
-        <div class="section">
-            <h2>📚 All Figures (<span id="figure-count">0</span>)</h2>
-            <div class="category-filter" id="filters"></div>
-            <div class="figures-grid" id="figures"></div>
+        <div class="footer">
+            Built by Nova ✨ · Last updated: <span id="update-time"></span>
         </div>
     </div>
 
     <script>
         // QUIZ_DATA_START
-        const quizData = {"config": {"questionsPerSession": 5, "intervals": [1, 3, 7, 14, 30], "started": "2026-01-28"}, "stats": {"totalQuestions": 127, "totalCorrect": 95, "sessionsCompleted": 3, "currentStreak": 2}, "figures": [{"id": "alexander", "name": "Alexander the Great", "category": "conqueror", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "caesar", "name": "Julius Caesar", "category": "conqueror", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "napoleon", "name": "Napoleon Bonaparte", "category": "conqueror", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "genghis", "name": "Genghis Khan", "category": "conqueror", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "hannibal", "name": "Hannibal Barca", "category": "conqueror", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Crossed Alps with elephants to attack Rome"}, {"id": "columbus", "name": "Christopher Columbus", "category": "explorer", "box": 1, "nextReview": "2026-01-31", "lastResult": "partial", "note": "Found America but Vespucci named it"}, {"id": "vespucci", "name": "Amerigo Vespucci", "category": "explorer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "America named after him"}, {"id": "magellan", "name": "Ferdinand Magellan", "category": "explorer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "amundsen", "name": "Roald Amundsen", "category": "explorer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "First to South Pole"}, {"id": "marcopolo", "name": "Marco Polo", "category": "explorer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Venetian merchant, traveled to China, served Kublai Khan"}, {"id": "newton", "name": "Isaac Newton", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "darwin", "name": "Charles Darwin", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "HMS Beagle, Origin of Species, Galápagos finches"}, {"id": "einstein", "name": "Albert Einstein", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "curie", "name": "Marie Curie", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Chemistry + Physics Nobel"}, {"id": "copernicus", "name": "Nicolaus Copernicus", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Heliocentrism first, published on deathbed"}, {"id": "galileo", "name": "Galileo Galilei", "category": "scientist", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Proved heliocentrism, house arrest, 'And yet it moves'"}, {"id": "fleming", "name": "Alexander Fleming", "category": "scientist", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Discovered penicillin 1928"}, {"id": "freud", "name": "Sigmund Freud", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "socrates", "name": "Socrates", "category": "philosopher", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Hemlock, taught Plato, 'I know that I know nothing'"}, {"id": "plato", "name": "Plato", "category": "philosopher", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "The Academy, The Republic"}, {"id": "aristotle", "name": "Aristotle", "category": "philosopher", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "The Lyceum, taught Alexander the Great"}, {"id": "confucius", "name": "Confucius", "category": "philosopher", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "nietzsche", "name": "Friedrich Nietzsche", "category": "philosopher", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "God is dead, Thus Spoke Zarathustra, German"}, {"id": "descartes", "name": "René Descartes", "category": "philosopher", "box": 0, "nextReview": "2026-01-31", "lastResult": "missed", "note": "Cogito ergo sum, Cartesian coordinates"}, {"id": "marx", "name": "Karl Marx", "category": "philosopher", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Communist Manifesto, class struggle"}, {"id": "leonardo", "name": "Leonardo da Vinci", "category": "artist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Mona Lisa, Renaissance polymath, mirror writing"}, {"id": "michelangelo", "name": "Michelangelo", "category": "artist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Sistine Chapel (neck strain!), David statue"}, {"id": "raphael", "name": "Raphael", "category": "artist", "box": 1, "nextReview": "2026-01-31", "lastResult": "new", "note": "School of Athens, Madonnas, died at 37"}, {"id": "botticelli", "name": "Sandro Botticelli", "category": "artist", "box": 1, "nextReview": "2026-01-31", "lastResult": "new", "note": "Birth of Venus"}, {"id": "vangogh", "name": "Vincent van Gogh", "category": "artist", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Starry Night, ear, Post-Impressionism"}, {"id": "shakespeare", "name": "William Shakespeare", "category": "writer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Globe Theatre, wife Anne Hathaway, second-best bed"}, {"id": "dante", "name": "Dante Alighieri", "category": "writer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Divine Comedy"}, {"id": "tolstoy", "name": "Leo Tolstoy", "category": "writer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "War and Peace, Anna Karenina (epic, sweeping)"}, {"id": "dostoevsky", "name": "Fyodor Dostoevsky", "category": "writer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Crime and Punishment, Brothers Karamazov (psychological, dark)"}, {"id": "orwell", "name": "George Orwell", "category": "writer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "1984, Animal Farm, real name Eric Blair"}, {"id": "cervantes", "name": "Miguel de Cervantes", "category": "writer", "box": 0, "nextReview": "2026-01-31", "lastResult": "missed", "note": "Don Quixote, first modern novel"}, {"id": "suntzu", "name": "Sun Tzu", "category": "writer", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "The Art of War"}, {"id": "beethoven", "name": "Ludwig van Beethoven", "category": "composer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Went deaf, 9th Symphony"}, {"id": "mozart", "name": "Wolfgang Amadeus Mozart", "category": "composer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Child prodigy from age 5"}, {"id": "washington", "name": "George Washington", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "churchill", "name": "Winston Churchill", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "WWII, blood toil tears sweat"}, {"id": "gandhi", "name": "Mahatma Gandhi", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "lincoln", "name": "Abraham Lincoln", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct"}, {"id": "stalin", "name": "Joseph Stalin", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"}, {"id": "lenin", "name": "Vladimir Lenin", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Bolsheviks, founded Soviet Union"}, {"id": "henryviii", "name": "Henry VIII", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "6 wives, broke from Catholic Church"}, {"id": "elizabethi", "name": "Elizabeth I", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Virgin Queen, defeated Spanish Armada"}, {"id": "cleopatra", "name": "Cleopatra", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Greek (Ptolemaic), NOT Egyptian"}, {"id": "joanofarc", "name": "Joan of Arc", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Led France in Hundred Years War"}, {"id": "marieantoinette", "name": "Marie Antoinette", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "French queen, guillotined, never said 'let them eat cake'"}, {"id": "mehmedii", "name": "Mehmed II", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Conquered Constantinople 1453, ended Byzantine Empire"}, {"id": "luther", "name": "Martin Luther", "category": "religious", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "95 Theses, Protestant Reformation"}, {"id": "gutenberg", "name": "Johannes Gutenberg", "category": "inventor", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Printing press 1440"}, {"id": "edison", "name": "Thomas Edison", "category": "inventor", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Lightbulb, 1000+ patents, DC current"}, {"id": "tesla", "name": "Nikola Tesla", "category": "inventor", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "AC current, rival of Edison"}, {"id": "nightingale", "name": "Florence Nightingale", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Crimean War, founded modern nursing (NOT Red Cross)"}, {"id": "dunant", "name": "Henri Dunant", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "Founded Red Cross, first Nobel Peace Prize"}, {"id": "octavian", "name": "Augustus/Octavian", "category": "leader", "box": 1, "nextReview": "2026-01-31", "lastResult": "correct", "note": "First Roman Emperor, adopted son of Caesar"}], "sessions": [{"date": "2026-01-28", "questions": 5, "correct": 1, "percentage": 20}, {"date": "2026-01-29", "questions": 48, "correct": 34, "percentage": 71, "notes": "First full session. Strong on scientists, philosophers, conquerors."}, {"date": "2026-01-30", "questions": 79, "correct": 61, "percentage": 77, "notes": "80 questions (1 skipped). Locked: Michelangelo, Nietzsche, Vespucci, Mehmed II, Tolstoy/Dostoevsky distinction. Learned: Copernicus vs Galileo, Renaissance Big Three, Henri Dunant (Red Cross)."}], "toReview": ["cervantes", "descartes"], "removed": ["keller", "douglass"]};
+        const quizData = QUIZ_DATA_PLACEHOLDER;
         // QUIZ_DATA_END
 
         function render() {
-            // Stats
-            const accuracy = Math.round((quizData.stats.totalCorrect / quizData.stats.totalQuestions) * 100);
-            document.getElementById('stats').innerHTML = `
-                <div class="stat-card">
-                    <div class="number">${quizData.stats.totalQuestions}</div>
-                    <div class="label">Questions Asked</div>
+            const today = new Date().toISOString().split('T')[0];
+            const totalFigures = quizData.figures.length;
+            
+            const boxCounts = [0, 0, 0, 0, 0, 0];
+            let dueToday = [];
+            
+            quizData.figures.forEach(f => {
+                boxCounts[f.box || 0]++;
+                if (f.nextReview <= today) dueToday.push(f);
+            });
+            
+            const totalAnswered = quizData.stats?.totalQuestions || 0;
+            const totalCorrect = quizData.stats?.totalCorrect || 0;
+            const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+            const daysSinceStart = Math.ceil((new Date() - new Date(quizData.config.started)) / (1000 * 60 * 60 * 24));
+            
+            let html = `
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-number">${totalFigures}</div><div class="stat-label">Total Figures</div></div>
+                    <div class="stat-card"><div class="stat-number">${dueToday.length}</div><div class="stat-label">Due Today</div></div>
+                    <div class="stat-card"><div class="stat-number">${accuracy}%</div><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><div class="stat-number">${quizData.sessions.length}</div><div class="stat-label">Sessions</div></div>
+                    <div class="stat-card"><div class="stat-number">${daysSinceStart}</div><div class="stat-label">Days Active</div></div>
                 </div>
-                <div class="stat-card">
-                    <div class="number">${accuracy}%</div>
-                    <div class="label">Accuracy</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: ${accuracy}%"></div></div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">${quizData.figures.length}</div>
-                    <div class="label">Figures Tracked</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">${quizData.stats.currentStreak}</div>
-                    <div class="label">Day Streak 🔥</div>
+                
+                <div class="progress-section">
+                    <div class="section-title">🎯 Mastery Progress</div>
+                    <div class="progress-bar">
+                        ${boxCounts.map((count, i) => count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/totalFigures)*100}%">${count}</div>` : '').join('')}
+                    </div>
+                    <div class="progress-legend">
+                        <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div>New</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>1 day</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:#eab308"></div>3 days</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:#84cc16"></div>7 days</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>14 days</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Mastered</div>
+                    </div>
                 </div>
             `;
-
-            // Chart
-            const maxPct = Math.max(...quizData.sessions.map(s => s.percentage));
-            document.getElementById('chart').innerHTML = quizData.sessions.map(s => `
-                <div class="chart-bar" style="height: ${(s.percentage / 100) * 180}px">
-                    <div class="value">${s.percentage}%</div>
-                    <div class="label">${s.date.slice(5)}</div>
-                </div>
-            `).join('');
-
-            // Sessions
-            document.getElementById('sessions').innerHTML = quizData.sessions.slice().reverse().map(s => `
-                <div class="session-item">
-                    <div>
-                        <div class="session-date">${s.date}</div>
-                        <div style="color:#888;font-size:0.85rem">${s.correct}/${s.questions} correct${s.notes ? ' • ' + s.notes.slice(0,50) + '...' : ''}</div>
-                    </div>
-                    <div class="session-score ${s.percentage >= 75 ? 'high' : s.percentage >= 50 ? 'medium' : 'low'}">${s.percentage}%</div>
-                </div>
-            `).join('');
-
-            // Review
-            const reviewFigures = quizData.figures.filter(f => quizData.toReview.includes(f.id));
-            document.getElementById('review').innerHTML = reviewFigures.length ? 
-                reviewFigures.map(f => `<span class="review-tag">${f.name}${f.note ? ' — ' + f.note : ''}</span>`).join('') :
-                '<span style="color:#4ade80">All caught up! 🎉</span>';
-
-            // Boxes (Leitner System)
-            const boxLabels = ['Box 0: New/Missed', 'Box 1: Learning', 'Box 2: Familiar', 'Box 3: Known', 'Box 4: Mastered'];
-            const boxIntervals = ['Review daily', '1-day interval', '3-day interval', '7-day interval', '14+ days'];
-            let boxesHtml = '';
-            for (let i = 0; i <= 4; i++) {
-                const figuresInBox = quizData.figures.filter(f => f.box === i);
-                boxesHtml += `
-                    <div class="box-column box-${i}">
-                        <div class="box-header">
-                            <div>
-                                <div class="box-title">${boxLabels[i]}</div>
-                                <div class="box-interval">${boxIntervals[i]}</div>
-                            </div>
-                            <span class="box-count">${figuresInBox.length}</span>
-                        </div>
-                        <div class="box-figures">
-                            ${figuresInBox.length ? figuresInBox.map(f => `<div class="box-figure" title="${f.note || ''}">${f.name}</div>`).join('') : '<div style="color:#666;font-size:0.8rem">Empty</div>'}
+            
+            if (dueToday.length > 0) {
+                html += `
+                    <div class="due-section">
+                        <div class="section-title">📅 Due for Review Today (${dueToday.length})</div>
+                        <div class="due-grid">
+                            ${dueToday.slice(0, 8).map(f => `<div class="due-card"><div class="due-name">${f.name}</div><div class="due-fact">${f.note || ''}</div></div>`).join('')}
+                            ${dueToday.length > 8 ? `<div class="due-card" style="display:flex;align-items:center;justify-content:center;color:#888">+${dueToday.length - 8} more</div>` : ''}
                         </div>
                     </div>
                 `;
             }
-            document.getElementById('boxes').innerHTML = boxesHtml;
-
-            // Filters
-            const categories = [...new Set(quizData.figures.map(f => f.category))].sort();
-            document.getElementById('filters').innerHTML = `
-                <button class="filter-btn active" data-cat="all">All</button>
-                ${categories.map(c => `<button class="filter-btn" data-cat="${c}">${c}</button>`).join('')}
-            `;
-
-            // Figures
-            document.getElementById('figure-count').textContent = quizData.figures.length;
-            renderFigures('all');
-
-            // Filter events
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderFigures(btn.dataset.cat);
-                });
-            });
-        }
-
-        function renderFigures(category) {
-            const filtered = category === 'all' ? quizData.figures : quizData.figures.filter(f => f.category === category);
-            const sorted = filtered.sort((a, b) => a.box - b.box);
             
-            document.getElementById('figures').innerHTML = sorted.map(f => `
-                <div class="figure-card box-${f.box}" title="${f.note || ''}">
-                    <div>
-                        <div class="figure-name">${f.name}</div>
-                        <div class="figure-category">${f.category}</div>
+            const boxLabels = ['Box 0: New', 'Box 1: 1 day', 'Box 2: 3 days', 'Box 3: 7 days', 'Box 4: 14 days', 'Box 5: Mastered'];
+            html += `
+                <div class="boxes-section">
+                    <div class="section-title">📦 Leitner Boxes</div>
+                    <div class="leitner-boxes">
+                        ${boxLabels.map((label, i) => {
+                            const figuresInBox = quizData.figures.filter(f => f.box === i);
+                            return `
+                                <div class="leitner-box">
+                                    <div class="box-header">
+                                        <span class="box-title">${label.split(':')[0]}</span>
+                                        <span class="box-count">${figuresInBox.length}</span>
+                                    </div>
+                                    <div class="box-interval">${label.split(':')[1] || ''}</div>
+                                    <div class="box-items">
+                                        ${figuresInBox.slice(0, 5).map(f => `
+                                            <div class="figure-chip ${f.nextReview <= today ? 'needs-review' : ''}">
+                                                <span>${f.name}</span>
+                                                <span class="category-badge category-${f.category}">${f.category}</span>
+                                            </div>
+                                        `).join('')}
+                                        ${figuresInBox.length > 5 ? `<div class="figure-chip" style="color:#666;justify-content:center">+${figuresInBox.length - 5} more</div>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
-                    <div class="figure-box">Box ${f.box}</div>
                 </div>
-            `).join('');
+            `;
+            
+            if (quizData.sessions && quizData.sessions.length > 0) {
+                html += `
+                    <div class="history-section">
+                        <div class="section-title">📊 Session History</div>
+                        ${quizData.sessions.slice().reverse().map(s => {
+                            const pct = s.percentage || Math.round((s.correct / s.questions) * 100);
+                            const scoreClass = pct >= 60 ? 'score-good' : pct >= 40 ? 'score-ok' : 'score-needs-work';
+                            return `
+                                <div class="session-card">
+                                    <div class="session-header">
+                                        <span class="session-date">${s.date}</span>
+                                        <span class="session-score ${scoreClass}">${s.correct}/${s.questions} (${pct}%)</span>
+                                    </div>
+                                    ${s.notes ? `<div style="color:#888;font-size:0.8rem;">${s.notes}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+            
+            document.getElementById('dashboard').innerHTML = html;
+            document.getElementById('update-time').textContent = new Date().toLocaleString();
         }
-
+        
         render();
     </script>
 </body>

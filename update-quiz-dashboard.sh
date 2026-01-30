@@ -6,7 +6,7 @@ set -e
 
 QUIZ_STATE="/Users/jarvis/clawd/life/areas/projects/general-knowledge/quiz-state.json"
 TEMPLATE="/Users/jarvis/clawd/dashboards/src/quiz-progress.html"
-OUTPUT="/Users/jarvis/clawd/dashboards/quiz-progress.html"
+OUTPUT_DIR="/Users/jarvis/clawd/dashboards"
 PASSWORD="W5l3bA1MFOYkEn0X"
 
 if [ ! -f "$QUIZ_STATE" ]; then
@@ -21,46 +21,37 @@ fi
 
 echo "📊 Updating quiz dashboard..."
 
-# Update template with latest data
+# Create temp file with updated data
 python3 << 'PYEOF'
 import json
 
 template_path = "/Users/jarvis/clawd/dashboards/src/quiz-progress.html"
 quiz_state_path = "/Users/jarvis/clawd/life/areas/projects/general-knowledge/quiz-state.json"
+output_path = "/tmp/quiz-progress-temp.html"
 
-# Read the template
 with open(template_path, 'r') as f:
     html = f.read()
 
-# Read the quiz data
 with open(quiz_state_path, 'r') as f:
     quiz_data = json.load(f)
 
-# Find markers
-start_marker = "// QUIZ_DATA_START"
-end_marker = "// QUIZ_DATA_END"
-
-start_idx = html.find(start_marker)
-end_idx = html.find(end_marker)
-
-if start_idx == -1 or end_idx == -1:
-    print("❌ Error: Could not find QUIZ_DATA markers in template")
-    exit(1)
-
-# Build new HTML with updated data
+# Replace placeholder with actual data
 new_json = json.dumps(quiz_data, ensure_ascii=False)
-new_html = html[:start_idx + len(start_marker)] + "\n        const quizData = " + new_json + ";\n        " + html[end_idx:]
+html = html.replace('QUIZ_DATA_PLACEHOLDER', new_json)
 
-# Write back to template
-with open(template_path, 'w') as f:
-    f.write(new_html)
+with open(output_path, 'w') as f:
+    f.write(html)
 
 print("✅ Template updated with latest quiz data")
 PYEOF
 
 # Encrypt with staticrypt
 echo "🔐 Encrypting..."
-npx staticrypt "$TEMPLATE" -p "$PASSWORD" -d "$(dirname "$OUTPUT")"
+npx staticrypt /tmp/quiz-progress-temp.html -p "$PASSWORD" -d "$OUTPUT_DIR"
 
 echo "✅ Dashboard updated and encrypted!"
-echo "📁 Output: $OUTPUT"
+echo "📁 Output: $OUTPUT_DIR/quiz-progress-temp.html"
+
+# Rename to final name
+mv "$OUTPUT_DIR/quiz-progress-temp.html" "$OUTPUT_DIR/quiz-progress.html"
+echo "📁 Final: $OUTPUT_DIR/quiz-progress.html"
