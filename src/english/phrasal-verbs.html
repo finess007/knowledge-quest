@@ -266,6 +266,16 @@
             <div class="section-title">📜 Recent Practice</div>
             <div id="historyList"></div>
         </div>
+        
+        <div class="sync-section" style="margin-top: 24px; padding: 16px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <div class="section-title">💾 Backup & Sync</div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;">
+                <button class="btn btn-secondary" id="exportBtn">📤 Export Progress</button>
+                <button class="btn btn-secondary" id="importBtn">📥 Import Progress</button>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+            </div>
+            <div id="syncStatus" style="font-size: 0.85rem; color: #888;"></div>
+        </div>
     </div>
     
     <script>
@@ -497,6 +507,70 @@
                 mode = btn.dataset.mode;
                 nextVerb();
             });
+        });
+        
+        // Export/Import functionality
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            const progress = localStorage.getItem(STORAGE_KEY);
+            if (!progress) {
+                alert('No progress to export!');
+                return;
+            }
+            
+            const data = JSON.parse(progress);
+            data.exportedAt = new Date().toISOString();
+            data.exportVersion = '1.0';
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `phrasal-verbs-progress-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            document.getElementById('syncStatus').textContent = `✅ Exported at ${new Date().toLocaleTimeString()}`;
+        });
+        
+        document.getElementById('importBtn').addEventListener('click', () => {
+            document.getElementById('importFile').click();
+        });
+        
+        document.getElementById('importFile').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (!data.verbs || !Array.isArray(data.verbs)) {
+                    throw new Error('Invalid format: missing verbs array');
+                }
+                
+                // Merge imported progress with current data
+                if (verbsData) {
+                    data.verbs.forEach(importedVerb => {
+                        const existing = verbsData.verbs.find(v => v.id === importedVerb.id);
+                        if (existing) {
+                            existing.box = importedVerb.box || 0;
+                            existing.lastReview = importedVerb.lastReview;
+                            existing.nextReview = importedVerb.nextReview;
+                        }
+                    });
+                    streak = data.streak || 0;
+                    saveProgress();
+                    updateStats();
+                    updateProgressBar();
+                    updateLeitnerBoxes();
+                }
+                
+                document.getElementById('syncStatus').textContent = `✅ Imported ${data.verbs.length} verbs from ${data.exportedAt ? new Date(data.exportedAt).toLocaleDateString() : 'backup'}`;
+            } catch (err) {
+                alert('Failed to import: ' + err.message);
+            }
+            
+            e.target.value = '';
         });
         
         // Load data
