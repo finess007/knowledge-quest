@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phrasal Verbs Mastery</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 8px; font-size: 2rem; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 24px; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-value { font-size: 2rem; font-weight: 700; }
+        .stat-label { color: #888; font-size: 0.85rem; }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            height: 32px;
+            display: flex;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .progress-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            min-width: 30px;
+        }
+        .seg-box0 { background: #ef4444; }
+        .seg-box1 { background: #f97316; }
+        .seg-box2 { background: #eab308; }
+        .seg-box3 { background: #84cc16; }
+        .seg-box4 { background: #22c55e; }
+        .seg-box5 { background: #10b981; }
+        
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quiz-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .quiz-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+        .quiz-formal {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .quiz-prompt {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        .quiz-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 16px;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .quiz-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+        }
+        .quiz-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.1s;
+        }
+        .btn:hover { transform: scale(1.02); }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: #8b5cf6; color: #fff; }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; }
+        .btn-success { background: #22c55e; color: #fff; }
+        .btn-danger { background: #ef4444; color: #fff; }
+        
+        .feedback {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+        .feedback.correct {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            display: block;
+        }
+        .feedback.incorrect {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            display: block;
+        }
+        .feedback .answer { font-weight: 700; font-size: 1.2rem; }
+        .feedback .example { color: #888; margin-top: 8px; font-style: italic; }
+        
+        .leitner-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        .leitner-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .box-title { font-weight: 600; font-size: 0.9rem; }
+        .box-count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .box-interval { font-size: 0.75rem; color: #666; }
+        
+        .history-section { margin-top: 24px; }
+        .history-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .history-item.correct { border-left: 3px solid #22c55e; }
+        .history-item.incorrect { border-left: 3px solid #ef4444; }
+        
+        .mode-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .mode-btn {
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .mode-btn.active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+        }
+        
+        .streak { color: #f59e0b; }
+        
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .quiz-formal { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Phrasal Verbs Mastery</h1>
+        <p class="subtitle">400 essential phrasal verbs • Leitner spaced repetition</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="totalVerbs">400</div>
+                <div class="stat-label">Total Verbs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="masteredCount">0</div>
+                <div class="stat-label">Mastered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="dueToday">0</div>
+                <div class="stat-label">Due Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value streak" id="streak">0</div>
+                <div class="stat-label">🔥 Streak</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <div class="quiz-section">
+            <div class="section-title">📝 Practice</div>
+            
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="due">Due Today</button>
+                <button class="mode-btn" data-mode="new">New Words</button>
+                <button class="mode-btn" data-mode="all">All Words</button>
+            </div>
+            
+            <div class="quiz-card">
+                <div class="quiz-formal" id="formalWord">Loading...</div>
+                <div class="quiz-prompt">What's the phrasal verb?</div>
+                <input type="text" class="quiz-input" id="answerInput" placeholder="Type the phrasal verb..." autocomplete="off">
+                <div class="quiz-buttons">
+                    <button class="btn btn-primary" id="checkBtn">Check (Enter)</button>
+                    <button class="btn btn-secondary" id="showBtn">Show Answer</button>
+                    <button class="btn btn-secondary" id="skipBtn">Skip</button>
+                </div>
+                <div class="feedback" id="feedback">
+                    <div class="answer" id="feedbackAnswer"></div>
+                    <div class="example" id="feedbackExample"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-title">📦 Leitner Boxes</div>
+        <div class="leitner-boxes" id="leitnerBoxes"></div>
+        
+        <div class="history-section">
+            <div class="section-title">📜 Recent Practice</div>
+            <div id="historyList"></div>
+        </div>
+    </div>
+    
+    <script>
+        const STORAGE_KEY = 'phrasal-verbs-progress';
+        let verbsData = null;
+        let currentVerb = null;
+        let mode = 'due';
+        let sessionHistory = [];
+        let streak = 0;
+        
+        async function loadData() {
+            try {
+                const response = await fetch('phrasal-verbs-full.json');
+                const data = await response.json();
+                
+                // Load saved progress
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const progress = JSON.parse(saved);
+                    data.verbs.forEach(verb => {
+                        const savedVerb = progress.verbs?.find(v => v.id === verb.id);
+                        if (savedVerb) {
+                            verb.box = savedVerb.box || 0;
+                            verb.lastReview = savedVerb.lastReview;
+                            verb.nextReview = savedVerb.nextReview;
+                        }
+                    });
+                    streak = progress.streak || 0;
+                }
+                
+                verbsData = data;
+                updateStats();
+                updateProgressBar();
+                updateLeitnerBoxes();
+                nextVerb();
+            } catch (e) {
+                console.error('Failed to load data:', e);
+                document.getElementById('formalWord').textContent = 'Error loading data';
+            }
+        }
+        
+        function saveProgress() {
+            const progress = {
+                verbs: verbsData.verbs.map(v => ({
+                    id: v.id,
+                    box: v.box,
+                    lastReview: v.lastReview,
+                    nextReview: v.nextReview
+                })),
+                streak: streak,
+                lastSession: new Date().toISOString()
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+        
+        function getDueVerbs() {
+            const now = Date.now();
+            return verbsData.verbs.filter(v => {
+                if (v.box === 0) return true;
+                if (!v.nextReview) return true;
+                return new Date(v.nextReview).getTime() <= now;
+            });
+        }
+        
+        function getNextReviewDate(box) {
+            const intervals = [0, 1, 3, 7, 14, 30];
+            const days = intervals[box] || 30;
+            const date = new Date();
+            date.setDate(date.getDate() + days);
+            return date.toISOString();
+        }
+        
+        function updateStats() {
+            const mastered = verbsData.verbs.filter(v => v.box >= 5).length;
+            const due = getDueVerbs().length;
+            
+            document.getElementById('totalVerbs').textContent = verbsData.verbs.length;
+            document.getElementById('masteredCount').textContent = mastered;
+            document.getElementById('dueToday').textContent = due;
+            document.getElementById('streak').textContent = streak;
+        }
+        
+        function updateProgressBar() {
+            const boxCounts = [0, 0, 0, 0, 0, 0];
+            verbsData.verbs.forEach(v => boxCounts[v.box || 0]++);
+            
+            const total = verbsData.verbs.length;
+            const bar = document.getElementById('progressBar');
+            bar.innerHTML = boxCounts.map((count, i) => 
+                count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/total)*100}%">${count}</div>` : ''
+            ).join('');
+        }
+        
+        function updateLeitnerBoxes() {
+            const boxLabels = ['Box 0: New', 'Box 1: 1 day', 'Box 2: 3 days', 'Box 3: 1 week', 'Box 4: 2 weeks', 'Box 5: Mastered'];
+            const boxCounts = [0, 0, 0, 0, 0, 0];
+            verbsData.verbs.forEach(v => boxCounts[v.box || 0]++);
+            
+            document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => `
+                <div class="leitner-box">
+                    <div class="box-header">
+                        <span class="box-title">${label.split(':')[0]}</span>
+                        <span class="box-count">${boxCounts[i]}</span>
+                    </div>
+                    <div class="box-interval">${label.split(':')[1] || ''}</div>
+                </div>
+            `).join('');
+        }
+        
+        function nextVerb() {
+            let pool;
+            if (mode === 'due') {
+                pool = getDueVerbs();
+            } else if (mode === 'new') {
+                pool = verbsData.verbs.filter(v => v.box === 0);
+            } else {
+                pool = verbsData.verbs;
+            }
+            
+            if (pool.length === 0) {
+                document.getElementById('formalWord').textContent = 'All done! 🎉';
+                document.getElementById('answerInput').disabled = true;
+                return;
+            }
+            
+            currentVerb = pool[Math.floor(Math.random() * pool.length)];
+            document.getElementById('formalWord').textContent = currentVerb.formal;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').disabled = false;
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').className = 'feedback';
+        }
+        
+        function checkAnswer() {
+            const input = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correct = currentVerb.phrasal.toLowerCase();
+            
+            const isCorrect = input === correct || 
+                correct.includes(input) || 
+                input.includes(correct.split(' ')[0]);
+            
+            const feedback = document.getElementById('feedback');
+            const feedbackAnswer = document.getElementById('feedbackAnswer');
+            const feedbackExample = document.getElementById('feedbackExample');
+            
+            if (isCorrect) {
+                feedback.className = 'feedback correct';
+                feedbackAnswer.textContent = `✓ Correct! "${currentVerb.phrasal}"`;
+                currentVerb.box = Math.min((currentVerb.box || 0) + 1, 5);
+                streak++;
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedbackAnswer.textContent = `✗ Answer: "${currentVerb.phrasal}"`;
+                currentVerb.box = 0;
+                streak = 0;
+            }
+            
+            feedbackExample.textContent = currentVerb.example;
+            currentVerb.lastReview = new Date().toISOString();
+            currentVerb.nextReview = getNextReviewDate(currentVerb.box);
+            
+            sessionHistory.unshift({
+                formal: currentVerb.formal,
+                phrasal: currentVerb.phrasal,
+                correct: isCorrect,
+                userAnswer: input
+            });
+            
+            updateHistory();
+            saveProgress();
+            updateStats();
+            updateProgressBar();
+            updateLeitnerBoxes();
+            
+            document.getElementById('answerInput').disabled = true;
+            
+            setTimeout(nextVerb, 1500);
+        }
+        
+        function showAnswer() {
+            document.getElementById('feedback').className = 'feedback incorrect';
+            document.getElementById('feedbackAnswer').textContent = `Answer: "${currentVerb.phrasal}"`;
+            document.getElementById('feedbackExample').textContent = currentVerb.example;
+            
+            currentVerb.box = 0;
+            currentVerb.lastReview = new Date().toISOString();
+            currentVerb.nextReview = getNextReviewDate(0);
+            streak = 0;
+            
+            sessionHistory.unshift({
+                formal: currentVerb.formal,
+                phrasal: currentVerb.phrasal,
+                correct: false,
+                userAnswer: '(shown)'
+            });
+            
+            updateHistory();
+            saveProgress();
+            updateStats();
+            updateProgressBar();
+            updateLeitnerBoxes();
+            
+            setTimeout(nextVerb, 2000);
+        }
+        
+        function updateHistory() {
+            const list = document.getElementById('historyList');
+            list.innerHTML = sessionHistory.slice(0, 10).map(h => `
+                <div class="history-item ${h.correct ? 'correct' : 'incorrect'}">
+                    <span>${h.formal} → <strong>${h.phrasal}</strong></span>
+                    <span>${h.correct ? '✓' : '✗'}</span>
+                </div>
+            `).join('');
+        }
+        
+        // Event listeners
+        document.getElementById('checkBtn').addEventListener('click', checkAnswer);
+        document.getElementById('showBtn').addEventListener('click', showAnswer);
+        document.getElementById('skipBtn').addEventListener('click', nextVerb);
+        
+        document.getElementById('answerInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkAnswer();
+        });
+        
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                mode = btn.dataset.mode;
+                nextVerb();
+            });
+        });
+        
+        // Load data
+        loadData();
+    </script>
+</body>
+</html>
