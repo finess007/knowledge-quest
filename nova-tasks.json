@@ -1,18 +1,34 @@
 {
-  "lastUpdated": "2026-02-01T00:19:00+02:00",
-  "backlog": [
-    {"id": 1, "task": "Build document viewer for knowledge graph", "priority": "P1", "added": "2026-02-01"},
-    {"id": 2, "task": "Set up Gemini API for research", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
-    {"id": 3, "task": "Set up Grok API for X analysis", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
-    {"id": 4, "task": "Mimi's Clawdbot memory setup", "priority": "P2", "added": "2026-01-31"},
-    {"id": 5, "task": "Polymarket arbitrage bot research", "priority": "P3", "added": "2026-01-31"}
-  ],
-  "doing": [],
-  "done": [
-    {"id": 100, "task": "Build Trading Journal", "completed": "2026-01-31"},
-    {"id": 101, "task": "Fix phrasal verbs dashboard - add Leitner boxes", "completed": "2026-01-31"},
-    {"id": 102, "task": "Remove password from 300 figures dashboard", "completed": "2026-01-31"},
-    {"id": 103, "task": "Auto-sync dashboards from Telegram practice", "completed": "2026-01-31"}
-  ],
+  "lastUpdated": "2026-02-01T00:24:00+02:00",
+  "ivo": {
+    "backlog": [],
+    "doing": [],
+    "done": []
+  },
+  "nova": {
+    "backlog": [
+      {"id": 1, "task": "Build document viewer for knowledge graph", "priority": "P1", "added": "2026-02-01"},
+      {"id": 2, "task": "Set up Gemini API for research", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
+      {"id": 3, "task": "Set up Grok API for X analysis", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
+      {"id": 4, "task": "Mimi's Clawdbot memory setup", "priority": "P2", "added": "2026-01-31"},
+      {"id": 5, "task": "Polymarket arbitrage bot research", "priority": "P3", "added": "2026-01-31"}
+    ],
+    "doing": [],
+    "done": [
+      {"id": 100, "task": "Build Trading Journal", "completed": "2026-01-31"},
+      {"id": 101, "task": "Fix phrasal verbs dashboard - add Leitner boxes", "completed": "2026-01-31"},
+      {"id": 102, "task": "Remove password from 300 figures dashboard", "completed": "2026-01-31"},
+      {"id": 103, "task": "Auto-sync dashboards from Telegram practice", "completed": "2026-01-31"},
+      {"id": 104, "task": "Build 3-lane task tracker", "completed": "2026-02-01"}
+    ]
+  },
+  "shared": {
+    "backlog": [
+      {"id": 200, "task": "Daily English phrasal verbs practice", "priority": "P1", "added": "2026-01-31", "recurring": true},
+      {"id": 201, "task": "Daily 300 figures quiz", "priority": "P1", "added": "2026-01-31", "recurring": true}
+    ],
+    "doing": [],
+    "done": []
+  },
   "overnightBuilds": []
 }
