@@ -13,7 +13,7 @@
             color: #fff;
             padding: 20px;
         }
-        .container { max-width: 1800px; margin: 0 auto; }
+        .container { max-width: 1900px; margin: 0 auto; }
         h1 { 
             text-align: center; 
             margin-bottom: 8px;
@@ -36,7 +36,7 @@
         
         .board-header {
             display: grid;
-            grid-template-columns: 80px repeat(3, 1fr);
+            grid-template-columns: 80px repeat(4, 1fr);
             gap: 12px;
             margin-bottom: 8px;
             padding: 0 8px;
@@ -48,7 +48,8 @@
             padding: 12px;
             border-radius: 8px;
         }
-        .col-backlog { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .col-backlog { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        .col-next { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
         .col-doing { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
         .col-done { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
         
@@ -60,7 +61,7 @@
         
         .lane {
             display: grid;
-            grid-template-columns: 80px repeat(3, 1fr);
+            grid-template-columns: 80px repeat(4, 1fr);
             gap: 12px;
             background: rgba(255,255,255,0.02);
             border-radius: 12px;
@@ -87,7 +88,7 @@
             background: rgba(255,255,255,0.03);
             border-radius: 8px;
             padding: 12px;
-            min-height: 150px;
+            min-height: 120px;
         }
         
         .task-card {
@@ -121,7 +122,6 @@
         .priority.P3 { background: #22c55e30; color: #4ade80; }
         .blocked { color: #ef4444; font-size: 0.7rem; margin-top: 4px; }
         .recurring { color: #a855f7; font-size: 0.7rem; margin-top: 4px; }
-        .description { color: #888; font-size: 0.75rem; margin-top: 4px; }
         
         .empty-state {
             color: #444;
@@ -137,7 +137,7 @@
             margin-top: 24px;
         }
         
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             .board-header, .lane {
                 grid-template-columns: 1fr;
             }
@@ -146,22 +146,13 @@
                 transform: none;
             }
             .board-header { display: none; }
-            .column::before {
-                display: block;
-                font-weight: 600;
-                margin-bottom: 8px;
-                font-size: 0.85rem;
-            }
-            .lane .column:nth-child(2)::before { content: "📋 Backlog"; color: #fbbf24; }
-            .lane .column:nth-child(3)::before { content: "🔨 Doing"; color: #60a5fa; }
-            .lane .column:nth-child(4)::before { content: "✅ Done"; color: #4ade80; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📋 Task Tracker</h1>
-        <p class="subtitle">Ivo + Nova — Backlog → Doing → Done</p>
+        <p class="subtitle">Ivo + Nova — Backlog → Next → Doing → Done</p>
         
         <div class="overnight-section">
             <div class="overnight-header">🌙 Built Overnight</div>
@@ -171,6 +162,7 @@
         <div class="board-header">
             <div></div>
             <div class="column-header col-backlog">📋 Backlog</div>
+            <div class="column-header col-next">⏭️ Next</div>
             <div class="column-header col-doing">🔨 Doing</div>
             <div class="column-header col-done">✅ Done</div>
         </div>
@@ -179,6 +171,7 @@
             <div class="lane ivo">
                 <div class="lane-label">🧑 Ivo</div>
                 <div class="column" id="ivoBacklog"></div>
+                <div class="column" id="ivoNext"></div>
                 <div class="column" id="ivoDoing"></div>
                 <div class="column" id="ivoDone"></div>
             </div>
@@ -186,6 +179,7 @@
             <div class="lane nova">
                 <div class="lane-label">🤖 Nova</div>
                 <div class="column" id="novaBacklog"></div>
+                <div class="column" id="novaNext"></div>
                 <div class="column" id="novaDoing"></div>
                 <div class="column" id="novaDone"></div>
             </div>
@@ -193,6 +187,7 @@
             <div class="lane shared">
                 <div class="lane-label">🤝 Shared</div>
                 <div class="column" id="sharedBacklog"></div>
+                <div class="column" id="sharedNext"></div>
                 <div class="column" id="sharedDoing"></div>
                 <div class="column" id="sharedDone"></div>
             </div>
@@ -204,13 +199,13 @@
     </div>
     
     <script>
-        function renderTasks(tasks, containerId, showDesc = false) {
+        function renderTasks(tasks, containerId) {
             const container = document.getElementById(containerId);
             if (!tasks || tasks.length === 0) {
                 container.innerHTML = '<div class="empty-state">—</div>';
                 return;
             }
-            container.innerHTML = tasks.slice(0, 8).map(t => `
+            container.innerHTML = tasks.slice(0, 6).map(t => `
                 <div class="task-card">
                     <div class="task-title">${t.task}</div>
                     <div class="task-meta">
@@ -219,9 +214,8 @@
                     </div>
                     ${t.blocked ? `<div class="blocked">⚠️ ${t.blocked}</div>` : ''}
                     ${t.recurring ? `<div class="recurring">🔄 Recurring</div>` : ''}
-                    ${showDesc && t.description ? `<div class="description">${t.description.substring(0, 80)}${t.description.length > 80 ? '...' : ''}</div>` : ''}
                 </div>
-            `).join('') + (tasks.length > 8 ? `<div class="empty-state">+${tasks.length - 8} more</div>` : '');
+            `).join('') + (tasks.length > 6 ? `<div class="empty-state">+${tasks.length - 6} more</div>` : '');
         }
         
         async function loadData() {
@@ -229,19 +223,22 @@
                 const response = await fetch('nova-tasks.json');
                 const data = await response.json();
                 
-                const ivo = data.ivo || {backlog: [], doing: [], done: []};
-                const nova = data.nova || {backlog: [], doing: [], done: []};
-                const shared = data.shared || {backlog: [], doing: [], done: []};
+                const ivo = data.ivo || {backlog: [], next: [], doing: [], done: []};
+                const nova = data.nova || {backlog: [], next: [], doing: [], done: []};
+                const shared = data.shared || {backlog: [], next: [], doing: [], done: []};
                 const overnight = data.overnightBuilds || [];
                 
-                renderTasks(ivo.backlog, 'ivoBacklog', true);
-                renderTasks(ivo.doing, 'ivoDoing', true);
+                renderTasks(ivo.backlog, 'ivoBacklog');
+                renderTasks(ivo.next, 'ivoNext');
+                renderTasks(ivo.doing, 'ivoDoing');
                 renderTasks(ivo.done, 'ivoDone');
-                renderTasks(nova.backlog, 'novaBacklog', true);
-                renderTasks(nova.doing, 'novaDoing', true);
+                renderTasks(nova.backlog, 'novaBacklog');
+                renderTasks(nova.next, 'novaNext');
+                renderTasks(nova.doing, 'novaDoing');
                 renderTasks(nova.done, 'novaDone');
-                renderTasks(shared.backlog, 'sharedBacklog', true);
-                renderTasks(shared.doing, 'sharedDoing', true);
+                renderTasks(shared.backlog, 'sharedBacklog');
+                renderTasks(shared.next, 'sharedNext');
+                renderTasks(shared.doing, 'sharedDoing');
                 renderTasks(shared.done, 'sharedDone');
                 
                 document.getElementById('overnightList').innerHTML = overnight.length > 0 

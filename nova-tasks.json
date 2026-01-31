@@ -1,47 +1,53 @@
 {
-  "lastUpdated": "2026-02-01T00:27:00+02:00",
+  "lastUpdated": "2026-02-01T00:30:00+02:00",
   "ivo": {
     "backlog": [],
+    "next": [],
     "doing": [],
     "done": []
   },
   "nova": {
     "backlog": [
-      {"id": 35, "task": "Polymarket Arbitrage Bot", "priority": "P1", "added": "2026-01-31", "description": "Build automated trading bot. Strategies: sum-to-one arb, latency arb, cross-platform arb."},
-      {"id": 34, "task": "Agentic SEO for Alessa", "priority": "P1", "added": "2026-01-31", "description": "Optimize Alessa for AI agents. Schema markup, natural language descriptions."},
       {"id": 33, "task": "Image Gen Sub-Agent (Nano Banana Pro)", "priority": "P2", "added": "2026-01-30", "blocked": "Needs Google Cloud billing enabled"},
-      {"id": 32, "task": "AgentMail: Dedicated email inbox for Nova", "priority": "P2", "added": "2026-01-30", "description": "Evaluate agentmail.to for dedicated email. Safer than Gmail."},
-      {"id": 1, "task": "Build document viewer for knowledge graph", "priority": "P1", "added": "2026-02-01"},
+      {"id": 32, "task": "AgentMail: Dedicated email inbox for Nova", "priority": "P2", "added": "2026-01-30"},
       {"id": 2, "task": "Set up Gemini API for research", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
       {"id": 3, "task": "Set up Grok API for X analysis", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
       {"id": 4, "task": "Mimi's Clawdbot memory setup", "priority": "P2", "added": "2026-01-31"}
     ],
+    "next": [
+      {"id": 35, "task": "Polymarket Arbitrage Bot", "priority": "P1", "added": "2026-01-31"},
+      {"id": 34, "task": "Agentic SEO for Alessa", "priority": "P1", "added": "2026-01-31"},
+      {"id": 1, "task": "Build document viewer for knowledge graph", "priority": "P1", "added": "2026-02-01"}
+    ],
     "doing": [],
     "done": [
       {"id": 100, "task": "Build Trading Journal", "completed": "2026-01-31"},
-      {"id": 101, "task": "Fix phrasal verbs dashboard - add Leitner boxes", "completed": "2026-01-31"},
+      {"id": 101, "task": "Fix phrasal verbs dashboard", "completed": "2026-01-31"},
       {"id": 102, "task": "Remove password from 300 figures dashboard", "completed": "2026-01-31"},
-      {"id": 103, "task": "Auto-sync dashboards from Telegram practice", "completed": "2026-01-31"},
+      {"id": 103, "task": "Auto-sync dashboards from Telegram", "completed": "2026-01-31"},
       {"id": 104, "task": "Build 3-lane task tracker", "completed": "2026-02-01"}
     ]
   },
   "shared": {
     "backlog": [
-      {"id": 21, "task": "10 Agents Framework", "priority": "P2", "added": "2026-01-29", "description": "Design multi-agent orchestration: Nova + 9 specialized sub-agents."},
-      {"id": 22, "task": "AI Influencer Agent", "priority": "P2", "added": "2026-01-29", "description": "Specialized agent for AI influencer content: prompts, personas, captions."},
-      {"id": 23, "task": "Balaji PPP Stack", "priority": "P3", "added": "2026-01-29", "description": "Personal Private Programmable stack: Claude Code + Obsidian + local wallet."},
-      {"id": 24, "task": "JTBD Copy Machine", "priority": "P2", "added": "2026-01-29", "description": "Daily copy generation using Jobs to Be Done framework for Alessa."},
-      {"id": 25, "task": "Nova Life OS: Dashboard", "priority": "P2", "added": "2026-01-29", "description": "Web UI showing knowledge graph, tasks, calendar. The command center."},
-      {"id": 26, "task": "Nova Life OS: Backlink Engine", "priority": "P3", "added": "2026-01-29", "description": "Auto-detect mentions and create backlinks to entity files."},
-      {"id": 27, "task": "Nova Life OS: Graph View", "priority": "P3", "added": "2026-01-29", "description": "Visual map of how entities connect — interactive, zoomable."},
-      {"id": 28, "task": "Nova Life OS: Search API", "priority": "P2", "added": "2026-01-29", "description": "Semantic search across all memory files."},
-      {"id": 29, "task": "Nova Life OS: Mobile Quick Capture", "priority": "P2", "added": "2026-01-29", "description": "Telegram command to quickly add notes/tasks/ideas."},
-      {"id": 30, "task": "AI Trading Agent (Grok)", "priority": "P2", "added": "2026-01-29", "description": "Grok for market analysis + execution layer."},
-      {"id": 31, "task": "Polymarket Trading Bot (alt)", "priority": "P3", "added": "2026-01-29", "description": "Simpler version: event scanning + AI probability assessment."},
+      {"id": 26, "task": "Nova Life OS: Backlink Engine", "priority": "P3", "added": "2026-01-29"},
+      {"id": 27, "task": "Nova Life OS: Graph View", "priority": "P3", "added": "2026-01-29"},
+      {"id": 30, "task": "AI Trading Agent (Grok)", "priority": "P2", "added": "2026-01-29"},
+      {"id": 31, "task": "Polymarket Trading Bot (alt)", "priority": "P3", "added": "2026-01-29"}
+    ],
+    "next": [
+      {"id": 21, "task": "10 Agents Framework", "priority": "P2", "added": "2026-01-29"},
+      {"id": 22, "task": "AI Influencer Agent", "priority": "P2", "added": "2026-01-29"},
+      {"id": 23, "task": "Balaji PPP Stack", "priority": "P3", "added": "2026-01-29"},
+      {"id": 24, "task": "JTBD Copy Machine", "priority": "P2", "added": "2026-01-29"},
+      {"id": 25, "task": "Nova Life OS: Dashboard", "priority": "P2", "added": "2026-01-29"},
+      {"id": 28, "task": "Nova Life OS: Search API", "priority": "P2", "added": "2026-01-29"},
+      {"id": 29, "task": "Nova Life OS: Mobile Quick Capture", "priority": "P2", "added": "2026-01-29"}
+    ],
+    "doing": [
       {"id": 200, "task": "Daily English phrasal verbs practice", "priority": "P1", "added": "2026-01-31", "recurring": true},
       {"id": 201, "task": "Daily 300 figures quiz", "priority": "P1", "added": "2026-01-31", "recurring": true}
     ],
-    "doing": [],
     "done": []
   },
   "overnightBuilds": []
