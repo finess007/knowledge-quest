@@ -258,7 +258,7 @@
                 const boxCounts = [0, 0, 0, 0, 0, 0];
                 let totalVerbs = 0;
                 for (let i = 0; i <= 5; i++) {
-                    const count = (boxes[i] || boxes[String(i)] || []).length;
+                    const count = (boxes[String(i)] || boxes[i] || []).length;
                     boxCounts[i] = count;
                     totalVerbs += count;
                 }
@@ -289,7 +289,7 @@
                 ];
                 
                 document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => {
-                    const verbs = boxes[i] || boxes[String(i)] || [];
+                    const verbs = boxes[String(i)] || boxes[i] || [];
                     return `
                         <div class="leitner-box box-${i}">
                             <div class="box-header">
