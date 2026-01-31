@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-31T01:25:34.113523",
+  "lastUpdated": "2026-01-31T13:00:00+02:00",
   "settings": {
     "boxIntervals": [
       0,
@@ -21,80 +21,111 @@
   "verbs": [
     {
       "id": 1,
-      "formal": "investigate",
-      "phrasal": "look into",
-      "example": "I need to look into this opportunity",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
+      "formal": "exit home",
+      "phrasal": "go out",
+      "example": "Let's go out tonight",
+      "box": 0
     },
     {
       "id": 2,
-      "formal": "postpone",
-      "phrasal": "put off",
-      "example": "Let's put off the meeting",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
+      "formal": "decrease",
+      "phrasal": "go down",
+      "example": "Sales went down",
+      "box": 0
     },
     {
       "id": 3,
+      "formal": "lose",
+      "phrasal": "go down",
+      "example": "Our team went down 2-0",
+      "box": 0
+    },
+    {
+      "id": 4,
       "formal": "discover",
       "phrasal": "find out",
       "example": "I want to find out what's causing this",
       "box": 0
     },
     {
-      "id": 4,
-      "formal": "continue",
-      "phrasal": "keep on",
-      "example": "Keep on testing the ads",
-      "box": 0
-    },
-    {
       "id": 5,
-      "formal": "contact",
-      "phrasal": "reach out to",
-      "example": "I'll reach out to him tomorrow",
+      "formal": "enter home",
+      "phrasal": "come in",
+      "example": "Come in and sit down",
       "box": 0
     },
     {
       "id": 6,
-      "formal": "arrive",
-      "phrasal": "show up",
-      "example": "He didn't show up to the meeting",
+      "formal": "increase",
+      "phrasal": "go up",
+      "example": "Prices went up",
       "box": 0
     },
     {
       "id": 7,
-      "formal": "leave",
-      "phrasal": "head out",
-      "example": "I'm going to head out now",
+      "formal": "emerge",
+      "phrasal": "come out",
+      "example": "The truth came out eventually",
       "box": 0
     },
     {
       "id": 8,
+      "formal": "spoil (food)",
+      "phrasal": "go off",
+      "example": "The milk went off",
+      "box": 0
+    },
+    {
+      "id": 9,
+      "formal": "rise from bed",
+      "phrasal": "get up",
+      "example": "Time to get up",
+      "box": 0
+    },
+    {
+      "id": 10,
       "formal": "enter",
       "phrasal": "get in",
       "example": "Get in the car",
       "box": 0
     },
     {
-      "id": 9,
-      "formal": "visit briefly",
-      "phrasal": "stop by",
-      "example": "I'll stop by the office later",
-      "box": 0
-    },
-    {
-      "id": 10,
-      "formal": "return",
-      "phrasal": "get back",
-      "example": "When did you get back?",
-      "box": 0
-    },
-    {
       "id": 11,
+      "formal": "dress",
+      "phrasal": "put on",
+      "example": "Put on your jacket",
+      "box": 0
+    },
+    {
+      "id": 12,
+      "formal": "gain weight",
+      "phrasal": "put on",
+      "example": "I put on 5 pounds",
+      "box": 0
+    },
+    {
+      "id": 13,
+      "formal": "recover (business)",
+      "phrasal": "turn around",
+      "example": "We turned around the company",
+      "box": 0
+    },
+    {
+      "id": 14,
+      "formal": "search for",
+      "phrasal": "look for",
+      "example": "I'm looking for my keys",
+      "box": 0
+    },
+    {
+      "id": 15,
+      "formal": "establish business",
+      "phrasal": "set up",
+      "example": "We set up the company in 2020",
+      "box": 0
+    },
+    {
+      "id": 16,
       "formal": "mention",
       "phrasal": "bring up",
       "example": "Don't bring up that topic",
@@ -103,182 +134,107 @@
       "nextReview": "2026-02-01"
     },
     {
-      "id": 12,
-      "formal": "explain",
-      "phrasal": "go over",
-      "example": "Let me go over the details",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 13,
-      "formal": "express oneself",
-      "phrasal": "speak up",
-      "example": "You need to speak up",
-      "box": 0
-    },
-    {
-      "id": 14,
-      "formal": "discuss",
-      "phrasal": "talk over",
-      "example": "We need to talk this over",
-      "box": 0
-    },
-    {
-      "id": 15,
-      "formal": "fabricate",
-      "phrasal": "make up",
-      "example": "He made up an excuse",
-      "box": 0
-    },
-    {
-      "id": 16,
-      "formal": "summarize",
-      "phrasal": "sum up",
-      "example": "Let me sum up the key points",
-      "box": 0
-    },
-    {
       "id": 17,
-      "formal": "clarify",
-      "phrasal": "clear up",
-      "example": "Let's clear up this confusion",
-      "box": 0
-    },
-    {
-      "id": 18,
-      "formal": "begin/start",
-      "phrasal": "kick off",
-      "example": "Let's kick off the project",
-      "box": 0
-    },
-    {
-      "id": 19,
-      "formal": "finish",
-      "phrasal": "wrap up",
-      "example": "Let's wrap up this meeting",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 20,
-      "formal": "cancel",
-      "phrasal": "call off",
-      "example": "They called off the event",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 21,
-      "formal": "handle",
-      "phrasal": "deal with",
-      "example": "I'll deal with this tomorrow",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
-    },
-    {
-      "id": 22,
-      "formal": "accept responsibility",
-      "phrasal": "take on",
-      "example": "She took on the new project",
-      "box": 0
-    },
-    {
-      "id": 23,
-      "formal": "execute",
-      "phrasal": "carry out",
-      "example": "We need to carry out the plan",
-      "box": 0
-    },
-    {
-      "id": 24,
-      "formal": "review",
-      "phrasal": "look over",
-      "example": "Can you look over this?",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
-    },
-    {
-      "id": 25,
-      "formal": "transfer",
-      "phrasal": "hand over",
-      "example": "Hand over the documents",
-      "box": 0
-    },
-    {
-      "id": 26,
-      "formal": "succeed",
-      "phrasal": "work out",
-      "example": "I hope everything works out",
-      "box": 0
-    },
-    {
-      "id": 27,
-      "formal": "fail",
-      "phrasal": "fall through",
-      "example": "The deal fell through",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 28,
-      "formal": "reconcile",
-      "phrasal": "make up",
-      "example": "They made up after the fight",
-      "box": 0
-    },
-    {
-      "id": 29,
-      "formal": "tolerate",
-      "phrasal": "put up with",
-      "example": "I can't put up with this",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 30,
-      "formal": "admire",
-      "phrasal": "look up to",
-      "example": "I really look up to her",
-      "box": 0
-    },
-    {
-      "id": 31,
-      "formal": "support",
-      "phrasal": "back up",
-      "example": "I'll back you up",
-      "box": 0
-    },
-    {
-      "id": 32,
-      "formal": "disappoint",
-      "phrasal": "let down",
-      "example": "Don't let me down",
-      "box": 0
-    },
-    {
-      "id": 33,
-      "formal": "end relationship",
-      "phrasal": "break up",
-      "example": "They broke up last month",
-      "box": 0
-    },
-    {
-      "id": 34,
       "formal": "raise children",
       "phrasal": "bring up",
       "example": "She brought up three kids",
       "box": 0
     },
     {
-      "id": 35,
+      "id": 18,
+      "formal": "remind",
+      "phrasal": "bring up",
+      "example": "That brings up a good point",
+      "box": 0
+    },
+    {
+      "id": 19,
+      "formal": "accept responsibility",
+      "phrasal": "take on",
+      "example": "She took on the new project",
+      "box": 0
+    },
+    {
+      "id": 20,
+      "formal": "hire",
+      "phrasal": "take on",
+      "example": "We're taking on new staff",
+      "box": 0
+    },
+    {
+      "id": 21,
+      "formal": "succeed",
+      "phrasal": "work out",
+      "example": "I hope everything works out",
+      "box": 0
+    },
+    {
+      "id": 22,
+      "formal": "exercise",
+      "phrasal": "work out",
+      "example": "I work out every day",
+      "box": 0
+    },
+    {
+      "id": 23,
+      "formal": "deduce",
+      "phrasal": "work out",
+      "example": "I worked out what happened",
+      "box": 0
+    },
+    {
+      "id": 24,
+      "formal": "calculate",
+      "phrasal": "work out",
+      "example": "Work out the numbers",
+      "box": 0
+    },
+    {
+      "id": 25,
+      "formal": "prove to be",
+      "phrasal": "turn out",
+      "example": "It turned out to be true",
+      "box": 0
+    },
+    {
+      "id": 26,
+      "formal": "surrender",
+      "phrasal": "give up",
+      "example": "Don't give up",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 27,
+      "formal": "result in",
+      "phrasal": "end up",
+      "example": "I ended up staying late",
+      "box": 0
+    },
+    {
+      "id": 28,
+      "formal": "board vehicle",
+      "phrasal": "get on",
+      "example": "Get on the bus",
+      "box": 0
+    },
+    {
+      "id": 29,
+      "formal": "wait",
+      "phrasal": "hold on",
+      "example": "Hold on a second",
+      "box": 0
+    },
+    {
+      "id": 30,
+      "formal": "execute",
+      "phrasal": "carry out",
+      "example": "We need to carry out the plan",
+      "box": 0
+    },
+    {
+      "id": 31,
       "formal": "solve",
       "phrasal": "figure out",
       "example": "I need to figure this out",
@@ -287,133 +243,159 @@
       "nextReview": "2026-01-31"
     },
     {
+      "id": 32,
+      "formal": "arrive",
+      "phrasal": "show up",
+      "example": "He didn't show up to the meeting",
+      "box": 0
+    },
+    {
+      "id": 33,
+      "formal": "break",
+      "phrasal": "break down",
+      "example": "The car broke down",
+      "box": 0
+    },
+    {
+      "id": 34,
+      "formal": "simplify",
+      "phrasal": "break down",
+      "example": "Break it down for me",
+      "box": 0
+    },
+    {
+      "id": 35,
+      "formal": "analyze",
+      "phrasal": "break down",
+      "example": "Let's break down the data",
+      "box": 0
+    },
+    {
       "id": 36,
-      "formal": "understand finally",
-      "phrasal": "catch on",
-      "example": "He finally caught on",
+      "formal": "appear",
+      "phrasal": "turn up",
+      "example": "New evidence turned up",
       "box": 0
     },
     {
       "id": 37,
-      "formal": "recall",
-      "phrasal": "think back",
-      "example": "Think back to when we started",
+      "formal": "exit vehicle",
+      "phrasal": "get off",
+      "example": "Get off at the next stop",
       "box": 0
     },
     {
       "id": 38,
-      "formal": "create/invent",
-      "phrasal": "come up with",
-      "example": "Come up with a solution",
+      "formal": "criticize",
+      "phrasal": "put down",
+      "example": "Stop putting people down",
+      "box": 0
+    },
+    {
+      "id": 39,
+      "formal": "review past",
+      "phrasal": "look back",
+      "example": "Looking back, it was obvious",
+      "box": 0
+    },
+    {
+      "id": 40,
+      "formal": "continue",
+      "phrasal": "keep on",
+      "example": "Keep on testing the ads",
+      "box": 0
+    },
+    {
+      "id": 41,
+      "formal": "investigate",
+      "phrasal": "look into",
+      "example": "I need to look into this opportunity",
       "box": 1,
       "lastReview": "2026-01-31",
       "nextReview": "2026-02-01"
     },
     {
-      "id": 39,
-      "formal": "consider",
-      "phrasal": "think over",
-      "example": "Let me think it over",
-      "box": 0
-    },
-    {
-      "id": 40,
-      "formal": "decide",
-      "phrasal": "make up your mind",
-      "example": "Make up your mind",
-      "box": 0
-    },
-    {
-      "id": 41,
-      "formal": "save money",
-      "phrasal": "put aside",
-      "example": "Put aside some savings",
-      "box": 0
-    },
-    {
       "id": 42,
-      "formal": "spend reluctantly",
-      "phrasal": "shell out",
-      "example": "I had to shell out $1000",
-      "box": 0
+      "formal": "handle",
+      "phrasal": "deal with",
+      "example": "I'll deal with this tomorrow",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
     },
     {
       "id": 43,
-      "formal": "go bankrupt",
-      "phrasal": "go under",
-      "example": "The company went under",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 44,
-      "formal": "become successful",
-      "phrasal": "take off",
-      "example": "The business took off",
+      "formal": "address",
+      "phrasal": "deal with",
+      "example": "We need to deal with this",
       "box": 0
     },
     {
-      "id": 45,
-      "formal": "reduce",
-      "phrasal": "cut back",
-      "example": "Cut back on expenses",
-      "box": 0,
+      "id": 44,
+      "formal": "postpone",
+      "phrasal": "put off",
+      "example": "Let's put off the meeting",
+      "box": 1,
       "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 45,
+      "formal": "procrastinate",
+      "phrasal": "put off",
+      "example": "Stop putting it off",
+      "box": 0
     },
     {
       "id": 46,
-      "formal": "increase",
-      "phrasal": "go up",
-      "example": "Prices went up",
+      "formal": "fabricate",
+      "phrasal": "make up",
+      "example": "He made up an excuse",
       "box": 0
     },
     {
       "id": 47,
-      "formal": "decrease",
-      "phrasal": "go down",
-      "example": "Sales went down",
+      "formal": "reconcile",
+      "phrasal": "make up",
+      "example": "They made up after the fight",
       "box": 0
     },
     {
       "id": 48,
-      "formal": "repay",
-      "phrasal": "pay back",
-      "example": "I'll pay you back",
-      "box": 0
-    },
-    {
-      "id": 49,
-      "formal": "meet unexpectedly",
-      "phrasal": "run into",
-      "example": "I ran into an old friend",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 50,
-      "formal": "avoid",
-      "phrasal": "steer clear of",
-      "example": "Steer clear of that",
-      "box": 0
-    },
-    {
-      "id": 51,
-      "formal": "solve problems",
-      "phrasal": "sort out",
-      "example": "Let's sort this out",
-      "box": 0
-    },
-    {
-      "id": 52,
       "formal": "recover",
       "phrasal": "get over",
       "example": "I need to get over this cold",
       "box": 0,
       "lastReview": "2026-01-31",
       "nextReview": "2026-01-31"
+    },
+    {
+      "id": 49,
+      "formal": "assume control",
+      "phrasal": "take over",
+      "example": "She took over the company",
+      "box": 0
+    },
+    {
+      "id": 50,
+      "formal": "dominate",
+      "phrasal": "take over",
+      "example": "AI is taking over",
+      "box": 0
+    },
+    {
+      "id": 51,
+      "formal": "end relationship",
+      "phrasal": "break up",
+      "example": "They broke up last month",
+      "box": 0
+    },
+    {
+      "id": 52,
+      "formal": "find accidentally",
+      "phrasal": "come across",
+      "example": "I came across this article",
+      "box": 0
     },
     {
       "id": 53,
@@ -424,180 +406,55 @@
     },
     {
       "id": 54,
-      "formal": "worsen",
-      "phrasal": "go downhill",
-      "example": "Things went downhill fast",
+      "formal": "disappoint",
+      "phrasal": "let down",
+      "example": "Don't let me down",
       "box": 0
     },
     {
       "id": 55,
-      "formal": "improve",
-      "phrasal": "pick up",
-      "example": "Business is picking up",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
+      "formal": "withdraw",
+      "phrasal": "pull out",
+      "example": "The investor pulled out",
+      "box": 0
     },
     {
       "id": 56,
-      "formal": "eliminate",
-      "phrasal": "get rid of",
-      "example": "Get rid of the old stuff",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
+      "formal": "solve problems",
+      "phrasal": "sort out",
+      "example": "Let's sort this out",
+      "box": 0
     },
     {
       "id": 57,
-      "formal": "compensate",
-      "phrasal": "make up for",
-      "example": "I'll make up for it",
+      "formal": "socialize",
+      "phrasal": "hang out",
+      "example": "Want to hang out?",
       "box": 0
     },
     {
       "id": 58,
-      "formal": "wake",
-      "phrasal": "wake up",
-      "example": "I wake up at 7",
+      "formal": "verify",
+      "phrasal": "check out",
+      "example": "Check out this opportunity",
       "box": 0
     },
     {
       "id": 59,
-      "formal": "rise from bed",
-      "phrasal": "get up",
-      "example": "Time to get up",
+      "formal": "inform",
+      "phrasal": "fill in",
+      "example": "Fill me in on the details",
       "box": 0
     },
     {
       "id": 60,
-      "formal": "go to sleep",
-      "phrasal": "turn in",
-      "example": "I'm going to turn in early",
+      "formal": "decelerate",
+      "phrasal": "slow down",
+      "example": "Slow down a bit",
       "box": 0
     },
     {
       "id": 61,
-      "formal": "dress",
-      "phrasal": "put on",
-      "example": "Put on your jacket",
-      "box": 0
-    },
-    {
-      "id": 62,
-      "formal": "undress",
-      "phrasal": "take off",
-      "example": "Take off your shoes",
-      "box": 0
-    },
-    {
-      "id": 63,
-      "formal": "relax",
-      "phrasal": "chill out",
-      "example": "Just chill out",
-      "box": 0
-    },
-    {
-      "id": 64,
-      "formal": "exercise",
-      "phrasal": "work out",
-      "example": "I work out every day",
-      "box": 0
-    },
-    {
-      "id": 65,
-      "formal": "discard",
-      "phrasal": "throw away",
-      "example": "Throw away the trash",
-      "box": 0
-    },
-    {
-      "id": 66,
-      "formal": "search for",
-      "phrasal": "look for",
-      "example": "I'm looking for my keys",
-      "box": 0
-    },
-    {
-      "id": 67,
-      "formal": "find accidentally",
-      "phrasal": "come across",
-      "example": "I came across this article",
-      "box": 0
-    },
-    {
-      "id": 68,
-      "formal": "wait",
-      "phrasal": "hold on",
-      "example": "Hold on a second",
-      "box": 0
-    },
-    {
-      "id": 69,
-      "formal": "appear suddenly",
-      "phrasal": "pop up",
-      "example": "A problem popped up",
-      "box": 0,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-01-31"
-    },
-    {
-      "id": 70,
-      "formal": "begin",
-      "phrasal": "start out",
-      "example": "We started out small",
-      "box": 0
-    },
-    {
-      "id": 71,
-      "formal": "result in",
-      "phrasal": "end up",
-      "example": "I ended up staying late",
-      "box": 0
-    },
-    {
-      "id": 72,
-      "formal": "transform",
-      "phrasal": "turn into",
-      "example": "It turned into a big deal",
-      "box": 0
-    },
-    {
-      "id": 73,
-      "formal": "prove to be",
-      "phrasal": "turn out",
-      "example": "It turned out to be true",
-      "box": 0
-    },
-    {
-      "id": 74,
-      "formal": "improve oneself",
-      "phrasal": "shape up",
-      "example": "Shape up or ship out",
-      "box": 0
-    },
-    {
-      "id": 75,
-      "formal": "deteriorate",
-      "phrasal": "fall apart",
-      "example": "Everything fell apart",
-      "box": 0
-    },
-    {
-      "id": 76,
-      "formal": "accumulate",
-      "phrasal": "build up",
-      "example": "Stress builds up over time",
-      "box": 0
-    },
-    {
-      "id": 77,
-      "formal": "diminish",
-      "phrasal": "die down",
-      "example": "The noise died down",
-      "box": 0
-    },
-    {
-      "id": 78,
       "formal": "accelerate",
       "phrasal": "speed up",
       "example": "We need to speed up",
@@ -606,20 +463,151 @@
       "nextReview": "2026-02-01"
     },
     {
+      "id": 62,
+      "formal": "support",
+      "phrasal": "back up",
+      "example": "I'll back you up",
+      "box": 0
+    },
+    {
+      "id": 63,
+      "formal": "close business",
+      "phrasal": "shut down",
+      "example": "They shut down operations",
+      "box": 0
+    },
+    {
+      "id": 64,
+      "formal": "begin/start",
+      "phrasal": "kick off",
+      "example": "Let's kick off the project",
+      "box": 0
+    },
+    {
+      "id": 65,
+      "formal": "finish",
+      "phrasal": "wrap up",
+      "example": "Let's wrap up this meeting",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 66,
+      "formal": "cancel",
+      "phrasal": "call off",
+      "example": "They called off the event",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 67,
+      "formal": "review",
+      "phrasal": "look over",
+      "example": "Can you look over this?",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 68,
+      "formal": "consider",
+      "phrasal": "think over",
+      "example": "Let me think it over",
+      "box": 0
+    },
+    {
+      "id": 69,
+      "formal": "reconsider",
+      "phrasal": "think over",
+      "example": "Let me think it over",
+      "box": 0
+    },
+    {
+      "id": 70,
+      "formal": "meet unexpectedly",
+      "phrasal": "run into",
+      "example": "I ran into an old friend",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 71,
+      "formal": "create/invent",
+      "phrasal": "come up with",
+      "example": "Come up with a solution",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 72,
+      "formal": "innovate",
+      "phrasal": "come up with",
+      "example": "We came up with something new",
+      "box": 0
+    },
+    {
+      "id": 73,
+      "formal": "tolerate",
+      "phrasal": "put up with",
+      "example": "I can't put up with this",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 74,
+      "formal": "admire",
+      "phrasal": "look up to",
+      "example": "I really look up to her",
+      "box": 0
+    },
+    {
+      "id": 75,
+      "formal": "return purchase",
+      "phrasal": "take back",
+      "example": "I need to take this back",
+      "box": 0
+    },
+    {
+      "id": 76,
+      "formal": "retract",
+      "phrasal": "take back",
+      "example": "I take back what I said",
+      "box": 0
+    },
+    {
+      "id": 77,
+      "formal": "reject",
+      "phrasal": "turn down",
+      "example": "She turned down the offer",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 78,
+      "formal": "reject officially",
+      "phrasal": "turn down",
+      "example": "The bank turned down our loan",
+      "box": 0
+    },
+    {
       "id": 79,
-      "formal": "decelerate",
-      "phrasal": "slow down",
-      "example": "Slow down a bit",
+      "formal": "release",
+      "phrasal": "let go",
+      "example": "You need to let go",
       "box": 0
     },
     {
       "id": 80,
-      "formal": "surrender",
-      "phrasal": "give up",
-      "example": "Don't give up",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
+      "formal": "fire",
+      "phrasal": "let go",
+      "example": "They let go 50 employees",
+      "box": 0
     },
     {
       "id": 81,
@@ -630,64 +618,636 @@
     },
     {
       "id": 82,
-      "formal": "assume control",
-      "phrasal": "take over",
-      "example": "She took over the company",
+      "formal": "transfer",
+      "phrasal": "hand over",
+      "example": "Hand over the documents",
       "box": 0
     },
     {
       "id": 83,
+      "formal": "share",
+      "phrasal": "pass on",
+      "example": "Pass on this message",
+      "box": 0
+    },
+    {
+      "id": 84,
+      "formal": "subscribe",
+      "phrasal": "sign up",
+      "example": "Sign up for the newsletter",
+      "box": 0
+    },
+    {
+      "id": 85,
+      "formal": "connect online",
+      "phrasal": "log in",
+      "example": "Log in to your account",
+      "box": 0
+    },
+    {
+      "id": 86,
+      "formal": "disconnect",
+      "phrasal": "log out",
+      "example": "Remember to log out",
+      "box": 0
+    },
+    {
+      "id": 87,
+      "formal": "attract",
+      "phrasal": "turn on",
+      "example": "What turns you on about this job?",
+      "box": 0
+    },
+    {
+      "id": 88,
+      "formal": "activate",
+      "phrasal": "turn on",
+      "example": "Turn on the computer",
+      "box": 0
+    },
+    {
+      "id": 89,
+      "formal": "repel",
+      "phrasal": "turn off",
+      "example": "His attitude turns me off",
+      "box": 0
+    },
+    {
+      "id": 90,
+      "formal": "deactivate",
+      "phrasal": "turn off",
+      "example": "Turn off the lights",
+      "box": 0
+    },
+    {
+      "id": 91,
+      "formal": "discard",
+      "phrasal": "throw away",
+      "example": "Throw away the trash",
+      "box": 0
+    },
+    {
+      "id": 92,
+      "formal": "store",
+      "phrasal": "put away",
+      "example": "Put away your toys",
+      "box": 0
+    },
+    {
+      "id": 93,
+      "formal": "clarify",
+      "phrasal": "clear up",
+      "example": "Let's clear up this confusion",
+      "box": 0
+    },
+    {
+      "id": 94,
+      "formal": "heal",
+      "phrasal": "clear up",
+      "example": "The rash cleared up",
+      "box": 0
+    },
+    {
+      "id": 95,
+      "formal": "organize",
+      "phrasal": "tidy up",
+      "example": "Tidy up your room",
+      "box": 0
+    },
+    {
+      "id": 96,
+      "formal": "heat",
+      "phrasal": "warm up",
+      "example": "Warm up the food",
+      "box": 0
+    },
+    {
+      "id": 97,
+      "formal": "calm down",
+      "phrasal": "cool down",
+      "example": "Just cool down",
+      "box": 0
+    },
+    {
+      "id": 98,
+      "formal": "cool",
+      "phrasal": "cool down",
+      "example": "Let it cool down first",
+      "box": 0
+    },
+    {
+      "id": 99,
+      "formal": "refuel",
+      "phrasal": "fill up",
+      "example": "We need to fill up on gas",
+      "box": 0
+    },
+    {
+      "id": 100,
+      "formal": "reduce",
+      "phrasal": "cut back",
+      "example": "Cut back on expenses",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 101,
+      "formal": "repay",
+      "phrasal": "pay back",
+      "example": "I'll pay you back",
+      "box": 0
+    },
+    {
+      "id": 102,
+      "formal": "submit",
+      "phrasal": "hand in",
+      "example": "Hand in your reports",
+      "box": 0
+    },
+    {
+      "id": 103,
+      "formal": "deliver",
+      "phrasal": "drop off",
+      "example": "I'll drop off the package",
+      "box": 0
+    },
+    {
+      "id": 104,
+      "formal": "plummet",
+      "phrasal": "drop off",
+      "example": "Interest dropped off sharply",
+      "box": 0
+    },
+    {
+      "id": 105,
+      "formal": "improve",
+      "phrasal": "pick up",
+      "example": "Business is picking up",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 106,
+      "formal": "understand gradually",
+      "phrasal": "pick up",
+      "example": "You'll pick it up quickly",
+      "box": 0
+    },
+    {
+      "id": 107,
+      "formal": "purchase",
+      "phrasal": "pick up",
+      "example": "I'll pick up some groceries",
+      "box": 0
+    },
+    {
+      "id": 108,
+      "formal": "recuperate",
+      "phrasal": "pick up",
+      "example": "Sales are picking up",
+      "box": 0
+    },
+    {
+      "id": 109,
+      "formal": "stockpile",
+      "phrasal": "stock up",
+      "example": "Stock up before the sale ends",
+      "box": 0
+    },
+    {
+      "id": 110,
+      "formal": "sell cheaply",
+      "phrasal": "sell off",
+      "example": "They sold off the inventory",
+      "box": 0
+    },
+    {
+      "id": 111,
+      "formal": "resign",
+      "phrasal": "step down",
+      "example": "The CEO stepped down",
+      "box": 0
+    },
+    {
+      "id": 112,
+      "formal": "become successful",
+      "phrasal": "take off",
+      "example": "The business took off",
+      "box": 0
+    },
+    {
+      "id": 113,
+      "formal": "undress",
+      "phrasal": "take off",
+      "example": "Take off your shoes",
+      "box": 0
+    },
+    {
+      "id": 114,
+      "formal": "thrive",
+      "phrasal": "take off",
+      "example": "The business really took off",
+      "box": 0
+    },
+    {
+      "id": 115,
+      "formal": "go bankrupt",
+      "phrasal": "go under",
+      "example": "The company went under",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 116,
+      "formal": "profit",
+      "phrasal": "cash in",
+      "example": "Time to cash in on this trend",
+      "box": 0
+    },
+    {
+      "id": 117,
+      "formal": "expand",
+      "phrasal": "branch out",
+      "example": "We're branching out into Europe",
+      "box": 0
+    },
+    {
+      "id": 118,
+      "formal": "deteriorate",
+      "phrasal": "fall apart",
+      "example": "Everything fell apart",
+      "box": 0
+    },
+    {
+      "id": 119,
+      "formal": "collapse",
+      "phrasal": "fall apart",
+      "example": "The deal fell apart",
+      "box": 0
+    },
+    {
+      "id": 120,
+      "formal": "fail",
+      "phrasal": "fall through",
+      "example": "The deal fell through",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 121,
+      "formal": "recover from injury",
+      "phrasal": "bounce back",
+      "example": "He bounced back quickly",
+      "box": 0
+    },
+    {
+      "id": 122,
+      "formal": "rebound",
+      "phrasal": "bounce back",
+      "example": "The market bounced back",
+      "box": 0
+    },
+    {
+      "id": 123,
+      "formal": "reach same level",
+      "phrasal": "catch up",
+      "example": "I need to catch up on work",
+      "box": 0
+    },
+    {
+      "id": 124,
+      "formal": "maintain",
+      "phrasal": "keep up",
+      "example": "Keep up the good work",
+      "box": 0
+    },
+    {
+      "id": 125,
+      "formal": "maintain standards",
+      "phrasal": "keep up",
+      "example": "Keep up the quality",
+      "box": 0
+    },
+    {
+      "id": 126,
+      "formal": "delay",
+      "phrasal": "hold up",
+      "example": "Sorry to hold you up",
+      "box": 0
+    },
+    {
+      "id": 127,
+      "formal": "obstruct",
+      "phrasal": "hold up",
+      "example": "What's holding up progress?",
+      "box": 0
+    },
+    {
+      "id": 128,
+      "formal": "complicate",
+      "phrasal": "mess up",
+      "example": "Don't mess this up",
+      "box": 0
+    },
+    {
+      "id": 129,
+      "formal": "exaggerate",
+      "phrasal": "blow up",
+      "example": "The media blew it up",
+      "box": 0
+    },
+    {
+      "id": 130,
+      "formal": "escalate",
+      "phrasal": "blow up",
+      "example": "The situation blew up",
+      "box": 0
+    },
+    {
+      "id": 131,
+      "formal": "shock",
+      "phrasal": "freak out",
+      "example": "I freaked out when I heard",
+      "box": 0
+    },
+    {
+      "id": 132,
+      "formal": "worry",
+      "phrasal": "stress out",
+      "example": "Don't stress out about it",
+      "box": 0
+    },
+    {
+      "id": 133,
+      "formal": "relax",
+      "phrasal": "chill out",
+      "example": "Just chill out",
+      "box": 0
+    },
+    {
+      "id": 134,
+      "formal": "settle in",
+      "phrasal": "move in",
+      "example": "We just moved in",
+      "box": 0
+    },
+    {
+      "id": 135,
+      "formal": "vacate",
+      "phrasal": "move out",
+      "example": "I'm moving out next week",
+      "box": 0
+    },
+    {
+      "id": 136,
+      "formal": "leave",
+      "phrasal": "head out",
+      "example": "I'm going to head out now",
+      "box": 0
+    },
+    {
+      "id": 137,
+      "formal": "visit briefly",
+      "phrasal": "stop by",
+      "example": "I'll stop by the office later",
+      "box": 0
+    },
+    {
+      "id": 138,
+      "formal": "return",
+      "phrasal": "get back",
+      "example": "When did you get back?",
+      "box": 0
+    },
+    {
+      "id": 139,
+      "formal": "explain",
+      "phrasal": "go over",
+      "example": "Let me go over the details",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 140,
+      "formal": "double-check",
+      "phrasal": "go over",
+      "example": "Go over the details again",
+      "box": 0
+    },
+    {
+      "id": 141,
+      "formal": "debrief",
+      "phrasal": "go over",
+      "example": "Let's go over what happened",
+      "box": 0
+    },
+    {
+      "id": 142,
+      "formal": "explain step by step",
+      "phrasal": "walk through",
+      "example": "Let me walk you through it",
+      "box": 0
+    },
+    {
+      "id": 143,
+      "formal": "brief",
+      "phrasal": "run through",
+      "example": "Run through the agenda",
+      "box": 0
+    },
+    {
+      "id": 144,
+      "formal": "discuss",
+      "phrasal": "talk over",
+      "example": "We need to talk this over",
+      "box": 0
+    },
+    {
+      "id": 145,
+      "formal": "summarize",
+      "phrasal": "sum up",
+      "example": "Let me sum up the key points",
+      "box": 0
+    },
+    {
+      "id": 146,
+      "formal": "express oneself",
+      "phrasal": "speak up",
+      "example": "You need to speak up",
+      "box": 0
+    },
+    {
+      "id": 147,
+      "formal": "contact",
+      "phrasal": "reach out to",
+      "example": "I'll reach out to him tomorrow",
+      "box": 0
+    },
+    {
+      "id": 148,
+      "formal": "understand finally",
+      "phrasal": "catch on",
+      "example": "He finally caught on",
+      "box": 0
+    },
+    {
+      "id": 149,
+      "formal": "recall",
+      "phrasal": "think back",
+      "example": "Think back to when we started",
+      "box": 0
+    },
+    {
+      "id": 150,
+      "formal": "decide",
+      "phrasal": "make up your mind",
+      "example": "Make up your mind",
+      "box": 0
+    },
+    {
+      "id": 151,
+      "formal": "save money",
+      "phrasal": "put aside",
+      "example": "Put aside some savings",
+      "box": 0
+    },
+    {
+      "id": 152,
+      "formal": "spend reluctantly",
+      "phrasal": "shell out",
+      "example": "I had to shell out $1000",
+      "box": 0
+    },
+    {
+      "id": 153,
+      "formal": "avoid",
+      "phrasal": "steer clear of",
+      "example": "Steer clear of that",
+      "box": 0
+    },
+    {
+      "id": 154,
+      "formal": "worsen",
+      "phrasal": "go downhill",
+      "example": "Things went downhill fast",
+      "box": 0
+    },
+    {
+      "id": 155,
+      "formal": "eliminate",
+      "phrasal": "get rid of",
+      "example": "Get rid of the old stuff",
+      "box": 1,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-02-01"
+    },
+    {
+      "id": 156,
+      "formal": "compensate",
+      "phrasal": "make up for",
+      "example": "I'll make up for it",
+      "box": 0
+    },
+    {
+      "id": 157,
+      "formal": "wake",
+      "phrasal": "wake up",
+      "example": "I wake up at 7",
+      "box": 0
+    },
+    {
+      "id": 158,
+      "formal": "go to sleep",
+      "phrasal": "turn in",
+      "example": "I'm going to turn in early",
+      "box": 0
+    },
+    {
+      "id": 159,
+      "formal": "appear suddenly",
+      "phrasal": "pop up",
+      "example": "A problem popped up",
+      "box": 0,
+      "lastReview": "2026-01-31",
+      "nextReview": "2026-01-31"
+    },
+    {
+      "id": 160,
+      "formal": "begin",
+      "phrasal": "start out",
+      "example": "We started out small",
+      "box": 0
+    },
+    {
+      "id": 161,
+      "formal": "transform",
+      "phrasal": "turn into",
+      "example": "It turned into a big deal",
+      "box": 0
+    },
+    {
+      "id": 162,
+      "formal": "improve oneself",
+      "phrasal": "shape up",
+      "example": "Shape up or ship out",
+      "box": 0
+    },
+    {
+      "id": 163,
+      "formal": "accumulate",
+      "phrasal": "build up",
+      "example": "Stress builds up over time",
+      "box": 0
+    },
+    {
+      "id": 164,
+      "formal": "diminish",
+      "phrasal": "die down",
+      "example": "The noise died down",
+      "box": 0
+    },
+    {
+      "id": 165,
       "formal": "resist",
       "phrasal": "stand up to",
       "example": "Stand up to bullies",
       "box": 0
     },
     {
-      "id": 84,
+      "id": 166,
       "formal": "retreat",
       "phrasal": "back down",
       "example": "He backed down from the fight",
       "box": 0
     },
     {
-      "id": 85,
-      "formal": "release",
-      "phrasal": "let go",
-      "example": "You need to let go",
-      "box": 0
-    },
-    {
-      "id": 86,
-      "formal": "reject",
-      "phrasal": "turn down",
-      "example": "She turned down the offer",
-      "box": 1,
-      "lastReview": "2026-01-31",
-      "nextReview": "2026-02-01"
-    },
-    {
-      "id": 87,
+      "id": 167,
       "formal": "exclude",
       "phrasal": "rule out",
       "example": "Don't rule out that option",
       "box": 0
     },
     {
-      "id": 88,
+      "id": 168,
       "formal": "agree with",
       "phrasal": "go along with",
       "example": "I'll go along with that",
       "box": 0
     },
     {
-      "id": 89,
+      "id": 169,
       "formal": "convince",
       "phrasal": "talk into",
       "example": "She talked me into it",
       "box": 0
     },
     {
-      "id": 90,
+      "id": 170,
       "formal": "deceive",
       "phrasal": "take in",
       "example": "Don't be taken in by scams",
@@ -696,2096 +1256,1536 @@
       "nextReview": "2026-01-31"
     },
     {
-      "id": 91,
+      "id": 171,
       "formal": "excite",
       "phrasal": "fire up",
       "example": "The speech fired everyone up",
       "box": 0
     },
     {
-      "id": 92,
+      "id": 172,
       "formal": "annoy",
       "phrasal": "tick off",
       "example": "That really ticks me off",
       "box": 0
     },
     {
-      "id": 93,
+      "id": 173,
       "formal": "anger",
       "phrasal": "set off",
       "example": "That comment set him off",
       "box": 0
     },
     {
-      "id": 94,
-      "formal": "calm down",
-      "phrasal": "cool down",
-      "example": "Just cool down",
-      "box": 0
-    },
-    {
-      "id": 95,
+      "id": 174,
       "formal": "depress",
       "phrasal": "get down",
       "example": "Don't let it get you down",
       "box": 0
     },
     {
-      "id": 96,
+      "id": 175,
       "formal": "become happier",
       "phrasal": "cheer up",
       "example": "Cheer up!",
       "box": 0
     },
     {
-      "id": 97,
-      "formal": "shock",
-      "phrasal": "freak out",
-      "example": "I freaked out when I heard",
-      "box": 0
-    },
-    {
-      "id": 98,
-      "formal": "worry",
-      "phrasal": "stress out",
-      "example": "Don't stress out about it",
-      "box": 0
-    },
-    {
-      "id": 99,
+      "id": 176,
       "formal": "bore",
       "phrasal": "zone out",
       "example": "I zoned out during the lecture",
       "box": 0
     },
     {
-      "id": 100,
+      "id": 177,
       "formal": "meet expectations",
       "phrasal": "live up to",
       "example": "Live up to your potential",
       "box": 0
     },
     {
-      "id": 101,
+      "id": 178,
       "formal": "frighten",
       "phrasal": "creep out",
       "example": "That movie creeped me out",
       "box": 0
     },
     {
-      "id": 102,
-      "formal": "attract",
-      "phrasal": "turn on",
-      "example": "What turns you on about this job?",
-      "box": 0
-    },
-    {
-      "id": 103,
-      "formal": "repel",
-      "phrasal": "turn off",
-      "example": "His attitude turns me off",
-      "box": 0
-    },
-    {
-      "id": 104,
+      "id": 179,
       "formal": "overwhelm",
       "phrasal": "get to",
       "example": "The stress is getting to me",
       "box": 0
     },
     {
-      "id": 105,
+      "id": 180,
       "formal": "encourage",
       "phrasal": "egg on",
       "example": "Don't egg him on",
       "box": 0
     },
     {
-      "id": 106,
-      "formal": "connect online",
-      "phrasal": "log in",
-      "example": "Log in to your account",
-      "box": 0
-    },
-    {
-      "id": 107,
-      "formal": "disconnect",
-      "phrasal": "log out",
-      "example": "Remember to log out",
-      "box": 0
-    },
-    {
-      "id": 108,
-      "formal": "activate",
-      "phrasal": "turn on",
-      "example": "Turn on the computer",
-      "box": 0
-    },
-    {
-      "id": 109,
-      "formal": "deactivate",
-      "phrasal": "turn off",
-      "example": "Turn off the lights",
-      "box": 0
-    },
-    {
-      "id": 110,
+      "id": 181,
       "formal": "malfunction",
       "phrasal": "act up",
       "example": "My phone is acting up",
       "box": 0
     },
     {
-      "id": 111,
+      "id": 182,
       "formal": "crash (computer)",
       "phrasal": "freeze up",
       "example": "The system froze up",
       "box": 0
     },
     {
-      "id": 112,
+      "id": 183,
       "formal": "restart",
       "phrasal": "start over",
       "example": "Let's start over",
       "box": 0
     },
     {
-      "id": 113,
+      "id": 184,
       "formal": "delete",
       "phrasal": "wipe out",
       "example": "The virus wiped out everything",
       "box": 0
     },
     {
-      "id": 114,
-      "formal": "subscribe",
-      "phrasal": "sign up",
-      "example": "Sign up for the newsletter",
-      "box": 0
-    },
-    {
-      "id": 115,
+      "id": 185,
       "formal": "unsubscribe",
       "phrasal": "opt out",
       "example": "You can opt out anytime",
       "box": 0
     },
     {
-      "id": 116,
-      "formal": "share",
-      "phrasal": "pass on",
-      "example": "Pass on this message",
-      "box": 0
-    },
-    {
-      "id": 117,
-      "formal": "enter home",
-      "phrasal": "come in",
-      "example": "Come in and sit down",
-      "box": 0
-    },
-    {
-      "id": 118,
-      "formal": "exit home",
-      "phrasal": "go out",
-      "example": "Let's go out tonight",
-      "box": 0
-    },
-    {
-      "id": 119,
+      "id": 186,
       "formal": "remain",
       "phrasal": "stick around",
       "example": "Stick around for a bit",
       "box": 0
     },
     {
-      "id": 120,
-      "formal": "settle in",
-      "phrasal": "move in",
-      "example": "We just moved in",
-      "box": 0
-    },
-    {
-      "id": 121,
-      "formal": "vacate",
-      "phrasal": "move out",
-      "example": "I'm moving out next week",
-      "box": 0
-    },
-    {
-      "id": 122,
+      "id": 187,
       "formal": "renovate",
       "phrasal": "do up",
       "example": "We're doing up the house",
       "box": 0
     },
     {
-      "id": 123,
-      "formal": "organize",
-      "phrasal": "tidy up",
-      "example": "Tidy up your room",
-      "box": 0
-    },
-    {
-      "id": 124,
-      "formal": "store",
-      "phrasal": "put away",
-      "example": "Put away your toys",
-      "box": 0
-    },
-    {
-      "id": 125,
+      "id": 188,
       "formal": "repair",
       "phrasal": "fix up",
       "example": "I need to fix up the car",
       "box": 0
     },
     {
-      "id": 126,
-      "formal": "break",
-      "phrasal": "break down",
-      "example": "The car broke down",
-      "box": 0
-    },
-    {
-      "id": 127,
-      "formal": "heat",
-      "phrasal": "warm up",
-      "example": "Warm up the food",
-      "box": 0
-    },
-    {
-      "id": 128,
-      "formal": "cool",
-      "phrasal": "cool down",
-      "example": "Let it cool down first",
-      "box": 0
-    },
-    {
-      "id": 129,
+      "id": 189,
       "formal": "eat eagerly",
       "phrasal": "dig in",
       "example": "Dig in, everyone!",
       "box": 0
     },
     {
-      "id": 130,
+      "id": 190,
       "formal": "finish eating",
       "phrasal": "polish off",
       "example": "He polished off the whole pizza",
       "box": 0
     },
     {
-      "id": 131,
+      "id": 191,
       "formal": "overeat",
       "phrasal": "pig out",
       "example": "We pigged out on junk food",
       "box": 0
     },
     {
-      "id": 132,
+      "id": 192,
       "formal": "cook quickly",
       "phrasal": "whip up",
       "example": "I'll whip up some dinner",
       "box": 0
     },
     {
-      "id": 133,
+      "id": 193,
       "formal": "order delivery",
       "phrasal": "call in",
       "example": "Let's call in some food",
       "box": 0
     },
     {
-      "id": 134,
-      "formal": "spoil (food)",
-      "phrasal": "go off",
-      "example": "The milk went off",
-      "box": 0
-    },
-    {
-      "id": 135,
+      "id": 194,
       "formal": "depart",
       "phrasal": "set off",
       "example": "We set off early",
       "box": 0
     },
     {
-      "id": 136,
-      "formal": "board vehicle",
-      "phrasal": "get on",
-      "example": "Get on the bus",
-      "box": 0
-    },
-    {
-      "id": 137,
-      "formal": "exit vehicle",
-      "phrasal": "get off",
-      "example": "Get off at the next stop",
-      "box": 0
-    },
-    {
-      "id": 138,
+      "id": 195,
       "formal": "stop vehicle",
       "phrasal": "pull over",
       "example": "Pull over here",
       "box": 0
     },
     {
-      "id": 139,
-      "formal": "reach same level",
-      "phrasal": "catch up",
-      "example": "I need to catch up on work",
-      "box": 0
-    },
-    {
-      "id": 140,
+      "id": 196,
       "formal": "fall behind",
       "phrasal": "drop behind",
       "example": "Don't drop behind the group",
       "box": 0
     },
     {
-      "id": 141,
+      "id": 197,
       "formal": "return journey",
       "phrasal": "head back",
       "example": "Time to head back",
       "box": 0
     },
     {
-      "id": 142,
-      "formal": "delay",
-      "phrasal": "hold up",
-      "example": "Sorry to hold you up",
-      "box": 0
-    },
-    {
-      "id": 143,
-      "formal": "refuel",
-      "phrasal": "fill up",
-      "example": "We need to fill up on gas",
-      "box": 0
-    },
-    {
-      "id": 144,
+      "id": 198,
       "formal": "study intensely",
       "phrasal": "read up on",
       "example": "I need to read up on this",
       "box": 0
     },
     {
-      "id": 145,
-      "formal": "understand gradually",
-      "phrasal": "pick up",
-      "example": "You'll pick it up quickly",
-      "box": 0
-    },
-    {
-      "id": 146,
-      "formal": "explain step by step",
-      "phrasal": "walk through",
-      "example": "Let me walk you through it",
-      "box": 0
-    },
-    {
-      "id": 147,
+      "id": 199,
       "formal": "concentrate",
       "phrasal": "buckle down",
       "example": "Time to buckle down",
       "box": 0
     },
     {
-      "id": 148,
+      "id": 200,
       "formal": "skip class",
       "phrasal": "blow off",
       "example": "He blew off the meeting",
       "box": 0
     },
     {
-      "id": 149,
+      "id": 201,
       "formal": "progress",
       "phrasal": "come along",
       "example": "How's the project coming along?",
       "box": 0
     },
     {
-      "id": 150,
+      "id": 202,
       "formal": "win",
       "phrasal": "come out on top",
       "example": "We came out on top",
       "box": 0
     },
     {
-      "id": 151,
-      "formal": "lose",
-      "phrasal": "go down",
-      "example": "Our team went down 2-0",
-      "box": 0
-    },
-    {
-      "id": 152,
+      "id": 203,
       "formal": "compete against",
       "phrasal": "go up against",
       "example": "We're going up against the best",
       "box": 0
     },
     {
-      "id": 153,
+      "id": 204,
       "formal": "defeat",
       "phrasal": "knock out",
       "example": "They knocked out the champions",
       "box": 0
     },
     {
-      "id": 154,
+      "id": 205,
       "formal": "warm up (sports)",
       "phrasal": "loosen up",
       "example": "Let's loosen up first",
       "box": 0
     },
     {
-      "id": 155,
+      "id": 206,
       "formal": "accumulate points",
       "phrasal": "rack up",
       "example": "He racked up 30 points",
       "box": 0
     },
     {
-      "id": 156,
+      "id": 207,
       "formal": "quit competition",
       "phrasal": "drop out",
       "example": "She dropped out of the race",
       "box": 0
     },
     {
-      "id": 157,
-      "formal": "recover from injury",
-      "phrasal": "bounce back",
-      "example": "He bounced back quickly",
-      "box": 0
-    },
-    {
-      "id": 158,
+      "id": 208,
       "formal": "delay action",
       "phrasal": "hold off",
       "example": "Let's hold off on that decision",
       "box": 0
     },
     {
-      "id": 159,
+      "id": 209,
       "formal": "waste time",
       "phrasal": "mess around",
       "example": "Stop messing around",
       "box": 0
     },
     {
-      "id": 160,
+      "id": 210,
       "formal": "extend time",
       "phrasal": "drag out",
       "example": "Don't drag this out",
       "box": 0
     },
     {
-      "id": 161,
+      "id": 211,
       "formal": "shorten",
       "phrasal": "cut short",
       "example": "We had to cut the trip short",
       "box": 0
     },
     {
-      "id": 162,
+      "id": 212,
       "formal": "align",
       "phrasal": "line up",
       "example": "Everything is lining up",
       "box": 0
     },
     {
-      "id": 163,
+      "id": 213,
       "formal": "schedule",
       "phrasal": "pencil in",
       "example": "Let me pencil that in",
       "box": 0
     },
     {
-      "id": 164,
+      "id": 214,
       "formal": "reschedule",
       "phrasal": "push back",
       "example": "We pushed back the launch",
       "box": 0
     },
     {
-      "id": 165,
-      "formal": "procrastinate",
-      "phrasal": "put off",
-      "example": "Stop putting it off",
-      "box": 0
-    },
-    {
-      "id": 166,
+      "id": 215,
       "formal": "get sick",
       "phrasal": "come down with",
       "example": "I came down with the flu",
       "box": 0
     },
     {
-      "id": 167,
+      "id": 216,
       "formal": "vomit",
       "phrasal": "throw up",
       "example": "I felt like throwing up",
       "box": 0
     },
     {
-      "id": 168,
+      "id": 217,
       "formal": "faint",
       "phrasal": "pass out",
       "example": "He passed out from heat",
       "box": 0
     },
     {
-      "id": 169,
+      "id": 218,
       "formal": "regain consciousness",
       "phrasal": "come to",
       "example": "She finally came to",
       "box": 0
     },
     {
-      "id": 170,
-      "formal": "gain weight",
-      "phrasal": "put on",
-      "example": "I put on 5 pounds",
-      "box": 0
-    },
-    {
-      "id": 171,
+      "id": 219,
       "formal": "lose weight",
       "phrasal": "slim down",
       "example": "I need to slim down",
       "box": 0
     },
     {
-      "id": 172,
-      "formal": "heal",
-      "phrasal": "clear up",
-      "example": "The rash cleared up",
-      "box": 0
-    },
-    {
-      "id": 173,
+      "id": 220,
       "formal": "rest",
       "phrasal": "lie down",
       "example": "I need to lie down",
       "box": 0
     },
     {
-      "id": 174,
+      "id": 221,
       "formal": "exhaust",
       "phrasal": "wear out",
       "example": "The kids wore me out",
       "box": 0
     },
     {
-      "id": 175,
+      "id": 222,
       "formal": "energize",
       "phrasal": "perk up",
       "example": "Coffee perks me up",
       "box": 0
     },
     {
-      "id": 176,
+      "id": 223,
       "formal": "meet by chance",
       "phrasal": "bump into",
       "example": "I bumped into my ex",
       "box": 0
     },
     {
-      "id": 177,
+      "id": 224,
       "formal": "introduce",
       "phrasal": "bring together",
       "example": "Let me bring you two together",
       "box": 0
     },
     {
-      "id": 178,
+      "id": 225,
       "formal": "flatter",
       "phrasal": "butter up",
       "example": "He's buttering up the boss",
       "box": 0
     },
     {
-      "id": 179,
+      "id": 226,
       "formal": "ignore",
       "phrasal": "blow off",
       "example": "She blew me off completely",
       "box": 0
     },
     {
-      "id": 180,
+      "id": 227,
       "formal": "dismiss",
       "phrasal": "brush off",
       "example": "He brushed off my concerns",
       "box": 0
     },
     {
-      "id": 181,
+      "id": 228,
       "formal": "include",
       "phrasal": "count in",
       "example": "Count me in",
       "box": 0
     },
     {
-      "id": 182,
+      "id": 229,
       "formal": "exclude",
       "phrasal": "leave out",
       "example": "Don't leave anyone out",
       "box": 0
     },
     {
-      "id": 183,
+      "id": 230,
       "formal": "confront",
       "phrasal": "call out",
       "example": "She called him out on his lies",
       "box": 0
     },
     {
-      "id": 184,
+      "id": 231,
       "formal": "impress",
       "phrasal": "win over",
       "example": "He won over the investors",
       "box": 0
     },
     {
-      "id": 185,
+      "id": 232,
       "formal": "offend",
       "phrasal": "rub the wrong way",
       "example": "His tone rubbed me the wrong way",
       "box": 0
     },
     {
-      "id": 186,
+      "id": 233,
       "formal": "confess",
       "phrasal": "own up",
       "example": "Own up to your mistakes",
       "box": 0
     },
     {
-      "id": 187,
+      "id": 234,
       "formal": "forgive",
       "phrasal": "let off",
       "example": "I'll let you off this time",
       "box": 0
     },
     {
-      "id": 188,
+      "id": 235,
       "formal": "celebrate",
       "phrasal": "live it up",
       "example": "Let's live it up tonight",
       "box": 0
     },
     {
-      "id": 189,
-      "formal": "socialize",
-      "phrasal": "hang out",
-      "example": "Want to hang out?",
-      "box": 0
-    },
-    {
-      "id": 190,
-      "formal": "purchase",
-      "phrasal": "pick up",
-      "example": "I'll pick up some groceries",
-      "box": 0
-    },
-    {
-      "id": 191,
-      "formal": "sell cheaply",
-      "phrasal": "sell off",
-      "example": "They sold off the inventory",
-      "box": 0
-    },
-    {
-      "id": 192,
+      "id": 236,
       "formal": "negotiate price down",
       "phrasal": "talk down",
       "example": "I talked him down to $50",
       "box": 0
     },
     {
-      "id": 193,
+      "id": 237,
       "formal": "spend extravagantly",
       "phrasal": "splash out",
       "example": "We splashed out on dinner",
       "box": 0
     },
     {
-      "id": 194,
+      "id": 238,
       "formal": "browse",
       "phrasal": "look around",
       "example": "I'm just looking around",
       "box": 0
     },
     {
-      "id": 195,
+      "id": 239,
       "formal": "try clothes",
       "phrasal": "try on",
       "example": "Can I try this on?",
       "box": 0
     },
     {
-      "id": 196,
-      "formal": "return purchase",
-      "phrasal": "take back",
-      "example": "I need to take this back",
-      "box": 0
-    },
-    {
-      "id": 197,
+      "id": 240,
       "formal": "discount",
       "phrasal": "knock off",
       "example": "Can you knock off 10%?",
       "box": 0
     },
     {
-      "id": 198,
+      "id": 241,
       "formal": "deplete stock",
       "phrasal": "run out of",
       "example": "We ran out of stock",
       "box": 0
     },
     {
-      "id": 199,
-      "formal": "stockpile",
-      "phrasal": "stock up",
-      "example": "Stock up before the sale ends",
-      "box": 0
-    },
-    {
-      "id": 200,
-      "formal": "deliver",
-      "phrasal": "drop off",
-      "example": "I'll drop off the package",
-      "box": 0
-    },
-    {
-      "id": 201,
-      "formal": "establish business",
-      "phrasal": "set up",
-      "example": "We set up the company in 2020",
-      "box": 0
-    },
-    {
-      "id": 202,
-      "formal": "close business",
-      "phrasal": "shut down",
-      "example": "They shut down operations",
-      "box": 0
-    },
-    {
-      "id": 203,
-      "formal": "expand",
-      "phrasal": "branch out",
-      "example": "We're branching out into Europe",
-      "box": 0
-    },
-    {
-      "id": 204,
+      "id": 242,
       "formal": "downsize",
       "phrasal": "scale down",
       "example": "We had to scale down",
       "box": 0
     },
     {
-      "id": 205,
+      "id": 243,
       "formal": "upscale",
       "phrasal": "scale up",
       "example": "Time to scale up production",
       "box": 0
     },
     {
-      "id": 206,
+      "id": 244,
       "formal": "collaborate",
       "phrasal": "team up",
       "example": "Let's team up on this",
       "box": 0
     },
     {
-      "id": 207,
+      "id": 245,
       "formal": "separate from company",
       "phrasal": "break away",
       "example": "He broke away to start his own firm",
       "box": 0
     },
     {
-      "id": 208,
+      "id": 246,
       "formal": "outsource",
       "phrasal": "farm out",
       "example": "We farm out the design work",
       "box": 0
     },
     {
-      "id": 209,
+      "id": 247,
       "formal": "promote",
       "phrasal": "move up",
       "example": "She moved up to VP",
       "box": 0
     },
     {
-      "id": 210,
-      "formal": "hire",
-      "phrasal": "take on",
-      "example": "We're taking on new staff",
-      "box": 0
-    },
-    {
-      "id": 211,
-      "formal": "fire",
-      "phrasal": "let go",
-      "example": "They let go 50 employees",
-      "box": 0
-    },
-    {
-      "id": 212,
-      "formal": "resign",
-      "phrasal": "step down",
-      "example": "The CEO stepped down",
-      "box": 0
-    },
-    {
-      "id": 213,
-      "formal": "profit",
-      "phrasal": "cash in",
-      "example": "Time to cash in on this trend",
-      "box": 0
-    },
-    {
-      "id": 214,
-      "formal": "recover (business)",
-      "phrasal": "turn around",
-      "example": "We turned around the company",
-      "box": 0
-    },
-    {
-      "id": 215,
+      "id": 248,
       "formal": "fail (business)",
       "phrasal": "go bust",
       "example": "The startup went bust",
       "box": 0
     },
     {
-      "id": 216,
-      "formal": "emerge",
-      "phrasal": "come out",
-      "example": "The truth came out eventually",
-      "box": 0
-    },
-    {
-      "id": 217,
+      "id": 249,
       "formal": "materialize",
       "phrasal": "pan out",
       "example": "Let's see how this pans out",
       "box": 0
     },
     {
-      "id": 218,
+      "id": 250,
       "formal": "happen",
       "phrasal": "come about",
       "example": "How did this come about?",
       "box": 0
     },
     {
-      "id": 219,
+      "id": 251,
       "formal": "originate",
       "phrasal": "stem from",
       "example": "The problem stems from poor planning",
       "box": 0
     },
     {
-      "id": 220,
+      "id": 252,
       "formal": "initiate",
       "phrasal": "set in motion",
       "example": "We set the plan in motion",
       "box": 0
     },
     {
-      "id": 221,
+      "id": 253,
       "formal": "attend",
       "phrasal": "show up to",
       "example": "Make sure you show up to the event",
       "box": 0
     },
     {
-      "id": 222,
+      "id": 254,
       "formal": "contribute",
       "phrasal": "chip in",
       "example": "Everyone chipped in $20",
       "box": 0
     },
     {
-      "id": 223,
+      "id": 255,
       "formal": "participate",
       "phrasal": "join in",
       "example": "Feel free to join in",
       "box": 0
     },
     {
-      "id": 224,
-      "formal": "withdraw",
-      "phrasal": "pull out",
-      "example": "The investor pulled out",
-      "box": 0
-    },
-    {
-      "id": 225,
+      "id": 256,
       "formal": "commit",
       "phrasal": "sign up for",
       "example": "I signed up for the challenge",
       "box": 0
     },
     {
-      "id": 226,
+      "id": 257,
       "formal": "abandon",
       "phrasal": "give up on",
       "example": "Don't give up on me",
       "box": 0
     },
     {
-      "id": 227,
+      "id": 258,
       "formal": "persist",
       "phrasal": "stick with",
       "example": "Stick with the plan",
       "box": 0
     },
     {
-      "id": 228,
+      "id": 259,
       "formal": "betray",
       "phrasal": "sell out",
       "example": "He sold out his partners",
       "box": 0
     },
     {
-      "id": 229,
+      "id": 260,
       "formal": "inform on",
       "phrasal": "rat out",
       "example": "Someone ratted us out",
       "box": 0
     },
     {
-      "id": 230,
+      "id": 261,
       "formal": "protect",
       "phrasal": "look out for",
       "example": "Look out for your team",
       "box": 0
     },
     {
-      "id": 231,
+      "id": 262,
       "formal": "monitor",
       "phrasal": "keep an eye on",
       "example": "Keep an eye on the numbers",
       "box": 0
     },
     {
-      "id": 232,
-      "formal": "verify",
-      "phrasal": "check out",
-      "example": "Check out this opportunity",
-      "box": 0
-    },
-    {
-      "id": 233,
+      "id": 263,
       "formal": "confirm",
       "phrasal": "make sure",
       "example": "Make sure it's correct",
       "box": 0
     },
     {
-      "id": 234,
-      "formal": "double-check",
-      "phrasal": "go over",
-      "example": "Go over the details again",
-      "box": 0
-    },
-    {
-      "id": 235,
+      "id": 264,
       "formal": "test",
       "phrasal": "try out",
       "example": "Let's try out the new system",
       "box": 0
     },
     {
-      "id": 236,
+      "id": 265,
       "formal": "demonstrate",
       "phrasal": "show off",
       "example": "He loves to show off",
       "box": 0
     },
     {
-      "id": 237,
+      "id": 266,
       "formal": "reveal",
       "phrasal": "let on",
       "example": "Don't let on that you know",
       "box": 0
     },
     {
-      "id": 238,
+      "id": 267,
       "formal": "conceal",
       "phrasal": "cover up",
       "example": "They tried to cover it up",
       "box": 0
     },
     {
-      "id": 239,
+      "id": 268,
       "formal": "expose",
       "phrasal": "bring to light",
       "example": "The scandal was brought to light",
       "box": 0
     },
     {
-      "id": 240,
+      "id": 269,
       "formal": "emphasize",
       "phrasal": "play up",
       "example": "Don't play up the negatives",
       "box": 0
     },
     {
-      "id": 241,
+      "id": 270,
       "formal": "minimize",
       "phrasal": "play down",
       "example": "He played down the risks",
       "box": 0
     },
     {
-      "id": 242,
-      "formal": "exaggerate",
-      "phrasal": "blow up",
-      "example": "The media blew it up",
-      "box": 0
-    },
-    {
-      "id": 243,
+      "id": 271,
       "formal": "underestimate",
       "phrasal": "sell short",
       "example": "Don't sell yourself short",
       "box": 0
     },
     {
-      "id": 244,
+      "id": 272,
       "formal": "mock",
       "phrasal": "make fun of",
       "example": "Don't make fun of him",
       "box": 0
     },
     {
-      "id": 245,
-      "formal": "criticize",
-      "phrasal": "put down",
-      "example": "Stop putting people down",
-      "box": 0
-    },
-    {
-      "id": 246,
+      "id": 273,
       "formal": "compliment",
       "phrasal": "big up",
       "example": "She always bigs up her team",
       "box": 0
     },
     {
-      "id": 247,
+      "id": 274,
       "formal": "defend",
       "phrasal": "stick up for",
       "example": "Stick up for yourself",
       "box": 0
     },
     {
-      "id": 248,
+      "id": 275,
       "formal": "oppose",
       "phrasal": "push back on",
       "example": "I pushed back on that idea",
       "box": 0
     },
     {
-      "id": 249,
+      "id": 276,
       "formal": "agree",
       "phrasal": "go with",
       "example": "Let's go with option A",
       "box": 0
     },
     {
-      "id": 250,
+      "id": 277,
       "formal": "disagree",
       "phrasal": "take issue with",
       "example": "I take issue with that claim",
       "box": 0
     },
     {
-      "id": 251,
+      "id": 278,
       "formal": "obtain",
       "phrasal": "get hold of",
       "example": "I need to get hold of him",
       "box": 0
     },
     {
-      "id": 252,
+      "id": 279,
       "formal": "locate",
       "phrasal": "track down",
       "example": "I tracked down the source",
       "box": 0
     },
     {
-      "id": 253,
+      "id": 280,
       "formal": "compile",
       "phrasal": "put together",
       "example": "Put together a proposal",
       "box": 0
     },
     {
-      "id": 254,
+      "id": 281,
       "formal": "disassemble",
       "phrasal": "take apart",
       "example": "Take apart the argument",
       "box": 0
     },
     {
-      "id": 255,
+      "id": 282,
       "formal": "combine",
       "phrasal": "mix together",
       "example": "Mix together the ingredients",
       "box": 0
     },
     {
-      "id": 256,
+      "id": 283,
       "formal": "separate",
       "phrasal": "split up",
       "example": "Let's split up the work",
       "box": 0
     },
     {
-      "id": 257,
+      "id": 284,
       "formal": "distribute",
       "phrasal": "hand out",
       "example": "Hand out the materials",
       "box": 0
     },
     {
-      "id": 258,
+      "id": 285,
       "formal": "collect",
       "phrasal": "gather up",
       "example": "Gather up the reports",
       "box": 0
     },
     {
-      "id": 259,
+      "id": 286,
       "formal": "arrange",
       "phrasal": "set out",
       "example": "Set out your arguments clearly",
       "box": 0
     },
     {
-      "id": 260,
+      "id": 287,
       "formal": "prepare",
       "phrasal": "get ready",
       "example": "Get ready for the launch",
       "box": 0
     },
     {
-      "id": 261,
+      "id": 288,
       "formal": "improve",
       "phrasal": "touch up",
       "example": "Touch up the presentation",
       "box": 0
     },
     {
-      "id": 262,
+      "id": 289,
       "formal": "finalize",
       "phrasal": "nail down",
       "example": "Let's nail down the details",
       "box": 0
     },
     {
-      "id": 263,
+      "id": 290,
       "formal": "complete",
       "phrasal": "finish up",
       "example": "Finish up the report",
       "box": 0
     },
     {
-      "id": 264,
+      "id": 291,
       "formal": "rush",
       "phrasal": "hurry up",
       "example": "Hurry up, we're late",
       "box": 0
     },
     {
-      "id": 265,
+      "id": 292,
       "formal": "relax pace",
       "phrasal": "ease up",
       "example": "Ease up on the pressure",
       "box": 0
     },
     {
-      "id": 266,
+      "id": 293,
       "formal": "intensify",
       "phrasal": "step up",
       "example": "Step up your game",
       "box": 0
     },
     {
-      "id": 267,
+      "id": 294,
       "formal": "reduce effort",
       "phrasal": "ease off",
       "example": "Ease off a little",
       "box": 0
     },
     {
-      "id": 268,
+      "id": 295,
       "formal": "focus",
       "phrasal": "hone in on",
       "example": "Hone in on the key issue",
       "box": 0
     },
     {
-      "id": 269,
+      "id": 296,
       "formal": "distract",
       "phrasal": "throw off",
       "example": "Don't let it throw you off",
       "box": 0
     },
     {
-      "id": 270,
+      "id": 297,
       "formal": "concentrate",
       "phrasal": "zero in on",
       "example": "Zero in on the problem",
       "box": 0
     },
     {
-      "id": 271,
+      "id": 298,
       "formal": "ignore",
       "phrasal": "tune out",
       "example": "I tuned out the noise",
       "box": 0
     },
     {
-      "id": 272,
+      "id": 299,
       "formal": "pay attention",
       "phrasal": "listen up",
       "example": "Listen up, everyone",
       "box": 0
     },
     {
-      "id": 273,
+      "id": 300,
       "formal": "observe",
       "phrasal": "look on",
       "example": "We looked on in amazement",
       "box": 0
     },
     {
-      "id": 274,
+      "id": 301,
       "formal": "miss",
       "phrasal": "pass up",
       "example": "Don't pass up this chance",
       "box": 0
     },
     {
-      "id": 275,
+      "id": 302,
       "formal": "seize opportunity",
       "phrasal": "jump on",
       "example": "Jump on this deal",
       "box": 0
     },
     {
-      "id": 276,
+      "id": 303,
       "formal": "hesitate",
       "phrasal": "hold back",
       "example": "Don't hold back",
       "box": 0
     },
     {
-      "id": 277,
+      "id": 304,
       "formal": "proceed",
       "phrasal": "go ahead",
       "example": "Go ahead with the plan",
       "box": 0
     },
     {
-      "id": 278,
+      "id": 305,
       "formal": "retreat",
       "phrasal": "pull back",
       "example": "We had to pull back",
       "box": 0
     },
     {
-      "id": 279,
+      "id": 306,
       "formal": "advance",
       "phrasal": "move forward",
       "example": "Let's move forward",
       "box": 0
     },
     {
-      "id": 280,
+      "id": 307,
       "formal": "regress",
       "phrasal": "fall back",
       "example": "We fell back to the old system",
       "box": 0
     },
     {
-      "id": 281,
-      "formal": "maintain",
-      "phrasal": "keep up",
-      "example": "Keep up the good work",
-      "box": 0
-    },
-    {
-      "id": 282,
+      "id": 308,
       "formal": "discontinue",
       "phrasal": "phase out",
       "example": "We're phasing out that product",
       "box": 0
     },
     {
-      "id": 283,
+      "id": 309,
       "formal": "introduce gradually",
       "phrasal": "phase in",
       "example": "Phase in the new policy",
       "box": 0
     },
     {
-      "id": 284,
+      "id": 310,
       "formal": "release",
       "phrasal": "roll out",
       "example": "We rolled out the new feature",
       "box": 0
     },
     {
-      "id": 285,
+      "id": 311,
       "formal": "withdraw product",
       "phrasal": "pull back",
       "example": "They pulled back the update",
       "box": 0
     },
     {
-      "id": 286,
+      "id": 312,
       "formal": "launch",
       "phrasal": "put out",
       "example": "We put out a new version",
       "box": 0
     },
     {
-      "id": 287,
+      "id": 313,
       "formal": "postpone launch",
       "phrasal": "push back",
       "example": "Launch was pushed back",
       "box": 0
     },
     {
-      "id": 288,
+      "id": 314,
       "formal": "expedite",
       "phrasal": "speed along",
       "example": "Let's speed things along",
       "box": 0
     },
     {
-      "id": 289,
-      "formal": "obstruct",
-      "phrasal": "hold up",
-      "example": "What's holding up progress?",
-      "box": 0
-    },
-    {
-      "id": 290,
+      "id": 315,
       "formal": "facilitate",
       "phrasal": "help along",
       "example": "This will help things along",
       "box": 0
     },
     {
-      "id": 291,
-      "formal": "complicate",
-      "phrasal": "mess up",
-      "example": "Don't mess this up",
-      "box": 0
-    },
-    {
-      "id": 292,
-      "formal": "simplify",
-      "phrasal": "break down",
-      "example": "Break it down for me",
-      "box": 0
-    },
-    {
-      "id": 293,
+      "id": 316,
       "formal": "elaborate",
       "phrasal": "flesh out",
       "example": "Flesh out the idea",
       "box": 0
     },
     {
-      "id": 294,
+      "id": 317,
       "formal": "condense",
       "phrasal": "boil down",
       "example": "It boils down to this",
       "box": 0
     },
     {
-      "id": 295,
-      "formal": "analyze",
-      "phrasal": "break down",
-      "example": "Let's break down the data",
-      "box": 0
-    },
-    {
-      "id": 296,
+      "id": 318,
       "formal": "synthesize",
       "phrasal": "piece together",
       "example": "I pieced together the story",
       "box": 0
     },
     {
-      "id": 297,
-      "formal": "deduce",
-      "phrasal": "work out",
-      "example": "I worked out what happened",
-      "box": 0
-    },
-    {
-      "id": 298,
+      "id": 319,
       "formal": "assume",
       "phrasal": "take for granted",
       "example": "Don't take it for granted",
       "box": 0
     },
     {
-      "id": 299,
+      "id": 320,
       "formal": "doubt",
       "phrasal": "call into question",
       "example": "This calls into question their motives",
       "box": 0
     },
     {
-      "id": 300,
+      "id": 321,
       "formal": "believe",
       "phrasal": "go along with",
       "example": "I'll go along with that theory",
       "box": 0
     },
     {
-      "id": 301,
+      "id": 322,
       "formal": "accept",
       "phrasal": "buy into",
       "example": "I don't buy into that hype",
       "box": 0
     },
     {
-      "id": 302,
+      "id": 323,
       "formal": "reject idea",
       "phrasal": "shoot down",
       "example": "They shot down my proposal",
       "box": 0
     },
     {
-      "id": 303,
+      "id": 324,
       "formal": "propose",
       "phrasal": "put forward",
       "example": "I put forward a new plan",
       "box": 0
     },
     {
-      "id": 304,
-      "formal": "retract",
-      "phrasal": "take back",
-      "example": "I take back what I said",
-      "box": 0
-    },
-    {
-      "id": 305,
+      "id": 325,
       "formal": "assert",
       "phrasal": "stand by",
       "example": "I stand by my decision",
       "box": 0
     },
     {
-      "id": 306,
-      "formal": "reconsider",
-      "phrasal": "think over",
-      "example": "Let me think it over",
-      "box": 0
-    },
-    {
-      "id": 307,
+      "id": 326,
       "formal": "dismiss",
       "phrasal": "wave off",
       "example": "He waved off the suggestion",
       "box": 0
     },
     {
-      "id": 308,
+      "id": 327,
       "formal": "approve",
       "phrasal": "sign off on",
       "example": "The boss signed off on it",
       "box": 0
     },
     {
-      "id": 309,
-      "formal": "reject officially",
-      "phrasal": "turn down",
-      "example": "The bank turned down our loan",
-      "box": 0
-    },
-    {
-      "id": 310,
-      "formal": "submit",
-      "phrasal": "hand in",
-      "example": "Hand in your reports",
-      "box": 0
-    },
-    {
-      "id": 311,
+      "id": 328,
       "formal": "present",
       "phrasal": "lay out",
       "example": "Let me lay out the options",
       "box": 0
     },
     {
-      "id": 312,
+      "id": 329,
       "formal": "display",
       "phrasal": "show off",
       "example": "She showed off her new car",
       "box": 0
     },
     {
-      "id": 313,
+      "id": 330,
       "formal": "hide",
       "phrasal": "cover up",
       "example": "They covered up the truth",
       "box": 0
     },
     {
-      "id": 314,
-      "formal": "appear",
-      "phrasal": "turn up",
-      "example": "New evidence turned up",
-      "box": 0
-    },
-    {
-      "id": 315,
+      "id": 331,
       "formal": "disappear",
       "phrasal": "vanish",
       "example": "The files vanished",
       "box": 0
     },
     {
-      "id": 316,
+      "id": 332,
       "formal": "emerge",
       "phrasal": "crop up",
       "example": "Issues keep cropping up",
       "box": 0
     },
     {
-      "id": 317,
+      "id": 333,
       "formal": "subside",
       "phrasal": "die down",
       "example": "The excitement died down",
       "box": 0
     },
     {
-      "id": 318,
-      "formal": "escalate",
-      "phrasal": "blow up",
-      "example": "The situation blew up",
-      "box": 0
-    },
-    {
-      "id": 319,
+      "id": 334,
       "formal": "stabilize",
       "phrasal": "settle down",
       "example": "Things finally settled down",
       "box": 0
     },
     {
-      "id": 320,
+      "id": 335,
       "formal": "fluctuate",
       "phrasal": "go up and down",
       "example": "Prices go up and down",
       "box": 0
     },
     {
-      "id": 321,
+      "id": 336,
       "formal": "stagnate",
       "phrasal": "flat line",
       "example": "Growth flat lined",
       "box": 0
     },
     {
-      "id": 322,
+      "id": 337,
       "formal": "surge",
       "phrasal": "shoot up",
       "example": "Sales shot up 200%",
       "box": 0
     },
     {
-      "id": 323,
-      "formal": "plummet",
-      "phrasal": "drop off",
-      "example": "Interest dropped off sharply",
-      "box": 0
-    },
-    {
-      "id": 324,
+      "id": 338,
       "formal": "plateau",
       "phrasal": "level off",
       "example": "Growth leveled off",
       "box": 0
     },
     {
-      "id": 325,
-      "formal": "rebound",
-      "phrasal": "bounce back",
-      "example": "The market bounced back",
-      "box": 0
-    },
-    {
-      "id": 326,
-      "formal": "collapse",
-      "phrasal": "fall apart",
-      "example": "The deal fell apart",
-      "box": 0
-    },
-    {
-      "id": 327,
-      "formal": "thrive",
-      "phrasal": "take off",
-      "example": "The business really took off",
-      "box": 0
-    },
-    {
-      "id": 328,
+      "id": 339,
       "formal": "struggle",
       "phrasal": "get by",
       "example": "We're just getting by",
       "box": 0
     },
     {
-      "id": 329,
+      "id": 340,
       "formal": "prosper",
       "phrasal": "do well",
       "example": "The company is doing well",
       "box": 0
     },
     {
-      "id": 330,
+      "id": 341,
       "formal": "decline",
       "phrasal": "go downhill",
       "example": "Quality went downhill",
       "box": 0
     },
     {
-      "id": 331,
+      "id": 342,
       "formal": "deteriorate",
       "phrasal": "fall off",
       "example": "Performance fell off",
       "box": 0
     },
     {
-      "id": 332,
-      "formal": "recuperate",
-      "phrasal": "pick up",
-      "example": "Sales are picking up",
-      "box": 0
-    },
-    {
-      "id": 333,
-      "formal": "dominate",
-      "phrasal": "take over",
-      "example": "AI is taking over",
-      "box": 0
-    },
-    {
-      "id": 334,
+      "id": 343,
       "formal": "underperform",
       "phrasal": "fall short",
       "example": "We fell short of our goals",
       "box": 0
     },
     {
-      "id": 335,
+      "id": 344,
       "formal": "exceed",
       "phrasal": "go beyond",
       "example": "Results went beyond expectations",
       "box": 0
     },
     {
-      "id": 336,
+      "id": 345,
       "formal": "match",
       "phrasal": "measure up",
       "example": "Does it measure up?",
       "box": 0
     },
     {
-      "id": 337,
+      "id": 346,
       "formal": "surpass",
       "phrasal": "outdo",
       "example": "She outdid everyone",
       "box": 0
     },
     {
-      "id": 338,
+      "id": 347,
       "formal": "lag",
       "phrasal": "fall behind",
       "example": "We're falling behind schedule",
       "box": 0
     },
     {
-      "id": 339,
+      "id": 348,
       "formal": "lead",
       "phrasal": "stay ahead",
       "example": "Stay ahead of the competition",
       "box": 0
     },
     {
-      "id": 340,
+      "id": 349,
       "formal": "copy",
       "phrasal": "rip off",
       "example": "They ripped off our design",
       "box": 0
     },
     {
-      "id": 341,
-      "formal": "innovate",
-      "phrasal": "come up with",
-      "example": "We came up with something new",
-      "box": 0
-    },
-    {
-      "id": 342,
+      "id": 350,
       "formal": "iterate",
       "phrasal": "build on",
       "example": "Build on what works",
       "box": 0
     },
     {
-      "id": 343,
+      "id": 351,
       "formal": "pivot",
       "phrasal": "switch over",
       "example": "We switched over to a new model",
       "box": 0
     },
     {
-      "id": 344,
+      "id": 352,
       "formal": "adapt",
       "phrasal": "adjust to",
       "example": "Adjust to the market",
       "box": 0
     },
     {
-      "id": 345,
+      "id": 353,
       "formal": "resist change",
       "phrasal": "stick to",
       "example": "Stick to what you know",
       "box": 0
     },
     {
-      "id": 346,
+      "id": 354,
       "formal": "embrace",
       "phrasal": "go for",
       "example": "Go for the bold option",
       "box": 0
     },
     {
-      "id": 347,
+      "id": 355,
       "formal": "avoid risk",
       "phrasal": "play it safe",
       "example": "Don't play it safe",
       "box": 0
     },
     {
-      "id": 348,
+      "id": 356,
       "formal": "take risk",
       "phrasal": "go for it",
       "example": "Just go for it",
       "box": 0
     },
     {
-      "id": 349,
+      "id": 357,
       "formal": "succeed unexpectedly",
       "phrasal": "pull off",
       "example": "We pulled it off",
       "box": 0
     },
     {
-      "id": 350,
+      "id": 358,
       "formal": "fail spectacularly",
       "phrasal": "blow it",
       "example": "Don't blow this chance",
       "box": 0
     },
     {
-      "id": 351,
+      "id": 359,
       "formal": "manage barely",
       "phrasal": "scrape by",
       "example": "We scraped by this quarter",
       "box": 0
     },
     {
-      "id": 352,
+      "id": 360,
       "formal": "excel",
       "phrasal": "knock it out of the park",
       "example": "You knocked it out of the park",
       "box": 0
     },
     {
-      "id": 353,
+      "id": 361,
       "formal": "underachieve",
       "phrasal": "phone it in",
       "example": "He's just phoning it in",
       "box": 0
     },
     {
-      "id": 354,
+      "id": 362,
       "formal": "overdeliver",
       "phrasal": "go above and beyond",
       "example": "She went above and beyond",
       "box": 0
     },
     {
-      "id": 355,
-      "formal": "maintain standards",
-      "phrasal": "keep up",
-      "example": "Keep up the quality",
-      "box": 0
-    },
-    {
-      "id": 356,
+      "id": 363,
       "formal": "lower standards",
       "phrasal": "let slide",
       "example": "Don't let things slide",
       "box": 0
     },
     {
-      "id": 357,
+      "id": 364,
       "formal": "enforce",
       "phrasal": "crack down on",
       "example": "They cracked down on fraud",
       "box": 0
     },
     {
-      "id": 358,
+      "id": 365,
       "formal": "relax rules",
       "phrasal": "ease up on",
       "example": "Ease up on the restrictions",
       "box": 0
     },
     {
-      "id": 359,
+      "id": 366,
       "formal": "implement",
       "phrasal": "put in place",
       "example": "Put safeguards in place",
       "box": 0
     },
     {
-      "id": 360,
+      "id": 367,
       "formal": "remove",
       "phrasal": "do away with",
       "example": "Do away with the old process",
       "box": 0
     },
     {
-      "id": 361,
+      "id": 368,
       "formal": "replace",
       "phrasal": "swap out",
       "example": "Swap out the old for new",
       "box": 0
     },
     {
-      "id": 362,
+      "id": 369,
       "formal": "upgrade",
       "phrasal": "step up",
       "example": "Step up your equipment",
       "box": 0
     },
     {
-      "id": 363,
+      "id": 370,
       "formal": "downgrade",
       "phrasal": "scale back",
       "example": "Scale back the features",
       "box": 0
     },
     {
-      "id": 364,
+      "id": 371,
       "formal": "optimize",
       "phrasal": "fine-tune",
       "example": "Fine-tune the settings",
       "box": 0
     },
     {
-      "id": 365,
+      "id": 372,
       "formal": "calibrate",
       "phrasal": "dial in",
       "example": "Dial in the right balance",
       "box": 0
     },
     {
-      "id": 366,
+      "id": 373,
       "formal": "measure",
       "phrasal": "size up",
       "example": "Size up the opportunity",
       "box": 0
     },
     {
-      "id": 367,
+      "id": 374,
       "formal": "estimate",
       "phrasal": "ball-park",
       "example": "Ball-park the cost",
       "box": 0
     },
     {
-      "id": 368,
-      "formal": "calculate",
-      "phrasal": "work out",
-      "example": "Work out the numbers",
-      "box": 0
-    },
-    {
-      "id": 369,
+      "id": 375,
       "formal": "project",
       "phrasal": "map out",
       "example": "Map out the timeline",
       "box": 0
     },
     {
-      "id": 370,
+      "id": 376,
       "formal": "forecast",
       "phrasal": "look ahead",
       "example": "Looking ahead to Q2",
       "box": 0
     },
     {
-      "id": 371,
-      "formal": "review past",
-      "phrasal": "look back",
-      "example": "Looking back, it was obvious",
-      "box": 0
-    },
-    {
-      "id": 372,
+      "id": 377,
       "formal": "update",
       "phrasal": "bring up to date",
       "example": "Bring me up to date",
       "box": 0
     },
     {
-      "id": 373,
-      "formal": "inform",
-      "phrasal": "fill in",
-      "example": "Fill me in on the details",
-      "box": 0
-    },
-    {
-      "id": 374,
-      "formal": "brief",
-      "phrasal": "run through",
-      "example": "Run through the agenda",
-      "box": 0
-    },
-    {
-      "id": 375,
-      "formal": "debrief",
-      "phrasal": "go over",
-      "example": "Let's go over what happened",
-      "box": 0
-    },
-    {
-      "id": 376,
-      "formal": "remind",
-      "phrasal": "bring up",
-      "example": "That brings up a good point",
-      "box": 0
-    },
-    {
-      "id": 377,
+      "id": 378,
       "formal": "forget",
       "phrasal": "slip your mind",
       "example": "It slipped my mind",
       "box": 0
     },
     {
-      "id": 378,
+      "id": 379,
       "formal": "memorize",
       "phrasal": "learn by heart",
       "example": "Learn the pitch by heart",
       "box": 0
     },
     {
-      "id": 379,
+      "id": 380,
       "formal": "retain",
       "phrasal": "hold onto",
       "example": "Hold onto that thought",
       "box": 0
     },
     {
-      "id": 380,
+      "id": 381,
       "formal": "discard mentally",
       "phrasal": "put aside",
       "example": "Put aside your doubts",
       "box": 0
     },
     {
-      "id": 381,
+      "id": 382,
       "formal": "focus mentally",
       "phrasal": "wrap your head around",
       "example": "I can't wrap my head around it",
       "box": 0
     },
     {
-      "id": 382,
+      "id": 383,
       "formal": "grasp",
       "phrasal": "get the hang of",
       "example": "You'll get the hang of it",
       "box": 0
     },
     {
-      "id": 383,
+      "id": 384,
       "formal": "master",
       "phrasal": "get down",
       "example": "Get the basics down first",
       "box": 0
     },
     {
-      "id": 384,
+      "id": 385,
       "formal": "struggle with",
       "phrasal": "wrestle with",
       "example": "I'm wrestling with this decision",
       "box": 0
     },
     {
-      "id": 385,
+      "id": 386,
       "formal": "overcome",
       "phrasal": "get past",
       "example": "We need to get past this obstacle",
       "box": 0
     },
     {
-      "id": 386,
+      "id": 387,
       "formal": "accept",
       "phrasal": "come to terms with",
       "example": "Come to terms with reality",
       "box": 0
     },
     {
-      "id": 387,
+      "id": 388,
       "formal": "deny",
       "phrasal": "brush aside",
       "example": "He brushed aside the concerns",
       "box": 0
     },
     {
-      "id": 388,
+      "id": 389,
       "formal": "acknowledge",
       "phrasal": "own up to",
       "example": "Own up to your mistakes",
-      "box": 0
-    },
-    {
-      "id": 389,
-      "formal": "address",
-      "phrasal": "deal with",
-      "example": "We need to deal with this",
       "box": 0
     },
     {
@@ -2873,5 +2873,6 @@
     "currentStreak": 1,
     "bestStreak": 1,
     "lastSession": "2026-01-31T01:24:00+02:00"
-  }
+  },
+  "sortedBy": "frequency (corpus-based)"
 }
