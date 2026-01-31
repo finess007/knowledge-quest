@@ -13,16 +13,14 @@
     {"date": "2026-01-31", "session": 2, "questions": 54, "correct": 30, "pct": 56},
     {"date": "2026-01-31", "session": 3, "questions": 24, "correct": 21, "pct": 88}
   ],
-  "verbsMastered": [
-    "look into", "put off", "figure out", "give up", "turn down",
-    "wrap up", "got in", "look for", "bring up", "put up with",
-    "cut back", "came across", "stumbled upon", "look up to", "went up",
-    "broke down", "showed up", "turned up", "kick off", "fill in",
-    "took off", "check out", "carry out", "went off", "hang out",
-    "worked out", "get by", "looks like", "go over", "went on",
-    "cut down", "make up", "come up with", "take out", "look over"
-  ],
-  "verbsToDrill": [
-    "end up", "call off", "figure out", "sort out"
-  ]
+  "boxes": {
+    "0": ["end up", "call off", "sort out"],
+    "1": ["figure out"],
+    "2": ["broke down", "showed up", "turned up", "kick off", "fill in", "took off", "check out", "carry out", "went off", "hang out", "worked out"],
+    "3": ["get by", "looks like", "go over", "went on", "cut down", "make up", "come up with", "take out", "look over"],
+    "4": ["look into", "put off", "give up", "turn down", "wrap up", "look for", "bring up", "put up with", "cut back", "came across", "stumbled upon", "look up to", "went up"],
+    "5": ["got in"]
+  },
+  "verbsToDrill": ["end up", "call off", "sort out", "figure out"],
+  "verbsMastered": ["got in"]
 }

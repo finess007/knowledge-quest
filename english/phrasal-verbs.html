@@ -13,7 +13,7 @@
             color: #fff;
             padding: 20px;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container { max-width: 1200px; margin: 0 auto; }
         h1 { 
             text-align: center; 
             margin-bottom: 8px; 
@@ -46,31 +46,10 @@
         .stat-label { color: #888; font-size: 0.85rem; }
         .streak { color: #f59e0b !important; -webkit-text-fill-color: #f59e0b !important; }
         
-        .progress-bar {
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            height: 32px;
-            display: flex;
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-        .progress-fill {
-            background: linear-gradient(90deg, #22c55e, #10b981);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: width 0.5s ease;
-        }
-        
         .section-title {
             font-size: 1.25rem;
             margin-bottom: 16px;
             margin-top: 24px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
         
         .info-box {
@@ -83,6 +62,85 @@
         }
         .info-box p { color: #a78bfa; margin-bottom: 8px; }
         .info-box .emoji { font-size: 2rem; margin-bottom: 8px; }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            height: 32px;
+            display: flex;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .progress-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            min-width: 30px;
+        }
+        .seg-box0 { background: #ef4444; }
+        .seg-box1 { background: #f59e0b; }
+        .seg-box2 { background: #eab308; }
+        .seg-box3 { background: #84cc16; }
+        .seg-box4 { background: #22c55e; }
+        .seg-box5 { background: #10b981; }
+        
+        .progress-legend {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-size: 0.75rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 4px; }
+        
+        .leitner-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .leitner-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .box-title { font-weight: 600; font-size: 0.9rem; }
+        .box-count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .box-interval { font-size: 0.7rem; color: #666; margin-bottom: 12px; }
+        .box-verbs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .verb-chip {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+        }
+        .box-0 .verb-chip { border-left: 2px solid #ef4444; }
+        .box-1 .verb-chip { border-left: 2px solid #f59e0b; }
+        .box-2 .verb-chip { border-left: 2px solid #eab308; }
+        .box-3 .verb-chip { border-left: 2px solid #84cc16; }
+        .box-4 .verb-chip { border-left: 2px solid #22c55e; }
+        .box-5 .verb-chip { border-left: 2px solid #10b981; }
         
         .sessions-section {
             background: rgba(255,255,255,0.05);
@@ -100,7 +158,6 @@
         .session-item:last-child { border-bottom: none; }
         .session-info { display: flex; flex-direction: column; }
         .session-date { color: #888; font-size: 0.85rem; }
-        .session-details { font-size: 0.9rem; }
         .session-score { 
             font-weight: 700; 
             font-size: 1.5rem;
@@ -112,37 +169,6 @@
         .session-score.ok { color: #eab308; background: rgba(234, 179, 8, 0.1); }
         .session-score.needs-work { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
         
-        .verbs-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .verbs-box {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 16px;
-        }
-        .verbs-box h3 {
-            margin-bottom: 12px;
-            font-size: 1rem;
-        }
-        .verbs-box.mastered h3 { color: #22c55e; }
-        .verbs-box.drill h3 { color: #f59e0b; }
-        .verb-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .verb-chip {
-            background: rgba(255,255,255,0.1);
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-        }
-        .verb-chip.mastered { border-left: 3px solid #22c55e; }
-        .verb-chip.drill { border-left: 3px solid #f59e0b; }
-        
         .footer {
             text-align: center;
             color: #555;
@@ -152,19 +178,19 @@
         
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .verbs-section { grid-template-columns: 1fr; }
+            .leitner-boxes { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🚀 Phrasal Verbs Progress</h1>
-        <p class="subtitle">Top 100 verbs first • Practice in Telegram with Nova ✨</p>
+        <p class="subtitle">Top 100 verbs • Leitner spaced repetition • Practice in Telegram ✨</p>
         
         <div class="info-box">
             <div class="emoji">💬</div>
-            <p><strong>Practice happens in Telegram</strong></p>
-            <p style="font-size: 0.85rem; color: #888;">This dashboard auto-syncs after each session!</p>
+            <p><strong>Practice happens in Telegram with Nova</strong></p>
+            <p style="font-size: 0.85rem; color: #888;">Dashboard auto-syncs after each session!</p>
         </div>
         
         <div class="stats-grid">
@@ -181,12 +207,12 @@
                 <div class="stat-label">Accuracy</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="masteredCount">0</div>
-                <div class="stat-label">Mastered</div>
+                <div class="stat-value" id="totalVerbs">0</div>
+                <div class="stat-label">Verbs Tracked</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="drillCount">0</div>
-                <div class="stat-label">To Drill</div>
+                <div class="stat-value" id="masteredCount">0</div>
+                <div class="stat-label">Mastered</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value streak" id="streak">0</div>
@@ -194,26 +220,23 @@
             </div>
         </div>
         
-        <div class="section-title">📈 Overall Progress</div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
+        <div class="section-title">🎯 Mastery Progress</div>
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div>Box 0: New</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Box 1: 1 day</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#eab308"></div>Box 2: 3 days</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#84cc16"></div>Box 3: 7 days</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div>Box 4: 14 days</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Box 5: Mastered</div>
         </div>
         
-        <div class="section-title">📜 Session History</div>
+        <div class="section-title">📦 Leitner Boxes</div>
+        <div class="leitner-boxes" id="leitnerBoxes"></div>
+        
+        <div class="section-title">📊 Session History</div>
         <div class="sessions-section">
             <div id="sessionsList"></div>
-        </div>
-        
-        <div class="section-title">📚 Verb Status</div>
-        <div class="verbs-section">
-            <div class="verbs-box mastered">
-                <h3>✅ Mastered (<span id="masteredTotal">0</span>)</h3>
-                <div class="verb-chips" id="masteredVerbs"></div>
-            </div>
-            <div class="verbs-box drill">
-                <h3>🔄 Still Drilling (<span id="drillTotal">0</span>)</h3>
-                <div class="verb-chips" id="drillVerbs"></div>
-            </div>
         </div>
         
         <div class="footer">
@@ -229,21 +252,58 @@
                 
                 const stats = data.stats || {};
                 const sessions = data.sessionHistory || [];
-                const mastered = data.verbsMastered || [];
-                const toDrill = data.verbsToDrill || [];
+                const boxes = data.boxes || {};
+                
+                // Count verbs per box
+                const boxCounts = [0, 0, 0, 0, 0, 0];
+                let totalVerbs = 0;
+                for (let i = 0; i <= 5; i++) {
+                    const count = (boxes[i] || boxes[String(i)] || []).length;
+                    boxCounts[i] = count;
+                    totalVerbs += count;
+                }
                 
                 // Update stats
                 document.getElementById('sessions').textContent = data.totalSessions || 0;
                 document.getElementById('totalQuestions').textContent = stats.totalQuestions || 0;
                 document.getElementById('accuracy').textContent = stats.overallAccuracy ? stats.overallAccuracy + '%' : '—';
-                document.getElementById('masteredCount').textContent = mastered.length;
-                document.getElementById('drillCount').textContent = toDrill.length;
+                document.getElementById('totalVerbs').textContent = totalVerbs;
+                document.getElementById('masteredCount').textContent = boxCounts[5];
                 document.getElementById('streak').textContent = stats.currentStreak || 0;
                 
-                // Progress bar (mastered / 100 top verbs)
-                const progressPct = Math.min(100, Math.round((mastered.length / 100) * 100));
-                document.getElementById('progressFill').style.width = progressPct + '%';
-                document.getElementById('progressFill').textContent = progressPct + '% of Top 100';
+                // Progress bar
+                if (totalVerbs > 0) {
+                    document.getElementById('progressBar').innerHTML = boxCounts.map((count, i) => 
+                        count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/totalVerbs)*100}%">${count}</div>` : ''
+                    ).join('');
+                }
+                
+                // Leitner boxes
+                const boxLabels = [
+                    {name: 'Box 0', interval: 'New / Need work'},
+                    {name: 'Box 1', interval: 'Review in 1 day'},
+                    {name: 'Box 2', interval: 'Review in 3 days'},
+                    {name: 'Box 3', interval: 'Review in 7 days'},
+                    {name: 'Box 4', interval: 'Review in 14 days'},
+                    {name: 'Box 5', interval: 'Mastered! 🎉'}
+                ];
+                
+                document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => {
+                    const verbs = boxes[i] || boxes[String(i)] || [];
+                    return `
+                        <div class="leitner-box box-${i}">
+                            <div class="box-header">
+                                <span class="box-title">${label.name}</span>
+                                <span class="box-count">${verbs.length}</span>
+                            </div>
+                            <div class="box-interval">${label.interval}</div>
+                            <div class="box-verbs">
+                                ${verbs.slice(0, 10).map(v => `<span class="verb-chip">${v}</span>`).join('')}
+                                ${verbs.length > 10 ? `<span class="verb-chip" style="color:#666">+${verbs.length - 10} more</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
                 
                 // Session history
                 const sessionsHtml = sessions.slice().reverse().map(s => {
@@ -256,25 +316,13 @@
                         <div class="session-item">
                             <div class="session-info">
                                 <span class="session-date">${s.date} • Session ${s.session}</span>
-                                <span class="session-details">${s.correct}/${s.questions} correct</span>
+                                <span>${s.correct}/${s.questions} correct</span>
                             </div>
                             <span class="session-score ${scoreClass}">${s.pct}%</span>
                         </div>
                     `;
                 }).join('');
                 document.getElementById('sessionsList').innerHTML = sessionsHtml || '<p style="color:#666;text-align:center;padding:20px;">No sessions yet</p>';
-                
-                // Verb lists
-                document.getElementById('masteredTotal').textContent = mastered.length;
-                document.getElementById('drillTotal').textContent = toDrill.length;
-                
-                document.getElementById('masteredVerbs').innerHTML = mastered.map(v => 
-                    `<span class="verb-chip mastered">${v}</span>`
-                ).join('');
-                
-                document.getElementById('drillVerbs').innerHTML = toDrill.map(v => 
-                    `<span class="verb-chip drill">${v}</span>`
-                ).join('');
                 
                 // Last updated
                 document.getElementById('lastUpdated').textContent = data.lastUpdated 
