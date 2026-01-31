@@ -14,7 +14,14 @@
             padding: 20px;
         }
         .container { max-width: 1000px; margin: 0 auto; }
-        h1 { text-align: center; margin-bottom: 8px; font-size: 2rem; }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 8px; 
+            font-size: 2rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .subtitle { text-align: center; color: #888; margin-bottom: 24px; }
         
         .stats-grid {
@@ -29,9 +36,15 @@
             padding: 16px;
             text-align: center;
         }
-        .stat-value { font-size: 2rem; font-weight: 700; }
+        .stat-value { 
+            font-size: 2rem; 
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .stat-label { color: #888; font-size: 0.85rem; }
-        .streak { color: #f59e0b; }
+        .streak { color: #f59e0b !important; -webkit-text-fill-color: #f59e0b !important; }
         
         .progress-bar {
             background: rgba(255,255,255,0.1);
@@ -41,54 +54,24 @@
             overflow: hidden;
             margin-bottom: 24px;
         }
-        .progress-segment {
+        .progress-fill {
+            background: linear-gradient(90deg, #22c55e, #10b981);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #fff;
-            min-width: 30px;
+            transition: width 0.5s ease;
         }
-        .seg-box0 { background: #ef4444; }
-        .seg-box1 { background: #f97316; }
-        .seg-box2 { background: #eab308; }
-        .seg-box3 { background: #84cc16; }
-        .seg-box4 { background: #22c55e; }
-        .seg-box5 { background: #10b981; }
         
         .section-title {
             font-size: 1.25rem;
             margin-bottom: 16px;
+            margin-top: 24px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
-        .leitner-boxes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .leitner-box {
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 12px;
-        }
-        .box-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-        .box-title { font-weight: 600; font-size: 0.9rem; }
-        .box-count {
-            background: rgba(255,255,255,0.2);
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-        .box-interval { font-size: 0.75rem; color: #666; }
         
         .info-box {
             background: rgba(139, 92, 246, 0.1);
@@ -110,15 +93,55 @@
         .session-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .session-item:last-child { border-bottom: none; }
-        .session-date { color: #888; }
-        .session-score { font-weight: 600; }
-        .session-score.good { color: #22c55e; }
-        .session-score.ok { color: #eab308; }
-        .session-score.needs-work { color: #ef4444; }
+        .session-info { display: flex; flex-direction: column; }
+        .session-date { color: #888; font-size: 0.85rem; }
+        .session-details { font-size: 0.9rem; }
+        .session-score { 
+            font-weight: 700; 
+            font-size: 1.5rem;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+        .session-score.excellent { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+        .session-score.good { color: #84cc16; background: rgba(132, 204, 22, 0.1); }
+        .session-score.ok { color: #eab308; background: rgba(234, 179, 8, 0.1); }
+        .session-score.needs-work { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+        
+        .verbs-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .verbs-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .verbs-box h3 {
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+        .verbs-box.mastered h3 { color: #22c55e; }
+        .verbs-box.drill h3 { color: #f59e0b; }
+        .verb-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .verb-chip {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+        }
+        .verb-chip.mastered { border-left: 3px solid #22c55e; }
+        .verb-chip.drill { border-left: 3px solid #f59e0b; }
         
         .footer {
             text-align: center;
@@ -129,40 +152,41 @@
         
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .verbs-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🚀 Phrasal Verbs Progress</h1>
-        <p class="subtitle">400 essential phrasal verbs • Leitner spaced repetition</p>
+        <p class="subtitle">Top 100 verbs first • Practice in Telegram with Nova ✨</p>
         
         <div class="info-box">
             <div class="emoji">💬</div>
-            <p><strong>Practice happens in Telegram with Nova</strong></p>
-            <p style="font-size: 0.85rem; color: #888;">This page shows your progress. Drills are done in chat!</p>
+            <p><strong>Practice happens in Telegram</strong></p>
+            <p style="font-size: 0.85rem; color: #888;">This dashboard auto-syncs after each session!</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value" id="totalVerbs">400</div>
-                <div class="stat-label">Total Verbs</div>
+                <div class="stat-value" id="sessions">0</div>
+                <div class="stat-label">Sessions</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="masteredCount">0</div>
-                <div class="stat-label">Mastered</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="dueToday">0</div>
-                <div class="stat-label">Due Today</div>
+                <div class="stat-value" id="totalQuestions">0</div>
+                <div class="stat-label">Questions</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="accuracy">—</div>
                 <div class="stat-label">Accuracy</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="sessions">0</div>
-                <div class="stat-label">Sessions</div>
+                <div class="stat-value" id="masteredCount">0</div>
+                <div class="stat-label">Mastered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="drillCount">0</div>
+                <div class="stat-label">To Drill</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value streak" id="streak">0</div>
@@ -170,78 +194,96 @@
             </div>
         </div>
         
-        <div class="section-title">📊 Mastery Progress</div>
-        <div class="progress-bar" id="progressBar"></div>
+        <div class="section-title">📈 Overall Progress</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
+        </div>
         
-        <div class="section-title">📦 Leitner Boxes</div>
-        <div class="leitner-boxes" id="leitnerBoxes"></div>
-        
-        <div class="sessions-section" id="sessionsSection" style="display: none;">
-            <div class="section-title">📜 Recent Sessions</div>
+        <div class="section-title">📜 Session History</div>
+        <div class="sessions-section">
             <div id="sessionsList"></div>
         </div>
         
+        <div class="section-title">📚 Verb Status</div>
+        <div class="verbs-section">
+            <div class="verbs-box mastered">
+                <h3>✅ Mastered (<span id="masteredTotal">0</span>)</h3>
+                <div class="verb-chips" id="masteredVerbs"></div>
+            </div>
+            <div class="verbs-box drill">
+                <h3>🔄 Still Drilling (<span id="drillTotal">0</span>)</h3>
+                <div class="verb-chips" id="drillVerbs"></div>
+            </div>
+        </div>
+        
         <div class="footer">
-            Progress synced from Nova ✨ • Last updated: <span id="lastUpdated">—</span>
+            Synced from Nova ✨ • Last updated: <span id="lastUpdated">—</span>
         </div>
     </div>
     
     <script>
         async function loadData() {
             try {
-                const response = await fetch('phrasal-verbs-full.json');
+                const response = await fetch('progress-data.json');
                 const data = await response.json();
                 
-                // Calculate stats
-                const boxCounts = [0, 0, 0, 0, 0, 0];
-                const now = Date.now();
-                let dueCount = 0;
-                
-                data.verbs.forEach(v => {
-                    const box = v.box || 0;
-                    boxCounts[box]++;
-                    if (box === 0 || !v.nextReview || new Date(v.nextReview).getTime() <= now) {
-                        dueCount++;
-                    }
-                });
-                
-                const total = data.verbs.length;
-                const mastered = boxCounts[5];
                 const stats = data.stats || {};
-                const accuracy = stats.totalQuestions > 0 
-                    ? Math.round((stats.totalCorrect / stats.totalQuestions) * 100) + '%'
-                    : '—';
+                const sessions = data.sessionHistory || [];
+                const mastered = data.verbsMastered || [];
+                const toDrill = data.verbsToDrill || [];
                 
-                // Update display
-                document.getElementById('totalVerbs').textContent = total;
-                document.getElementById('masteredCount').textContent = mastered;
-                document.getElementById('dueToday').textContent = dueCount;
-                document.getElementById('accuracy').textContent = accuracy;
-                document.getElementById('sessions').textContent = stats.totalSessions || 0;
+                // Update stats
+                document.getElementById('sessions').textContent = data.totalSessions || 0;
+                document.getElementById('totalQuestions').textContent = stats.totalQuestions || 0;
+                document.getElementById('accuracy').textContent = stats.overallAccuracy ? stats.overallAccuracy + '%' : '—';
+                document.getElementById('masteredCount').textContent = mastered.length;
+                document.getElementById('drillCount').textContent = toDrill.length;
                 document.getElementById('streak').textContent = stats.currentStreak || 0;
-                document.getElementById('lastUpdated').textContent = data.lastUpdated 
-                    ? new Date(data.lastUpdated).toLocaleDateString() 
-                    : '—';
                 
-                // Progress bar
-                document.getElementById('progressBar').innerHTML = boxCounts.map((count, i) => 
-                    count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/total)*100}%">${count}</div>` : ''
+                // Progress bar (mastered / 100 top verbs)
+                const progressPct = Math.min(100, Math.round((mastered.length / 100) * 100));
+                document.getElementById('progressFill').style.width = progressPct + '%';
+                document.getElementById('progressFill').textContent = progressPct + '% of Top 100';
+                
+                // Session history
+                const sessionsHtml = sessions.slice().reverse().map(s => {
+                    let scoreClass = 'needs-work';
+                    if (s.pct >= 85) scoreClass = 'excellent';
+                    else if (s.pct >= 70) scoreClass = 'good';
+                    else if (s.pct >= 50) scoreClass = 'ok';
+                    
+                    return `
+                        <div class="session-item">
+                            <div class="session-info">
+                                <span class="session-date">${s.date} • Session ${s.session}</span>
+                                <span class="session-details">${s.correct}/${s.questions} correct</span>
+                            </div>
+                            <span class="session-score ${scoreClass}">${s.pct}%</span>
+                        </div>
+                    `;
+                }).join('');
+                document.getElementById('sessionsList').innerHTML = sessionsHtml || '<p style="color:#666;text-align:center;padding:20px;">No sessions yet</p>';
+                
+                // Verb lists
+                document.getElementById('masteredTotal').textContent = mastered.length;
+                document.getElementById('drillTotal').textContent = toDrill.length;
+                
+                document.getElementById('masteredVerbs').innerHTML = mastered.map(v => 
+                    `<span class="verb-chip mastered">${v}</span>`
                 ).join('');
                 
-                // Leitner boxes
-                const boxLabels = ['Box 0: New', 'Box 1: 1 day', 'Box 2: 3 days', 'Box 3: 1 week', 'Box 4: 2 weeks', 'Box 5: Mastered'];
-                document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => `
-                    <div class="leitner-box">
-                        <div class="box-header">
-                            <span class="box-title">${label.split(':')[0]}</span>
-                            <span class="box-count">${boxCounts[i]}</span>
-                        </div>
-                        <div class="box-interval">${label.split(':')[1] || ''}</div>
-                    </div>
-                `).join('');
+                document.getElementById('drillVerbs').innerHTML = toDrill.map(v => 
+                    `<span class="verb-chip drill">${v}</span>`
+                ).join('');
+                
+                // Last updated
+                document.getElementById('lastUpdated').textContent = data.lastUpdated 
+                    ? new Date(data.lastUpdated).toLocaleString() 
+                    : '—';
                 
             } catch (e) {
                 console.error('Failed to load data:', e);
+                document.getElementById('sessionsList').innerHTML = '<p style="color:#ef4444;text-align:center;padding:20px;">Failed to load progress data</p>';
             }
         }
         
