@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(120, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 200, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(100, 50, 200, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-left: 4px;
+        }
+        
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .section-icon.learning { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+        .section-icon.business { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .section-icon.productivity { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .section-icon.finance { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9ca3af;
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        /* Cards */
+        .card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+        
+        .card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(120, 0, 255, 0.1);
+        }
+        
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .card.learning .card-icon { background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(124, 58, 237, 0.2)); }
+        .card.business .card-icon { background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2)); }
+        .card.productivity .card-icon { background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2)); }
+        .card.finance .card-icon { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.2)); }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .card-arrow {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: #6b7280;
+        }
+        
+        .card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+        
+        .footer-text a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-text a:hover {
+            color: #a78bfa;
+        }
+        
+        .nova-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #a78bfa;
+            margin-top: 16px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container { padding: 40px 16px; }
+            h1 { font-size: 2rem; }
+            .logo { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo">🎯</div>
+            <h1>Command Center</h1>
+            <p class="tagline">All your dashboards in one place</p>
+        </header>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon learning">📚</div>
+                <h2 class="section-title">Learning</h2>
+            </div>
+            <div class="grid">
+                <a href="english/phrasal-verbs.html" class="card learning">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">💬</div>
+                    <div class="card-title">Phrasal Verbs</div>
+                    <div class="card-desc">Master 400 essential verbs with Leitner spaced repetition. Track your progress to fluency.</div>
+                </a>
+                <a href="quiz-progress.html" class="card learning">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">🧠</div>
+                    <div class="card-title">300 Great Figures</div>
+                    <div class="card-desc">Historical knowledge mastery. Learn the people who shaped the world.</div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon business">🏢</div>
+                <h2 class="section-title">Business</h2>
+            </div>
+            <div class="grid">
+                <a href="https://finess007.github.io/alessa-dashboard/" class="card business">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Alessa Analytics</div>
+                    <div class="card-desc">GA4 performance metrics. Revenue, sessions, and conversion tracking for BG + GR.</div>
+                </a>
+                <a href="https://finess007.github.io/alessa-copy/" class="card business">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">✍️</div>
+                    <div class="card-title">Copy Generator</div>
+                    <div class="card-desc">Create compelling ad copy with JTBD prompts and emotional angle tracking.</div>
+                </a>
+                <a href="copy-style-guide.html" class="card business">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">📝</div>
+                    <div class="card-title">Style Guide</div>
+                    <div class="card-desc">Brand voice, writing rules, and reference documentation for consistent copy.</div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon productivity">⚡</div>
+                <h2 class="section-title">Productivity</h2>
+            </div>
+            <div class="grid">
+                <a href="nova-tasks.html" class="card productivity">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">Task Tracker</div>
+                    <div class="card-desc">Kanban board for Ivo + Nova. Track what's in progress and what's getting done.</div>
+                </a>
+                <a href="habits/" class="card productivity">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">🔥</div>
+                    <div class="card-title">Habit Streaks</div>
+                    <div class="card-desc">Track daily habits with streaks and heatmaps. Build consistency, one day at a time.</div>
+                </a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon finance">💰</div>
+                <h2 class="section-title">Finance</h2>
+            </div>
+            <div class="grid">
+                <a href="https://finess007.github.io/trading-journal/" class="card finance">
+                    <span class="card-arrow">→</span>
+                    <div class="card-icon">📈</div>
+                    <div class="card-title">Trading Journal</div>
+                    <div class="card-desc">Log trades, track P&L, and analyze your win rate over time.</div>
+                </a>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p class="footer-text">Built with care for getting things done</p>
+            <div class="nova-badge">
+                <span>✨</span>
+                <span>Powered by Nova</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
