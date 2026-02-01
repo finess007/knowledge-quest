@@ -19,3 +19,4 @@ Never edit the root HTML files directly — they get overwritten by build.
 
 All pages protected with Staticrypt.
 Password: `W5l3bA1MFOYkEn0X`
+
