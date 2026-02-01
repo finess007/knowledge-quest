@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-01T10:18:00+02:00",
+  "lastUpdated": "2026-02-01T10:21:00+02:00",
   "ivo": {
     "backlog": [],
     "next": [],
@@ -13,11 +13,11 @@
       {"id": 2, "task": "Set up Gemini API for research", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
       {"id": 3, "task": "Set up Grok API for X analysis", "priority": "P2", "added": "2026-02-01", "blocked": "Needs API key"},
       {"id": 4, "task": "Mimi's Clawdbot memory setup", "priority": "P2", "added": "2026-01-31"},
-      {"id": 40, "task": "📚 Project: 10,000 Books Knowledge Base", "priority": "P2", "added": "2026-02-01", "notes": "Process books into searchable knowledge with semantic search"}
+      {"id": 40, "task": "📚 Project: 10,000 Books Knowledge Base", "priority": "P2", "added": "2026-02-01", "notes": "Process books into searchable knowledge with semantic search"},
+      {"id": 35, "task": "Polymarket Arbitrage Bot", "priority": "P2", "added": "2026-01-31"},
+      {"id": 34, "task": "Agentic SEO for Alessa", "priority": "P2", "added": "2026-01-31"}
     ],
     "next": [
-      {"id": 35, "task": "Polymarket Arbitrage Bot", "priority": "P1", "added": "2026-01-31"},
-      {"id": 34, "task": "Agentic SEO for Alessa", "priority": "P1", "added": "2026-01-31"},
       {"id": 1, "task": "Build document viewer for knowledge graph", "priority": "P1", "added": "2026-02-01"},
       {"id": 36, "task": "🔬 Research: New Country Market Entry (Meta + Full Stack)", "priority": "P1", "added": "2026-02-01", "notes": "Meta Ads, Klaviyo, influencers, TikTok — full playbook"},
       {"id": 37, "task": "🔬 Research: Meta Ads Mastery ($50→$1000 + Best Strategies)", "priority": "P1", "added": "2026-02-01", "notes": "Scaling path + all best practices encyclopedia"},
