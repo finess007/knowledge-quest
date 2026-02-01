@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova's Brain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 0; }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #888; font-size: 0.9rem; }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .tab:hover { background: rgba(255,255,255,0.1); }
+        .tab.active { background: #6c5ce7; border-color: #6c5ce7; }
+        
+        .content-area {
+            background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        .section { display: none; }
+        .section.active { display: block; }
+        
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .file-item {
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .file-item:hover { background: rgba(108,92,231,0.2); }
+        .file-item.active { background: rgba(108,92,231,0.3); border: 1px solid #6c5ce7; }
+        .file-item .name { font-weight: 500; margin-bottom: 4px; }
+        .file-item .meta { font-size: 0.75rem; color: #888; }
+        
+        .document-viewer {
+            background: #0a0a0f;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .document-viewer h1, .document-viewer h2, .document-viewer h3 {
+            color: #a855f7;
+            margin: 15px 0 10px 0;
+        }
+        .document-viewer strong { color: #00d97e; }
+        .document-viewer code { background: rgba(108,92,231,0.2); padding: 2px 6px; border-radius: 4px; }
+        
+        .entity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .entity-card {
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .entity-card:hover { background: rgba(108,92,231,0.2); transform: translateY(-2px); }
+        .entity-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .entity-card .title { font-weight: 600; margin-bottom: 5px; }
+        .entity-card .count { font-size: 0.8rem; color: #888; }
+        
+        .cron-list { }
+        .cron-item {
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #6c5ce7;
+        }
+        .cron-item.disabled { opacity: 0.5; border-left-color: #666; }
+        .cron-item .name { font-weight: 500; margin-bottom: 5px; }
+        .cron-item .schedule { font-size: 0.8rem; color: #00d97e; margin-bottom: 5px; }
+        .cron-item .desc { font-size: 0.8rem; color: #888; }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .search-box:focus { outline: none; border-color: #6c5ce7; }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.2); }
+        
+        @media (max-width: 600px) {
+            .file-list { grid-template-columns: 1fr; }
+            .entity-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Nova's Brain</h1>
+            <p>What I remember, what I'm tracking, what I'm scheduled to do</p>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="daily">📅 Daily Notes</div>
+            <div class="tab" data-tab="memory">💾 Long-term Memory</div>
+            <div class="tab" data-tab="knowledge">🗂️ Knowledge Graph</div>
+            <div class="tab" data-tab="now">📍 Current State</div>
+            <div class="tab" data-tab="cron">⏰ Scheduled Tasks</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Daily Notes -->
+            <div class="section active" id="daily">
+                <input type="text" class="search-box" placeholder="Search daily notes..." id="daily-search">
+                <div class="file-list" id="daily-files"></div>
+                <div class="document-viewer" id="daily-viewer" style="display:none;"></div>
+            </div>
+            
+            <!-- Long-term Memory -->
+            <div class="section" id="memory">
+                <div class="document-viewer" id="memory-viewer">Loading MEMORY.md...</div>
+            </div>
+            
+            <!-- Knowledge Graph -->
+            <div class="section" id="knowledge">
+                <div id="knowledge-overview">
+                    <div class="entity-grid" id="entity-categories"></div>
+                </div>
+                <div id="knowledge-detail" style="display:none;">
+                    <div class="back-btn" onclick="showKnowledgeOverview()">← Back</div>
+                    <div class="file-list" id="entity-list"></div>
+                    <div class="document-viewer" id="entity-viewer" style="display:none;"></div>
+                </div>
+            </div>
+            
+            <!-- Current State -->
+            <div class="section" id="now">
+                <div class="document-viewer" id="now-viewer">Loading NOW.md...</div>
+            </div>
+            
+            <!-- Scheduled Tasks -->
+            <div class="section" id="cron">
+                <div class="cron-list" id="cron-list">Loading cron jobs...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Data will be injected by Nova during build
+        const DATA = {
+            dailyNotes: [],      // [{name, date, content}]
+            memory: "",          // MEMORY.md content
+            now: "",             // NOW.md content
+            knowledge: {         // {category: [{name, summary, facts}]}
+                people: [],
+                companies: [],
+                projects: [],
+                investments: []
+            },
+            cron: []             // [{name, schedule, description, enabled}]
+        };
+        
+        // Load data from nova-data.js (included via script tag)
+    </script>
+    <script src="nova-data.js"></script>
+    <script>
+        // Merge loaded data
+        if (typeof NOVA_DATA !== 'undefined') {
+            Object.assign(DATA, NOVA_DATA);
+        }
+        
+        // Render daily notes
+        function renderDailyNotes() {
+            const container = document.getElementById('daily-files');
+            if (DATA.dailyNotes.length === 0) {
+                container.innerHTML = '<p style="color:#888">No daily notes loaded. Run the sync script to populate.</p>';
+                return;
+            }
+            container.innerHTML = DATA.dailyNotes.map(note => `
+                <div class="file-item" onclick="showDaily('${note.name}')">
+                    <div class="name">📄 ${note.name}</div>
+                    <div class="meta">${note.date}</div>
+                </div>
+            `).join('');
+        }
+        
+        function showDaily(name) {
+            const note = DATA.dailyNotes.find(n => n.name === name);
+            if (note) {
+                document.getElementById('daily-viewer').style.display = 'block';
+                document.getElementById('daily-viewer').textContent = note.content;
+            }
+        }
+        
+        // Render memory
+        function renderMemory() {
+            document.getElementById('memory-viewer').textContent = DATA.memory || 'MEMORY.md not loaded';
+        }
+        
+        // Render NOW
+        function renderNow() {
+            document.getElementById('now-viewer').textContent = DATA.now || 'NOW.md not loaded';
+        }
+        
+        // Render knowledge graph
+        function renderKnowledge() {
+            const categories = [
+                { id: 'people', icon: '👤', title: 'People', count: DATA.knowledge.people.length },
+                { id: 'companies', icon: '🏢', title: 'Companies', count: DATA.knowledge.companies.length },
+                { id: 'projects', icon: '📁', title: 'Projects', count: DATA.knowledge.projects.length },
+                { id: 'investments', icon: '💰', title: 'Investments', count: DATA.knowledge.investments.length }
+            ];
+            
+            document.getElementById('entity-categories').innerHTML = categories.map(cat => `
+                <div class="entity-card" onclick="showCategory('${cat.id}')">
+                    <div class="icon">${cat.icon}</div>
+                    <div class="title">${cat.title}</div>
+                    <div class="count">${cat.count} entities</div>
+                </div>
+            `).join('');
+        }
+        
+        function showCategory(category) {
+            document.getElementById('knowledge-overview').style.display = 'none';
+            document.getElementById('knowledge-detail').style.display = 'block';
+            
+            const entities = DATA.knowledge[category] || [];
+            document.getElementById('entity-list').innerHTML = entities.map(e => `
+                <div class="file-item" onclick="showEntity('${category}', '${e.name}')">
+                    <div class="name">${e.name}</div>
+                    <div class="meta">${e.factCount || 0} facts</div>
+                </div>
+            `).join('') || '<p style="color:#888">No entities in this category</p>';
+        }
+        
+        function showKnowledgeOverview() {
+            document.getElementById('knowledge-overview').style.display = 'block';
+            document.getElementById('knowledge-detail').style.display = 'none';
+            document.getElementById('entity-viewer').style.display = 'none';
+        }
+        
+        function showEntity(category, name) {
+            const entity = DATA.knowledge[category].find(e => e.name === name);
+            if (entity) {
+                document.getElementById('entity-viewer').style.display = 'block';
+                document.getElementById('entity-viewer').textContent = 
+                    `# ${entity.name}\n\n${entity.summary || 'No summary'}\n\n## Facts\n${entity.facts || 'No facts recorded'}`;
+            }
+        }
+        
+        // Render cron jobs
+        function renderCron() {
+            if (DATA.cron.length === 0) {
+                document.getElementById('cron-list').innerHTML = '<p style="color:#888">No cron jobs loaded</p>';
+                return;
+            }
+            document.getElementById('cron-list').innerHTML = DATA.cron.map(job => `
+                <div class="cron-item ${job.enabled ? '' : 'disabled'}">
+                    <div class="name">${job.enabled ? '✅' : '⏸️'} ${job.name}</div>
+                    <div class="schedule">${job.schedule}</div>
+                    <div class="desc">${job.description}</div>
+                </div>
+            `).join('');
+        }
+        
+        // Initialize
+        renderDailyNotes();
+        renderMemory();
+        renderNow();
+        renderKnowledge();
+        renderCron();
+    </script>
+</body>
+</html>
