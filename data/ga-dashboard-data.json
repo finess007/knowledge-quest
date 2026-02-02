@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-01T08:00:00+02:00",
+  "lastUpdated": "2026-02-02T08:01:16.043504",
   "refreshType": "scheduled",
   "properties": {
     "BG": {
@@ -7,103 +7,308 @@
       "name": "Alessa Bulgaria",
       "currency": "BGN",
       "yesterday": {
-        "date": "2026-01-31",
-        "users": 8190,
-        "sessions": 11201,
-        "transactions": 122,
-        "revenue": 13084.45,
-        "cvr": 1.09,
-        "aov": 107.25
+        "date": "2026-02-01",
+        "users": 9082,
+        "newUsers": 4792,
+        "sessions": 11857,
+        "pageviews": 38856,
+        "bounceRate": 55.3,
+        "avgSessionDuration": 129.8,
+        "transactions": 101,
+        "revenue": 10938.9,
+        "addToCarts": 482,
+        "checkouts": 265,
+        "cvr": 0.85,
+        "aov": 108.31
       },
       "last7Days": {
-        "dateRange": "2026-01-25 to 2026-01-31",
-        "users": 43497,
-        "sessions": 80139,
-        "transactions": 929,
-        "revenue": 93605.28,
-        "cvr": 1.16,
-        "aov": 100.76,
-        "bounceRate": 50.9,
+        "dateRange": "2026-01-26 to 2026-02-01",
+        "users": 45169,
+        "newUsers": 30361,
+        "sessions": 81731,
+        "pageviews": 282443,
+        "bounceRate": 52.4,
+        "avgSessionDuration": 152.1,
+        "transactions": 901,
+        "revenue": 90564.24,
+        "addToCarts": 1341,
+        "checkouts": 704,
+        "cvr": 1.1,
+        "aov": 100.52,
         "changes": {
-          "sessions": -14.9,
-          "users": -10.2,
-          "revenue": -24.9,
-          "cvr": -8.7,
-          "aov": -3.3,
-          "bounceRate": 7.4
+          "sessions": -0.3,
+          "users": 7.3,
+          "revenue": -10.2,
+          "cvr": -2.7,
+          "aov": -8.0,
+          "transactions": -2.4,
+          "bounceRate": 4.0
         }
       },
+      "last30Days": {
+        "dateRange": "2026-01-03 to 2026-02-01",
+        "users": 159724,
+        "newUsers": 123591,
+        "sessions": 371557,
+        "pageviews": 1657543,
+        "bounceRate": 46.8,
+        "avgSessionDuration": 200.8,
+        "transactions": 5952,
+        "revenue": 605455.36,
+        "addToCarts": 1341,
+        "checkouts": 704,
+        "cvr": 1.6,
+        "aov": 101.72,
+        "changes": {
+          "sessions": -1.1,
+          "users": -9.6,
+          "revenue": 3.0,
+          "cvr": 11.9,
+          "aov": -7.2,
+          "transactions": 11.0,
+          "bounceRate": -0.4
+        }
+      },
+      "monthToDate": {
+        "dateRange": "2026-02-01 to 2026-02-01",
+        "users": 9082,
+        "newUsers": 4792,
+        "sessions": 11857,
+        "pageviews": 38856,
+        "bounceRate": 55.3,
+        "avgSessionDuration": 129.8,
+        "transactions": 101,
+        "revenue": 10938.9,
+        "addToCarts": 482,
+        "checkouts": 265,
+        "cvr": 0.85,
+        "aov": 108.31
+      },
       "trafficSources": {
-        "Paid Social": { "sessions": 32324, "percentage": 40.4 },
-        "Organic Search": { "sessions": 17816, "percentage": 22.3 },
-        "Organic Social": { "sessions": 13283, "percentage": 16.6 },
-        "Direct": { "sessions": 11234, "percentage": 14.0 },
-        "Paid Other": { "sessions": 2336, "percentage": 2.9 }
-      }
+        "Paid Social": {
+          "sessions": 33001,
+          "percentage": 40.6
+        },
+        "Organic Search": {
+          "sessions": 18200,
+          "percentage": 22.4
+        },
+        "Organic Social": {
+          "sessions": 13347,
+          "percentage": 16.4
+        },
+        "Direct": {
+          "sessions": 11585,
+          "percentage": 14.2
+        },
+        "Paid Other": {
+          "sessions": 2285,
+          "percentage": 2.8
+        },
+        "Unassigned": {
+          "sessions": 1546,
+          "percentage": 1.9
+        },
+        "Referral": {
+          "sessions": 812,
+          "percentage": 1.0
+        },
+        "Paid Search": {
+          "sessions": 477,
+          "percentage": 0.6
+        },
+        "(other)": {
+          "sessions": 41,
+          "percentage": 0.1
+        },
+        "Display": {
+          "sessions": 37,
+          "percentage": 0.0
+        }
+      },
+      "deviceBreakdown": {
+        "mobile": {
+          "sessions": 71973,
+          "users": 37964,
+          "percentage": 87.9
+        },
+        "desktop": {
+          "sessions": 9280,
+          "users": 6955,
+          "percentage": 11.3
+        },
+        "tablet": {
+          "sessions": 563,
+          "users": 371,
+          "percentage": 0.7
+        },
+        "(other)": {
+          "sessions": 41,
+          "users": 25,
+          "percentage": 0.1
+        }
+      },
+      "topProducts": [
+        {
+          "name": "Comfy Flow \u0411\u043b\u0443\u0437\u0430 \u041e\u0442 \u041f\u043b\u0435\u0442\u0438\u0432\u043e \u0421 3/4 \u0420\u044a\u043a\u0430\u0432 - Pink",
+          "revenue": 1494.0,
+          "quantity": 23,
+          "views": 13696
+        },
+        {
+          "name": "Elite Embrace \u0420\u043e\u043a\u043b\u044f \u041e\u0442 \u041f\u043b\u0435\u0442\u0438\u0432\u043e - Black",
+          "revenue": 1463.0,
+          "quantity": 19,
+          "views": 14619
+        },
+        {
+          "name": "Elegant Essence \u0411\u043b\u0435\u0439\u0437\u044a\u0440 - Grey",
+          "revenue": 1367.0,
+          "quantity": 10,
+          "views": 2869
+        },
+        {
+          "name": "Cherry on Top \u0411\u043b\u0443\u0437\u0430 \u0421 3/4 \u0420\u044a\u043a\u0430\u0432 - Red",
+          "revenue": 1339.0,
+          "quantity": 31,
+          "views": 13786
+        },
+        {
+          "name": "Luxury Classic Slim Fit \u0414\u044a\u043d\u043a\u0438 - Black",
+          "revenue": 1244.0,
+          "quantity": 13,
+          "views": 13537
+        },
+        {
+          "name": "Fantasy Flaw \u0411\u043e\u0434\u0438 - Black",
+          "revenue": 1183.0,
+          "quantity": 20,
+          "views": 13372
+        },
+        {
+          "name": "Clandestine Bloom \u041f\u0440\u0435\u043c\u0438\u0435\u0440\u043d\u0430 \u0420\u043e\u043a\u043b\u044f",
+          "revenue": 1164.0,
+          "quantity": 2,
+          "views": 1858
+        },
+        {
+          "name": "Bright Future \u0411\u043b\u0435\u0439\u0437\u044a\u0440 \u0421 \u0412\u044a\u043b\u043d\u0430 - Black",
+          "revenue": 1161.0,
+          "quantity": 9,
+          "views": 14048
+        },
+        {
+          "name": "Twilight Elegance \u0413\u0430\u0449\u0435\u0440\u0438\u0437\u043e\u043d",
+          "revenue": 1044.0,
+          "quantity": 2,
+          "views": 1905
+        },
+        {
+          "name": "Alessa Royalty \u0414\u044a\u043d\u043a\u0438 - Blue",
+          "revenue": 933.0,
+          "quantity": 9,
+          "views": 2441
+        }
+      ]
     },
     "GR": {
       "id": "properties/311506085",
       "name": "Alessa Greece",
       "currency": "EUR",
       "yesterday": {
-        "date": "2026-01-31",
-        "users": 234,
-        "sessions": 294
+        "date": "2026-02-01",
+        "users": 375,
+        "newUsers": 292,
+        "sessions": 456,
+        "pageviews": 1609,
+        "bounceRate": 48.7,
+        "avgSessionDuration": 144.8
       },
       "last7Days": {
-        "dateRange": "2026-01-25 to 2026-01-31",
-        "users": 1733,
-        "sessions": 2529,
-        "bounceRate": 46.2,
+        "dateRange": "2026-01-26 to 2026-02-01",
+        "users": 1837,
+        "newUsers": 1481,
+        "sessions": 2642,
+        "pageviews": 8936,
+        "bounceRate": 48.4,
+        "avgSessionDuration": 127.4,
         "changes": {
-          "sessions": -22.4,
-          "users": -24.1,
-          "bounceRate": 7.5
+          "sessions": 2.2,
+          "users": 3.9,
+          "bounceRate": 4.5
         }
       },
+      "last30Days": {
+        "dateRange": "2026-01-03 to 2026-02-01",
+        "users": 11908,
+        "newUsers": 11144,
+        "sessions": 17124,
+        "pageviews": 56908,
+        "bounceRate": 47.5,
+        "avgSessionDuration": 135.9,
+        "changes": {
+          "sessions": 220.1,
+          "users": 234.6,
+          "bounceRate": 3.9
+        }
+      },
+      "monthToDate": {
+        "dateRange": "2026-02-01 to 2026-02-01",
+        "users": 375,
+        "newUsers": 292,
+        "sessions": 456,
+        "pageviews": 1609,
+        "bounceRate": 48.7,
+        "avgSessionDuration": 144.8
+      },
       "trafficSources": {
-        "Paid Social": { "sessions": 1529, "percentage": 60.3 },
-        "Organic Social": { "sessions": 452, "percentage": 17.8 },
-        "Direct": { "sessions": 282, "percentage": 11.1 },
-        "Organic Search": { "sessions": 169, "percentage": 6.7 },
-        "Paid Other": { "sessions": 66, "percentage": 2.6 }
+        "Paid Social": {
+          "sessions": 1612,
+          "percentage": 61.0
+        },
+        "Organic Social": {
+          "sessions": 432,
+          "percentage": 16.4
+        },
+        "Direct": {
+          "sessions": 314,
+          "percentage": 11.9
+        },
+        "Organic Search": {
+          "sessions": 182,
+          "percentage": 6.9
+        },
+        "Paid Other": {
+          "sessions": 62,
+          "percentage": 2.3
+        },
+        "Unassigned": {
+          "sessions": 37,
+          "percentage": 1.4
+        },
+        "Referral": {
+          "sessions": 3,
+          "percentage": 0.1
+        }
+      },
+      "deviceBreakdown": {
+        "mobile": {
+          "sessions": 2357,
+          "users": 1634,
+          "percentage": 89.2
+        },
+        "desktop": {
+          "sessions": 240,
+          "users": 171,
+          "percentage": 9.1
+        },
+        "tablet": {
+          "sessions": 45,
+          "users": 32,
+          "percentage": 1.7
+        }
       }
     }
   },
-  "comparison": {
-    "sessionRatio": 31.7,
-    "bgBounceRate": 50.9,
-    "grBounceRate": 46.2,
-    "bgOrganicPct": 22.3,
-    "grOrganicPct": 6.7
-  },
-  "alerts": [
-    {
-      "severity": "warning",
-      "property": "GR",
-      "metric": "sessions",
-      "change": -22.4,
-      "message": "Sessions dropped 22.4% (3,259 → 2,529)"
-    },
-    {
-      "severity": "warning", 
-      "property": "GR",
-      "metric": "users",
-      "change": -24.1,
-      "message": "Users dropped 24.1% week-over-week"
-    },
-    {
-      "severity": "warning",
-      "property": "BG",
-      "metric": "revenue",
-      "change": -24.9,
-      "message": "Revenue dropped 24.9% (124,652 → 93,605 BGN)"
-    },
-    {
-      "severity": "info",
-      "property": "GR",
-      "metric": "organic",
-      "message": "GR organic search critically low at 6.7% - SEO needed"
-    }
-  ]
+  "alerts": []
 }
