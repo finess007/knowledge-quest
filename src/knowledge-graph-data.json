@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-02T03:02:02.056548",
+  "generatedAt": "2026-02-02T03:31:48.743908",
   "entities": [
     {
       "id": "projects-ai-influencers",
@@ -91,6 +91,14 @@
       "fullSummary": "**Industry:** Women's fashion e-commerce\n**Markets:** Bulgaria (primary), Greece (expansion)\n**Founders:** Ivo (operations, marketing) + Mimi (model, co-founder)\n- Bulgarian fashion brand: dresses, jackets, coats, blouses\n- Custom-built e-commerce platform (not Shopify/WooCommerce)\n- ~€1M monthly revenue, 23% net margin\n| Metric | Bulgaria | Greece |\n|--------|----------|--------|\n| Sessions/day | ~10-12K | ~400 |\n| CVR | 1.2-1.6% | Broken tracking |",
       "facts": [
         {
+          "id": "alessa-023",
+          "fact": "English copy production: 351 products done (~37% of 952), with full style guide at instructions/alessa-copy.md",
+          "category": "milestone",
+          "timestamp": "2026-02-01",
+          "source": "conversation",
+          "status": "active"
+        },
+        {
           "id": "alessa-021",
           "fact": "Week ending Jan 31: BG revenue -30.3% WoW, sessions -21%, CVR -9.6%, bounce +7.3%. Post-holiday normalization.",
           "category": "milestone",
@@ -169,7 +177,8 @@
           "category": "milestone",
           "timestamp": "2026-01-30",
           "source": "conversation",
-          "status": "active"
+          "status": "superseded",
+          "supersededBy": "alessa-023"
         },
         {
           "id": "alessa-020",
@@ -268,7 +277,7 @@
           "status": "active"
         }
       ],
-      "lastUpdated": "2026-01-31"
+      "lastUpdated": "2026-02-01"
     },
     {
       "id": "people-avia",
@@ -388,6 +397,48 @@
         }
       ],
       "lastUpdated": "2026-01-31"
+    },
+    {
+      "id": "projects-command-center",
+      "name": "Command Center",
+      "category": "projects",
+      "summary": "The unified dashboard hub for Nova's tools and Ivo's tracking.",
+      "fullSummary": "The unified dashboard hub for Nova's tools and Ivo's tracking.\n- Vercel-hosted dashboard collection at https://knowledge-quest-tan.vercel.app\n- All pages password-protected (Staticrypt)\n- GitHub repo: /Users/jarvis/Projects/command-center\n- **Index** - Main hub with links to all tools\n- **Copy Style Guide** - Alessa copy reference\n- **Phrasal Verbs Quiz** - English learning tracker\n- **300 Figures Quiz** - General knowledge\n- **Habit Streaks** - Daily accountability\n- **Knowledge Graph** - Nova's entity browser",
+      "facts": [
+        {
+          "id": "cc-004",
+          "fact": "Knowledge Graph Viewer added - browse all memory entities",
+          "category": "milestone",
+          "timestamp": "2026-02-02",
+          "source": "nightly-build",
+          "status": "active"
+        },
+        {
+          "id": "cc-001",
+          "fact": "Renamed from knowledge-quest to command-center",
+          "category": "milestone",
+          "timestamp": "2026-02-01",
+          "source": "conversation",
+          "status": "active"
+        },
+        {
+          "id": "cc-002",
+          "fact": "Migrated from GitHub Pages to Vercel for faster deploys",
+          "category": "milestone",
+          "timestamp": "2026-02-01",
+          "source": "conversation",
+          "status": "active"
+        },
+        {
+          "id": "cc-003",
+          "fact": "Single URL: https://knowledge-quest-tan.vercel.app (old aliases removed)",
+          "category": "status",
+          "timestamp": "2026-02-01",
+          "source": "conversation",
+          "status": "active"
+        }
+      ],
+      "lastUpdated": "2026-02-02"
     },
     {
       "id": "projects-english-mastery",
@@ -984,6 +1035,6 @@
       "lastUpdated": "2026-01-31"
     }
   ],
-  "totalFacts": 93,
-  "activeFacts": 87
+  "totalFacts": 98,
+  "activeFacts": 91
 }

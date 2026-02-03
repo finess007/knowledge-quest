@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Ads Knowledge Base | Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-hover: #1a1a25;
+            --border: #2a2a3a;
+            --text: #e5e5e5;
+            --text-muted: #888;
+            --accent: #3b82f6;
+            --accent-dim: #1d4ed8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --creative: #ec4899;
+            --bidding: #8b5cf6;
+            --structure: #06b6d4;
+            --scaling: #f97316;
+            --tracking: #84cc16;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .search-bar input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        /* Topic Filters */
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .filter-btn[data-topic="creative"] { --topic-color: var(--creative); }
+        .filter-btn[data-topic="bidding"] { --topic-color: var(--bidding); }
+        .filter-btn[data-topic="structure"] { --topic-color: var(--structure); }
+        .filter-btn[data-topic="scaling"] { --topic-color: var(--scaling); }
+        .filter-btn[data-topic="tracking"] { --topic-color: var(--tracking); }
+        
+        .filter-btn[data-topic].active {
+            background: var(--topic-color);
+            border-color: var(--topic-color);
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Expert Cards Grid */
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .expert-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .expert-card:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
+        }
+        
+        .expert-card.pending {
+            opacity: 0.6;
+        }
+        
+        .expert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .expert-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .expert-company {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .expert-status {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-done {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+        }
+        
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning);
+        }
+        
+        .expert-focus {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        
+        .expert-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        
+        .topic-tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .topic-creative { background: rgba(236, 72, 153, 0.15); color: var(--creative); }
+        .topic-bidding { background: rgba(139, 92, 246, 0.15); color: var(--bidding); }
+        .topic-structure { background: rgba(6, 182, 212, 0.15); color: var(--structure); }
+        .topic-scaling { background: rgba(249, 115, 22, 0.15); color: var(--scaling); }
+        .topic-tracking { background: rgba(132, 204, 22, 0.15); color: var(--tracking); }
+        
+        .expert-frameworks {
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+        
+        .framework-title {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .framework-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .framework-item {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* Tactics Section */
+        .tactics-section {
+            margin-top: 48px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tactics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        
+        .tactic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .tactic-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tactic-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .tactic-source {
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--accent);
+        }
+        
+        /* Detail Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .modal-overlay.active {
+            display: block;
+        }
+        
+        .modal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .modal-header h2 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .modal-header .subtitle {
+            font-size: 14px;
+        }
+        
+        .modal-body h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 12px;
+            color: var(--accent);
+        }
+        
+        .modal-body ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+        
+        .modal-body li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .modal-body strong {
+            color: var(--text);
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        
+        .no-results-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-bar {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .experts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <div>
+                    <h1>Meta Ads Knowledge Base</h1>
+                    <div class="subtitle">Expert strategies & tactics for 2025-2026</div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search experts, tactics, frameworks...">
+            </div>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-topic="all">All Topics</button>
+            <button class="filter-btn" data-topic="creative">🎨 Creative</button>
+            <button class="filter-btn" data-topic="structure">🏗️ Structure</button>
+            <button class="filter-btn" data-topic="bidding">💰 Bidding</button>
+            <button class="filter-btn" data-topic="scaling">📈 Scaling</button>
+            <button class="filter-btn" data-topic="tracking">📊 Tracking</button>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value" id="totalExperts">12</div>
+                <div class="stat-label">Experts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedResearch">8</div>
+                <div class="stat-label">Researched</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalFrameworks">24</div>
+                <div class="stat-label">Frameworks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalTactics">45+</div>
+                <div class="stat-label">Tactics</div>
+            </div>
+        </div>
+        
+        <div class="experts-grid" id="expertsGrid"></div>
+        
+        <div class="tactics-section">
+            <h2 class="section-title">⚡ Quick-Reference Tactics</h2>
+            <div class="tactics-grid" id="tacticsGrid"></div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    
+    <script>
+        const experts = [
+            {
+                id: 'ben-heath',
+                name: 'Ben Heath',
+                company: 'Heath Media',
+                status: 'done',
+                focus: 'Andromeda Paradigm — creative engineering + data consolidation over technical targeting hacks',
+                topics: ['structure', 'creative', 'scaling', 'tracking'],
+                frameworks: ['Sandbox Testing', 'Data Density', 'Scale & Pull Back', 'Ugly Ads'],
+                keyTactics: [
+                    { title: '50 Conversions/Week Rule', text: 'Ad sets need ~50 conversions/week to exit learning phase. Consolidate to pool data.' },
+                    { title: 'Creative IS Targeting', text: 'Dog ad attracts dog owners. Algorithm finds audience through creative resonance.' },
+                    { title: 'CAPI is Mandatory', text: 'Without server-side tracking, algorithm can\'t see conversions — death spiral.' },
+                    { title: 'ASC Existing Customer Cap', text: 'Set to 10-20% to prevent over-spending on warm audiences.' }
+                ],
+                fullContent: `
+                    <h3>Account Structure (Consolidation)</h3>
+                    <ul>
+                        <li><strong>Data Density Imperative:</strong> Ad sets need ~50 conversions/week to exit learning phase</li>
+                        <li><strong>Recommended:</strong> Scaling Campaign (winners) + Testing Campaign (Sandbox)</li>
+                        <li><strong>"One Ad Set"</strong> for high-volume accounts: all winners in single broad ad set</li>
+                    </ul>
+                    
+                    <h3>Advantage+ Shopping vs Manual</h3>
+                    <ul>
+                        <li><strong>Use ASC:</strong> E-commerce with 10-20+ active creatives</li>
+                        <li><strong>Use Manual:</strong> Sandbox testing (ABO guarantees budget for new ads)</li>
+                        <li><strong>Hybrid Workflow:</strong> Test in Manual → Graduate winners to ASC via Post ID</li>
+                    </ul>
+                    
+                    <h3>Creative Testing - The Sandbox</h3>
+                    <ul>
+                        <li><strong>6-Step Framework:</strong> Avatar Analysis → Hypothesis → Concept Diversity → Sandbox Launch → Metric Review → Graduate</li>
+                        <li><strong>Key Metrics:</strong> CPA/ROAS (primary), Hook Rate, Hold Rate (secondary)</li>
+                        <li><strong>"Ugly Ads":</strong> Raw, native-looking content beats polished production</li>
+                    </ul>
+                    
+                    <h3>Budget Scaling</h3>
+                    <ul>
+                        <li><strong>Small budgets (<$100/day):</strong> Aggressive jumps OK (50-100%)</li>
+                        <li><strong>Large budgets (>$1,000/day):</strong> Conservative (10-15%)</li>
+                        <li><strong>"Scale and Pull Back":</strong> Push +30% → Wait 3-7 days → Decide</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'nick-theriot',
+                name: 'Nick Theriot',
+                company: 'Theriot Solutions',
+                status: 'done',
+                focus: '20% scaling rule rejection, Triple Whale attribution, broad + cost caps methodology',
+                topics: ['scaling', 'bidding', 'tracking'],
+                frameworks: ['Algorithmic Equity', '20% Rule Rejection', 'NCPA Tracking', 'LTV-Focused'],
+                keyTactics: [
+                    { title: 'Algorithmic Equity', text: 'Build trust with the algorithm over time through consistent data and structure.' },
+                    { title: 'Reject Surf Scaling', text: '20% daily increases create instability. Use calculated jumps based on data.' },
+                    { title: 'Triple Whale Attribution', text: 'Use third-party attribution to see true CPA across channels.' }
+                ],
+                fullContent: `
+                    <h3>Scaling Philosophy</h3>
+                    <ul>
+                        <li><strong>Reject "surf scaling"</strong> (20% daily increases)</li>
+                        <li><strong>Algorithmic Equity:</strong> Consistent structure builds algorithm trust over time</li>
+                        <li><strong>LTV-focused decisions:</strong> Scale based on customer lifetime value, not just initial ROAS</li>
+                    </ul>
+                    
+                    <h3>Attribution & Tracking</h3>
+                    <ul>
+                        <li><strong>Triple Whale:</strong> Third-party attribution for true NCPA tracking</li>
+                        <li><strong>Don't trust platform numbers alone</strong></li>
+                    </ul>
+                    
+                    <h3>Broad + Cost Caps</h3>
+                    <ul>
+                        <li>Broad targeting with cost cap guardrails</li>
+                        <li>Frameworks for 6-to-8 figure brands specifically</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'andrew-foxwell',
+                name: 'Andrew Foxwell',
+                company: 'Foxwell Digital',
+                status: 'done',
+                focus: 'Signal Resilience thesis, agency benchmarking, CAPI infrastructure',
+                topics: ['tracking', 'creative', 'structure'],
+                frameworks: ['Signal Resilience', 'Agency Benchmarking', 'CAPI Infrastructure'],
+                keyTactics: [
+                    { title: 'Signal Resilience', text: 'Build tracking infrastructure that survives platform changes and privacy updates.' },
+                    { title: 'Creative Variety', text: 'Test multiple formats and volumes based on agency network data.' }
+                ],
+                fullContent: `
+                    <h3>Signal Resilience</h3>
+                    <ul>
+                        <li>Build infrastructure that survives platform changes</li>
+                        <li>CAPI and tracking are foundational, not optional</li>
+                    </ul>
+                    
+                    <h3>Agency Network Insights</h3>
+                    <ul>
+                        <li>Benchmarking data from Foxwell Founders community</li>
+                        <li>Diagnose platform-wide vs account-specific issues</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'dara-denney',
+                name: 'Dara Denney',
+                company: 'Creative Strategist',
+                status: 'done',
+                focus: '4-step analytical framework, Testing Flywheel, Motion for creative analysis',
+                topics: ['creative'],
+                frameworks: ['4-Step Framework', 'Testing Flywheel', 'Motion Analysis', 'Hook Psychology'],
+                keyTactics: [
+                    { title: '4-Step Framework', text: 'Format → Creator Persona → Messaging Buckets → Imagery for systematic creative analysis.' },
+                    { title: 'Testing Flywheel', text: 'Pre-Flight → Test → Analyze → Scale — continuous creative improvement cycle.' }
+                ],
+                fullContent: `
+                    <h3>Creative Analysis Framework</h3>
+                    <ul>
+                        <li><strong>4 Steps:</strong> Format, Creator Persona, Messaging Buckets, Imagery</li>
+                        <li><strong>Motion:</strong> Use for creative performance analysis</li>
+                    </ul>
+                    
+                    <h3>Testing Flywheel</h3>
+                    <ul>
+                        <li>Pre-Flight to Scale process</li>
+                        <li>Hook psychology and scroll-stopping tactics</li>
+                        <li>Creative testing calendar structure</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'barry-hott',
+                name: 'Barry Hott',
+                company: 'HottGrowth',
+                status: 'done',
+                focus: '$600M+ spend insights on "Ugly Ads" philosophy — native-looking beats polished',
+                topics: ['creative'],
+                frameworks: ['Ugly Ads', '3-Second Rule', 'Synthetic UGC', 'Scavenger Hunt Model'],
+                keyTactics: [
+                    { title: 'No Branding First 3 Seconds', text: 'Logos/brand fonts trigger immediate scrolling. Hook must be brand-agnostic.' },
+                    { title: 'iPhone Aesthetic', text: 'Natural lighting, raw textures, handheld smartphone stabilization.' },
+                    { title: '15-Minute Creative Cycle', text: 'Rapid extraction from raw footage beats time-intensive studio shoots.' },
+                    { title: 'AI UGC with Deliberate Imperfection', text: 'Shaky camera, natural noise, minor stumbles make AI content feel human.' }
+                ],
+                fullContent: `
+                    <h3>Why Ugly Ads Work</h3>
+                    <ul>
+                        <li><strong>Banner Blindness Bypass:</strong> Native-looking ads skip the brain's ad-filtering</li>
+                        <li><strong>Trust Triggers:</strong> Impact font, unscripted dialogue foster trust</li>
+                        <li><strong>Pattern Interrupt:</strong> Aesthetic friction captures attention</li>
+                    </ul>
+                    
+                    <h3>The Three-Second Rule</h3>
+                    <ul>
+                        <li>No branding in first 3 seconds</li>
+                        <li>Focus on single emotional promise or "wow factor"</li>
+                        <li>Brand identity comes AFTER user commits</li>
+                    </ul>
+                    
+                    <h3>Synthetic UGC Workflow</h3>
+                    <ul>
+                        <li><strong>Character locking:</strong> Consistent AI avatars across variations</li>
+                        <li><strong>Deliberate imperfection:</strong> Shaky camera, natural noise, vocal stumbles</li>
+                        <li><strong>"Scavenger Hunt" model:</strong> Extract hooks from existing footage</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'savannah-sanchez',
+                name: 'Savannah Sanchez',
+                company: 'The Social Savannah',
+                status: 'done',
+                focus: 'TikTok-to-Meta creative adaptation, winning ad formats, high-volume production',
+                topics: ['creative'],
+                frameworks: ['Post-it Note Hook', 'Girl Math', 'Husband Review', 'Green Screen', 'Power 5'],
+                keyTactics: [
+                    { title: 'Post-it Note Hook', text: 'Simple, attention-grabbing format that stops scroll with handwritten notes.' },
+                    { title: 'Trend Lifespan Planning', text: 'Adapt TikTok trends for Meta Reels with timing consideration.' },
+                    { title: 'UGC Creator Briefing', text: 'Structured management for consistent high-volume output.' }
+                ],
+                fullContent: `
+                    <h3>Winning Ad Formats</h3>
+                    <ul>
+                        <li><strong>Post-it Note Hook:</strong> Simple, scroll-stopping handwritten notes</li>
+                        <li><strong>Girl Math:</strong> Relatable calculation humor</li>
+                        <li><strong>Husband Review:</strong> Partner reaction content</li>
+                        <li><strong>Green Screen:</strong> Commentary over screenshots/content</li>
+                    </ul>
+                    
+                    <h3>TikTok-to-Meta Adaptation</h3>
+                    <ul>
+                        <li>Trend lifespan affects creative planning</li>
+                        <li>High-volume production pipeline</li>
+                        <li>Power 5 account structure approach</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'charley-tichenor',
+                name: 'Charley Tichenor',
+                company: 'Disrupter School',
+                status: 'done',
+                focus: 'One Campaign structure, 3:2:2 testing method, extreme simplification, PSM over ROAS',
+                topics: ['structure', 'creative', 'bidding'],
+                frameworks: ['One Campaign', '3:2:2 Method', 'PSM vs ROAS', 'Ads Amplify'],
+                keyTactics: [
+                    { title: 'One Campaign Structure', text: 'Single CBO campaign with Control Ad Set (winners) + Testing Ad Sets (3:2:2).' },
+                    { title: '3:2:2 Testing Method', text: '3 creatives × 2 primary texts × 2 headlines. Graduate winners via Post ID.' },
+                    { title: 'PSM Over ROAS', text: 'Profit Scaling Margin (LTV / COGS+CPA) beats vanity ROAS metric.' },
+                    { title: 'Ads Amplify What Works', text: 'Can\'t fix bad product/offer with better ads. Validate organically first.' }
+                ],
+                fullContent: `
+                    <h3>One Campaign Philosophy</h3>
+                    <ul>
+                        <li>Single CBO campaign containing all ad sets</li>
+                        <li><strong>Control Ad Set:</strong> 4-6 proven winners (Post IDs), Broad targeting</li>
+                        <li><strong>Testing Ad Sets:</strong> Dynamic Creative (DCT) for finding next winners</li>
+                    </ul>
+                    
+                    <h3>3:2:2 Testing Method</h3>
+                    <ul>
+                        <li><strong>3 Creatives:</strong> Visual variety (UGC, static, high-production)</li>
+                        <li><strong>2 Primary Texts:</strong> Different angles or hooks</li>
+                        <li><strong>2 Headlines:</strong> Offer/benefit variations</li>
+                        <li>Graduate winning Post IDs to Control Ad Set</li>
+                    </ul>
+                    
+                    <h3>PSM vs ROAS</h3>
+                    <ul>
+                        <li>ROAS is a "vanity metric" that ignores business health</li>
+                        <li><strong>PSM:</strong> LTV / (COGS + CPA) ratio</li>
+                        <li>Healthy PSM = can afford lower ROAS for growth</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'konstantinos-doulgeridis',
+                name: 'Konstantinos Doulgeridis',
+                company: 'Meta Ads Consultant',
+                status: 'done',
+                focus: 'Crazy Method, Cost Caps vs Bid Caps, manual bidding for $50K+/month accounts',
+                topics: ['bidding', 'structure'],
+                frameworks: ['Crazy Method', 'Cost Caps', 'Manual Bidding', 'Demand-Based Bidding'],
+                keyTactics: [
+                    { title: 'Crazy Method 2026', text: 'Structured approach to manual bidding that protects against AI volatility.' },
+                    { title: 'Cost Caps vs Bid Caps', text: 'Cost Caps for flexibility, Bid Caps for strict control. Know when to use each.' },
+                    { title: 'Accept Zero-Spend Days', text: 'Strategic patience — don\'t force spend when algorithm isn\'t finding quality.' },
+                    { title: '$50K+/Month Manual Control', text: 'At scale, manual controls beat full automation for protecting margins.' }
+                ],
+                fullContent: `
+                    <h3>The Crazy Method</h3>
+                    <ul>
+                        <li>Framework for manual bidding in 2025-2026</li>
+                        <li>Demand-based bidding philosophy</li>
+                        <li>Protects against AI volatility</li>
+                    </ul>
+                    
+                    <h3>Cost Caps vs Bid Caps</h3>
+                    <ul>
+                        <li><strong>Cost Caps:</strong> More flexibility, algorithm can exceed temporarily</li>
+                        <li><strong>Bid Caps:</strong> Hard ceiling, stricter control</li>
+                        <li>Set caps properly to avoid killing delivery</li>
+                    </ul>
+                    
+                    <h3>Manual Control at Scale</h3>
+                    <ul>
+                        <li>For $50K+/month accounts</li>
+                        <li>Accept zero-spend days strategically</li>
+                        <li>Don't force spend when quality isn't there</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'depesh-mandalia',
+                name: 'Depesh Mandalia',
+                company: 'BPM Method',
+                status: 'pending',
+                focus: 'BPM (Brand-Driven Performance Marketing), Core-4 framework, AI-powered avatar engineering',
+                topics: ['creative', 'structure', 'scaling'],
+                frameworks: ['BPM Method', 'Core-4 Framework', 'AI Avatar Engineering'],
+                keyTactics: [
+                    { title: 'Core-4 Framework', text: 'Product, Avatar, Offer, Funnel — foundational elements that must be right before scaling.' },
+                    { title: 'AI Localization', text: 'Global scaling through AI-powered translation and cultural adaptation.' }
+                ],
+                fullContent: `<p>Research pending — will be completed during overnight queue.</p>`
+            },
+            {
+                id: 'ash-melwani',
+                name: 'Ash Melwani',
+                company: 'Obvi (CMO)',
+                status: 'pending',
+                focus: 'Pixel Poisoning fix, server-side tracking, creative volume as volatility hedge',
+                topics: ['tracking', 'creative', 'scaling'],
+                frameworks: ['Pixel Poisoning', 'Community Moat', 'Creative Volume Hedge'],
+                keyTactics: [
+                    { title: 'Pixel Poisoning', text: 'When your pixel trains on wrong signals. Fix with server-side tracking reset.' },
+                    { title: 'Community Moat', text: 'Discord + influencer seeding creates brand defense against ad volatility.' }
+                ],
+                fullContent: `<p>Research pending — will be completed during overnight queue.</p>`
+            },
+            {
+                id: 'taylor-holiday',
+                name: 'Taylor Holiday',
+                company: 'Common Thread Collective',
+                status: 'pending',
+                focus: 'Contribution Margin focus, Prophit System, Creative Demand Planning, CFO mindset',
+                topics: ['scaling', 'creative', 'tracking'],
+                frameworks: ['Prophit System', 'Creative Demand Planning', 'Flow Era', 'Contribution Margin'],
+                keyTactics: [
+                    { title: 'Contribution Margin > ROAS', text: 'Focus on actual dollars contributed, not ratio metrics.' },
+                    { title: 'Creative Demand Planning', text: 'Forecast creative needs based on spend and fatigue cycles.' }
+                ],
+                fullContent: `<p>Research pending — will be completed during overnight queue.</p>`
+            },
+            {
+                id: 'ezra-firestone',
+                name: 'Ezra Firestone',
+                company: 'Smart Marketer',
+                status: 'pending',
+                focus: 'Golden Triangle tracking, lifecycle marketing integration, AOV optimization',
+                topics: ['tracking', 'scaling'],
+                frameworks: ['Golden Triangle', 'First $1,000 Roadmap', 'LTV Maximization'],
+                keyTactics: [
+                    { title: 'Golden Triangle', text: 'Platform + 3rd party + backend tracking for true attribution picture.' },
+                    { title: 'Lifecycle Integration', text: 'Paid ads work best when integrated with email/SMS lifecycle marketing.' }
+                ],
+                fullContent: `<p>Research pending — will be completed during overnight queue.</p>`
+            }
+        ];
+        
+        const quickTactics = [
+            { title: 'No Branding First 3 Seconds', text: 'Logos trigger scrolling. Start with emotional hook, reveal brand after commitment.', source: 'Barry Hott', topic: 'creative' },
+            { title: 'One Campaign Structure', text: 'Single CBO with Control (winners) + Testing (3:2:2) ad sets. Simplify ruthlessly.', source: 'Charley Tichenor', topic: 'structure' },
+            { title: '50 Conversions/Week Rule', text: 'Ad sets need this volume to exit learning. Consolidate to pool data.', source: 'Ben Heath', topic: 'structure' },
+            { title: 'Post ID Migration', text: 'Graduate winners from Testing → Scaling campaigns using Post ID to keep social proof.', source: 'Ben Heath / Tichenor', topic: 'creative' },
+            { title: 'Cost Cap Protection', text: 'During BFCM or volatile periods, set cost caps slightly above target to protect margins.', source: 'Ben Heath', topic: 'bidding' },
+            { title: 'PSM Over ROAS', text: 'Profit Scaling Margin (LTV / COGS+CPA) shows true health. ROAS is vanity.', source: 'Charley Tichenor', topic: 'bidding' },
+            { title: 'ASC Existing Customer Cap', text: 'Set to 10-20% to force algorithm to find new customers, not retarget warm.', source: 'Ben Heath', topic: 'structure' },
+            { title: 'Deliberate Imperfection', text: 'AI-generated content needs shaky camera, natural noise, vocal stumbles to feel human.', source: 'Barry Hott', topic: 'creative' },
+            { title: 'Creative IS Targeting', text: 'Broad targeting + specific creative = algorithm finds right audience through resonance.', source: 'Multiple Experts', topic: 'creative' },
+            { title: 'Scale and Pull Back', text: 'Increase +30% → Wait 3-7 days → If CPA settles, push again. If not, pull back 15%.', source: 'Ben Heath', topic: 'scaling' },
+            { title: 'CAPI is Mandatory', text: 'Server-side tracking bypasses browser limitations. Without it, algorithm goes blind.', source: 'Ben Heath / Foxwell', topic: 'tracking' },
+            { title: 'Accept Zero-Spend Days', text: 'With manual bidding, sometimes no quality inventory. Don\'t force bad spend.', source: 'Konstantinos', topic: 'bidding' }
+        ];
+        
+        let activeFilter = 'all';
+        let searchQuery = '';
+        
+        function renderExperts() {
+            const grid = document.getElementById('expertsGrid');
+            let filtered = experts;
+            
+            if (activeFilter !== 'all') {
+                filtered = filtered.filter(e => e.topics.includes(activeFilter));
+            }
+            
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(e => 
+                    e.name.toLowerCase().includes(q) ||
+                    e.company.toLowerCase().includes(q) ||
+                    e.focus.toLowerCase().includes(q) ||
+                    e.frameworks.some(f => f.toLowerCase().includes(q)) ||
+                    e.keyTactics.some(t => t.title.toLowerCase().includes(q) || t.text.toLowerCase().includes(q))
+                );
+            }
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results" style="grid-column: 1/-1;">
+                        <div class="no-results-icon">🔍</div>
+                        <p>No experts match your search</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(expert => `
+                <div class="expert-card ${expert.status === 'pending' ? 'pending' : ''}" onclick="showExpertDetail('${expert.id}')">
+                    <div class="expert-header">
+                        <div>
+                            <div class="expert-name">${expert.name}</div>
+                            <div class="expert-company">${expert.company}</div>
+                        </div>
+                        <span class="expert-status status-${expert.status}">${expert.status === 'done' ? '✓ Researched' : '⏳ Pending'}</span>
+                    </div>
+                    <div class="expert-focus">${expert.focus}</div>
+                    <div class="expert-topics">
+                        ${expert.topics.map(t => `<span class="topic-tag topic-${t}">${getTopicLabel(t)}</span>`).join('')}
+                    </div>
+                    <div class="expert-frameworks">
+                        <div class="framework-title">Key Frameworks</div>
+                        <div class="framework-list">
+                            ${expert.frameworks.slice(0, 4).map(f => `<span class="framework-item">${f}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderTactics() {
+            const grid = document.getElementById('tacticsGrid');
+            let filtered = quickTactics;
+            
+            if (activeFilter !== 'all') {
+                filtered = filtered.filter(t => t.topic === activeFilter);
+            }
+            
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(t => 
+                    t.title.toLowerCase().includes(q) ||
+                    t.text.toLowerCase().includes(q) ||
+                    t.source.toLowerCase().includes(q)
+                );
+            }
+            
+            grid.innerHTML = filtered.map(tactic => `
+                <div class="tactic-card">
+                    <h3><span class="topic-tag topic-${tactic.topic}">${getTopicEmoji(tactic.topic)}</span> ${tactic.title}</h3>
+                    <p>${tactic.text}</p>
+                    <div class="tactic-source">— ${tactic.source}</div>
+                </div>
+            `).join('');
+        }
+        
+        function getTopicLabel(topic) {
+            const labels = {
+                creative: '🎨 Creative',
+                structure: '🏗️ Structure',
+                bidding: '💰 Bidding',
+                scaling: '📈 Scaling',
+                tracking: '📊 Tracking'
+            };
+            return labels[topic] || topic;
+        }
+        
+        function getTopicEmoji(topic) {
+            const emojis = {
+                creative: '🎨',
+                structure: '🏗️',
+                bidding: '💰',
+                scaling: '📈',
+                tracking: '📊'
+            };
+            return emojis[topic] || '📌';
+        }
+        
+        function showExpertDetail(id) {
+            const expert = experts.find(e => e.id === id);
+            if (!expert) return;
+            
+            document.getElementById('modalBody').innerHTML = `
+                <div class="modal-header">
+                    <h2>${expert.name}</h2>
+                    <div class="subtitle">${expert.company} • ${expert.status === 'done' ? '✓ Researched' : '⏳ Research Pending'}</div>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-bottom: 20px; color: var(--text-muted);">${expert.focus}</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong>Topics:</strong> ${expert.topics.map(t => getTopicLabel(t)).join(' • ')}
+                    </div>
+                    
+                    <h3>Key Frameworks</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+                        ${expert.frameworks.map(f => `<span class="framework-item">${f}</span>`).join('')}
+                    </div>
+                    
+                    <h3>Quick Tactics</h3>
+                    <ul>
+                        ${expert.keyTactics.map(t => `<li><strong>${t.title}:</strong> ${t.text}</li>`).join('')}
+                    </ul>
+                    
+                    ${expert.fullContent}
+                </div>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+        
+        // Event listeners
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.topic;
+                renderExperts();
+                renderTactics();
+            });
+        });
+        
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderExperts();
+            renderTactics();
+        });
+        
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'modalOverlay') closeModal();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+        
+        // Initial render
+        renderExperts();
+        renderTactics();
+    </script>
+</body>
+</html>
