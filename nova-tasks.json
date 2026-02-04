@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-03T03:15:00+02:00",
+  "lastUpdated": "2026-02-04T03:15:00+02:00",
   "ivo": {
     "backlog": [],
     "next": [],
@@ -27,7 +27,8 @@
       {"id": 104, "task": "Build 3-lane task tracker", "completed": "2026-02-01"},
       {"id": 105, "task": "Build Habit Streaks Dashboard", "completed": "2026-02-01"},
       {"id": 106, "task": "Build Knowledge Graph Viewer", "completed": "2026-02-02"},
-      {"id": 107, "task": "Build Meta Ads Knowledge Base", "completed": "2026-02-03"}
+      {"id": 107, "task": "Build Meta Ads Knowledge Base", "completed": "2026-02-03"},
+      {"id": 108, "task": "Build Copy Progress Dashboard", "completed": "2026-02-04"}
     ]
   },
   "shared": {
@@ -70,6 +71,12 @@
       "title": "Meta Ads Knowledge Base",
       "description": "Searchable dashboard of Meta Ads expert strategies. Features 12 experts (8 researched), topic filtering (Creative/Structure/Bidding/Scaling/Tracking), key frameworks, and quick-reference tactics. Built to make the Deep Research findings easily accessible during campaign work.",
       "url": "https://knowledge-quest-tan.vercel.app/meta-ads-kb.html"
+    },
+    {
+      "date": "2026-02-04",
+      "title": "Copy Progress Dashboard",
+      "description": "Visual tracker for the Alessa product descriptions project. Shows 50% progress (477/952), session history chart, milestone bar, and estimated days to completion. Motivational messages based on progress percentage.",
+      "url": "https://knowledge-quest-tan.vercel.app/copy-progress.html"
     }
   ]
 }
