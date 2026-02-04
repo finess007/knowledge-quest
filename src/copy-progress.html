@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alessa Copy Progress</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #8892b0;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+        
+        /* Big Progress Circle */
+        .progress-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .progress-ring {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .progress-ring svg {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 12;
+        }
+        
+        .progress-ring .bg {
+            stroke: rgba(255,255,255,0.1);
+        }
+        
+        .progress-ring .progress {
+            stroke: url(#gradient);
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .progress-percent {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .progress-label {
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #8892b0;
+            margin-top: 5px;
+        }
+        
+        /* Milestones */
+        .milestones {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .milestones h3 {
+            font-size: 1rem;
+            color: #8892b0;
+            margin-bottom: 15px;
+        }
+        
+        .milestone-bar {
+            position: relative;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .milestone-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            border-radius: 15px;
+            transition: width 1s ease;
+        }
+        
+        .milestone-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding: 0 5px;
+        }
+        
+        .milestone-marker {
+            font-size: 0.75rem;
+            color: #8892b0;
+        }
+        
+        .milestone-marker.reached {
+            color: #00d9ff;
+        }
+        
+        .milestone-marker.current {
+            color: #e94560;
+            font-weight: 700;
+        }
+        
+        /* Session History */
+        .sessions {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .sessions h3 {
+            font-size: 1rem;
+            color: #8892b0;
+            margin-bottom: 15px;
+        }
+        
+        .session-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 120px;
+        }
+        
+        .session-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .session-bar {
+            width: 100%;
+            background: linear-gradient(180deg, #e94560, #ff6b6b);
+            border-radius: 6px 6px 0 0;
+            min-height: 20px;
+            transition: height 0.5s ease;
+        }
+        
+        .session-count {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .session-date {
+            font-size: 0.7rem;
+            color: #8892b0;
+            margin-top: 2px;
+        }
+        
+        /* Countdown */
+        .countdown {
+            text-align: center;
+            padding: 20px;
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+        
+        .countdown-label {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Motivational Message */
+        .motivation {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1rem;
+            color: #ccd6f6;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.75rem;
+            margin-top: 30px;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Alessa Copy Progress</h1>
+        <p class="subtitle">Tracking 952 product descriptions</p>
+        
+        <!-- Big Progress Circle -->
+        <div class="progress-hero">
+            <div class="progress-ring">
+                <svg width="200" height="200">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#e94560"/>
+                            <stop offset="100%" style="stop-color:#ff6b6b"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="bg" cx="100" cy="100" r="88"/>
+                    <circle class="progress" id="progressCircle" cx="100" cy="100" r="88" 
+                            stroke-dasharray="553" stroke-dashoffset="553"/>
+                </svg>
+                <div class="progress-text">
+                    <div class="progress-percent" id="percentText">0%</div>
+                    <div class="progress-label" id="countText">0 / 952</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="doneCount">—</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="remainingCount">—</div>
+                <div class="stat-label">Remaining</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="dailyAvg">—</div>
+                <div class="stat-label">Daily Avg</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgLength">—</div>
+                <div class="stat-label">Avg Chars</div>
+            </div>
+        </div>
+        
+        <!-- Countdown -->
+        <div class="countdown">
+            <div class="countdown-value" id="daysRemaining">—</div>
+            <div class="countdown-label">estimated days to finish at current pace</div>
+        </div>
+        
+        <!-- Milestones -->
+        <div class="milestones">
+            <h3>🏆 Milestones</h3>
+            <div class="milestone-bar">
+                <div class="milestone-fill" id="milestoneFill"></div>
+            </div>
+            <div class="milestone-markers">
+                <span class="milestone-marker" data-target="0">0</span>
+                <span class="milestone-marker" data-target="250">250</span>
+                <span class="milestone-marker" data-target="500">500</span>
+                <span class="milestone-marker" data-target="750">750</span>
+                <span class="milestone-marker" data-target="952">952 🎉</span>
+            </div>
+        </div>
+        
+        <!-- Session History -->
+        <div class="sessions">
+            <h3>📊 Session History</h3>
+            <div class="session-bars" id="sessionBars">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+        
+        <!-- Motivation -->
+        <div class="motivation" id="motivation">
+            Loading motivation...
+        </div>
+        
+        <div class="footer">
+            Last updated: <span id="lastUpdated">—</span><br>
+            Built by Nova ✨ for the midnight grind
+        </div>
+    </div>
+    
+    <script>
+        // Stats data - updated by sync script
+        const stats = {
+            lastUpdated: "2026-02-04T03:00:00",
+            total: 952,
+            done: 477,
+            remaining: 475,
+            percentage: 50.1,
+            avgDescLength: 175,
+            dailyAverage: 119,
+            estimatedDaysRemaining: 4.0,
+            sessionHistory: [
+                {date: "2026-01-31", count: 50, note: "First session"},
+                {date: "2026-02-01", count: 110, note: "Big push"},
+                {date: "2026-02-02", count: 219, note: "Steady progress"},
+                {date: "2026-02-03", count: 98, note: "Massive session!"}
+            ]
+        };
+        
+        // Motivational messages based on progress
+        const motivations = {
+            0: "Every journey starts with a single step. Let's go! 🚀",
+            25: "Quarter of the way there! Building momentum... 💪",
+            50: "HALFWAY! The summit is in sight. Keep climbing! ⛰️",
+            75: "Home stretch! You can taste the finish line. 🏃‍♂️",
+            90: "So close! Just a few more to go. Finish strong! 🔥",
+            100: "🎉 COMPLETE! All 952 products done. Absolute legend. 👑"
+        };
+        
+        function getMotivation(percent) {
+            const thresholds = [100, 90, 75, 50, 25, 0];
+            for (const t of thresholds) {
+                if (percent >= t) return motivations[t];
+            }
+            return motivations[0];
+        }
+        
+        function init() {
+            // Animate progress circle
+            const circle = document.getElementById('progressCircle');
+            const circumference = 2 * Math.PI * 88; // 553
+            const offset = circumference * (1 - stats.percentage / 100);
+            
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 100);
+            
+            // Update text
+            document.getElementById('percentText').textContent = `${stats.percentage}%`;
+            document.getElementById('countText').textContent = `${stats.done} / ${stats.total}`;
+            document.getElementById('doneCount').textContent = stats.done;
+            document.getElementById('remainingCount').textContent = stats.remaining;
+            document.getElementById('dailyAvg').textContent = stats.dailyAverage;
+            document.getElementById('avgLength').textContent = stats.avgDescLength;
+            document.getElementById('daysRemaining').textContent = stats.estimatedDaysRemaining;
+            
+            // Milestone bar
+            const milestoneFill = document.getElementById('milestoneFill');
+            milestoneFill.style.width = `${stats.percentage}%`;
+            
+            // Update milestone markers
+            document.querySelectorAll('.milestone-marker').forEach(marker => {
+                const target = parseInt(marker.dataset.target);
+                if (stats.done >= target) {
+                    marker.classList.add('reached');
+                }
+                // Mark current position
+                if (target === 500 && stats.done >= 477 && stats.done < 500) {
+                    marker.classList.add('current');
+                }
+            });
+            
+            // Session history bars
+            const sessionBars = document.getElementById('sessionBars');
+            const maxCount = Math.max(...stats.sessionHistory.map(s => s.count));
+            
+            sessionBars.innerHTML = stats.sessionHistory.map(session => {
+                const height = (session.count / maxCount) * 100;
+                const dateStr = session.date.split('-').slice(1).join('/');
+                return `
+                    <div class="session-bar-container">
+                        <div class="session-bar" style="height: ${height}px" title="${session.note}"></div>
+                        <div class="session-count">${session.count}</div>
+                        <div class="session-date">${dateStr}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Motivation
+            document.getElementById('motivation').textContent = getMotivation(stats.percentage);
+            
+            // Last updated
+            const updated = new Date(stats.lastUpdated);
+            document.getElementById('lastUpdated').textContent = updated.toLocaleString('en-GB', {
+                day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+            });
+        }
+        
+        init();
+    </script>
+</body>
+</html>
