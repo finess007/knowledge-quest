@@ -1,25 +1,126 @@
 {
-  "totalSessions": 6,
-  "lastUpdated": "2026-02-05T11:00:00+02:00",
-  "stats": {
-    "totalQuestions": 199,
-    "overallAccuracy": 66,
-    "currentStreak": 4
-  },
+  "startDate": "2026-01-31",
+  "lastSession": "2026-02-05T16:38:00+02:00",
+  "totalSessions": 7,
+  "totalQuestions": 185,
+  "totalCorrect": 120,
+  "currentStreak": 5,
+  "bestStreak": 4,
+  "masterListSource": "The Ultimate Phrasal Verb Book",
+  "masterListFile": "phrasal-verbs-master.json",
+  "masterListTotal": 312,
   "sessionHistory": [
-    {"date": "2026-01-31", "session": 1, "correct": 11, "questions": 23, "pct": 48},
-    {"date": "2026-01-31", "session": 2, "correct": 30, "questions": 54, "pct": 56},
-    {"date": "2026-01-31", "session": 3, "correct": 21, "questions": 24, "pct": 88},
-    {"date": "2026-02-01", "session": 4, "correct": 7, "questions": 7, "pct": 100},
-    {"date": "2026-02-03", "session": 5, "correct": 14, "questions": 21, "pct": 67},
-    {"date": "2026-02-03", "session": 6, "correct": 48, "questions": 70, "pct": 69}
+    {
+      "date": "2026-01-31",
+      "session": 1,
+      "questions": 23,
+      "correct": 11,
+      "pct": 48
+    },
+    {
+      "date": "2026-01-31",
+      "session": 2,
+      "questions": 54,
+      "correct": 30,
+      "pct": 56
+    },
+    {
+      "date": "2026-01-31",
+      "session": 3,
+      "questions": 24,
+      "correct": 21,
+      "pct": 88
+    },
+    {
+      "date": "2026-02-01",
+      "session": 4,
+      "questions": 7,
+      "correct": 7,
+      "pct": 100
+    },
+    {
+      "date": "2026-02-03",
+      "session": 5,
+      "questions": 21,
+      "correct": 14,
+      "pct": 67
+    },
+    {
+      "date": "2026-02-03",
+      "session": 6,
+      "questions": 70,
+      "correct": 48,
+      "pct": 69,
+      "note": "Rounds 1-10, master list added"
+    },
+    {
+      "date": "2026-02-05",
+      "session": 7,
+      "questions": 21,
+      "correct": 16,
+      "pct": 76,
+      "note": "Demo for Megan - 3 rounds"
+    }
   ],
-  "boxes": {
-    "0": ["blow up", "point out", "take on", "pull off", "blow away", "get rid of", "cut out"],
-    "1": ["end up", "call off", "sort out"],
-    "2": ["figure out", "broke down", "showed up", "turned up", "kick off", "fill in", "took off", "check out", "carry out", "went off", "hang out", "pick up"],
-    "3": ["get by", "looks like", "go over", "went on", "cut down", "make up", "come up with", "take out", "look over"],
-    "4": ["look into", "put off", "give up", "turn down", "wrap up", "look for", "bring up", "put up with", "cut back", "came across", "carry on", "got it", "find out", "keep on", "get back", "ramp up", "bounce back"],
-    "5": ["got in", "work out", "stumble upon", "look up to", "go up"]
-  }
+  "verbsToDrill": [
+    "blow up",
+    "point out",
+    "take on",
+    "pull off",
+    "blow away",
+    "get rid of",
+    "cut out",
+    "go down",
+    "think back",
+    "reach out to"
+  ],
+  "verbsMastered": [
+    "look into",
+    "put off",
+    "figure out",
+    "give up",
+    "turn down",
+    "wrap up",
+    "get in",
+    "look for",
+    "bring up",
+    "put up with",
+    "cut back",
+    "come across",
+    "stumble upon",
+    "look up to",
+    "go up",
+    "break down",
+    "show up",
+    "turn up",
+    "kick off",
+    "fill in",
+    "take off",
+    "check out",
+    "carry out",
+    "go off",
+    "hang out",
+    "work out",
+    "get by",
+    "look like",
+    "go over",
+    "go on",
+    "cut down",
+    "make up",
+    "come up with",
+    "take out",
+    "look over",
+    "find out",
+    "keep on",
+    "get back",
+    "ramp up",
+    "bounce back",
+    "let down",
+    "fell through",
+    "call off",
+    "run into"
+  ],
+  "masteredFromBook": 29,
+  "masteredExtra": 11,
+  "remainingToLearn": 283
 }
