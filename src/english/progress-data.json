@@ -1,47 +1,25 @@
 {
-  "totalSessions": 4,
-  "lastUpdated": "2026-02-01T18:51:00+02:00",
+  "totalSessions": 6,
+  "lastUpdated": "2026-02-05T11:00:00+02:00",
   "stats": {
-    "totalQuestions": 108,
-    "overallAccuracy": 64,
+    "totalQuestions": 199,
+    "overallAccuracy": 66,
     "currentStreak": 4
   },
   "sessionHistory": [
-    {
-      "date": "2026-01-31",
-      "session": 1,
-      "correct": 11,
-      "questions": 23,
-      "pct": 48
-    },
-    {
-      "date": "2026-01-31",
-      "session": 2,
-      "correct": 30,
-      "questions": 54,
-      "pct": 56
-    },
-    {
-      "date": "2026-01-31",
-      "session": 3,
-      "correct": 21,
-      "questions": 24,
-      "pct": 88
-    },
-    {
-      "date": "2026-02-01",
-      "session": 4,
-      "correct": 7,
-      "questions": 7,
-      "pct": 100
-    }
+    {"date": "2026-01-31", "session": 1, "correct": 11, "questions": 23, "pct": 48},
+    {"date": "2026-01-31", "session": 2, "correct": 30, "questions": 54, "pct": 56},
+    {"date": "2026-01-31", "session": 3, "correct": 21, "questions": 24, "pct": 88},
+    {"date": "2026-02-01", "session": 4, "correct": 7, "questions": 7, "pct": 100},
+    {"date": "2026-02-03", "session": 5, "correct": 14, "questions": 21, "pct": 67},
+    {"date": "2026-02-03", "session": 6, "correct": 48, "questions": 70, "pct": 69}
   ],
   "boxes": {
-    "0": ["end up", "call off", "sort out"],
-    "1": ["figure out"],
-    "2": ["broke down", "showed up", "turned up", "kick off", "fill in", "took off", "check out", "carry out", "went off", "hang out", "pick up"],
+    "0": ["blow up", "point out", "take on", "pull off", "blow away", "get rid of", "cut out"],
+    "1": ["end up", "call off", "sort out"],
+    "2": ["figure out", "broke down", "showed up", "turned up", "kick off", "fill in", "took off", "check out", "carry out", "went off", "hang out", "pick up"],
     "3": ["get by", "looks like", "go over", "went on", "cut down", "make up", "come up with", "take out", "look over"],
-    "4": ["look into", "put off", "give up", "turn down", "wrap up", "look for", "bring up", "put up with", "cut back", "came across", "carry on", "got it"],
-    "5": ["got in"]
+    "4": ["look into", "put off", "give up", "turn down", "wrap up", "look for", "bring up", "put up with", "cut back", "came across", "carry on", "got it", "find out", "keep on", "get back", "ramp up", "bounce back"],
+    "5": ["got in", "work out", "stumble upon", "look up to", "go up"]
   }
 }
