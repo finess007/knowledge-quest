@@ -17,6 +17,7 @@
         h1 { text-align: center; font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(90deg, #e94560, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { text-align: center; color: #888; margin-bottom: 40px; font-size: 1.1rem; }
         .section { background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .section.rule1 { background: rgba(231, 76, 60, 0.15); border: 2px solid #e74c3c; }
         h2 { color: #e94560; margin-bottom: 20px; font-size: 1.5rem; }
         h3 { color: #ff6b6b; margin: 20px 0 15px 0; font-size: 1.2rem; }
         h4 { color: #4ecdc4; margin: 15px 0 10px 0; font-size: 1rem; }
@@ -27,17 +28,10 @@
         .highlight-box { background: rgba(233, 69, 96, 0.15); border-left: 4px solid #e94560; padding: 20px; margin: 20px 0; border-radius: 0 12px 12px 0; }
         .word-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 20px 0; }
         .word-tag { background: rgba(233, 69, 96, 0.2); color: #ff6b6b; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(233, 69, 96, 0.3); }
-        .word-tag.bg { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; border-color: rgba(78, 205, 196, 0.3); }
-        .word-tag.sexy { background: rgba(255, 107, 107, 0.25); border-color: rgba(255, 107, 107, 0.4); }
-        .word-tag.confident { background: rgba(233, 69, 96, 0.25); border-color: rgba(233, 69, 96, 0.4); }
-        .word-tag.unique { background: rgba(155, 89, 182, 0.25); color: #bb8fce; border-color: rgba(155, 89, 182, 0.4); }
-        .word-tag.romantic { background: rgba(236, 100, 148, 0.25); color: #f8a5c2; border-color: rgba(236, 100, 148, 0.4); }
-        .word-tag.stylish { background: rgba(52, 152, 219, 0.25); color: #85c1e9; border-color: rgba(52, 152, 219, 0.4); }
-        .word-tag.sensory { background: rgba(241, 196, 15, 0.25); color: #f9e79f; border-color: rgba(241, 196, 15, 0.4); }
-        .word-tag.exciting { background: rgba(230, 126, 34, 0.25); color: #f5b041; border-color: rgba(230, 126, 34, 0.4); }
-        .word-tag.phrase { background: rgba(46, 204, 113, 0.2); color: #82e0aa; border-color: rgba(46, 204, 113, 0.3); font-size: 0.8rem; }
+        .word-tag.phrase { background: rgba(46, 204, 113, 0.2); color: #82e0aa; border-color: rgba(46, 204, 113, 0.3); }
         .word-tag.avoid { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border-color: rgba(231, 76, 60, 0.3); text-decoration: line-through; opacity: 0.7; }
         .word-tag.material { background: rgba(142, 68, 173, 0.25); color: #d7bde2; border-color: rgba(142, 68, 173, 0.4); }
+        .word-tag.bg { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; border-color: rgba(78, 205, 196, 0.3); }
         .example { background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 12px; margin: 15px 0; font-style: italic; border-left: 3px solid #4ecdc4; }
         .example.en { border-left-color: #e94560; }
         .example-label { color: #4ecdc4; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-style: normal; }
@@ -46,7 +40,6 @@
         .tone-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; text-align: center; }
         .tone-card h4 { color: #e94560; margin-bottom: 10px; }
         .tone-card p { font-size: 0.9rem; margin: 0; }
-        .dual-example { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
         .category-section { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .category-section:last-child { border-bottom: none; }
         .dress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 15px 0; }
@@ -57,8 +50,8 @@
         .collapsible::after { content: " ▼"; font-size: 0.8em; }
         .collapsible.active::after { content: " ▲"; }
         .content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .content.show { max-height: 2000px; }
-        @media (max-width: 700px) { .dual-example { grid-template-columns: 1fr; } .dress-grid { grid-template-columns: 1fr; } }
+        .content.show { max-height: 5000px; }
+        .version { text-align: center; color: #666; font-size: 0.8rem; margin-top: 20px; }
         @media (max-width: 600px) { h1 { font-size: 1.8rem; } .section { padding: 20px; } }
     </style>
 </head>
@@ -66,576 +59,162 @@
     <a href="index.html" style="position:fixed;top:16px;left:16px;color:#888;text-decoration:none;font-size:0.9rem;z-index:1000;background:rgba(0,0,0,0.5);padding:8px 12px;border-radius:8px;">← Dashboard</a>
     <div class="container">
         <h1>✨ Alessa Copy Style Guide</h1>
-        <p class="subtitle">Универсално ръководство за описания, ads и captions • v2.0</p>
-        
-        <!-- RULE #1 -->
-        <div class="section" style="background: rgba(231, 76, 60, 0.15); border: 2px solid #e74c3c;">
-            <h2>⚠️ RULE #1: Always Use Browser to View Photos</h2>
-            <p style="font-size: 1.2rem; color: #fff;">Before writing ANY copy, use <strong>browser automation</strong> to load the product page. web_fetch can't handle Alessa's JS-rendered pages.</p>
-            <p style="font-size: 1rem; color: #ccc; margin-top: 0.5rem;">This lets you SEE the actual photos and get full product details. Never write from product name alone.</p>
-        </div>
-        
-        <!-- GOAL & FORMULA -->
-        <div class="section">
-            <h2>🎯 The Goal / Целта</h2>
-            <p>Short, scroll-stopping captions (150–200 chars) that are <strong>sexy, bold, and magnetic</strong> — selling both the fantasy and the fit.</p>
-            <div class="highlight-box">
-                <strong>The Fantasy:</strong> The Big Life. Being a total package. Never average.<br><br>
-                <strong>Фантазията:</strong> Големият живот. Да си цялостна. Никога средностатистическа.
-            </div>
-            <h3>📐 Формулата</h3>
-            <p><strong>прилагателно/идиом → материя → тип → отличителна характеристика</strong></p>
-            <p>Order: Opinion → Size/length → Color → Style/cut → Material → Noun → Detail</p>
-            <div class="example">
-                <div class="example-label">Example</div>
-                "Stylish long blue baggy cotton trousers with a red pocket"
-            </div>
-        </div>
-
-        <!-- CORE BENEFITS -->
-        <div class="section">
-            <h2>💎 Core Benefits (Pick 1-2)</h2>
-            <div class="tone-grid">
-                <div class="tone-card"><h4>👑 Confident</h4><p>Превъзходство<br>Лошо момиче<br>Feel incredible</p></div>
-                <div class="tone-card"><h4>🔥 Effortlessly Sexy</h4><p>Bold, irresistible<br>STUNNING, Hot<br>Provocative</p></div>
-                <div class="tone-card"><h4>⭐ Открояваща се</h4><p>Различна, незабравима<br>Chic, Fashionable<br>A class of her own</p></div>
-            </div>
-        </div>
-
-        <!-- 10R BENEFITS FRAMEWORK -->
-        <div class="section">
-            <h2>🎯 10R Benefits Framework</h2>
-            <p>Истинската емоционална трансформация, която клиентките търсят. Използвай тези ъгли в copy-то.</p>
-            
-            <h3 class="collapsible">👑 Уверена (Confident)</h3>
-            <div class="content">
-                <ul>
-                    <li>Чувстваш се като чисто нов, в топ форма</li>
-                    <li>Всичко е изпипано до най-малкия детайл — можеш да се отпуснеш и да се насладиш на момента</li>
-                    <li>Има самочувствие от начина, по който изглеждаш</li>
-                    <li>Харесваш жената, която ти се усмихва в огледалото</li>
-                    <li>Подчинява погледи</li>
-                    <li>Чувстваш се подготвена, "готова" за всичко. Твоята непроницаема модна броня</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">⭐ Открояваща (Stand Out)</h3>
-            <div class="content">
-                <ul>
-                    <li>Обираш погледи. Като влезнеш някъде и всичко спира</li>
-                    <li>Оглеждат те навсякъде, откъдето минеш</li>
-                    <li>Не се притеснява да бъде обсъждана и да се говори за нея</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">🔥 Секси (Sexy)</h3>
-            <div class="content">
-                <ul>
-                    <li>Секси си и другият пол те желае</li>
-                    <li>Съблазнителка с огромен контрол над мъжете</li>
-                    <li>Може да предизвика пожар у всекиго само с присъствието си</li>
-                    <li>Мъжете се редят на опашка</li>
-                    <li>Разбиваш сърца</li>
-                    <li>Телефонът ти е задръстен от съобщения и покани</li>
-                    <li>Дори и да не си стъпила на пешеходна пътека, всички коли спират</li>
-                    <li>Обичаш да се чувстваш желана</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">👗 Мода и стил (Fashion Identity)</h3>
-            <div class="content">
-                <ul>
-                    <li>Сутрин се събужда с усмивка, защото знае, че ИМА какво да облече</li>
-                    <li>Има изтънчен вкус. Държи на качеството</li>
-                    <li>Толкова копирана, че създава трендове със стила си</li>
-                    <li>Превръщаш се в идол и пример за подражание</li>
-                    <li>Притежаваш гардероб, за който повечето жени биха убили</li>
-                    <li>Всеки те моли за модни съвети</li>
-                    <li>Най-добре облеченото момиче в стаята</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">👑 Социално отношение (Social Treatment)</h3>
-            <div class="content">
-                <ul>
-                    <li>Хората те уважават и те третират по различен начин, когато си облечена добре</li>
-                    <li>Правиш уникално първо впечатление. Хората трудно те забравят</li>
-                    <li>Чувстваш се VIP навсякъде — познават те, имат специално отношение</li>
-                    <li>В ресторанта, най-скъпото вино е на масата ти като комплимент</li>
-                    <li>Кралица сред простосмъртни</li>
-                    <li>Хората търсят твоето одобрение</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">👩‍👧 Роли (Roles)</h3>
-            <div class="content">
-                <ul>
-                    <li>Майка, с която дъщеря ти се гордее</li>
-                    <li>Жена, която има всичко — кариера, семейство, външен вид, характер</li>
-                    <li>Съпруга мечта — типа жена, за която мъжът ти благодари на Вселената всяка вечер</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">⚡ Енергия & Терапия</h3>
-            <div class="content">
-                <ul>
-                    <li>Изглеждаш и се чувстваш по-млада</li>
-                    <li>Изпълнена с енергия и ентусиазъм</li>
-                    <li>Стъпваща по въздуха заради новата придобивка</li>
-                    <li>Shopping терапия — "Заслужила си си го. Имаш нужда."</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">🧬 Идентичност (Identity)</h3>
-            <div class="content">
-                <ul>
-                    <li>Ти си необикновена, различна и искаш това да си личи</li>
-                    <li>Взискателна към детайлите</li>
-                    <li>Амбициозна. Искаш най-доброто от живота</li>
-                    <li>Постигнала си успех и искаш да го демонстрираш</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">🛡️ Проблем / Решение</h3>
-            <div class="content">
-                <ul>
-                    <li>Помага да се справиш с липса на самочувствие, комплекси</li>
-                    <li>Ако си някъде на мега скъпо — това е твоята броня</li>
-                    <li>Скука и еднообразие. Нуждаеш се от нещо ново</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">⭐ Принадлежност (Belonging)</h3>
-            <div class="content">
-                <ul>
-                    <li>Приличаш на идолите си. Hollywood. Все едно си от филм</li>
-                    <li>Да принадлежиш към дадена общност от сходномислещи</li>
-                    <li>Да си част от нещо по-голямо</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">💼 Успех и кариера</h3>
-            <div class="content">
-                <ul>
-                    <li>Интервю за работа? Мястото е твое още преди да си отворила устата</li>
-                    <li>Пред която няма граници. Покорява върхове</li>
-                    <li>Нямаш конкуренция — винаги си няколко крачки напред</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">⚔️ Конкуренция</h3>
-            <div class="content">
-                <ul>
-                    <li>Твоя пол те оглежда — някои с яд, други с интерес, трети искат да са като теб</li>
-                    <li>Депресираш конкуренцията. По-яка си от всички</li>
-                    <li>Жените се страхуват да не им "откраднеш" мъжа</li>
-                    <li>Кара всяка да се обръща след теб с лека завист</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">🔥 Отмъщение (Revenge)</h3>
-            <div class="content">
-                <ul>
-                    <li>Натриваш носа на онзи, който ти разби сърцето. Само при вида ти вече съжалява</li>
-                    <li>Тая, която опитваше да ти краде гаджета — сега те гледа със страхопочитание</li>
-                </ul>
-            </div>
-            
-            <h3 class="collapsible">👑 Популярна и харесвана</h3>
-            <div class="content">
-                <ul>
-                    <li>Жените правят всичко възможно да станат част от твоя кръг</li>
-                    <li>Постоянно се носят слухове за теб. Всяка стъпка се следи</li>
-                    <li>Всеки търси вниманието ти. Никой не те прекъсва</li>
-                </ul>
-            </div>
-            
-            <div class="highlight-box">
-                <strong>Ключов инсайт:</strong> Жената не купува дреха — тя купува трансформацията. Всеки продукт = обещание за една от тези емоции.
-            </div>
-        </div>
-
-        <!-- ENGLISH POWER WORDS -->
-        <div class="section">
-            <h2>🔥 English Power Words</h2>
-            
-            <h3>Action Verbs</h3>
-            <div class="word-cloud">
-                <span class="word-tag">flaunt</span><span class="word-tag">swerve</span><span class="word-tag">ignite</span><span class="word-tag">slay</span><span class="word-tag">glow up</span><span class="word-tag">turn heads</span><span class="word-tag">serve</span><span class="word-tag">flex</span><span class="word-tag">vibe</span><span class="word-tag">mesmerize</span><span class="word-tag">treasure</span><span class="word-tag">uncover</span><span class="word-tag">entice</span><span class="word-tag">enthrall</span><span class="word-tag">immerse</span><span class="word-tag">captivate</span><span class="word-tag">relish</span><span class="word-tag">purr</span><span class="word-tag">transform</span><span class="word-tag">ooze</span><span class="word-tag">escape</span><span class="word-tag">supercharge</span><span class="word-tag">tease</span><span class="word-tag">grab</span><span class="word-tag">tickle</span><span class="word-tag">amaze</span><span class="word-tag">blow your mind</span>
-            </div>
-            
-            <h3>Punchy Phrases</h3>
-            <div class="word-cloud">
-                <span class="word-tag phrase">salivating over</span><span class="word-tag phrase">adding it to your repertoire</span><span class="word-tag phrase">drive em insane</span><span class="word-tag phrase">check it out</span><span class="word-tag phrase">crack the code</span><span class="word-tag phrase">get around the rules</span><span class="word-tag phrase">walk away from it</span><span class="word-tag phrase">can't deny</span>
-            </div>
-            
-            <h3>Emotion Words</h3>
-            <div class="word-cloud">
-                <span class="word-tag">unstoppable</span><span class="word-tag">bold</span><span class="word-tag">magnetic</span><span class="word-tag">iconic</span><span class="word-tag">elevated</span><span class="word-tag">effortless</span><span class="word-tag">coy</span><span class="word-tag">fierce</span><span class="word-tag">flawless</span><span class="word-tag">edgy</span>
-            </div>
-            
-            <h3 class="collapsible">Adjectives by Category (click to expand)</h3>
-            <div class="content">
-                <h4>Appealing</h4>
-                <div class="word-cloud">
-                    <span class="word-tag">irresistible</span><span class="word-tag">charming</span><span class="word-tag">delightful</span><span class="word-tag">enchanting</span><span class="word-tag">captivating</span><span class="word-tag">bewitching</span><span class="word-tag">memorable</span><span class="word-tag">unforgettable</span><span class="word-tag">exquisite</span><span class="word-tag">enthralling</span><span class="word-tag">alluring</span><span class="word-tag">fetching</span><span class="word-tag">inviting</span><span class="word-tag">a gem</span>
-                </div>
-                
-                <h4>Exciting</h4>
-                <div class="word-cloud">
-                    <span class="word-tag exciting">provocative</span><span class="word-tag exciting">sizzling</span><span class="word-tag exciting">vivid</span><span class="word-tag exciting">stunning</span><span class="word-tag exciting">striking</span><span class="word-tag exciting">seductive</span><span class="word-tag exciting">tantalizing</span><span class="word-tag exciting">sensational</span><span class="word-tag exciting">explosive</span><span class="word-tag exciting">dramatic</span><span class="word-tag exciting">thrilling</span><span class="word-tag exciting">breathtaking</span><span class="word-tag exciting">mesmerizing</span><span class="word-tag exciting">electrifying</span><span class="word-tag exciting">a knockout</span>
-                </div>
-                
-                <h4>Romantic</h4>
-                <div class="word-cloud">
-                    <span class="word-tag romantic">enchanting</span><span class="word-tag romantic">haunting</span><span class="word-tag romantic">evocative</span><span class="word-tag romantic">mystical</span><span class="word-tag romantic">magical</span><span class="word-tag romantic">dreamlike</span><span class="word-tag romantic">passionate</span><span class="word-tag romantic">intimate</span><span class="word-tag romantic">rapturous</span><span class="word-tag romantic">ravishing</span>
-                </div>
-                
-                <h4>Unique</h4>
-                <div class="word-cloud">
-                    <span class="word-tag unique">unprecedented</span><span class="word-tag unique">distinctive</span><span class="word-tag unique">exclusive</span><span class="word-tag unique">rare</span><span class="word-tag unique">exceptional</span><span class="word-tag unique">one of a kind</span><span class="word-tag unique">matchless</span><span class="word-tag unique">incomparable</span><span class="word-tag unique">original</span><span class="word-tag unique">extraordinary</span><span class="word-tag unique">a rare find</span>
-                </div>
-                
-                <h4>Sensory</h4>
-                <div class="word-cloud">
-                    <span class="word-tag sensory">gorgeous</span><span class="word-tag sensory">sensuous</span><span class="word-tag sensory">elegant</span><span class="word-tag sensory">dazzling</span><span class="word-tag sensory">splendid</span><span class="word-tag sensory">sheer</span><span class="word-tag sensory">voluptuous</span><span class="word-tag sensory">radiant</span><span class="word-tag sensory">luminous</span><span class="word-tag sensory">glowing</span><span class="word-tag sensory">sparkling</span><span class="word-tag sensory">whisper-soft</span><span class="word-tag sensory">graceful</span>
-                </div>
-                
-                <h4>Stylish</h4>
-                <div class="word-cloud">
-                    <span class="word-tag stylish">glamorous</span><span class="word-tag stylish">chic</span><span class="word-tag stylish">smart</span><span class="word-tag stylish">smashing</span><span class="word-tag stylish">snazzy</span><span class="word-tag stylish">sassy</span><span class="word-tag stylish">sleek</span><span class="word-tag stylish">slinky</span><span class="word-tag stylish">svelte</span><span class="word-tag stylish">dashing</span><span class="word-tag stylish">sophisticated</span><span class="word-tag stylish">dressed to kill</span><span class="word-tag stylish">with panache</span><span class="word-tag stylish">pizzazz</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- BULGARIAN -->
-        <div class="section">
-            <h2>🇧🇬 Български думи и фрази</h2>
-            
-            <div class="category-section"><h4>👑 Уверена</h4><div class="word-cloud"><span class="word-tag bg confident">чувство за превъзходство</span><span class="word-tag bg confident">лошо момиче</span><span class="word-tag bg confident">удобно</span><span class="word-tag bg confident">уверено</span><span class="word-tag bg confident">невероятно</span></div></div>
-            
-            <div class="category-section"><h4>🔥 Секси</h4><div class="word-cloud"><span class="word-tag bg sexy">напълно неустоима</span><span class="word-tag bg sexy">гореща</span><span class="word-tag bg sexy">провокативна</span><span class="word-tag bg sexy">съблазнителна</span><span class="word-tag bg sexy">зашеметяваща</span><span class="word-tag bg sexy">нокаутираща</span><span class="word-tag bg sexy">омекваща коленете</span><span class="word-tag bg sexy">яка</span></div></div>
-            
-            <div class="category-section"><h4>⭐ Открояваща се</h4><div class="word-cloud"><span class="word-tag bg">различна</span><span class="word-tag bg">незабравима</span><span class="word-tag bg">флиртуваща</span><span class="word-tag bg">закачлива</span><span class="word-tag bg">скандална</span><span class="word-tag bg">тотален хит</span></div></div>
-            
-            <div class="category-section"><h4>💫 Привлекателна</h4><div class="word-cloud"><span class="word-tag bg">неотразима</span><span class="word-tag bg">покоряваща</span><span class="word-tag bg">омайваща</span><span class="word-tag bg">в която ще се влюбиш</span><span class="word-tag bg">изискана</span><span class="word-tag bg">примамлива</span><span class="word-tag bg">едно бижу</span><span class="word-tag bg">очарователна</span><span class="word-tag bg">изящна</span><span class="word-tag bg">перфектна</span><span class="word-tag bg">величествена</span></div></div>
-            
-            <div class="category-section"><h4>👗 Стилна</h4><div class="word-cloud"><span class="word-tag bg stylish">шик</span><span class="word-tag bg stylish">елегантна</span><span class="word-tag bg stylish">дръзка</span><span class="word-tag bg stylish">класна</span><span class="word-tag bg stylish">екстравагантна</span><span class="word-tag bg stylish">dressed to kill</span><span class="word-tag bg stylish">винтидж</span><span class="word-tag bg stylish">шикозна</span><span class="word-tag bg stylish">персонална модна визитка</span></div></div>
-            
-            <div class="category-section"><h4>💎 Необикновена</h4><div class="word-cloud"><span class="word-tag bg unique">уникална</span><span class="word-tag bg unique">единствената</span><span class="word-tag bg unique">ексклузивна</span><span class="word-tag bg unique">единствена по рода си</span><span class="word-tag bg unique">глътка свеж въздух</span><span class="word-tag bg unique">несравнима</span><span class="word-tag bg unique">оригинална</span></div></div>
-            
-            <div class="category-section"><h4>💕 Романтична</h4><div class="word-cloud"><span class="word-tag bg romantic">пленителна</span><span class="word-tag bg romantic">чаровна</span><span class="word-tag bg romantic">завладяваща</span><span class="word-tag bg romantic">загадъчна</span><span class="word-tag bg romantic">магическа</span><span class="word-tag bg romantic">приказна</span><span class="word-tag bg romantic">нежна</span><span class="word-tag bg romantic">страстна</span></div></div>
-            
-            <div class="category-section"><h4>⚡ Вълнуваща</h4><div class="word-cloud"><span class="word-tag bg exciting">ослепителна</span><span class="word-tag bg exciting">ярка</span><span class="word-tag bg exciting">шокираща</span><span class="word-tag bg exciting">изумителна</span><span class="word-tag bg exciting">експлозивна</span><span class="word-tag bg exciting">драматична</span><span class="word-tag bg exciting">хипнотизираща</span><span class="word-tag bg exciting">спираща дъха</span><span class="word-tag bg exciting">наелектризираща</span></div></div>
-            
-            <div class="category-section"><h4>✨ Сетивни</h4><div class="word-cloud"><span class="word-tag bg sensory">чувствена</span><span class="word-tag bg sensory">бляскава</span><span class="word-tag bg sensory">разкошна</span><span class="word-tag bg sensory">топла</span><span class="word-tag bg sensory">искряща</span><span class="word-tag bg sensory">мека</span><span class="word-tag bg sensory">приятна за гушване</span></div></div>
-            
-            <h3>💬 Български фрази</h3>
-            <div class="category-section"><h4>🛍️ Call to Action</h4><div class="word-cloud"><span class="word-tag phrase">направи място в гардероба си</span><span class="word-tag phrase">грабни цялото внимание</span><span class="word-tag phrase">заложи на</span><span class="word-tag phrase">добави финес към</span><span class="word-tag phrase">потопете се в</span><span class="word-tag phrase">на лов за дрехи</span><span class="word-tag phrase">миксирай различни текстури</span></div></div>
-            
-            <div class="category-section"><h4>✨ Описание на стил</h4><div class="word-cloud"><span class="word-tag phrase">пролетни изкушения</span><span class="word-tag phrase">магнетични кутюр колекции</span><span class="word-tag phrase">ключов детайл за сезона</span><span class="word-tag phrase">израз на лайфстайла</span><span class="word-tag phrase">образа на готино момиче</span><span class="word-tag phrase">нова доза елегантност</span><span class="word-tag phrase">завладяваща есенна палитра</span></div></div>
-            
-            <div class="category-section"><h4>💃 Ефект и усещане</h4><div class="word-cloud"><span class="word-tag phrase">дава ни увереност</span><span class="word-tag phrase">придава свежест и сексапил</span><span class="word-tag phrase">привлече вниманието</span><span class="word-tag phrase">поставя акцента върху</span><span class="word-tag phrase">безапелационно женствен колорит</span><span class="word-tag phrase">създават завладяващ сюжет</span></div></div>
-        </div>
-
-        <!-- COLLOQUIAL EXPRESSIONS / IDIOMS -->
-        <div class="section">
-            <h2>💬 Colloquial Expressions / Идиоми</h2>
-            <p>Natural idioms that add flavor — use sparingly for punchy copy.</p>
-            
-            <div class="category-section">
-                <h4>👑 Confidence & Power</h4>
-                <div class="word-cloud">
-                    <span class="word-tag phrase">dressed to kill → облечена да убиваш</span>
-                    <span class="word-tag phrase">have the world at your feet → светът е в краката ти</span>
-                    <span class="word-tag phrase">raise the bar → вдигаш летвата</span>
-                    <span class="word-tag phrase">cream of the crop → най-доброто от най-доброто</span>
-                    <span class="word-tag phrase">a class of their own → в своя собствена лига</span>
-                    <span class="word-tag phrase">stop at nothing → не спираш пред нищо</span>
-                    <span class="word-tag phrase">laugh in the face → смееш се в лицето на</span>
-                </div>
-            </div>
-            
-            <div class="category-section">
-                <h4>🔥 Impression & Desire</h4>
-                <div class="word-cloud">
-                    <span class="word-tag phrase">feast your eyes → наслади се на гледката</span>
-                    <span class="word-tag phrase">one in a million → една на милион</span>
-                    <span class="word-tag phrase">weak at the knees → коленете омекват</span>
-                    <span class="word-tag phrase">like moths to a flame → като пеперуди към пламък</span>
-                    <span class="word-tag phrase">couldn't keep my hands off → не мога да откъсна ръце</span>
-                    <span class="word-tag phrase">don't judge a book by its cover → не съди по корицата</span>
-                </div>
-            </div>
-            
-            <div class="category-section">
-                <h4>✨ Joy & Delight</h4>
-                <div class="word-cloud">
-                    <span class="word-tag phrase">in seventh heaven → на седмото небе</span>
-                    <span class="word-tag phrase">thrilled to bits → във възторг</span>
-                    <span class="word-tag phrase">time of your life → най-хубавото време</span>
-                    <span class="word-tag phrase">feel lighter than air → леко като перце</span>
-                    <span class="word-tag phrase">a kid in a candy store → като дете в бонбонен магазин</span>
-                    <span class="word-tag phrase">cherry on the sundae → черешката на тортата</span>
-                    <span class="word-tag phrase">the stuff dreams are made of → от това са направени мечтите</span>
-                    <span class="word-tag phrase">crack open the champagne → отваряй шампанското</span>
-                </div>
-            </div>
-            
-            <div class="category-section">
-                <h4>💎 Quality & Standard</h4>
-                <div class="word-cloud">
-                    <span class="word-tag phrase">a no brainer → без да мислиш</span>
-                    <span class="word-tag phrase">state of the art → последна дума на модата</span>
-                    <span class="word-tag phrase">take it to an entirely new level → на съвсем друго ниво</span>
-                    <span class="word-tag phrase">roll out the red carpet → разстилат червения килим</span>
-                    <span class="word-tag phrase">crest of the wave → на върха на вълната</span>
-                </div>
-            </div>
-            
-            <div class="category-section">
-                <h4>⚡ Discovery & Surprise</h4>
-                <div class="word-cloud">
-                    <span class="word-tag phrase">lo and behold! → и какво да видиш!</span>
-                    <span class="word-tag phrase">before you know it → преди да се усетиш</span>
-                    <span class="word-tag phrase">call me crazy, but... → наричай ме луда, но...</span>
-                    <span class="word-tag phrase">think X? think again! → мислиш X? помисли пак!</span>
-                    <span class="word-tag phrase">you snooze, you lose → който спи, губи</span>
-                    <span class="word-tag phrase">stay tuned → очаквай</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- MATERIALS -->
-        <div class="section">
-            <h2>🧵 Materials / Материи</h2>
-            <div class="category-section">
-                <h4>Premium</h4>
-                <div class="word-cloud">
-                    <span class="word-tag material">cashmere / кашмир</span>
-                    <span class="word-tag material">silk / коприна</span>
-                    <span class="word-tag material">satin / сатен</span>
-                    <span class="word-tag material">velvet / кадифе</span>
-                    <span class="word-tag material">leather / кожа</span>
-                </div>
-            </div>
-            <div class="category-section">
-                <h4>Light & Flowing</h4>
-                <div class="word-cloud">
-                    <span class="word-tag material">chiffon / шифон</span>
-                    <span class="word-tag material">georgette / жоржет</span>
-                    <span class="word-tag material">tulle / тюл</span>
-                    <span class="word-tag material">lace / дантела</span>
-                    <span class="word-tag material">organza / органза</span>
-                </div>
-            </div>
-            <div class="category-section">
-                <h4>Textured</h4>
-                <div class="word-cloud">
-                    <span class="word-tag material">tweed / туид</span>
-                    <span class="word-tag material">cable knit / плетиво</span>
-                    <span class="word-tag material">ribbed / рипс</span>
-                    <span class="word-tag material">mesh / мрежест</span>
-                    <span class="word-tag material">sequin / пайети</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- DRESS TYPES -->
-        <div class="section">
-            <h2>👗 Dress Types / Видове рокли</h2>
-            
-            <h3 class="collapsible">By Fit (click to expand)</h3>
-            <div class="content">
-                <div class="dress-grid">
-                    <div class="dress-card"><h5>Bodycon</h5><p>По тялото, стегната</p></div>
-                    <div class="dress-card"><h5>A-line</h5><p>Разширява се от талията</p></div>
-                    <div class="dress-card"><h5>Fit and flare</h5><p>Тясна в талията, разкроена надолу</p></div>
-                    <div class="dress-card"><h5>Skater</h5><p>Стегната в кръста, разкроена надолу</p></div>
-                    <div class="dress-card"><h5>Sheath</h5><p>Права, по фигурата</p></div>
-                    <div class="dress-card"><h5>Shift</h5><p>Права, свободна</p></div>
-                    <div class="dress-card"><h5>Pencil</h5><p>Тясна, моливовидна</p></div>
-                    <div class="dress-card"><h5>Wrap</h5><p>С премятане</p></div>
-                </div>
-            </div>
-            
-            <h3 class="collapsible">By Neckline/Shoulders (click to expand)</h3>
-            <div class="content">
-                <div class="dress-grid">
-                    <div class="dress-card"><h5>Off-the-shoulder</h5><p>Голи рамене</p></div>
-                    <div class="dress-card"><h5>Cold shoulder</h5><p>Две дупки на раменете</p></div>
-                    <div class="dress-card"><h5>One-shoulder</h5><p>Едно рамо</p></div>
-                    <div class="dress-card"><h5>Halter</h5><p>С гол гръб</p></div>
-                    <div class="dress-card"><h5>Plunging</h5><p>Много дълбоко V деколте</p></div>
-                    <div class="dress-card"><h5>Strapless</h5><p>Без презрамки</p></div>
-                    <div class="dress-card"><h5>Spaghetti</h5><p>Тънки презрамки</p></div>
-                </div>
-            </div>
-            
-            <h3 class="collapsible">By Details (click to expand)</h3>
-            <div class="content">
-                <div class="dress-grid">
-                    <div class="dress-card"><h5>Slit</h5><p>С цепка</p></div>
-                    <div class="dress-card"><h5>Cutout</h5><p>С изрязани части</p></div>
-                    <div class="dress-card"><h5>Ruffle</h5><p>С харбалички</p></div>
-                    <div class="dress-card"><h5>Peplum</h5><p>С волан на талията</p></div>
-                    <div class="dress-card"><h5>Layered</h5><p>На пластове</p></div>
-                    <div class="dress-card"><h5>Lace-up</h5><p>С връзки</p></div>
-                    <div class="dress-card"><h5>Fringe</h5><p>С ресни</p></div>
-                </div>
-            </div>
-            
-            <h3>Quick Reference</h3>
-            <div class="word-cloud">
-                <span class="word-tag">Maxi</span><span class="word-tag">Midi</span><span class="word-tag">Mini</span><span class="word-tag">Slip</span><span class="word-tag">Shirt dress</span><span class="word-tag">Sweater dress</span><span class="word-tag">Cocktail</span><span class="word-tag">Evening</span><span class="word-tag">Party</span><span class="word-tag">Bandage</span><span class="word-tag">High-low</span><span class="word-tag">Kaftan</span><span class="word-tag">Tuxedo</span>
-            </div>
-        </div>
-
-        <!-- CTAs -->
-        <div class="section">
-            <h2>📢 CTAs & Captions</h2>
-            
-            <h3>CTA Формули</h3>
-            <ul>
-                <li>Започва с power verb</li>
-                <li>Само call to action</li>
-                <li>Въпрос</li>
-                <li>Избор между няколко неща</li>
-                <li>Catchy изразчета — "So sexy, it's scary"</li>
-            </ul>
-            
-            <h3>VS-Style Captions</h3>
-            <div class="example en">
-                <div class="example-label">Examples</div>
-                "Confident. Effortlessly sexy. Totally irresistible."<br>
-                "Your mood. Your occasion. Your kind of sexy."<br>
-                "Sometimes, all you need is lace."<br>
-                "On your mark, get set, GO."<br>
-                "Flirty florals or soft neutrals?"
-            </div>
-            
-            <h3>Engagement Questions</h3>
-            <div class="word-cloud">
-                <span class="word-tag phrase">Which would you choose?</span>
-                <span class="word-tag phrase">Which look do you love the most?</span>
-                <span class="word-tag phrase">Have you seen our new ___?</span>
-                <span class="word-tag phrase">Who else is super-excited?</span>
-                <span class="word-tag phrase">Any guesses?</span>
-            </div>
-        </div>
-
-        <!-- AVOID -->
-        <div class="section">
-            <h2>❌ Avoid / Избягвай</h2>
-            <p>Overused terms that signal lazy copywriting:</p>
-            <div class="word-cloud">
-                <span class="word-tag avoid">Boho chic</span>
-                <span class="word-tag avoid">Eco-chic</span>
-                <span class="word-tag avoid">Très chic</span>
-                <span class="word-tag avoid">The new black</span>
-                <span class="word-tag avoid">Must-have</span>
-                <span class="word-tag avoid">It girl</span>
-                <span class="word-tag avoid">Femme fatale</span>
-                <span class="word-tag avoid">The next Kate Moss</span>
-                <span class="word-tag avoid">Icon/Iconic</span>
-                <span class="word-tag avoid">VIP</span>
-                <span class="word-tag avoid">Mix & Match</span>
-                <span class="word-tag avoid">Power dressing</span>
-                <span class="word-tag avoid">Fashion fix</span>
-                <span class="word-tag avoid">Key pieces</span>
-                <span class="word-tag avoid">Jet set</span>
-                <span class="word-tag avoid">The (...) of the moment</span>
-            </div>
-            
-            <h3>Also Avoid</h3>
-            <ul>
-                <li>Choppy English-style fragments in Bulgarian</li>
-                <li>Social proof: "X жени спряха да търсят"</li>
-                <li>Overly promotional tone</li>
-                <li>Direct review quotes with numbers</li>
-            </ul>
-        </div>
-
-        <!-- STRUCTURE RULES -->
-        <div class="section">
-            <h2>📏 Structure Rules</h2>
-            <ul>
-                <li><strong>Length:</strong> 150-200 characters (2-3 sentences)</li>
-                <li><strong>Sentences:</strong> 2-3 max</li>
-                <li><strong>Emojis:</strong> 1-2 per description, varied placement</li>
-                <li><strong>Brand:</strong> "Alessa" sometimes, not always</li>
-                <li><strong>Language:</strong> English (American spelling)</li>
-                <li><strong>Dashes:</strong> Use "-" not "—"</li>
-            </ul>
-        </div>
-
-        <!-- CALIBRATION RULES (Jan 29 2026) -->
-        <div class="section">
-            <h2>⚙️ Calibration Rules</h2>
-            <p>Fine-tuned rules from live testing session.</p>
-            
-            <h3>Formatting</h3>
-            <ul>
-                <li><strong>Dashes:</strong> Use "-" NOT "—" (em dash = AI fingerprint)</li>
-                <li><strong>Emojis:</strong> 1-2 max per description. Place at natural pauses - beginning, middle, OR end. Vary placement.</li>
-                <li><strong>Spelling:</strong> American English (recognize, color, favorite)</li>
-                <li><strong>Language:</strong> English for alessaofficial.com</li>
-            </ul>
-            
-            <h3>Variety Rule</h3>
-            <div class="highlight-box">
-                <strong>Same angle/pattern = max 1 per 20-30 products.</strong><br>
-                Every product needs a fresh approach. Patterns are tools, not templates.
-            </div>
-            
-            <h3>Winning Patterns (use sparingly)</h3>
-            <ul>
-                <li>"The [item] that does X so you don't have to"</li>
-                <li>"Needs nothing - just you"</li>
-                <li>"The kind of [entrance/look] people talk about later"</li>
-                <li>Contrast structure ("X up top, Y down below")</li>
-                <li>"Some [items] just X - this one Y"</li>
-                <li>Future self ("your future self thanks you")</li>
-            </ul>
-            
-            <h3>What Works</h3>
-            <ul>
-                <li>Short punchy sentences, 2-3 max</li>
-                <li>Mention 1-2 key details (fabric, hem, fit, buttons)</li>
-                <li>Effortless > trying hard</li>
-                <li>Confident, not aggressive</li>
-                <li>Social outcome hints (compliments, looks, reactions)</li>
-                <li>Let the product do the talking</li>
-            </ul>
-            
-            <h3>Approved Example</h3>
-            <div class="example en">
-                <div class="example-label">Tweed + Feather Dress</div>
-                "Some dresses need jewelry. This one needs nothing - just you. Tweed body, feather finish, and the kind of entrance people talk about later. ✨"
-            </div>
-        </div>
-
-        <!-- ROLE MODELS -->
-        <div class="section">
-            <h2>🌟 Role Models</h2>
-            <div class="tone-grid">
-                <div class="tone-card"><h4>Victoria's Secret</h4><p>Sexy, confident, aspirational</p></div>
-                <div class="tone-card"><h4>Harper's Bazaar</h4><p>Sophisticated, editorial</p></div>
-                <div class="tone-card"><h4>Guess</h4><p>Bold, provocative</p></div>
-                <div class="tone-card"><h4>Nastygal</h4><p>Edgy, youthful</p></div>
-            </div>
-        </div>
-
+        <p class="subtitle">Универсално ръководство за описания, ads и captions</p>
+        <div id="content">Loading...</div>
+        <p class="version" id="version"></p>
     </div>
 
     <script>
-        document.querySelectorAll('.collapsible').forEach(item => {
-            item.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const content = this.nextElementSibling;
-                content.classList.toggle('show');
+        async function loadData() {
+            const response = await fetch('copy-style-data.json');
+            const data = await response.json();
+            renderGuide(data);
+        }
+
+        function renderGuide(d) {
+            const container = document.getElementById('content');
+            let html = '';
+
+            // Rule #1
+            html += `<div class="section rule1">
+                <h2>⚠️ RULE #1: ${d.rule1.title}</h2>
+                <p style="font-size: 1.2rem; color: #fff;">${d.rule1.description}</p>
+                <p style="font-size: 1rem; color: #ccc; margin-top: 0.5rem;">${d.rule1.note}</p>
+            </div>`;
+
+            // Goal & Formula
+            html += `<div class="section">
+                <h2>🎯 The Goal / Целта</h2>
+                <p>Short, scroll-stopping captions (${d.goal.length}) that are <strong>${d.goal.tone}</strong> — selling ${d.goal.selling}.</p>
+                <div class="highlight-box">
+                    <strong>The Fantasy:</strong> ${d.goal.fantasyEN}<br><br>
+                    <strong>Фантазията:</strong> ${d.goal.fantasyBG}
+                </div>
+                <h3>📐 Формулата</h3>
+                <p><strong>${d.formula.pattern}</strong></p>
+                <p>Order: ${d.formula.order}</p>
+                <div class="example"><div class="example-label">Example</div>"${d.formula.example}"</div>
+            </div>`;
+
+            // Core Benefits
+            html += `<div class="section"><h2>💎 Core Benefits (Pick 1-2)</h2><div class="tone-grid">`;
+            d.coreBenefits.forEach(b => {
+                html += `<div class="tone-card"><h4>${b.emoji} ${b.name}</h4><p>${b.keywords.join('<br>')}</p></div>`;
             });
-        });
+            html += `</div></div>`;
+
+            // 10R Benefits Framework
+            html += `<div class="section"><h2>🎯 10R Benefits Framework</h2>
+                <p>Истинската емоционална трансформация, която клиентките търсят.</p>`;
+            d.benefits10R.forEach(b => {
+                html += `<h3 class="collapsible">${b.emoji} ${b.nameBG} (${b.nameEN})</h3>
+                    <div class="content"><ul>${b.points.map(p => `<li>${p}</li>`).join('')}</ul></div>`;
+            });
+            html += `<div class="highlight-box"><strong>Ключов инсайт:</strong> Жената не купува дреха — тя купува трансформацията.</div></div>`;
+
+            // English Power Words
+            html += `<div class="section"><h2>🔥 English Power Words</h2>
+                <h3>Action Verbs</h3><div class="word-cloud">${d.powerWordsEN.actionVerbs.map(w => `<span class="word-tag">${w}</span>`).join('')}</div>
+                <h3>Punchy Phrases</h3><div class="word-cloud">${d.powerWordsEN.punchyPhrases.map(w => `<span class="word-tag phrase">${w}</span>`).join('')}</div>
+                <h3>Emotion Words</h3><div class="word-cloud">${d.powerWordsEN.emotionWords.map(w => `<span class="word-tag">${w}</span>`).join('')}</div>
+                <h3 class="collapsible">Adjectives by Category</h3><div class="content">`;
+            Object.entries(d.powerWordsEN.adjectives).forEach(([cat, words]) => {
+                html += `<h4>${cat.charAt(0).toUpperCase() + cat.slice(1)}</h4><div class="word-cloud">${words.map(w => `<span class="word-tag">${w}</span>`).join('')}</div>`;
+            });
+            html += `</div></div>`;
+
+            // Bulgarian Words
+            html += `<div class="section"><h2>🇧🇬 Български думи и фрази</h2>`;
+            const bgCats = {confident: '👑 Уверена', sexy: '🔥 Секси', standOut: '⭐ Открояваща се', appealing: '💫 Привлекателна', stylish: '👗 Стилна', unique: '💎 Необикновена', romantic: '💕 Романтична', exciting: '⚡ Вълнуваща', sensory: '✨ Сетивни'};
+            Object.entries(bgCats).forEach(([key, label]) => {
+                if (d.powerWordsBG[key]) {
+                    html += `<div class="category-section"><h4>${label}</h4><div class="word-cloud">${d.powerWordsBG[key].map(w => `<span class="word-tag bg">${w}</span>`).join('')}</div></div>`;
+                }
+            });
+            html += `<h3>💬 Български фрази</h3>`;
+            const phraseCats = {cta: '🛍️ Call to Action', style: '✨ Описание на стил', effect: '💃 Ефект и усещане'};
+            Object.entries(phraseCats).forEach(([key, label]) => {
+                html += `<div class="category-section"><h4>${label}</h4><div class="word-cloud">${d.phrasesBG[key].map(w => `<span class="word-tag phrase">${w}</span>`).join('')}</div></div>`;
+            });
+            html += `</div>`;
+
+            // Idioms
+            html += `<div class="section"><h2>💬 Colloquial Expressions / Идиоми</h2>`;
+            const idiomCats = {confidencePower: '👑 Confidence & Power', impressionDesire: '🔥 Impression & Desire', joyDelight: '✨ Joy & Delight', qualityStandard: '💎 Quality & Standard', discoverySurprise: '⚡ Discovery & Surprise'};
+            Object.entries(idiomCats).forEach(([key, label]) => {
+                html += `<div class="category-section"><h4>${label}</h4><div class="word-cloud">${d.idioms[key].map(i => `<span class="word-tag phrase">${i.en} → ${i.bg}</span>`).join('')}</div></div>`;
+            });
+            html += `</div>`;
+
+            // Materials
+            html += `<div class="section"><h2>🧵 Materials / Материи</h2>`;
+            const matCats = {premium: 'Premium', lightFlowing: 'Light & Flowing', textured: 'Textured'};
+            Object.entries(matCats).forEach(([key, label]) => {
+                html += `<div class="category-section"><h4>${label}</h4><div class="word-cloud">${d.materials[key].map(m => `<span class="word-tag material">${m}</span>`).join('')}</div></div>`;
+            });
+            html += `</div>`;
+
+            // Dress Types
+            html += `<div class="section"><h2>👗 Dress Types / Видове рокли</h2>
+                <h3 class="collapsible">By Fit</h3><div class="content"><div class="dress-grid">${d.dressTypes.byFit.map(dt => `<div class="dress-card"><h5>${dt.name}</h5><p>${dt.desc}</p></div>`).join('')}</div></div>
+                <h3 class="collapsible">By Neckline/Shoulders</h3><div class="content"><div class="dress-grid">${d.dressTypes.byNeckline.map(dt => `<div class="dress-card"><h5>${dt.name}</h5><p>${dt.desc}</p></div>`).join('')}</div></div>
+                <h3 class="collapsible">By Details</h3><div class="content"><div class="dress-grid">${d.dressTypes.byDetails.map(dt => `<div class="dress-card"><h5>${dt.name}</h5><p>${dt.desc}</p></div>`).join('')}</div></div>
+                <h3>Quick Reference</h3><div class="word-cloud">${d.dressTypes.quickRef.map(t => `<span class="word-tag">${t}</span>`).join('')}</div>
+            </div>`;
+
+            // CTAs
+            html += `<div class="section"><h2>📢 CTAs & Captions</h2>
+                <h3>CTA Формули</h3><ul>${d.ctas.formulas.map(f => `<li>${f}</li>`).join('')}</ul>
+                <h3>VS-Style Captions</h3><div class="example en"><div class="example-label">Examples</div>${d.ctas.vsStyleExamples.join('<br>')}</div>
+                <h3>Engagement Questions</h3><div class="word-cloud">${d.ctas.engagementQuestions.map(q => `<span class="word-tag phrase">${q}</span>`).join('')}</div>
+            </div>`;
+
+            // Avoid
+            html += `<div class="section"><h2>❌ Avoid / Избягвай</h2>
+                <p>Overused terms that signal lazy copywriting:</p>
+                <div class="word-cloud">${d.avoid.overusedTerms.map(t => `<span class="word-tag avoid">${t}</span>`).join('')}</div>
+                <h3>Also Avoid</h3><ul>${d.avoid.alsoAvoid.map(a => `<li>${a}</li>`).join('')}</ul>
+            </div>`;
+
+            // Structure Rules
+            html += `<div class="section"><h2>📏 Structure Rules</h2><ul>
+                <li><strong>Length:</strong> ${d.structureRules.length}</li>
+                <li><strong>Sentences:</strong> ${d.structureRules.sentences}</li>
+                <li><strong>Emojis:</strong> ${d.structureRules.emojis}</li>
+                <li><strong>Brand:</strong> ${d.structureRules.brand}</li>
+                <li><strong>Language:</strong> ${d.structureRules.language}</li>
+                <li><strong>Dashes:</strong> ${d.structureRules.dashes}</li>
+            </ul></div>`;
+
+            // Calibration
+            html += `<div class="section"><h2>⚙️ Calibration Rules</h2>
+                <h3>Formatting</h3><ul>${d.calibration.formatting.map(f => `<li>${f}</li>`).join('')}</ul>
+                <h3>Variety Rule</h3><div class="highlight-box">${d.calibration.varietyRule}</div>
+                <h3>Winning Patterns (use sparingly)</h3><ul>${d.calibration.winningPatterns.map(p => `<li>${p}</li>`).join('')}</ul>
+                <h3>What Works</h3><ul>${d.calibration.whatWorks.map(w => `<li>${w}</li>`).join('')}</ul>
+                <h3>Approved Example</h3><div class="example en"><div class="example-label">${d.calibration.approvedExample.product}</div>"${d.calibration.approvedExample.copy}"</div>
+            </div>`;
+
+            // Role Models
+            html += `<div class="section"><h2>🌟 Role Models</h2><div class="tone-grid">`;
+            d.roleModels.forEach(r => {
+                html += `<div class="tone-card"><h4>${r.name}</h4><p>${r.tone}</p></div>`;
+            });
+            html += `</div></div>`;
+
+            container.innerHTML = html;
+            document.getElementById('version').textContent = `v${d.version} • Updated: ${d.lastUpdated}`;
+
+            // Collapsible functionality
+            document.querySelectorAll('.collapsible').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    this.nextElementSibling.classList.toggle('show');
+                });
+            });
+        }
+
+        loadData();
     </script>
 </body>
 </html>

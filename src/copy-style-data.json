@@ -1,0 +1,388 @@
+{
+  "version": "2.1",
+  "lastUpdated": "2026-02-05",
+  
+  "rule1": {
+    "title": "Always Use Browser to View Photos",
+    "description": "Before writing ANY copy, use browser automation to load the product page. web_fetch can't handle Alessa's JS-rendered pages.",
+    "note": "This lets you SEE the actual photos and get full product details. Never write from product name alone."
+  },
+  
+  "goal": {
+    "length": "150-200 chars",
+    "sentences": "2-3 max",
+    "tone": "sexy, bold, magnetic",
+    "selling": "both the fantasy and the fit",
+    "fantasyEN": "The Big Life. Being a total package. Never average.",
+    "fantasyBG": "Големият живот. Да си цялостна. Никога средностатистическа."
+  },
+  
+  "formula": {
+    "pattern": "adjective/idiom → material → type → distinctive feature",
+    "order": "Opinion → Size/length → Color → Style/cut → Material → Noun → Detail",
+    "example": "Stylish long blue baggy cotton trousers with a red pocket"
+  },
+  
+  "coreBenefits": [
+    {"emoji": "👑", "name": "Confident", "keywords": ["Превъзходство", "Лошо момиче", "Feel incredible"]},
+    {"emoji": "🔥", "name": "Effortlessly Sexy", "keywords": ["Bold, irresistible", "STUNNING, Hot", "Provocative"]},
+    {"emoji": "⭐", "name": "Открояваща се", "keywords": ["Различна, незабравима", "Chic, Fashionable", "A class of her own"]}
+  ],
+  
+  "benefits10R": [
+    {
+      "id": "confident",
+      "emoji": "👑",
+      "nameEN": "Confident",
+      "nameBG": "Уверена",
+      "points": [
+        "Чувстваш се като чисто нов, в топ форма",
+        "Всичко е изпипано до най-малкия детайл — можеш да се отпуснеш и да се насладиш на момента",
+        "Има самочувствие от начина, по който изглеждаш",
+        "Харесваш жената, която ти се усмихва в огледалото",
+        "Подчинява погледи",
+        "Чувстваш се подготвена, \"готова\" за всичко. Твоята непроницаема модна броня"
+      ]
+    },
+    {
+      "id": "standout",
+      "emoji": "⭐",
+      "nameEN": "Stand Out",
+      "nameBG": "Открояваща",
+      "points": [
+        "Обираш погледи. Като влезнеш някъде и всичко спира",
+        "Оглеждат те навсякъде, откъдето минеш",
+        "Не се притеснява да бъде обсъждана и да се говори за нея"
+      ]
+    },
+    {
+      "id": "sexy",
+      "emoji": "🔥",
+      "nameEN": "Sexy",
+      "nameBG": "Секси",
+      "points": [
+        "Секси си и другият пол те желае",
+        "Съблазнителка с огромен контрол над мъжете",
+        "Може да предизвика пожар у всекиго само с присъствието си",
+        "Мъжете се редят на опашка",
+        "Разбиваш сърца",
+        "Телефонът ти е задръстен от съобщения и покани",
+        "Дори и да не си стъпила на пешеходна пътека, всички коли спират",
+        "Обичаш да се чувстваш желана"
+      ]
+    },
+    {
+      "id": "fashion",
+      "emoji": "👗",
+      "nameEN": "Fashion Identity",
+      "nameBG": "Мода и стил",
+      "points": [
+        "Сутрин се събужда с усмивка, защото знае, че ИМА какво да облече",
+        "Има изтънчен вкус. Държи на качеството",
+        "Толкова копирана, че създава трендове със стила си",
+        "Превръщаш се в идол и пример за подражание",
+        "Притежаваш гардероб, за който повечето жени биха убили",
+        "Всеки те моли за модни съвети",
+        "Най-добре облеченото момиче в стаята"
+      ]
+    },
+    {
+      "id": "social",
+      "emoji": "👑",
+      "nameEN": "Social Treatment",
+      "nameBG": "Социално отношение",
+      "points": [
+        "Хората те уважават и те третират по различен начин, когато си облечена добре",
+        "Правиш уникално първо впечатление. Хората трудно те забравят",
+        "Чувстваш се VIP навсякъде — познават те, имат специално отношение",
+        "В ресторанта, най-скъпото вино е на масата ти като комплимент",
+        "Кралица сред простосмъртни",
+        "Хората търсят твоето одобрение"
+      ]
+    },
+    {
+      "id": "roles",
+      "emoji": "👩‍👧",
+      "nameEN": "Roles",
+      "nameBG": "Роли",
+      "points": [
+        "Майка, с която дъщеря ти се гордее",
+        "Жена, която има всичко — кариера, семейство, външен вид, характер",
+        "Съпруга мечта — типа жена, за която мъжът ти благодари на Вселената всяка вечер"
+      ]
+    },
+    {
+      "id": "energy",
+      "emoji": "⚡",
+      "nameEN": "Energy & Therapy",
+      "nameBG": "Енергия & Терапия",
+      "points": [
+        "Изглеждаш и се чувстваш по-млада",
+        "Изпълнена с енергия и ентусиазъм",
+        "Стъпваща по въздуха заради новата придобивка",
+        "Shopping терапия — \"Заслужила си си го. Имаш нужда.\""
+      ]
+    },
+    {
+      "id": "identity",
+      "emoji": "🧬",
+      "nameEN": "Identity",
+      "nameBG": "Идентичност",
+      "points": [
+        "Ти си необикновена, различна и искаш това да си личи",
+        "Взискателна към детайлите",
+        "Амбициозна. Искаш най-доброто от живота",
+        "Постигнала си успех и искаш да го демонстрираш"
+      ]
+    },
+    {
+      "id": "problem",
+      "emoji": "🛡️",
+      "nameEN": "Problem / Solution",
+      "nameBG": "Проблем / Решение",
+      "points": [
+        "Помага да се справиш с липса на самочувствие, комплекси",
+        "Ако си някъде на мега скъпо — това е твоята броня",
+        "Скука и еднообразие. Нуждаеш се от нещо ново"
+      ]
+    },
+    {
+      "id": "belonging",
+      "emoji": "⭐",
+      "nameEN": "Belonging",
+      "nameBG": "Принадлежност",
+      "points": [
+        "Приличаш на идолите си. Hollywood. Все едно си от филм",
+        "Да принадлежиш към дадена общност от сходномислещи",
+        "Да си част от нещо по-голямо"
+      ]
+    },
+    {
+      "id": "career",
+      "emoji": "💼",
+      "nameEN": "Career Success",
+      "nameBG": "Успех и кариера",
+      "points": [
+        "Интервю за работа? Мястото е твое още преди да си отворила устата",
+        "Пред която няма граници. Покорява върхове",
+        "Нямаш конкуренция — винаги си няколко крачки напред"
+      ]
+    },
+    {
+      "id": "competition",
+      "emoji": "⚔️",
+      "nameEN": "Competition",
+      "nameBG": "Конкуренция",
+      "points": [
+        "Твоя пол те оглежда — някои с яд, други с интерес, трети искат да са като теб",
+        "Депресираш конкуренцията. По-яка си от всички",
+        "Жените се страхуват да не им \"откраднеш\" мъжа",
+        "Кара всяка да се обръща след теб с лека завист"
+      ]
+    },
+    {
+      "id": "revenge",
+      "emoji": "🔥",
+      "nameEN": "Revenge",
+      "nameBG": "Отмъщение",
+      "points": [
+        "Натриваш носа на онзи, който ти разби сърцето. Само при вида ти вече съжалява",
+        "Тая, която опитваше да ти краде гаджета — сега те гледа със страхопочитание"
+      ]
+    },
+    {
+      "id": "popular",
+      "emoji": "👑",
+      "nameEN": "Popular & Liked",
+      "nameBG": "Популярна и харесвана",
+      "points": [
+        "Жените правят всичко възможно да станат част от твоя кръг",
+        "Постоянно се носят слухове за теб. Всяка стъпка се следи",
+        "Всеки търси вниманието ти. Никой не те прекъсва"
+      ]
+    }
+  ],
+  
+  "powerWordsEN": {
+    "actionVerbs": ["flaunt", "swerve", "ignite", "slay", "glow up", "turn heads", "serve", "flex", "vibe", "mesmerize", "treasure", "uncover", "entice", "enthrall", "immerse", "captivate", "relish", "purr", "transform", "ooze", "escape", "supercharge", "tease", "grab", "tickle", "amaze", "blow your mind"],
+    "punchyPhrases": ["salivating over", "adding it to your repertoire", "drive em insane", "check it out", "crack the code", "get around the rules", "walk away from it", "can't deny"],
+    "emotionWords": ["unstoppable", "bold", "magnetic", "iconic", "elevated", "effortless", "coy", "fierce", "flawless", "edgy"],
+    "adjectives": {
+      "appealing": ["irresistible", "charming", "delightful", "enchanting", "captivating", "bewitching", "memorable", "unforgettable", "exquisite", "enthralling", "alluring", "fetching", "inviting", "a gem"],
+      "exciting": ["provocative", "sizzling", "vivid", "stunning", "striking", "seductive", "tantalizing", "sensational", "explosive", "dramatic", "thrilling", "breathtaking", "mesmerizing", "electrifying", "a knockout"],
+      "romantic": ["enchanting", "haunting", "evocative", "mystical", "magical", "dreamlike", "passionate", "intimate", "rapturous", "ravishing"],
+      "unique": ["unprecedented", "distinctive", "exclusive", "rare", "exceptional", "one of a kind", "matchless", "incomparable", "original", "extraordinary", "a rare find"],
+      "sensory": ["gorgeous", "sensuous", "elegant", "dazzling", "splendid", "sheer", "voluptuous", "radiant", "luminous", "glowing", "sparkling", "whisper-soft", "graceful"],
+      "stylish": ["glamorous", "chic", "smart", "smashing", "snazzy", "sassy", "sleek", "slinky", "svelte", "dashing", "sophisticated", "dressed to kill", "with panache", "pizzazz"]
+    }
+  },
+  
+  "powerWordsBG": {
+    "confident": ["чувство за превъзходство", "лошо момиче", "удобно", "уверено", "невероятно"],
+    "sexy": ["напълно неустоима", "гореща", "провокативна", "съблазнителна", "зашеметяваща", "нокаутираща", "омекваща коленете", "яка"],
+    "standOut": ["различна", "незабравима", "флиртуваща", "закачлива", "скандална", "тотален хит"],
+    "appealing": ["неотразима", "покоряваща", "омайваща", "в която ще се влюбиш", "изискана", "примамлива", "едно бижу", "очарователна", "изящна", "перфектна", "величествена"],
+    "stylish": ["шик", "елегантна", "дръзка", "класна", "екстравагантна", "dressed to kill", "винтидж", "шикозна", "персонална модна визитка"],
+    "unique": ["уникална", "единствената", "ексклузивна", "единствена по рода си", "глътка свеж въздух", "несравнима", "оригинална"],
+    "romantic": ["пленителна", "чаровна", "завладяваща", "загадъчна", "магическа", "приказна", "нежна", "страстна"],
+    "exciting": ["ослепителна", "ярка", "шокираща", "изумителна", "експлозивна", "драматична", "хипнотизираща", "спираща дъха", "наелектризираща"],
+    "sensory": ["чувствена", "бляскава", "разкошна", "топла", "искряща", "мека", "приятна за гушване"]
+  },
+  
+  "phrasesBG": {
+    "cta": ["направи място в гардероба си", "грабни цялото внимание", "заложи на", "добави финес към", "потопете се в", "на лов за дрехи", "миксирай различни текстури"],
+    "style": ["пролетни изкушения", "магнетични кутюр колекции", "ключов детайл за сезона", "израз на лайфстайла", "образа на готино момиче", "нова доза елегантност", "завладяваща есенна палитра"],
+    "effect": ["дава ни увереност", "придава свежест и сексапил", "привлече вниманието", "поставя акцента върху", "безапелационно женствен колорит", "създават завладяващ сюжет"]
+  },
+  
+  "idioms": {
+    "confidencePower": [
+      {"en": "dressed to kill", "bg": "облечена да убиваш"},
+      {"en": "have the world at your feet", "bg": "светът е в краката ти"},
+      {"en": "raise the bar", "bg": "вдигаш летвата"},
+      {"en": "cream of the crop", "bg": "най-доброто от най-доброто"},
+      {"en": "a class of their own", "bg": "в своя собствена лига"},
+      {"en": "stop at nothing", "bg": "не спираш пред нищо"},
+      {"en": "laugh in the face", "bg": "смееш се в лицето на"}
+    ],
+    "impressionDesire": [
+      {"en": "feast your eyes", "bg": "наслади се на гледката"},
+      {"en": "one in a million", "bg": "една на милион"},
+      {"en": "weak at the knees", "bg": "коленете омекват"},
+      {"en": "like moths to a flame", "bg": "като пеперуди към пламък"},
+      {"en": "couldn't keep my hands off", "bg": "не мога да откъсна ръце"},
+      {"en": "don't judge a book by its cover", "bg": "не съди по корицата"}
+    ],
+    "joyDelight": [
+      {"en": "in seventh heaven", "bg": "на седмото небе"},
+      {"en": "thrilled to bits", "bg": "във възторг"},
+      {"en": "time of your life", "bg": "най-хубавото време"},
+      {"en": "feel lighter than air", "bg": "леко като перце"},
+      {"en": "a kid in a candy store", "bg": "като дете в бонбонен магазин"},
+      {"en": "cherry on the sundae", "bg": "черешката на тортата"},
+      {"en": "the stuff dreams are made of", "bg": "от това са направени мечтите"},
+      {"en": "crack open the champagne", "bg": "отваряй шампанското"}
+    ],
+    "qualityStandard": [
+      {"en": "a no brainer", "bg": "без да мислиш"},
+      {"en": "state of the art", "bg": "последна дума на модата"},
+      {"en": "take it to an entirely new level", "bg": "на съвсем друго ниво"},
+      {"en": "roll out the red carpet", "bg": "разстилат червения килим"},
+      {"en": "crest of the wave", "bg": "на върха на вълната"}
+    ],
+    "discoverySurprise": [
+      {"en": "lo and behold!", "bg": "и какво да видиш!"},
+      {"en": "before you know it", "bg": "преди да се усетиш"},
+      {"en": "call me crazy, but...", "bg": "наричай ме луда, но..."},
+      {"en": "think X? think again!", "bg": "мислиш X? помисли пак!"},
+      {"en": "you snooze, you lose", "bg": "който спи, губи"},
+      {"en": "stay tuned", "bg": "очаквай"}
+    ]
+  },
+  
+  "materials": {
+    "premium": ["cashmere / кашмир", "silk / коприна", "satin / сатен", "velvet / кадифе", "leather / кожа"],
+    "lightFlowing": ["chiffon / шифон", "georgette / жоржет", "tulle / тюл", "lace / дантела", "organza / органза"],
+    "textured": ["tweed / туид", "cable knit / плетиво", "ribbed / рипс", "mesh / мрежест", "sequin / пайети"]
+  },
+  
+  "dressTypes": {
+    "byFit": [
+      {"name": "Bodycon", "desc": "По тялото, стегната"},
+      {"name": "A-line", "desc": "Разширява се от талията"},
+      {"name": "Fit and flare", "desc": "Тясна в талията, разкроена надолу"},
+      {"name": "Skater", "desc": "Стегната в кръста, разкроена надолу"},
+      {"name": "Sheath", "desc": "Права, по фигурата"},
+      {"name": "Shift", "desc": "Права, свободна"},
+      {"name": "Pencil", "desc": "Тясна, моливовидна"},
+      {"name": "Wrap", "desc": "С премятане"}
+    ],
+    "byNeckline": [
+      {"name": "Off-the-shoulder", "desc": "Голи рамене"},
+      {"name": "Cold shoulder", "desc": "Две дупки на раменете"},
+      {"name": "One-shoulder", "desc": "Едно рамо"},
+      {"name": "Halter", "desc": "С гол гръб"},
+      {"name": "Plunging", "desc": "Много дълбоко V деколте"},
+      {"name": "Strapless", "desc": "Без презрамки"},
+      {"name": "Spaghetti", "desc": "Тънки презрамки"}
+    ],
+    "byDetails": [
+      {"name": "Slit", "desc": "С цепка"},
+      {"name": "Cutout", "desc": "С изрязани части"},
+      {"name": "Ruffle", "desc": "С харбалички"},
+      {"name": "Peplum", "desc": "С волан на талията"},
+      {"name": "Layered", "desc": "На пластове"},
+      {"name": "Lace-up", "desc": "С връзки"},
+      {"name": "Fringe", "desc": "С ресни"}
+    ],
+    "quickRef": ["Maxi", "Midi", "Mini", "Slip", "Shirt dress", "Sweater dress", "Cocktail", "Evening", "Party", "Bandage", "High-low", "Kaftan", "Tuxedo"]
+  },
+  
+  "ctas": {
+    "formulas": ["Започва с power verb", "Само call to action", "Въпрос", "Избор между няколко неща", "Catchy изразчета — \"So sexy, it's scary\""],
+    "vsStyleExamples": [
+      "Confident. Effortlessly sexy. Totally irresistible.",
+      "Your mood. Your occasion. Your kind of sexy.",
+      "Sometimes, all you need is lace.",
+      "On your mark, get set, GO.",
+      "Flirty florals or soft neutrals?"
+    ],
+    "engagementQuestions": ["Which would you choose?", "Which look do you love the most?", "Have you seen our new ___?", "Who else is super-excited?", "Any guesses?"]
+  },
+  
+  "avoid": {
+    "overusedTerms": ["Boho chic", "Eco-chic", "Très chic", "The new black", "Must-have", "It girl", "Femme fatale", "The next Kate Moss", "Icon/Iconic", "VIP", "Mix & Match", "Power dressing", "Fashion fix", "Key pieces", "Jet set", "The (...) of the moment"],
+    "alsoAvoid": [
+      "Choppy English-style fragments in Bulgarian",
+      "Social proof: \"X жени спряха да търсят\"",
+      "Overly promotional tone",
+      "Direct review quotes with numbers"
+    ]
+  },
+  
+  "structureRules": {
+    "length": "150-200 characters",
+    "sentences": "2-3 max",
+    "emojis": "1-2 per description, varied placement",
+    "brand": "\"Alessa\" sometimes, not always",
+    "language": "English (American spelling)",
+    "dashes": "Use \"-\" not \"—\""
+  },
+  
+  "calibration": {
+    "formatting": [
+      "Dashes: Use \"-\" NOT \"—\" (em dash = AI fingerprint)",
+      "Emojis: 1-2 max per description. Place at natural pauses - beginning, middle, OR end. Vary placement.",
+      "Spelling: American English (recognize, color, favorite)",
+      "Language: English for alessaofficial.com"
+    ],
+    "varietyRule": "Same angle/pattern = max 1 per 20-30 products. Every product needs a fresh approach. Patterns are tools, not templates.",
+    "winningPatterns": [
+      "The [item] that does X so you don't have to",
+      "Needs nothing - just you",
+      "The kind of [entrance/look] people talk about later",
+      "Contrast structure (\"X up top, Y down below\")",
+      "Some [items] just X - this one Y",
+      "Future self (\"your future self thanks you\")"
+    ],
+    "whatWorks": [
+      "Short punchy sentences, 2-3 max",
+      "Mention 1-2 key details (fabric, hem, fit, buttons)",
+      "Effortless > trying hard",
+      "Confident, not aggressive",
+      "Social outcome hints (compliments, looks, reactions)",
+      "Let the product do the talking"
+    ],
+    "approvedExample": {
+      "product": "Tweed + Feather Dress",
+      "copy": "Some dresses need jewelry. This one needs nothing - just you. Tweed body, feather finish, and the kind of entrance people talk about later. ✨"
+    }
+  },
+  
+  "roleModels": [
+    {"name": "Victoria's Secret", "tone": "Sexy, confident, aspirational"},
+    {"name": "Harper's Bazaar", "tone": "Sophisticated, editorial"},
+    {"name": "Guess", "tone": "Bold, provocative"},
+    {"name": "Nastygal", "tone": "Edgy, youthful"}
+  ]
+}
