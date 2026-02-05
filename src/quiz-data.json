@@ -1,0 +1,112 @@
+{
+  "config": {
+    "questionsPerSession": 5,
+    "intervals": [1, 3, 7, 14, 30],
+    "started": "2026-01-28"
+  },
+  "stats": {
+    "totalQuestions": 154,
+    "totalCorrect": 117,
+    "sessionsCompleted": 4,
+    "currentStreak": 3
+  },
+  "figures": [
+    {"id": "alexander", "name": "Alexander the Great", "category": "conqueror", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct"},
+    {"id": "caesar", "name": "Julius Caesar", "category": "conqueror", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"},
+    {"id": "napoleon", "name": "Napoleon Bonaparte", "category": "conqueror", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct"},
+    {"id": "genghis", "name": "Genghis Khan", "category": "conqueror", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct"},
+    {"id": "hannibal", "name": "Hannibal Barca", "category": "conqueror", "box": 2, "nextReview": "2026-02-03", "lastResult": "correct", "note": "Crossed Alps with elephants to attack Rome"},
+    {"id": "columbus", "name": "Christopher Columbus", "category": "explorer", "box": 1, "nextReview": "2026-02-01", "lastResult": "partial", "note": "Found America but Vespucci named it"},
+    {"id": "vespucci", "name": "Amerigo Vespucci", "category": "explorer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "America named after him"},
+    {"id": "magellan", "name": "Ferdinand Magellan", "category": "explorer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"},
+    {"id": "amundsen", "name": "Roald Amundsen", "category": "explorer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "First to South Pole"},
+    {"id": "marcopolo", "name": "Marco Polo", "category": "explorer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Venetian merchant, traveled to China, served Kublai Khan"},
+    {"id": "newton", "name": "Isaac Newton", "category": "scientist", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Laws of motion, gravity, invented physics"},
+    {"id": "darwin", "name": "Charles Darwin", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "HMS Beagle, Origin of Species, Galápagos finches"},
+    {"id": "einstein", "name": "Albert Einstein", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"},
+    {"id": "curie", "name": "Marie Curie", "category": "scientist", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Chemistry + Physics Nobel"},
+    {"id": "copernicus", "name": "Nicolaus Copernicus", "category": "scientist", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Heliocentrism first, published on deathbed"},
+    {"id": "galileo", "name": "Galileo Galilei", "category": "scientist", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Proved heliocentrism, house arrest, 'And yet it moves'"},
+    {"id": "fleming", "name": "Alexander Fleming", "category": "scientist", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Discovered penicillin 1928 by accident, mold killed bacteria"},
+    {"id": "freud", "name": "Sigmund Freud", "category": "scientist", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Psychoanalysis, unconscious mind, ego, Oedipus complex"},
+    {"id": "euclid", "name": "Euclid", "category": "scientist", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Wrote Elements, foundation of geometry. NOT Pythagoras."},
+    {"id": "pythagoras", "name": "Pythagoras", "category": "scientist", "box": 1, "nextReview": "2026-02-01", "lastResult": "new", "note": "Pythagorean theorem (a² + b² = c²), NOT Elements"},
+    {"id": "socrates", "name": "Socrates", "category": "philosopher", "box": 2, "nextReview": "2026-02-03", "lastResult": "correct", "note": "Hemlock, taught Plato, 'I know that I know nothing'"},
+    {"id": "plato", "name": "Plato", "category": "philosopher", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "The Academy, The Republic"},
+    {"id": "aristotle", "name": "Aristotle", "category": "philosopher", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "The Lyceum, taught Alexander the Great"},
+    {"id": "confucius", "name": "Confucius", "category": "philosopher", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Ethics focused on respect, hierarchy, social harmony"},
+    {"id": "nietzsche", "name": "Friedrich Nietzsche", "category": "philosopher", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "God is dead, Thus Spoke Zarathustra, German"},
+    {"id": "descartes", "name": "René Descartes", "category": "philosopher", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Cogito ergo sum, Cartesian coordinates"},
+    {"id": "marx", "name": "Karl Marx", "category": "philosopher", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Communist Manifesto, class struggle"},
+    {"id": "leonardo", "name": "Leonardo da Vinci", "category": "artist", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Mona Lisa, flying machines, anatomical drawings"},
+    {"id": "michelangelo", "name": "Michelangelo", "category": "artist", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Sistine Chapel, David statue"},
+    {"id": "raphael", "name": "Raphael", "category": "artist", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "School of Athens, NOT Birth of Venus"},
+    {"id": "botticelli", "name": "Sandro Botticelli", "category": "artist", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Birth of Venus, Primavera. B=Birth of Venus"},
+    {"id": "vangogh", "name": "Vincent van Gogh", "category": "artist", "box": 2, "nextReview": "2026-02-03", "lastResult": "correct", "note": "Starry Night, ear, Post-Impressionism"},
+    {"id": "picasso", "name": "Pablo Picasso", "category": "artist", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Cubism, Guernica. P=Pictures in cubes"},
+    {"id": "homer", "name": "Homer", "category": "writer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Iliad, Odyssey - foundation of Western literature"},
+    {"id": "shakespeare", "name": "William Shakespeare", "category": "writer", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Hamlet, Macbeth, Romeo and Juliet"},
+    {"id": "dante", "name": "Dante Alighieri", "category": "writer", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Divine Comedy - Hell, Purgatory, Paradise"},
+    {"id": "tolstoy", "name": "Leo Tolstoy", "category": "writer", "box": 2, "nextReview": "2026-02-03", "lastResult": "correct", "note": "War and Peace, Anna Karenina"},
+    {"id": "dostoevsky", "name": "Fyodor Dostoevsky", "category": "writer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Crime and Punishment, Brothers Karamazov (psychological, dark)"},
+    {"id": "orwell", "name": "George Orwell", "category": "writer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "1984, Animal Farm, real name Eric Blair"},
+    {"id": "cervantes", "name": "Miguel de Cervantes", "category": "writer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Don Quixote, first modern novel"},
+    {"id": "suntzu", "name": "Sun Tzu", "category": "writer", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "The Art of War"},
+    {"id": "beethoven", "name": "Ludwig van Beethoven", "category": "composer", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Went deaf, 9th Symphony, Ode to Joy"},
+    {"id": "mozart", "name": "Wolfgang Amadeus Mozart", "category": "composer", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Child prodigy from age 5"},
+    {"id": "washington", "name": "George Washington", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"},
+    {"id": "churchill", "name": "Winston Churchill", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "WWII, blood toil tears sweat"},
+    {"id": "gandhi", "name": "Mahatma Gandhi", "category": "leader", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "Nonviolent resistance, freed India from British"},
+    {"id": "lincoln", "name": "Abraham Lincoln", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct"},
+    {"id": "stalin", "name": "Joseph Stalin", "category": "leader", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct"},
+    {"id": "lenin", "name": "Vladimir Lenin", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Bolsheviks, founded Soviet Union"},
+    {"id": "henryviii", "name": "Henry VIII", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "6 wives, broke from Catholic Church"},
+    {"id": "elizabethi", "name": "Elizabeth I", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Virgin Queen, defeated Spanish Armada"},
+    {"id": "cleopatra", "name": "Cleopatra", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Greek (Ptolemaic), NOT Egyptian"},
+    {"id": "joanofarc", "name": "Joan of Arc", "category": "leader", "box": 3, "nextReview": "2026-02-07", "lastResult": "correct", "note": "French, 17, divine visions, burned at stake"},
+    {"id": "marieantoinette", "name": "Marie Antoinette", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "French queen, guillotined, never said 'let them eat cake'"},
+    {"id": "mehmedii", "name": "Mehmed II", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Conquered Constantinople 1453, ended Byzantine Empire"},
+    {"id": "constantine", "name": "Constantine the Great", "category": "leader", "box": 0, "nextReview": "2026-02-01", "lastResult": "missed", "note": "Edict of Milan 313 AD, legalized Christianity, built Constantinople"},
+    {"id": "luther", "name": "Martin Luther", "category": "religious", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "95 Theses, Protestant Reformation"},
+    {"id": "gutenberg", "name": "Johannes Gutenberg", "category": "inventor", "box": 2, "nextReview": "2026-02-02", "lastResult": "correct", "note": "Printing press 1440"},
+    {"id": "edison", "name": "Thomas Edison", "category": "inventor", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Lightbulb, 1000+ patents, DC current"},
+    {"id": "tesla", "name": "Nikola Tesla", "category": "inventor", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "AC current, rival of Edison"},
+    {"id": "nightingale", "name": "Florence Nightingale", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Crimean War, founded modern nursing (NOT Red Cross)"},
+    {"id": "dunant", "name": "Henri Dunant", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "Founded Red Cross, first Nobel Peace Prize"},
+    {"id": "octavian", "name": "Augustus/Octavian", "category": "leader", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "First Roman Emperor, adopted son of Caesar. NOT Constantine."},
+    {"id": "wright", "name": "Wright Brothers", "category": "inventor", "box": 1, "nextReview": "2026-02-01", "lastResult": "correct", "note": "First powered airplane flight, Kitty Hawk 1903"}
+  ],
+  "sessions": [
+    {
+      "date": "2026-01-28",
+      "questions": 5,
+      "correct": 1,
+      "percentage": 20
+    },
+    {
+      "date": "2026-01-29",
+      "questions": 48,
+      "correct": 34,
+      "percentage": 71,
+      "notes": "First full session. Strong on scientists, philosophers, conquerors."
+    },
+    {
+      "date": "2026-01-30",
+      "questions": 79,
+      "correct": 61,
+      "percentage": 77,
+      "notes": "80 questions (1 skipped). Locked: Michelangelo, Nietzsche, Vespucci, Mehmed II, Tolstoy/Dostoevsky distinction."
+    },
+    {
+      "date": "2026-01-31",
+      "questions": 27,
+      "correct": 22,
+      "percentage": 81,
+      "notes": "Session 4. Cervantes, Socrates, Beethoven now locked. New: Homer, Picasso, Constantine, Euclid. Missed: Botticelli vs Raphael, Euclid vs Pythagoras, Fleming, Constantine."
+    }
+  ],
+  "toReview": [
+    "botticelli", "euclid", "picasso", "fleming", "constantine", "pythagoras"
+  ],
+  "removed": ["keller", "douglass"]
+}
