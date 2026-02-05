@@ -473,9 +473,7 @@
       "dive into",
       "bow out"
     ],
-    "1": [],
-    "2": [],
-    "3": [
+    "1": [
       "look into",
       "put off",
       "find out",
@@ -493,7 +491,9 @@
       "look over",
       "work out",
       "make up",
-      "put up with",
+      "put up with"
+    ],
+    "2": [
       "look up to",
       "let down",
       "bring up",
@@ -511,7 +511,9 @@
       "turn down",
       "break down",
       "go off",
-      "bounce back",
+      "bounce back"
+    ],
+    "3": [
       "put off",
       "hang out",
       "check out",
