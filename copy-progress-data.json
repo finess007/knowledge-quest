@@ -1,0 +1,116 @@
+{
+  "lastUpdated": "2026-02-05T15:30:49.952973",
+  "total": 952,
+  "done": 717,
+  "remaining": 235,
+  "percentage": 75.3,
+  "avgDescLength": 147,
+  "dailyAverage": 179,
+  "estimatedDaysRemaining": 1.3,
+  "sessionHistory": [
+    {
+      "date": "2026-01-31",
+      "count": 50,
+      "note": "First session"
+    },
+    {
+      "date": "2026-02-01",
+      "count": 110,
+      "note": "Big push"
+    },
+    {
+      "date": "2026-02-02",
+      "count": 219,
+      "note": "Steady progress"
+    },
+    {
+      "date": "2026-02-03",
+      "count": 98,
+      "note": "Massive session!"
+    }
+  ],
+  "recentCompleted": [
+    {
+      "id": "7167",
+      "url": "https://alessa.bg/rococo-logo-fuchsia-kolan-tesen-ss-zlatna-toka",
+      "has_description": true,
+      "char_count": 143
+    },
+    {
+      "id": "7166",
+      "url": "https://alessa.bg/jewel-of-the-night-roklya",
+      "has_description": true,
+      "char_count": 136
+    },
+    {
+      "id": "7164",
+      "url": "https://alessa.bg/touch-of-elegance-pulover-ot-pletivo-black",
+      "has_description": true,
+      "char_count": 179
+    },
+    {
+      "id": "7163",
+      "url": "https://alessa.bg/touch-of-elegance-pulover-ot-pletivo-seashell",
+      "has_description": true,
+      "char_count": 166
+    },
+    {
+      "id": "7160",
+      "url": "https://alessa.bg/im-that-girl-bleizr",
+      "has_description": true,
+      "char_count": 167
+    },
+    {
+      "id": "7159",
+      "url": "https://alessa.bg/butterfly-beauty-ksa-roklya-black",
+      "has_description": true,
+      "char_count": 112
+    },
+    {
+      "id": "7158",
+      "url": "https://alessa.bg/butterfly-beauty-ksa-roklya-rose-gold",
+      "has_description": true,
+      "char_count": 124
+    },
+    {
+      "id": "7155",
+      "url": "https://alessa.bg/enchanted-emerald-premierna-roklya",
+      "has_description": true,
+      "char_count": 147
+    },
+    {
+      "id": "7154",
+      "url": "https://alessa.bg/urban-elegance-ks-pantalon-black",
+      "has_description": true,
+      "char_count": 164
+    },
+    {
+      "id": "7153",
+      "url": "https://alessa.bg/butterfly-beauty-pola-rose-gold",
+      "has_description": true,
+      "char_count": 169
+    }
+  ],
+  "milestones": [
+    {
+      "target": 250,
+      "reached": true,
+      "date": "2026-02-02"
+    },
+    {
+      "target": 500,
+      "reached": true,
+      "date": null
+    },
+    {
+      "target": 750,
+      "reached": false,
+      "date": null
+    },
+    {
+      "target": 952,
+      "reached": false,
+      "date": null
+    }
+  ]
+}
