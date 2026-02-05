@@ -24,6 +24,22 @@
         }
         .subtitle { text-align: center; color: #888; margin-bottom: 24px; }
         
+        .sync-status {
+            text-align: center;
+            padding: 8px 16px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            color: #22c55e;
+        }
+        .sync-status.warning {
+            background: rgba(234, 179, 8, 0.1);
+            border-color: rgba(234, 179, 8, 0.3);
+            color: #eab308;
+        }
+        
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -175,6 +191,26 @@
             font-size: 0.8rem;
             margin-top: 32px;
         }
+        .backup-buttons {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .backup-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #888;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .backup-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
         
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -186,12 +222,16 @@
     <a href="../index.html" style="position:fixed;top:16px;left:16px;color:#888;text-decoration:none;font-size:0.9rem;z-index:1000;background:rgba(0,0,0,0.5);padding:8px 12px;border-radius:8px;">← Dashboard</a>
     <div class="container">
         <h1>🚀 Phrasal Verbs Progress</h1>
-        <p class="subtitle">Top 100 verbs • Leitner spaced repetition • Practice in Telegram ✨</p>
+        <p class="subtitle">400 verbs • Leitner spaced repetition • Practice in Telegram ✨</p>
+        
+        <div class="sync-status" id="syncStatus">
+            ✅ Synced • Loading...
+        </div>
         
         <div class="info-box">
             <div class="emoji">💬</div>
             <p><strong>Practice happens in Telegram with Nova</strong></p>
-            <p style="font-size: 0.85rem; color: #888;">Dashboard auto-syncs after each session!</p>
+            <p style="font-size: 0.85rem; color: #888;">Data saved locally + synced to server automatically</p>
         </div>
         
         <div class="stats-grid">
@@ -241,99 +281,209 @@
         </div>
         
         <div class="footer">
-            Synced from Nova ✨ • Last updated: <span id="lastUpdated">—</span>
+            <div>Synced from Nova ✨ • Last updated: <span id="lastUpdated">—</span></div>
+            <div class="backup-buttons">
+                <button class="backup-btn" onclick="exportData()">📥 Export Backup</button>
+                <button class="backup-btn" onclick="document.getElementById('importFile').click()">📤 Import Backup</button>
+                <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+            </div>
         </div>
     </div>
     
     <script>
+        const STORAGE_KEY = 'phrasal-verbs-progress';
+        const VERSION_KEY = 'phrasal-verbs-version';
+        let currentData = null;
+        
+        // Load data: localStorage first, then server, merge if needed
         async function loadData() {
+            const syncStatus = document.getElementById('syncStatus');
+            
             try {
-                const response = await fetch('progress-data.json');
-                const data = await response.json();
+                // 1. Try localStorage first
+                const localData = localStorage.getItem(STORAGE_KEY);
+                const localVersion = localStorage.getItem(VERSION_KEY);
                 
-                const stats = data.stats || {};
-                const sessions = data.sessionHistory || [];
-                const boxes = data.boxes || {};
+                // 2. Fetch from server
+                const response = await fetch('progress-data.json?t=' + Date.now());
+                const serverData = await response.json();
+                const serverVersion = serverData.lastSession || serverData.lastUpdated;
                 
-                // Count verbs per box
-                const boxCounts = [0, 0, 0, 0, 0, 0];
-                let totalVerbs = 0;
-                for (let i = 0; i <= 5; i++) {
-                    const count = (boxes[String(i)] || boxes[i] || []).length;
-                    boxCounts[i] = count;
-                    totalVerbs += count;
-                }
-                
-                // Update stats
-                document.getElementById('sessions').textContent = data.totalSessions || 0;
-                document.getElementById('totalQuestions').textContent = stats.totalQuestions || 0;
-                document.getElementById('accuracy').textContent = stats.overallAccuracy ? stats.overallAccuracy + '%' : '—';
-                document.getElementById('totalVerbs').textContent = totalVerbs;
-                document.getElementById('masteredCount').textContent = boxCounts[5];
-                document.getElementById('streak').textContent = stats.currentStreak || 0;
-                
-                // Progress bar
-                if (totalVerbs > 0) {
-                    document.getElementById('progressBar').innerHTML = boxCounts.map((count, i) => 
-                        count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/totalVerbs)*100}%">${count}</div>` : ''
-                    ).join('');
-                }
-                
-                // Leitner boxes
-                const boxLabels = [
-                    {name: 'Box 0', interval: 'New / Need work'},
-                    {name: 'Box 1', interval: 'Review in 1 day'},
-                    {name: 'Box 2', interval: 'Review in 3 days'},
-                    {name: 'Box 3', interval: 'Review in 7 days'},
-                    {name: 'Box 4', interval: 'Review in 14 days'},
-                    {name: 'Box 5', interval: 'Mastered! 🎉'}
-                ];
-                
-                document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => {
-                    const verbs = boxes[String(i)] || boxes[i] || [];
-                    return `
-                        <div class="leitner-box box-${i}">
-                            <div class="box-header">
-                                <span class="box-title">${label.name}</span>
-                                <span class="box-count">${verbs.length}</span>
-                            </div>
-                            <div class="box-interval">${label.interval}</div>
-                            <div class="box-verbs">
-                                ${verbs.slice(0, 10).map(v => `<span class="verb-chip">${v}</span>`).join('')}
-                                ${verbs.length > 10 ? `<span class="verb-chip" style="color:#666">+${verbs.length - 10} more</span>` : ''}
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-                
-                // Session history
-                const sessionsHtml = sessions.slice().reverse().map(s => {
-                    let scoreClass = 'needs-work';
-                    if (s.pct >= 85) scoreClass = 'excellent';
-                    else if (s.pct >= 70) scoreClass = 'good';
-                    else if (s.pct >= 50) scoreClass = 'ok';
+                // 3. Decide which to use
+                if (localData) {
+                    const local = JSON.parse(localData);
+                    const localTime = new Date(localVersion || 0).getTime();
+                    const serverTime = new Date(serverVersion || 0).getTime();
                     
-                    return `
-                        <div class="session-item">
-                            <div class="session-info">
-                                <span class="session-date">${s.date} • Session ${s.session}</span>
-                                <span>${s.correct}/${s.questions} correct</span>
-                            </div>
-                            <span class="session-score ${scoreClass}">${s.pct}%</span>
-                        </div>
-                    `;
-                }).join('');
-                document.getElementById('sessionsList').innerHTML = sessionsHtml || '<p style="color:#666;text-align:center;padding:20px;">No sessions yet</p>';
+                    if (localTime > serverTime) {
+                        // Local is newer - use local, warn about sync
+                        currentData = local;
+                        syncStatus.className = 'sync-status warning';
+                        syncStatus.innerHTML = '⚠️ Local data is newer than server • <a href="#" onclick="forceServerSync()" style="color:#eab308">Use server data</a>';
+                    } else {
+                        // Server is newer or same - use server, update local
+                        currentData = serverData;
+                        saveToLocal(serverData);
+                        syncStatus.innerHTML = '✅ Synced with server • ' + new Date(serverVersion).toLocaleString();
+                    }
+                } else {
+                    // No local data - use server, save to local
+                    currentData = serverData;
+                    saveToLocal(serverData);
+                    syncStatus.innerHTML = '✅ Loaded from server • ' + new Date(serverVersion).toLocaleString();
+                }
                 
-                // Last updated
-                document.getElementById('lastUpdated').textContent = data.lastUpdated 
-                    ? new Date(data.lastUpdated).toLocaleString() 
-                    : '—';
+                renderData(currentData);
                 
             } catch (e) {
                 console.error('Failed to load data:', e);
-                document.getElementById('sessionsList').innerHTML = '<p style="color:#ef4444;text-align:center;padding:20px;">Failed to load progress data</p>';
+                
+                // Try localStorage as fallback
+                const localData = localStorage.getItem(STORAGE_KEY);
+                if (localData) {
+                    currentData = JSON.parse(localData);
+                    syncStatus.className = 'sync-status warning';
+                    syncStatus.innerHTML = '⚠️ Offline mode • Using cached data';
+                    renderData(currentData);
+                } else {
+                    syncStatus.className = 'sync-status warning';
+                    syncStatus.innerHTML = '❌ Failed to load data';
+                }
             }
+        }
+        
+        function saveToLocal(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            localStorage.setItem(VERSION_KEY, data.lastSession || data.lastUpdated || new Date().toISOString());
+        }
+        
+        function forceServerSync() {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(VERSION_KEY);
+            location.reload();
+        }
+        
+        function renderData(data) {
+            const boxes = data.boxes || {};
+            
+            // Count verbs per box
+            const boxCounts = [0, 0, 0, 0, 0, 0];
+            let totalVerbs = 0;
+            for (let i = 0; i <= 5; i++) {
+                const count = (boxes[String(i)] || boxes[i] || []).length;
+                boxCounts[i] = count;
+                totalVerbs += count;
+            }
+            
+            // Calculate accuracy from sessions
+            const sessions = data.sessionHistory || [];
+            let totalQ = 0, totalC = 0;
+            sessions.forEach(s => { totalQ += s.questions || 0; totalC += s.correct || 0; });
+            const accuracy = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+            
+            // Update stats
+            document.getElementById('sessions').textContent = data.totalSessions || sessions.length || 0;
+            document.getElementById('totalQuestions').textContent = totalQ;
+            document.getElementById('accuracy').textContent = accuracy > 0 ? accuracy + '%' : '—';
+            document.getElementById('totalVerbs').textContent = totalVerbs;
+            document.getElementById('masteredCount').textContent = boxCounts[5];
+            document.getElementById('streak').textContent = data.currentStreak || 0;
+            
+            // Progress bar
+            if (totalVerbs > 0) {
+                document.getElementById('progressBar').innerHTML = boxCounts.map((count, i) => 
+                    count > 0 ? `<div class="progress-segment seg-box${i}" style="width: ${(count/totalVerbs)*100}%">${count}</div>` : ''
+                ).join('');
+            }
+            
+            // Leitner boxes
+            const boxLabels = [
+                {name: 'Box 0', interval: 'New / Need work'},
+                {name: 'Box 1', interval: 'Review in 1 day'},
+                {name: 'Box 2', interval: 'Review in 3 days'},
+                {name: 'Box 3', interval: 'Review in 7 days'},
+                {name: 'Box 4', interval: 'Review in 14 days'},
+                {name: 'Box 5', interval: 'Mastered! 🎉'}
+            ];
+            
+            document.getElementById('leitnerBoxes').innerHTML = boxLabels.map((label, i) => {
+                const verbs = boxes[String(i)] || boxes[i] || [];
+                return `
+                    <div class="leitner-box box-${i}">
+                        <div class="box-header">
+                            <span class="box-title">${label.name}</span>
+                            <span class="box-count">${verbs.length}</span>
+                        </div>
+                        <div class="box-interval">${label.interval}</div>
+                        <div class="box-verbs">
+                            ${verbs.slice(0, 10).map(v => `<span class="verb-chip">${v}</span>`).join('')}
+                            ${verbs.length > 10 ? `<span class="verb-chip" style="color:#666">+${verbs.length - 10} more</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Session history
+            const sessionsHtml = sessions.slice().reverse().slice(0, 10).map(s => {
+                let scoreClass = 'needs-work';
+                if (s.pct >= 85) scoreClass = 'excellent';
+                else if (s.pct >= 70) scoreClass = 'good';
+                else if (s.pct >= 50) scoreClass = 'ok';
+                
+                return `
+                    <div class="session-item">
+                        <div class="session-info">
+                            <span class="session-date">${s.date} • Session ${s.session}</span>
+                            <span>${s.correct}/${s.questions} correct</span>
+                        </div>
+                        <span class="session-score ${scoreClass}">${s.pct}%</span>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('sessionsList').innerHTML = sessionsHtml || '<p style="color:#666;text-align:center;padding:20px;">No sessions yet</p>';
+            
+            // Last updated
+            document.getElementById('lastUpdated').textContent = data.lastSession 
+                ? new Date(data.lastSession).toLocaleString() 
+                : data.lastUpdated || '—';
+        }
+        
+        // Export data as JSON file
+        function exportData() {
+            if (!currentData) return alert('No data to export');
+            const blob = new Blob([JSON.stringify(currentData, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `phrasal-verbs-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // Import data from JSON file
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (!data.boxes) {
+                        alert('Invalid backup file - missing boxes data');
+                        return;
+                    }
+                    saveToLocal(data);
+                    currentData = data;
+                    renderData(data);
+                    document.getElementById('syncStatus').innerHTML = '✅ Imported from backup • ' + new Date().toLocaleString();
+                    alert('Backup restored! Note: This is only saved locally. Ask Nova to sync to server.');
+                } catch (err) {
+                    alert('Failed to import: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = ''; // Reset input
         }
         
         loadData();
