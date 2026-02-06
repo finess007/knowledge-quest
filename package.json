@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.73.0",
     "@google/generative-ai": "^0.21.0"
   }
 }

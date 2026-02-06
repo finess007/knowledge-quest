@@ -1102,53 +1102,7 @@ async function analyzeVideo() {
             }
         } catch(e) { console.warn('Gemini native failed:', e.message); }
 
-        // Fallback: fetch transcript via local proxy, then summarize
-        if (!summary) {
-            const TRANSCRIPT_APIS = [
-                localStorage.getItem('focus_transcript_api'),
-                'https://localhost:3143',
-                'http://localhost:3142'
-            ].filter(Boolean);
-
-            for (const api of TRANSCRIPT_APIS) {
-                try {
-                    const controller = new AbortController();
-                    const timeout = setTimeout(() => controller.abort(), 30000);
-                    const tRes = await fetch(api, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ videoId }),
-                        signal: controller.signal
-                    });
-                    clearTimeout(timeout);
-                    if (tRes.ok) {
-                        const data = await tRes.json();
-                        if (data.transcript) {
-                            transcript = data.transcript;
-                            duration = data.duration || 0;
-                            if (data.title && !meta.title) meta.title = data.title;
-                            if (data.channel && !meta.channel) meta.channel = data.channel;
-                            break;
-                        }
-                    }
-                } catch(e) { continue; }
-            }
-
-            if (transcript) {
-                try {
-                    const sumRes = await fetch('/api/summarize', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ transcript, title: meta.title, channel: meta.channel })
-                    });
-                    if (sumRes.ok) {
-                        const sumData = await sumRes.json();
-                        summary = sumData.summary || '';
-                        summaryMethod = 'transcript-fallback';
-                    }
-                } catch(e) {}
-            }
-        }
+        // No fallback needed — Gemini handles YouTube natively
 
         setStep(3, summary ? 'done' : 'error');
 
