@@ -904,11 +904,11 @@
                     </div>
                     <div class="progress-step" id="step2">
                         <div class="step-icon">⏳</div>
-                        <span>Extracting transcript & captions...</span>
+                        <span>Connecting to YouTube...</span>
                     </div>
                     <div class="progress-step" id="step3">
                         <div class="step-icon">⏳</div>
-                        <span>Generating AI summary with Gemini...</span>
+                        <span>Gemini is watching & summarizing...</span>
                     </div>
                 </div>
             </div>
@@ -1073,87 +1073,93 @@ async function analyzeVideo() {
         try { meta = await fetchVideoMeta(videoId); } catch(e) {}
         setStep(1, 'done');
 
-        // Step 2: Fetch transcript
+        // Step 2: Summarize via Gemini (native YouTube access — no transcript needed!)
         setStep(2, 'active');
-        let transcriptData = null;
-
-        // Try multiple transcript endpoints in order
-        const TRANSCRIPT_APIS = [
-            localStorage.getItem('focus_transcript_api'),
-            'http://localhost:3142',
-            'https://yt-transcript.ivo-tools.workers.dev'
-        ].filter(Boolean);
-
-        for (const api of TRANSCRIPT_APIS) {
-            try {
-                const controller = new AbortController();
-                const timeout = setTimeout(() => controller.abort(), api.includes('localhost') ? 30000 : 15000);
-                const tRes = await fetch(api, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ videoId }),
-                    signal: controller.signal
-                });
-                clearTimeout(timeout);
-                if (tRes.ok) {
-                    const data = await tRes.json();
-                    if (data.transcript) { transcriptData = data; break; }
-                }
-            } catch(e) {
-                console.warn(`Transcript API ${api} failed:`, e.message);
-                continue;
-            }
-        }
-
-        if (!transcriptData || !transcriptData.transcript) {
-            setStep(2, 'error');
-            const today = new Date().toISOString().split('T')[0];
-            const video = {
-                id: videoId, url: fullUrl,
-                title: meta.title || 'Untitled Video', channel: meta.channel || 'Unknown',
-                duration: 0, summary: '', transcript: '',
-                completed: false, dateAdded: today, dateCompleted: null
-            };
-            store.videos.unshift(video);
-            saveStore(store);
-            input.value = '';
-            progressEl.classList.remove('show');
-            showToast('⚠️ Added but transcript fetch failed');
-            renderAll();
-            return;
-        }
-
         setStep(2, 'done');
-
-        // Step 3: Generate AI summary via Gemini
         setStep(3, 'active');
+
         let summary = '';
+        let transcript = '';
+        let duration = 0;
+        let summaryMethod = '';
+
+        // Try Gemini with direct YouTube URL first
         try {
             const sumRes = await fetch('/api/summarize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    transcript: transcriptData.transcript,
-                    title: transcriptData.title || meta.title,
-                    channel: transcriptData.channel || meta.channel
+                    videoUrl: fullUrl,
+                    videoId: videoId,
+                    title: meta.title,
+                    channel: meta.channel
                 })
             });
             if (sumRes.ok) {
                 const sumData = await sumRes.json();
                 summary = sumData.summary || '';
+                summaryMethod = sumData.method || 'unknown';
             }
-        } catch(e) { console.warn('Summary failed:', e.message); }
+        } catch(e) { console.warn('Gemini native failed:', e.message); }
+
+        // Fallback: fetch transcript via local proxy, then summarize
+        if (!summary) {
+            const TRANSCRIPT_APIS = [
+                localStorage.getItem('focus_transcript_api'),
+                'https://localhost:3143',
+                'http://localhost:3142'
+            ].filter(Boolean);
+
+            for (const api of TRANSCRIPT_APIS) {
+                try {
+                    const controller = new AbortController();
+                    const timeout = setTimeout(() => controller.abort(), 30000);
+                    const tRes = await fetch(api, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ videoId }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeout);
+                    if (tRes.ok) {
+                        const data = await tRes.json();
+                        if (data.transcript) {
+                            transcript = data.transcript;
+                            duration = data.duration || 0;
+                            if (data.title && !meta.title) meta.title = data.title;
+                            if (data.channel && !meta.channel) meta.channel = data.channel;
+                            break;
+                        }
+                    }
+                } catch(e) { continue; }
+            }
+
+            if (transcript) {
+                try {
+                    const sumRes = await fetch('/api/summarize', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ transcript, title: meta.title, channel: meta.channel })
+                    });
+                    if (sumRes.ok) {
+                        const sumData = await sumRes.json();
+                        summary = sumData.summary || '';
+                        summaryMethod = 'transcript-fallback';
+                    }
+                } catch(e) {}
+            }
+        }
 
         setStep(3, summary ? 'done' : 'error');
 
         const today = new Date().toISOString().split('T')[0];
         const video = {
             id: videoId, url: fullUrl,
-            title: transcriptData.title || meta.title || 'Untitled Video',
-            channel: transcriptData.channel || meta.channel || 'Unknown',
-            duration: transcriptData.duration || 0,
+            title: meta.title || 'Untitled Video',
+            channel: meta.channel || 'Unknown',
+            duration: duration,
             summary: summary,
-            transcript: transcriptData.transcript || '',
+            transcript: transcript,
             completed: !!summary,
             dateAdded: today,
             dateCompleted: summary ? today : null
@@ -1197,45 +1203,18 @@ async function reSummarize(videoId) {
     }
 
     try {
-        // If no transcript, fetch it first
-        if (!video.transcript) {
-            const TRANSCRIPT_APIS = [
-                localStorage.getItem('focus_transcript_api'),
-                'http://localhost:3142',
-                'https://yt-transcript.ivo-tools.workers.dev'
-            ].filter(Boolean);
-
-            for (const api of TRANSCRIPT_APIS) {
-                try {
-                    const controller = new AbortController();
-                    const timeout = setTimeout(() => controller.abort(), api.includes('localhost') ? 30000 : 15000);
-                    const tRes = await fetch(api, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ videoId }),
-                        signal: controller.signal
-                    });
-                    clearTimeout(timeout);
-                    if (tRes.ok) {
-                        const tData = await tRes.json();
-                        if (tData.transcript) {
-                            video.transcript = tData.transcript;
-                            if (tData.duration > 0) video.duration = tData.duration;
-                            if (tData.title && !video.title) video.title = tData.title;
-                            if (tData.channel && !video.channel) video.channel = tData.channel;
-                            break;
-                        }
-                    }
-                } catch(e) { console.warn(`Transcript API ${api} failed:`, e.message); continue; }
-            }
-        }
-
-        if (!video.transcript) throw new Error('No transcript available. Try again or check if the video has captions.');
-
-        const apiRes = await fetch('/api/summarize', {
+        // Try Gemini native YouTube access first (no transcript needed)
+        const videoUrl = video.url || `https://www.youtube.com/watch?v=${videoId}`;
+        let apiRes = await fetch('/api/summarize', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ transcript: video.transcript, title: video.title, channel: video.channel })
+            body: JSON.stringify({
+                videoUrl: videoUrl,
+                videoId: videoId,
+                transcript: video.transcript || undefined,
+                title: video.title,
+                channel: video.channel
+            })
         });
 
         if (!apiRes.ok) {
