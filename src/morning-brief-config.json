@@ -1,8 +1,127 @@
 {
-  "lastUpdated": "2026-02-07T11:48:00+02:00",
-  "schedule": {
-    "part1": { "time": "10:00", "cronId": "5fd1593c-e58d-4cc0-9313-a06a615520eb" },
-    "part2": { "time": "10:30", "cronId": "5480000b-42e4-47a3-8f53-4e043a72e715" }
+  "lastUpdated": "2026-02-08T22:00:00+02:00",
+  "axioms": [
+    "BTC WILL become the backbone of future finance",
+    "AI WILL run every business",
+    "BTC + AI intersection = where the real alpha is",
+    "Opportunities are everywhere but we're BLIND. Help him SEE.",
+    "Think like a billionaire, not an analyst"
+  ],
+  "pipeline": [
+    {
+      "id": "phase1",
+      "cronId": "31ee414e-0636-49d9-912b-715e22b1faf7",
+      "name": "Phase 1: Wide Scan",
+      "emoji": "🌙",
+      "time": "03:00",
+      "targetDuration": "25-30 min",
+      "model": "anthropic/claude-opus-4-6",
+      "description": "28 explicit searches across BTC, AI, agent economy, space, emerging tech",
+      "output": "memory/daily-scan/YYYY-MM-DD-phase1-raw.md",
+      "instructions": "Execute 28 web searches across all categories. For each search: save title, URL, 2-sentence summary, relevance score (1-10). Group by category. Save raw results to memory/daily-scan/YYYY-MM-DD-phase1-raw.md. Target: 25-30 minutes total."
+    },
+    {
+      "id": "phase2",
+      "cronId": "7fef4399-90f6-4d8c-8c35-ad0f269ec594",
+      "name": "Phase 2: Deep Dives",
+      "emoji": "🌙",
+      "time": "03:45",
+      "targetDuration": "30-40 min",
+      "model": "anthropic/claude-opus-4-6",
+      "description": "Reads Phase 1, ranks signals, does 3-5 deep dives with full articles",
+      "input": "memory/daily-scan/YYYY-MM-DD-phase1-raw.md",
+      "output": "memory/daily-scan/YYYY-MM-DD.md",
+      "instructions": "Read Phase 1 raw file. Rank all signals by: (1) relevance to axioms, (2) actionability, (3) time-sensitivity. Pick top 3-5 signals. For each: fetch full article, extract key data, write 150-300 word analysis. Save final report to memory/daily-scan/YYYY-MM-DD.md."
+    },
+    {
+      "id": "radar",
+      "cronId": "04adc0f3-f4f8-4038-8c80-90468dfdbf2d",
+      "name": "Opportunity Radar Delivery",
+      "emoji": "👁️",
+      "time": "09:30",
+      "targetDuration": "5 min",
+      "model": "anthropic/claude-opus-4-6",
+      "description": "THE most important daily delivery — punchy espresso shot to Telegram",
+      "input": "memory/daily-scan/YYYY-MM-DD.md",
+      "output": "Telegram message",
+      "maxChars": 2000,
+      "instructions": "Read deep scan report. Distill into punchy, high-signal Telegram message. Format: 👁️ OPPORTUNITY RADAR header, then 3-5 bullets. Each bullet: emoji + bold headline + 1 sentence why it matters + actionability tag. Under 2000 chars. No fluff. Think billionaire briefing, not analyst report."
+    },
+    {
+      "id": "brief_part1",
+      "cronId": "5fd1593c-e58d-4cc0-9313-a06a615520eb",
+      "name": "Brief Part 1: Intel & Analytics",
+      "emoji": "☀️",
+      "time": "10:00",
+      "targetDuration": "10-15 min",
+      "model": "anthropic/claude-opus-4-6",
+      "description": "Sections: Overnight Build, AI Daily (@alexwg), Alessa Analytics, X/Twitter Scout",
+      "output": "Telegram messages",
+      "sectionIds": ["overnight", "ai_daily", "analytics", "x_scout"],
+      "instructions": "Deliver Brief Part 1 to Telegram. Four sections: Overnight Build, AI Daily, Alessa Analytics, X/Twitter Scout. Each section as a separate message if needed. Stay within char budgets. Use real data from tools and APIs."
+    },
+    {
+      "id": "brief_part2",
+      "cronId": "5480000b-42e4-47a3-8f53-4e043a72e715",
+      "name": "Brief Part 2: Scouts & Action",
+      "emoji": "☀️",
+      "time": "10:30",
+      "targetDuration": "10-15 min",
+      "model": "anthropic/claude-opus-4-6",
+      "description": "Sections: HN Scout, YouTube Scout, Creative Briefs, Edge Feed, Today's Plan, Delegation",
+      "output": "Telegram messages",
+      "sectionIds": ["hn_scout", "youtube", "creative", "edge_feed", "todays_plan", "delegation"],
+      "instructions": "Deliver Brief Part 2 to Telegram. Six sections: HN Scout, YouTube Scout, Creative Briefs, Edge Feed, Today's Plan, Delegation. Each section as a separate message if needed. Stay within char budgets. Use real data from tools and APIs."
+    }
+  ],
+  "radarConfig": {
+    "categories": [
+      "SOFTWAR", "New internet", "Metaverse", "Bot economy", "Space",
+      "Robotics", "Energy", "Platforms", "BTC L2s", "AI bottlenecks"
+    ],
+    "searches": [
+      "Bitcoin adoption institutional 2026",
+      "Bitcoin L2 Lightning Network updates",
+      "Bitcoin mining energy innovation",
+      "BTC + AI convergence projects",
+      "SOFTWAR Bitcoin as strategic asset",
+      "AI agent economy autonomous agents",
+      "AI agent marketplace MCP protocol",
+      "AI coding assistants latest",
+      "Claude Anthropic news updates",
+      "OpenAI GPT latest releases",
+      "Google Gemini AI updates",
+      "AI running business automation",
+      "AI ecommerce automation tools",
+      "Robotics humanoid latest breakthroughs",
+      "Space tech commercialization 2026",
+      "SpaceX Starship updates",
+      "Metaverse virtual economy updates",
+      "AR VR Apple Vision Pro adoption",
+      "Emerging tech breakthroughs today",
+      "Quantum computing practical applications",
+      "Energy tech nuclear fusion updates",
+      "DeFi Bitcoin decentralized finance",
+      "Stablecoin regulation adoption",
+      "AI bottleneck compute GPU shortage",
+      "AI chip semiconductor race",
+      "Platform economy creator tools",
+      "Ecommerce AI personalization trends",
+      "Macro BTC gold commodities outlook"
+    ],
+    "deepDiveRules": {
+      "minSearchesPerDive": 2,
+      "maxDives": 5,
+      "minDives": 3,
+      "scoringCriteria": [
+        "Relevance to core axioms (BTC + AI)",
+        "Actionability — can Ivo do something with this?",
+        "Time-sensitivity — is this breaking or can it wait?",
+        "Alpha potential — does this give an edge?",
+        "Convergence — does it connect multiple categories?"
+      ]
+    },
+    "deliveryTemplate": "👁️ OPPORTUNITY RADAR — {date}\n\n{bullets}\n\n⚡ Alpha Score: {score}/10"
   },
   "sections": [
     {
@@ -119,15 +238,14 @@
   "delivery": {
     "method": "split",
     "maxCharsPerMessage": 3500,
-    "splitStrategy": "two-crons",
-    "part1Schedule": "10:00",
-    "part2Schedule": "10:30"
+    "splitStrategy": "two-crons"
   },
-  "groups": [
-    { "id": "part1", "label": "Intel & Analytics (10:00 AM)", "sectionIds": ["overnight", "ai_daily", "analytics", "x_scout"] },
-    { "id": "part2", "label": "Scouts & Action (10:30 AM)", "sectionIds": ["hn_scout", "youtube", "creative", "edge_feed", "todays_plan", "delegation"] }
-  ],
-  "modelOverrides": {
+  "modelAssignments": {
+    "phase1": "anthropic/claude-opus-4-6",
+    "phase2": "anthropic/claude-opus-4-6",
+    "radar": "anthropic/claude-opus-4-6",
+    "brief_part1": "anthropic/claude-opus-4-6",
+    "brief_part2": "anthropic/claude-opus-4-6",
     "midjourney_cron": "anthropic/claude-sonnet-4"
   }
 }
