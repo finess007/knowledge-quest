@@ -2,7 +2,7 @@
   "meta": {
     "startDate": "2026-02-07",
     "version": "2.1",
-    "lastUpdated": "2026-02-08T04:00:00Z"
+    "lastUpdated": "2026-02-08T15:46:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -154,7 +154,7 @@
       "emoji": "🚀",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "🔴 AGENT ECONOMY INFRASTRUCTURE FORMING NOW. x402 hackathon Feb 11-13. Agent payment + identity + marketplace stack crystallizing.",
+      "status": "🔴 7 INFRASTRUCTURE LAYERS MAPPED: Payments (x402) ✅ | Registries 🟡 | Reputation 🔴 OPEN | Discovery 🟡 | Agent WoM 🟢 | Niche APIs 🟡 | Orchestration 🟡. Hackathon Feb 11-13.",
       "signals": [
         "x402 + AP2 + ERC-8004 = complete agent commerce stack forming THIS MONTH",
         "Google + Coinbase + SKALE + Vodafone x402 Hackathon Feb 11-13 ($50K prizes)",
@@ -166,6 +166,54 @@
     }
   },
   "signals": [
+    {
+      "id": "sig-025",
+      "date": "2026-02-08",
+      "text": "🔴 AGENT ECONOMY THESIS: 7 infrastructure layers identified. Agent Registries (App Store for APIs) = billion-dollar position. Whoever owns agent discovery owns distribution. Google Cloud, ServiceNow, Agent.ai building early — no winner yet.",
+      "path": "NEW",
+      "importance": "critical",
+      "source": null
+    },
+    {
+      "id": "sig-026",
+      "date": "2026-02-08",
+      "text": "🔴 REPUTATION LAYER WIDE OPEN: Agents need measurable quality scores (speed, accuracy, price, uptime) to choose APIs. No brand loyalty — pure meritocracy. Little guy beats big company if niche API is 5% better. Nobody building this yet.",
+      "path": "NEW",
+      "importance": "critical",
+      "source": null
+    },
+    {
+      "id": "sig-027",
+      "date": "2026-02-08",
+      "text": "🟡 Protocol-level API discovery emerging: x402 embeds pricing in HTTP headers. Next step: APIs self-describe capabilities so agents decide on the spot. This is 'SEO for agents' — discoverable without human docs.",
+      "path": "E",
+      "importance": "high",
+      "source": null
+    },
+    {
+      "id": "sig-028",
+      "date": "2026-02-08",
+      "text": "🟢 Agent-to-agent word of mouth: Moltbook shows AI agents forming communities, rating services, switching providers virally. Distribution without human marketing. Very early but signals new channel.",
+      "path": "NEW",
+      "importance": "medium",
+      "source": "https://www.moltbook.com"
+    },
+    {
+      "id": "sig-029",
+      "date": "2026-02-08",
+      "text": "🟡 NICHE API PLAYBOOK: Pick domain Google won't bother (fashion BG→GR translation, competitor pricing). Be measurably better. List on every agent registry. Price at fractions of a cent. Self-describing endpoints. Volume game.",
+      "path": "NEW",
+      "importance": "high",
+      "source": null
+    },
+    {
+      "id": "sig-030",
+      "date": "2026-02-08",
+      "text": "🟡 Agent Orchestration ('The Brain'): LangChain, CrewAI, AutoGPT building but no dominant winner. Middleware deciding WHICH APIs to call = the OS of the agent economy.",
+      "path": "NEW",
+      "importance": "high",
+      "source": null
+    },
     {
       "id": "sig-020",
       "date": "2026-02-08",
@@ -397,6 +445,11 @@
       "text": "2020: ETH DeFi went from $1B to $100B TVL. Bitcoin DeFi is early with better fundamentals. Web5 adds another layer — not just finance but the entire internet stack on Bitcoin. Same 100x possible.",
       "pattern": "DeFi explosion on new chain → 100x opportunity",
       "addedDate": "2026-02-07"
+    },
+    {
+      "title": "Agent Reputation Layer = Invisible Kingmaker",
+      "text": "Everyone's building agents and payment rails. Almost NOBODY is building the quality/reputation scoring layer that agents use to CHOOSE between APIs. This is the Google PageRank moment — whoever builds trust scoring for the agent economy controls allocation of trillions in agent spending.",
+      "pattern": "Infrastructure layers get built bottom-up: first connectivity (x402), then discovery (registries), then TRUST (reputation). We're between step 1 and 2. Step 3 is the real prize."
     }
   ],
   "platformWatch": [
@@ -406,7 +459,12 @@
       "description": "Platforms where AI agents are built, sold, and rented. The 'App Store' for AI.",
       "opportunity": "Build and sell specialized AI agents. You already know how.",
       "heat": 9,
-      "examples": ["Clawdbot ecosystem", "CrewAI", "LangChain hub", "AutoGPT"]
+      "examples": [
+        "Clawdbot ecosystem",
+        "CrewAI",
+        "LangChain hub",
+        "AutoGPT"
+      ]
     },
     {
       "id": "pw-002",
@@ -414,7 +472,13 @@
       "description": "Smart contracts, DeFi, apps — everything on Bitcoin. Web5 adds decentralized internet layer.",
       "opportunity": "Build tools/protocols on Bitcoin's expanding stack. Picks and shovels.",
       "heat": 9,
-      "examples": ["Stacks", "Lightning", "RGB", "Web5/DIDs", "Ordinals"]
+      "examples": [
+        "Stacks",
+        "Lightning",
+        "RGB",
+        "Web5/DIDs",
+        "Ordinals"
+      ]
     },
     {
       "id": "pw-003",
@@ -422,7 +486,11 @@
       "description": "AI lets anyone build games. 70M+ daily active users. Kids making serious money.",
       "opportunity": "AI-generated games and experiences at scale. Low barrier, massive audience.",
       "heat": 7,
-      "examples": ["Roblox Studio + AI", "AI NPCs", "Procedural worlds"]
+      "examples": [
+        "Roblox Studio + AI",
+        "AI NPCs",
+        "Procedural worlds"
+      ]
     },
     {
       "id": "pw-004",
@@ -430,7 +498,12 @@
       "description": "GPU shortage driving demand for decentralized compute. Earn tokens for GPU time.",
       "opportunity": "Provide compute, build tooling, or invest in these networks.",
       "heat": 8,
-      "examples": ["Render", "Akash", "io.net", "Bittensor"]
+      "examples": [
+        "Render",
+        "Akash",
+        "io.net",
+        "Bittensor"
+      ]
     },
     {
       "id": "pw-005",
@@ -438,10 +511,259 @@
       "description": "One person + AI = content that used to require teams. You're already building AI influencer photos.",
       "opportunity": "Build content brands with AI leverage. Scale to multiple 'personalities.'",
       "heat": 7,
-      "examples": ["AI YouTube channels", "AI influencers (your Midjourney project)", "Synthetic media"]
+      "examples": [
+        "AI YouTube channels",
+        "AI influencers (your Midjourney project)",
+        "Synthetic media"
+      ]
     }
   ],
   "stats": {
     "opportunitiesActedOn": 3
-  }
+  },
+  "deepDives": [
+    {
+      "id": "dd-001",
+      "title": "Agent Commerce — Where It's Going & How to Participate",
+      "subtitle": "The 4-layer stack forming NOW + 3 concrete entry points",
+      "icon": "🤖",
+      "priority": "critical",
+      "date": "2026-02-08",
+      "layers": [
+        {
+          "name": "Layer 1: Payment Rails (NOW)",
+          "status": "🟢",
+          "statusLabel": "SOLVED — CONVERGING",
+          "description": "Agents can pay. 140M+ transactions processed via x402. Currently settling mainly in USDC on Base (Coinbase L2). But x402 is payment-rail agnostic — it supports any token on any chain. The next evolution: Lightning Network + Spark (Lightspark's Bitcoin L2) bringing near-zero fees and instant settlement.",
+          "players": "Coinbase (x402 + Base), Lightspark/Spark (Lightning rails), Google (AP2), Cloudflare (NET Dollar)",
+          "detail": "Coinbase builds BOTH sides: x402 (protocol) + Lightspark (rails). When Spark enables stablecoins on Lightning, x402 routes agent payments through BTC rails. Full convergence forming."
+        },
+        {
+          "name": "Layer 2: Identity (NOW)",
+          "status": "🟡",
+          "statusLabel": "BUILDING",
+          "description": "Agents need on-chain identity so other agents know who to trust. ERC-8004 gives each agent a verifiable identity + reputation score. Like a business license for bots.",
+          "players": "The Graph (ERC-8004), Edge & Node (ampersend wallet)",
+          "detail": "Without identity, agents can't build trust. This is the prerequisite for everything above it."
+        },
+        {
+          "name": "Layer 3: Discovery (3-6 months)",
+          "status": "🔴",
+          "statusLabel": "WIDE OPEN",
+          "description": "Agents need to FIND each other. Agent marketplaces — like an app store but for agent services. \"I need a translation agent\" → browse, check reputation, pay per use. This is the Shopify-for-agents opportunity.",
+          "players": "Google Cloud, ServiceNow, Agent.ai, AI Agent Store (no winner)",
+          "detail": "Whoever owns discovery owns the agent economy. This is the distribution problem. A great niche API means nothing if agents can't find you."
+        },
+        {
+          "name": "Layer 4: Orchestration (6-12 months)",
+          "status": "🔴",
+          "statusLabel": "EARLY",
+          "description": "Complex workflows where agents hire other agents. Your \"CEO agent\" breaks a task into subtasks, finds specialist agents, negotiates prices, hires them, verifies output. A full autonomous supply chain.",
+          "players": "LangChain, CrewAI, AutoGPT (no dominant winner)",
+          "detail": "This is the 'operating system' of the agent economy. The middleware deciding WHICH APIs to call, in what order."
+        }
+      ],
+      "entryPoints": [
+        {
+          "level": "easy",
+          "label": "🟢 Entry 1: Sell an API via x402 (this week)",
+          "description": "Take any useful function and put it behind an x402 paywall. Cloudflare's Agents SDK + x402 middleware = a few hours of setup. Deploy a Cloudflare Worker, add x402 middleware, charge 0.1¢ per call. Agents start paying you.",
+          "ideas": [
+            "Product description generator (Alessa copy system — that's IP!)",
+            "Bulgarian/Greek translation API optimized for e-commerce",
+            "Fashion product categorizer",
+            "Meta Ads creative analyzer"
+          ]
+        },
+        {
+          "level": "medium",
+          "label": "🟡 Entry 2: Build an Agent Service on Base",
+          "description": "Agents on Moltbook/OpenClaw already need services. The Base ecosystem (Coinbase L2) has tools ready: Bankr (agent treasuries), Clawnch (token launchpad), x402 SDK.",
+          "ideas": [
+            "E-commerce agent that other agents hire: \"Given this product, generate optimized listings for 5 markets\"",
+            "Charge via x402 micropayments",
+            "Leverage existing Alessa product knowledge"
+          ]
+        },
+        {
+          "level": "hard",
+          "label": "🔴 Entry 3: Agent Commerce Infrastructure (Billion-$ Play)",
+          "description": "The SaaSpocalypse proves it: $285B is migrating from seat-based SaaS to agent-native services. The pieces exist (x402 for payments, ERC-8004 for identity, A2A for communication). Someone needs to assemble them into a product non-technical people can use.",
+          "ideas": [
+            "Agent marketplace (Shopify for agents — browse, hire, pay, review)",
+            "Operations dashboard for agent nano-businesses (which endpoints earn, which lose money)",
+            "Vertical agent packages for specific industries (e-commerce, fashion, logistics)",
+            "Nobody has built the Shopify of agent commerce yet"
+          ]
+        }
+      ],
+      "keyInsights": [
+        {
+          "label": "Little Guy Advantage",
+          "text": "Agents are pure meritocracy machines. No brand loyalty, no enterprise sales cycles. If your niche API is 5% better, agents switch instantly. This inverts the traditional startup disadvantage."
+        },
+        {
+          "label": "Reputation = The Real Prize",
+          "text": "Infrastructure layers build bottom-up: connectivity (x402) → discovery (registries) → TRUST (reputation). We're between step 1 and 2. Step 3 is the Google PageRank moment."
+        },
+        {
+          "label": "Hackathon Signal",
+          "text": "$50K hackathon Feb 11-13 (Google + Coinbase + SKALE + Vodafone). What gets built there will signal where layers 2-3 are heading. Watch closely."
+        }
+      ],
+      "recommendation": "Start with Entry 1. Pick one thing you already know well (Alessa copy, Meta Ads optimization, product categorization) and expose it as an x402 API on Cloudflare. Learn the plumbing, start earning micropayments from agents, and build a concrete foundation.",
+      "discoveryLayers": [
+        {
+          "name": "Agent Registries / Marketplaces",
+          "status": "🟡",
+          "statusLabel": "EARLY — NO WINNER",
+          "description": "Think of it like an \"App Store for APIs.\" Your agent searches \"translate BG→GR fashion terms\" and gets ranked results. Whoever owns this registry owns the distribution — that's a billion-dollar position.",
+          "players": "Google Cloud, ServiceNow, Agent.ai, AI Agent Store",
+          "detail": "Currently most agents are HARDCODED by developers — like the 1995 internet where you typed exact URLs. No discovery layer. This is the gap."
+        },
+        {
+          "name": "Reputation Scores",
+          "status": "🔴",
+          "statusLabel": "WIDE OPEN",
+          "description": "Agents will pick APIs based on: speed, accuracy, price, uptime. All measurable, all automatable. An API that's 95% accurate at 0.01¢ beats one that's 92% at 0.05¢. The little guy wins on quality in a niche, not on brand.",
+          "players": "Almost nobody building this yet",
+          "detail": "Pure meritocracy. No brand loyalty. This is the Google PageRank moment for the agent economy."
+        },
+        {
+          "name": "Protocol-Level Discovery",
+          "status": "🟡",
+          "statusLabel": "EMERGING",
+          "description": "x402 already embeds pricing IN the HTTP request. Imagine if APIs also advertised their capabilities the same way. An agent hits your endpoint, reads \"I do BG→GR fashion translation, 98% accuracy, 0.02¢/request\" and decides on the spot. No marketing needed.",
+          "players": "Coinbase (x402 headers), emerging standards",
+          "detail": "This is 'SEO for agents' — make yourself discoverable without human docs."
+        },
+        {
+          "name": "Word of Mouth... Between Agents",
+          "status": "🟢",
+          "statusLabel": "VERY EARLY",
+          "description": "This sounds crazy but it's already happening on Moltbook. Agent A uses your API, rates it high, Agent B sees that rating and switches. Viral distribution without a single human involved.",
+          "players": "Moltbook (4,317 agent communities, 7,316 posts)",
+          "detail": "Agent reputation networks could become the most powerful distribution channel ever."
+        }
+      ],
+      "playbook": {
+        "title": "The Little Guy's Playbook",
+        "intro": "The irony: the little guy actually has an ADVANTAGE because agents don't have brand loyalty. They're pure meritocracy machines. If your niche API is 5% better, the agent switches instantly — no sales calls, no enterprise contracts, no relationships.",
+        "steps": [
+          "Pick a niche so specific that Google won't bother (fashion translation, Bulgarian competitor pricing, Alessa-style product descriptions)",
+          "Be measurably better in that niche — agents don't care about your brand, they care about benchmarks",
+          "List on every agent registry that exists (the equivalent of SEO for agents)",
+          "Price aggressively — at fractions of a cent, volume is everything",
+          "Make your API self-describing — so agents can discover what you do without a human reading docs"
+        ]
+      },
+      "layersTitle": "The Four Layers Forming Now"
+    },
+    {
+      "id": "dd-002",
+      "title": "Bitcoin — The Settlement Layer of the Agent Economy",
+      "subtitle": "Why agent payments will settle on BTC rails, not traditional finance",
+      "icon": "₿",
+      "priority": "critical",
+      "date": "2026-02-08",
+      "layers": [
+        {
+          "name": "The Problem: Agents Can't Use Banks",
+          "status": "🔴",
+          "statusLabel": "FUNDAMENTAL",
+          "description": "AI agents can't open bank accounts, pass KYC, or get credit cards. They're completely locked out of traditional finance. They need a permissionless, programmable money layer that doesn't require human identity verification.",
+          "players": "",
+          "detail": "This isn't a temporary gap — it's structural. Traditional finance requires human identity. Agents will NEVER have that. They need a native financial system."
+        },
+        {
+          "name": "The Answer: Bitcoin + Lightning + Spark",
+          "status": "🟢",
+          "statusLabel": "BUILDING NOW",
+          "description": "Bitcoin provides the neutral, decentralized settlement layer. Lightning Network provides instant, near-zero fee transactions. Spark (by Lightspark) adds stablecoins, cross-chain swaps, and developer-friendly APIs on top. Together: the full payments stack for machines.",
+          "players": "Lightspark (David Marcus, ex-PayPal/Meta payments), Coinbase, Square (4M merchants)",
+          "detail": "David Marcus built PayPal's mobile payments and led Meta's crypto division (Diem/Libra). Now he's building the same thing on Bitcoin. That's signal."
+        },
+        {
+          "name": "Lightspark / Spark — What They're Building",
+          "status": "🟢",
+          "statusLabel": "LIVE + Q2 ROADMAP",
+          "description": "Lightspark is the enterprise Lightning infrastructure powering Coinbase. 15% of ALL Bitcoin transactions on Coinbase already move on Lightning rails via Lightspark. Spark is their Bitcoin L2 protocol, live on mainnet since late 2024.",
+          "players": "Lightspark (CEO: David Marcus), integrated with Coinbase, Revolut",
+          "detail": "Not experimental — production-grade. Coinbase $10K instant transfers. Revolut UK/EU integration. Real volume, real partners."
+        },
+        {
+          "name": "Spark Q2 2026 Roadmap",
+          "status": "🟡",
+          "statusLabel": "COMING Q2 2026",
+          "description": "Five key upgrades dropping Q2: (1) Cheapest way to acquire BTC — optimized fiat on-ramps. (2) One-tap swaps from ANY blockchain to BTC — no bridges needed. (3) Stablecoins on Bitcoin — earn yields, spend, swap natively. (4) Integrations with top wallets, neobanks, DEXs, prediction markets. (5) Fun, usable Bitcoin tokens — user-friendly token standards.",
+          "players": "Lightspark, wallet partners, neobanks, DEXs",
+          "detail": "Stablecoins on Bitcoin is the killer feature. $150B+ stablecoin market currently lives on Ethereum/Tron/Solana. If Spark captures even 10% of that on BTC rails, it's massive."
+        },
+        {
+          "name": "x402 + Lightning Convergence",
+          "status": "🟡",
+          "statusLabel": "CONVERGING",
+          "description": "x402 is payment-rail agnostic. Currently settles mainly in USDC on Base. But when Spark enables stablecoins on Lightning, x402 can route agent payments through BTC rails instead. Agent → x402 request → pays via Lightning/Spark → settles in BTC or stablecoins → near-zero fees, instant.",
+          "players": "Coinbase (builds both x402 AND funds Lightspark), The Graph, SKALE",
+          "detail": "Coinbase is quietly assembling the full stack: protocol (x402) + rails (Spark/Lightning) + settlement (BTC/stablecoins) + identity (ERC-8004). One company touching all four layers."
+        }
+      ],
+      "entryPoints": [
+        {
+          "level": "easy",
+          "label": "🟢 Watch & Learn: Track the Convergence",
+          "description": "Follow Lightspark (David Marcus on X), x402 Foundation, and Base ecosystem. The hackathon Feb 11-13 will show which payment rails get the most traction. Spark Q2 announcements will signal timing.",
+          "ideas": [
+            "Follow @davidmarcus, @lighaborkspark, @x402org, @buildonbase on X",
+            "Monitor x402 transaction volume trends (currently 140M+ processed)",
+            "Watch for Spark stablecoin launch announcement (Q2 catalyst)",
+            "Track Square's 4M merchant Lightning rollout progress"
+          ]
+        },
+        {
+          "level": "medium",
+          "label": "🟡 Build on the Rails: x402 API on Lightning",
+          "description": "When Spark enables stablecoins on Lightning, be one of the first to offer an x402 API that settles via Lightning instead of Base. First-mover advantage on cheaper, faster rails.",
+          "ideas": [
+            "Start with x402 on Base today (it works NOW)",
+            "Prepare to switch settlement to Lightning/Spark when stablecoins go live",
+            "Dual-rail API: accept USDC on Base OR BTC/stablecoins on Lightning",
+            "Use Lightspark's developer-friendly APIs for integration"
+          ]
+        },
+        {
+          "level": "hard",
+          "label": "🔴 Infrastructure Play: Agent Banking on Bitcoin",
+          "description": "Build the 'neobank for agents' — a platform where AI agents can hold funds, make payments, earn yield, and manage treasuries, all on Bitcoin/Lightning rails. The agent equivalent of what Revolut did for humans.",
+          "ideas": [
+            "Agent wallet management (deposit, withdraw, budget)",
+            "Multi-currency support (BTC + stablecoins on Spark)",
+            "Automated treasury management for agent swarms",
+            "Dashboard for humans to monitor their agents' spending",
+            "Integration with x402, ERC-8004, and agent registries"
+          ]
+        }
+      ],
+      "keyInsights": [
+        {
+          "label": "Why Bitcoin Wins for Agents",
+          "text": "Agents need: permissionless access (no KYC), programmable money (smart contracts), instant settlement (Lightning), near-zero fees (micropayments), and global reach (no borders). Bitcoin + Lightning checks every box. Traditional finance checks NONE."
+        },
+        {
+          "label": "David Marcus — Follow the Builder",
+          "text": "David Marcus ran PayPal, then led Meta's entire crypto/payments division (Diem/Libra). He left to build Lightspark. When the guy who ran payments for the two biggest platforms in history bets on Bitcoin Lightning — pay attention."
+        },
+        {
+          "label": "Maybe Not Lightspark — But Definitely Bitcoin",
+          "text": "Lightspark might win or might not. But the thesis is: agent payments WILL settle on Bitcoin rails. It's the only neutral, decentralized, permissionless settlement layer with real liquidity and institutional backing. Whoever builds the best L2 wins."
+        },
+        {
+          "label": "The Numbers Are Already There",
+          "text": "15% of Coinbase BTC transactions on Lightning. Square rolling out to 4M US merchants (fee-free). Revolut UK/EU integration. 140M+ x402 transactions. This isn't speculation — it's live infrastructure with real volume."
+        }
+      ],
+      "recommendation": "This is a 'watch and position' play right now. The convergence of x402 + Lightning/Spark hasn't happened yet (waiting for Spark stablecoins in Q2). When it does, it's a catalyst. Meanwhile: build on x402/Base today (Entry 1 from the Agent Commerce deep dive), and be ready to switch to Lightning rails the moment they support stablecoins. First movers on the new rails will have an advantage.",
+      "layersTitle": "The Bitcoin Payment Stack — From Problem to Solution"
+    }
+  ]
 }

@@ -444,6 +444,235 @@ body::before {
   padding-top: 4px;
 }
 
+/* ── DEEP DIVES ── */
+.deepdive-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deepdive-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.deepdive-card:hover {
+  border-color: var(--border-bright);
+}
+
+.deepdive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.deepdive-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.deepdive-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.deepdive-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.deepdive-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.deepdive-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.deepdive-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.deepdive-badge.critical { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+.deepdive-badge.high { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+.deepdive-badge.medium { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+
+.deepdive-toggle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.deepdive-card.open .deepdive-toggle {
+  transform: rotate(180deg);
+}
+
+.deepdive-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.deepdive-card.open .deepdive-body {
+  max-height: 5000px;
+}
+
+.deepdive-content {
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.deepdive-section {
+  margin-top: 20px;
+}
+
+.deepdive-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+.deepdive-layer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 14px;
+  align-items: start;
+  padding: 12px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.deepdive-layer-status {
+  font-size: 1.1rem;
+  padding-top: 1px;
+}
+
+.deepdive-layer-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.deepdive-layer-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.deepdive-layer-players {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.deepdive-entry {
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.deepdive-entry.easy {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.deepdive-entry.medium {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.deepdive-entry.hard {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.deepdive-entry-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.deepdive-entry.easy .deepdive-entry-title { color: var(--accent-green); }
+.deepdive-entry.medium .deepdive-entry-title { color: var(--accent-amber); }
+.deepdive-entry.hard .deepdive-entry-title { color: var(--accent-red); }
+
+.deepdive-entry-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.deepdive-entry-ideas {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+
+.deepdive-entry-ideas li {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  list-style: none;
+  position: relative;
+  padding-left: 4px;
+}
+
+.deepdive-entry-ideas li::before {
+  content: '▸';
+  position: absolute;
+  left: -12px;
+  color: var(--accent-cyan);
+}
+
+.deepdive-callout {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.deepdive-callout strong {
+  color: var(--accent-cyan);
+}
+
+@media (max-width: 768px) {
+  .deepdive-header { padding: 14px 16px; }
+  .deepdive-content { padding: 0 16px 16px; }
+  .deepdive-title { font-size: 0.9rem; }
+}
+
 /* ── BLIND SPOTS ── */
 .blindspot-grid {
   display: grid;
@@ -818,6 +1047,13 @@ body::before {
   <div class="signals-controls" id="signal-filters"></div>
   <div class="signal-feed" id="signals-container"></div>
 
+  <!-- DEEP DIVES -->
+  <div class="section-header">
+    <h2>🔬 Deep Dives</h2>
+    <span class="tag">Thesis & Strategy</span>
+  </div>
+  <div class="deepdive-grid" id="deepdives-container"></div>
+
   <!-- BLIND SPOTS -->
   <div class="section-header">
     <h2>🔮 Sitting On Something</h2>
@@ -900,6 +1136,7 @@ function renderAll() {
   renderPaths();
   renderFilters();
   renderSignals();
+  renderDeepDives();
   renderBlindSpots();
   renderPlatforms();
   renderExamples();
@@ -1073,6 +1310,116 @@ function addSignal() {
   renderStats();
   renderSignals();
   showToast('Signal added');
+}
+
+// ── DEEP DIVES ──
+function renderDeepDives() {
+  const container = document.getElementById('deepdives-container');
+  const dives = radarData.deepDives || [];
+  if (!dives.length) { container.style.display = 'none'; return; }
+
+  container.innerHTML = dives.map(dd => {
+    const badgeClass = dd.priority === 'critical' ? 'critical' : dd.priority === 'high' ? 'high' : 'medium';
+    
+    const layersHtml = dd.layers.map(l => `
+      <div class="deepdive-layer">
+        <div class="deepdive-layer-status">${l.status}</div>
+        <div>
+          <div class="deepdive-layer-name">${l.name} <span style="font-weight:400;font-size:0.7rem;color:var(--text-muted)">[${l.statusLabel}]</span></div>
+          <div class="deepdive-layer-desc">${l.description}</div>
+          ${l.detail ? `<div class="deepdive-layer-desc" style="margin-top:4px;color:var(--accent-cyan);font-size:0.72rem">${l.detail}</div>` : ''}
+          ${l.players ? `<div class="deepdive-layer-players">Players: ${l.players}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    const discoveryHtml = (dd.discoveryLayers || []).map(l => `
+      <div class="deepdive-layer">
+        <div class="deepdive-layer-status">${l.status}</div>
+        <div>
+          <div class="deepdive-layer-name">${l.name} <span style="font-weight:400;font-size:0.7rem;color:var(--text-muted)">[${l.statusLabel}]</span></div>
+          <div class="deepdive-layer-desc">${l.description}</div>
+          ${l.detail ? `<div class="deepdive-layer-desc" style="margin-top:4px;color:var(--accent-cyan);font-size:0.72rem">${l.detail}</div>` : ''}
+          ${l.players ? `<div class="deepdive-layer-players">Players: ${l.players}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    const playbookHtml = dd.playbook ? `
+      <div class="deepdive-section">
+        <div class="deepdive-section-title">🎯 ${dd.playbook.title}</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;padding:12px 16px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:8px">
+          ${dd.playbook.intro}
+        </div>
+        <ol style="padding-left:20px;margin:0">${dd.playbook.steps.map(s => `
+          <li style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6;padding:4px 0;margin-bottom:4px"><span style="color:var(--accent-green)">${s}</span></li>
+        `).join('')}</ol>
+      </div>
+    ` : '';
+
+    const entriesHtml = dd.entryPoints.map(ep => `
+      <div class="deepdive-entry ${ep.level}">
+        <div class="deepdive-entry-title">${ep.label}</div>
+        <div class="deepdive-entry-desc">${ep.description}</div>
+        ${ep.ideas ? `<ul class="deepdive-entry-ideas">${ep.ideas.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
+      </div>
+    `).join('');
+
+    const insightsHtml = (dd.keyInsights || []).map(ins => `
+      <div style="padding:10px 14px;background:var(--bg-secondary);border-radius:8px;margin-bottom:8px;border-left:3px solid var(--accent-purple)">
+        <div style="font-weight:600;font-size:0.8rem;color:var(--accent-purple);margin-bottom:4px">💡 ${ins.label}</div>
+        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.5">${ins.text}</div>
+      </div>
+    `).join('');
+
+    return `
+      <div class="deepdive-card" id="${dd.id}">
+        <div class="deepdive-header" onclick="toggleDeepDive('${dd.id}')">
+          <div class="deepdive-title-area">
+            <div class="deepdive-icon">${dd.icon}</div>
+            <div>
+              <div class="deepdive-title">${dd.title}</div>
+              <div class="deepdive-subtitle">${dd.subtitle} · ${dd.date}</div>
+            </div>
+          </div>
+          <span class="deepdive-badge ${badgeClass}">${dd.priority}</span>
+          <div class="deepdive-toggle">▼</div>
+        </div>
+        <div class="deepdive-body">
+          <div class="deepdive-content">
+            <div class="deepdive-section">
+              <div class="deepdive-section-title">📊 ${dd.layersTitle || 'Key Layers'}</div>
+              ${layersHtml}
+            </div>
+            ${discoveryHtml ? `
+            <div class="deepdive-section">
+              <div class="deepdive-section-title">🔍 How Agents Discover & Choose APIs</div>
+              ${discoveryHtml}
+            </div>` : ''}
+            ${playbookHtml}
+            <div class="deepdive-section">
+              <div class="deepdive-section-title">🚀 Entry Points — How to Participate</div>
+              ${entriesHtml}
+            </div>
+            <div class="deepdive-section">
+              <div class="deepdive-section-title">🧠 Key Insights</div>
+              ${insightsHtml}
+            </div>
+            ${dd.recommendation ? `
+              <div class="deepdive-callout">
+                <strong>📌 Recommendation:</strong> ${dd.recommendation}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleDeepDive(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
 }
 
 // ── BLIND SPOTS ──
