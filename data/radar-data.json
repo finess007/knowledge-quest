@@ -1,8 +1,8 @@
 {
   "meta": {
     "startDate": "2026-02-07",
-    "version": "2.0",
-    "lastUpdated": "2026-02-07T04:00:00Z"
+    "version": "2.1",
+    "lastUpdated": "2026-02-08T04:00:00Z"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -100,51 +100,53 @@
       "emoji": "🛍️",
       "description": "E-commerce expansion from Bulgaria to global markets",
       "score": 7,
-      "status": "948/952 product descriptions DONE. Greece/Romania expanding. AI personalization next frontier.",
+      "status": "948/952 product descriptions DONE. SaaSpocalypse = SaaS cost reduction opportunity. AI personalization generates 40% more revenue.",
       "signals": [
-        "AI-driven personalization contributed $14B in Black Friday sales globally",
-        "European fashion e-commerce growth shifting to value/utility products",
-        "Return rates becoming critical — DACH 50%, UK 14% — competitive moat opportunity",
-        "AI recommendation engines now table stakes for DTC scaling"
+        "AI-driven personalization generates 40% more revenue (Envive.ai data)",
+        "SaaSpocalypse: AI agents could replace mid-tier SaaS tools Alessa pays for",
+        "Lightning Network could eventually lower international payment costs",
+        "Anthropic Cowork plugins for marketing, CRM, customer support = direct Alessa relevance"
       ]
     },
     "D": {
       "name": "Trading",
       "emoji": "📈",
       "description": "Active trading — crypto, stocks, derivatives",
-      "score": 8,
-      "status": "MASSIVE sector rotation underway. Clear short-SaaS / long-infrastructure setup. BTC crash creating opportunities.",
+      "score": 9,
+      "status": "🔴 MULTI-FRONT OPPORTUNITY. SaaS at multi-year lows (BofA says overreaction). IREN -33.5%. Copper supercycle. Nuclear picks-and-shovels.",
       "signals": [
-        "Great Sector Rotation: capital fleeing SaaS → old economy (energy, materials, industrials)",
-        "IGV software index down 30% from highs — $24B in shorts by hedge funds",
-        "Dow topped 50,000 first time. S&P rallied 2% Friday (best since May)",
-        "BTC crashed 50% from peak to ~$60K — forced liquidation pattern, not fundamentals"
+        "SaaSpocalypse: CRM, ADBE, NOW at multi-year lows — BofA calls it irrational, potential bounce trades",
+        "IREN -33.5% on earnings miss despite $9.7B Microsoft AI contract — potential 2-3x if milestones hit",
+        "Copper to $12,500/ton (JPM) — COPX ETF +95% YTD, structural deficit of 330K tons in 2026",
+        "Nuclear basket: CCJ (safe yield), LEU (HALEU monopoly), OKLO (speculative) — Meta 6.6GW deal validates"
       ]
     },
     "E": {
       "name": "Crypto",
       "emoji": "₿",
-      "description": "BTC L2, Ordinals, AI tokens, DeFi",
+      "description": "BTC L2, Lightning, AI agent payments, DeFi",
       "score": 10,
-      "status": "BTC at ~$60-70K — potential generational buy. Lightning proved institutional capacity. Quantum being addressed.",
+      "status": "🔴 x402 protocol EXPLODING (957K tx/week, 4300% growth). Lightning going mainstream via Square 4M merchants + SoFi remittances.",
       "signals": [
-        "$1M Lightning Network payment settled in 0.43 seconds (SDM → Kraken) — 7x previous record",
-        "BTC crash driven by hidden Asia fund blowup, not fundamental deterioration",
-        "Saylor launched Bitcoin Security Program for quantum defense",
-        "Kevin Warsh Fed nomination → rate cuts mid-2026 → eventually bullish",
-        "Vitalik: L2s should rebrand to AI, privacy, identity specialization"
+        "x402 protocol: 957K transactions/week (4,300% growth) — Google, Coinbase, Cloudflare backing",
+        "Square deploying Lightning to 4M US merchants in 2026 (fee-free), 50% lower than credit cards",
+        "SoFi + Lightspark: First US bank offering LN-powered remittances ($740B market)",
+        "ERC-8004: AI agent identity standard adopted by BNB Chain, The Graph, Ethereum",
+        "Taproot Assets + USDT natively on Lightning → LN becomes universal value transfer network",
+        "BTC L2s raised $447M total; Franklin Templeton investing in Bitlayer"
       ]
     },
     "F": {
       "name": "X Fame",
       "emoji": "🎯",
       "description": "Audience building on X/Twitter for influence and deal flow",
-      "score": 6,
-      "status": "SaaSpocalypse is the perfect topic for authentic thread. Ivo runs AI agents daily — unique perspective.",
+      "score": 7,
+      "status": "SaaSpocalypse + x402 + BTC miners→AI = rich content topics. Builder/operator angle is unique.",
       "signals": [
-        "SaaSpocalypse trending — everyone talking about AI replacing SaaS",
+        "SaaSpocalypse still trending — deep analysis opportunity for e-commerce founders",
+        "x402 agent economy discussion heating up on X",
         "Builder/operator perspectives getting highest engagement",
-        "AI + crypto content dominating X engagement metrics"
+        "AI + crypto intersection content dominating X engagement metrics"
       ]
     },
     "NEW": {
@@ -152,17 +154,66 @@
       "emoji": "🚀",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "🔴 THE WINDOW IS OPEN NOW. Agent economy forming this month. Key infrastructure layers being built at seed stage.",
+      "status": "🔴 AGENT ECONOMY INFRASTRUCTURE FORMING NOW. x402 hackathon Feb 11-13. Agent payment + identity + marketplace stack crystallizing.",
       "signals": [
+        "x402 + AP2 + ERC-8004 = complete agent commerce stack forming THIS MONTH",
+        "Google + Coinbase + SKALE + Vodafone x402 Hackathon Feb 11-13 ($50K prizes)",
         "OpenAI Frontier + Claude Cowork = AI agents going enterprise NOW",
-        "Sapiom raised $15.75M (Accel + Anthropic + Coinbase) for agent financial infrastructure",
-        "1 BILLION AI agents projected by end of 2026 (IBM + Salesforce estimate)",
-        "$600B+ AI capex from hyperscalers in 2026 — demand side confirmed",
-        "Agent infrastructure gaps: payments, identity, marketplace, monitoring — all buildable"
+        "Agent infrastructure gaps: payments (x402), identity (ERC-8004), marketplace, monitoring",
+        "SaaSpocalypse proves old software dying — new agent-native companies needed",
+        "'Shopify for AI agents' = the billion-dollar opportunity in this cycle"
       ]
     }
   },
   "signals": [
+    {
+      "id": "sig-020",
+      "date": "2026-02-08",
+      "text": "🔴 x402 protocol: 957K transactions/week (4,300% growth). Google AP2 integration. Cloudflare NET Dollar stablecoin. The Graph building data layer. Hackathon Feb 11-13.",
+      "path": "E",
+      "source": "DL News, PR Newswire, Bitcoin Ethereum News",
+      "importance": "critical"
+    },
+    {
+      "id": "sig-021",
+      "date": "2026-02-08",
+      "text": "🔴 BTC Miners → AI Data Center Pivot: IREN $9.7B Microsoft deal (4.5GW, 140K GPUs). 90% valuation from AI. Stock -33.5% = potential entry. 6GW total US miner power.",
+      "path": "D",
+      "source": "Blockmanity, FinancialContent, Wired",
+      "importance": "critical"
+    },
+    {
+      "id": "sig-022",
+      "date": "2026-02-08",
+      "text": "🔴 Square deploying Lightning Network to 4M US merchants in 2026 (fee-free). SoFi + Lightspark: first US bank LN remittances. Taproot Assets enabling BTC/stablecoin DEX.",
+      "path": "E",
+      "source": "CoinCentral, Lightspark, CrowdfundInsider",
+      "importance": "critical"
+    },
+    {
+      "id": "sig-023",
+      "date": "2026-02-08",
+      "text": "🟡 Nuclear power for AI: Meta signs 6.6GW deals with Vistra + Oklo + TerraPower (20-year). SMR regulatory reform by 2027. DC power demand = Japan's total electricity by 2030.",
+      "path": "D",
+      "source": "TechCrunch, Reason, Power Magazine",
+      "importance": "high"
+    },
+    {
+      "id": "sig-024",
+      "date": "2026-02-08",
+      "text": "🟡 Copper supercycle: $12,500/ton forecast (JPM). 330K-ton deficit in 2026. 50K tons per hyperscale AI DC. COPX ETF +95% YTD. S&P: demand +50% by 2040.",
+      "path": "D",
+      "source": "Nasdaq, Reuters, S&P Global",
+      "importance": "high"
+    },
+    {
+      "id": "sig-025",
+      "date": "2026-02-08",
+      "text": "🟡 ERC-8004: On-chain AI agent identity standard. BNB Chain + The Graph + Ethereum adopting. Digital passport for agents — reputation, behavioral history, cross-chain verification.",
+      "path": "E",
+      "source": "CoinDesk, BanklessTimes, Chainwire",
+      "importance": "high"
+    },
     {
       "id": "sig-007",
       "date": "2026-02-07",
@@ -278,6 +329,34 @@
   ],
   "blindSpots": [
     {
+      "id": "bs-007",
+      "title": "x402 = TCP/IP of Money (NOBODY sees this yet)",
+      "text": "Everyone watches ChatGPT and Claude. Almost nobody watches the PAYMENT LAYER forming underneath. x402 + ERC-8004 + GraphTally = the complete stack for autonomous agent commerce. 957K tx/week and growing 4,300% weekly. Google, Coinbase, Cloudflare ALL converging. This is infrastructure-layer opportunity, not app-layer. Like investing in HTTP in 1994.",
+      "pattern": "Protocol layer consensus forming → massive value accrual to infrastructure",
+      "addedDate": "2026-02-08"
+    },
+    {
+      "id": "bs-008",
+      "title": "Lightning Network Is Going INVISIBLE (That's How BTC Wins)",
+      "text": "SoFi users sending money to Mexico won't know they're using Bitcoin. Square merchants won't know they're accepting BTC. 4M merchants on LN and nobody notices = the REAL signal. Bitcoin wins by disappearing into the plumbing. Taproot Assets + USDT means LN carries any currency.",
+      "pattern": "Best infrastructure becomes invisible → mass adoption without awareness → winner-take-all",
+      "addedDate": "2026-02-08"
+    },
+    {
+      "id": "bs-009",
+      "title": "Copper Is the Forgotten AI Trade",
+      "text": "Everyone talks GPUs, models, data. Nobody talks about 50,000 tons of copper PER data center. 330K-ton deficit in 2026. Prices at $12K/ton heading to $15K. This is the most OBVIOUS picks-and-shovels play hiding in plain sight. S&P says 10M+ ton annual shortfall by 2040.",
+      "pattern": "Physical bottleneck in digital revolution → commodity supercycle → multi-year trade",
+      "addedDate": "2026-02-08"
+    },
+    {
+      "id": "bs-010",
+      "title": "BTC Mining Infra = Most Undervalued AI Asset",
+      "text": "6GW of permitted power capacity. Ready for AI compute. Market PUNISHING miners who pivot (IREN -33.5%) while fundamentals show 2x valuation premiums. 80-90% AI margins vs volatile mining. This gap will close violently.",
+      "pattern": "Market mispricing asset transition → revaluation opportunity",
+      "addedDate": "2026-02-08"
+    },
+    {
       "id": "bs-004",
       "title": "Agent Financial Infrastructure = Next Stripe",
       "text": "Everyone's building AI agents. Nobody's building the payment/procurement layer FOR agents. Sapiom is first mover at seed stage. This is a $100B+ market forming NOW. Stripe for AI agents. Commerce infrastructure people (like Ivo) should be building this.",
@@ -294,7 +373,7 @@
     {
       "id": "bs-003",
       "title": "BTC + AI Agent Payments = Unexplored Territory",
-      "text": "If agents need to transact autonomously, crypto rails (especially Lightning, now proven at $1M) are the natural fit. Nobody is seriously building BTC-native agent payment infrastructure yet. The intersection of axiom 1 + axiom 2.",
+      "text": "UPDATE 2/8: x402 is answering this faster than expected! 957K tx/week. But BTC-native (Lightning) agent payments still underexplored vs Ethereum-based x402. Whoever bridges x402 to Lightning = controls the BTC+AI payment intersection.",
       "pattern": "Two mega-trends intersecting in an uninhabited space = asymmetric opportunity",
       "addedDate": "2026-02-07"
     },
