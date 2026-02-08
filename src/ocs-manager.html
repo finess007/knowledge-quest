@@ -627,7 +627,14 @@
 const STORAGE_KEY = 'ocs-manager-data';
 let ads = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
-function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(ads)); }
+function save() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(ads));
+    } catch(e) {
+        toast('⚠️ Storage full! Image too large. Try using a URL instead of upload.', true);
+        console.error('localStorage save failed:', e);
+    }
+}
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
 
 /* ═══════════ STATS ═══════════ */
@@ -804,12 +811,25 @@ function previewPhoto() {
 function handleFileUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
+    // Compress image to max 400px wide, JPEG 0.6 quality to save localStorage space
     const reader = new FileReader();
     reader.onload = function(ev) {
-        window._uploadedBase64 = ev.target.result;
-        document.getElementById('photoPreviewImg').src = ev.target.result;
-        document.getElementById('photoPreview').classList.add('has-img');
-        document.getElementById('fPhotoUrl').value = '';
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const MAX_W = 400;
+            const scale = Math.min(1, MAX_W / img.width);
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            const compressed = canvas.toDataURL('image/jpeg', 0.6);
+            window._uploadedBase64 = compressed;
+            document.getElementById('photoPreviewImg').src = compressed;
+            document.getElementById('photoPreview').classList.add('has-img');
+            document.getElementById('fPhotoUrl').value = '';
+        };
+        img.src = ev.target.result;
     };
     reader.readAsDataURL(file);
     e.target.value = '';
