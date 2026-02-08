@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCS Ad Manager — Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-border: #2a2a3a;
+            --text: #e5e5e5;
+            --muted: #888;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --green: #22c55e;
+            --yellow: #f59e0b;
+            --orange: #f97316;
+            --red: #ef4444;
+            --purple: #a855f7;
+            --radius: 14px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* ───── Top Bar ───── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,15,.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 16px; }
+        .back-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .9rem;
+            transition: color .2s;
+        }
+        .back-link:hover { color: var(--text); }
+        .topbar h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -.3px;
+            white-space: nowrap;
+        }
+        .topbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        /* ───── Buttons ───── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: var(--card);
+            color: var(--text);
+            font-family: inherit;
+            font-size: .85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .2s;
+            white-space: nowrap;
+        }
+        .btn:hover { border-color: var(--accent); background: rgba(59,130,246,.1); }
+        .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-danger { border-color: var(--red); color: var(--red); }
+        .btn-danger:hover { background: rgba(239,68,68,.12); }
+        .btn-sm { padding: 5px 10px; font-size: .8rem; border-radius: 8px; }
+        .btn-icon { padding: 6px 10px; font-size: 1rem; }
+
+        /* ───── Stats Bar ───── */
+        .stats-bar {
+            display: flex;
+            gap: 12px;
+            padding: 16px 24px;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+        .stat-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: .85rem;
+            white-space: nowrap;
+        }
+        .stat-chip .num {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+        .stat-chip .label { color: var(--muted); }
+        .stat-chip.draft .num { color: var(--muted); }
+        .stat-chip.loading .num { color: var(--yellow); }
+        .stat-chip.ready .num { color: var(--green); }
+        .stat-chip.live .num { color: var(--purple); }
+
+        /* ───── Toolbar ───── */
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            padding: 0 24px 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 9px 14px 9px 36px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: var(--card);
+            color: var(--text);
+            font-family: inherit;
+            font-size: .9rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .search-box:focus { border-color: var(--accent); }
+        .search-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+        .search-wrap::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .85rem;
+            pointer-events: none;
+        }
+        select.filter-select {
+            padding: 9px 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: var(--card);
+            color: var(--text);
+            font-family: inherit;
+            font-size: .85rem;
+            cursor: pointer;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        select.filter-select:focus { border-color: var(--accent); }
+
+        /* ───── Grid ───── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 20px;
+            padding: 0 24px 40px;
+        }
+
+        /* ───── Card ───── */
+        .ad-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color .25s, transform .25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .ad-card:hover { border-color: rgba(59,130,246,.35); transform: translateY(-2px); }
+
+        .card-thumb {
+            width: 100%;
+            height: 200px;
+            background: #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: .85rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-thumb .no-img { opacity: .5; font-size: 2.5rem; }
+
+        .card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+        .card-postid {
+            font-size: .78rem;
+            color: var(--muted);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: .3px;
+        }
+
+        .card-desc {
+            font-size: .95rem;
+            line-height: 1.6;
+            color: var(--text);
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .badge-lang-en { background: rgba(59,130,246,.15); color: #60a5fa; }
+        .badge-lang-gr { background: rgba(34,197,94,.15); color: #4ade80; }
+        .badge-campaign { background: rgba(168,85,247,.12); color: #c084fc; }
+        .badge-status-draft { background: rgba(136,136,136,.15); color: #aaa; }
+        .badge-status-loading { background: rgba(245,158,11,.15); color: #fbbf24; }
+        .badge-status-ready { background: rgba(34,197,94,.15); color: #4ade80; }
+        .badge-status-live { background: rgba(168,85,247,.15); color: #c084fc; }
+
+        .card-stats {
+            display: flex;
+            gap: 16px;
+            font-size: .82rem;
+            color: var(--muted);
+        }
+        .card-stats span { display: flex; align-items: center; gap: 4px; }
+
+        .card-notes {
+            font-size: .8rem;
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--card-border);
+            padding-left: 10px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 6px;
+            padding-top: 4px;
+            border-top: 1px solid var(--card-border);
+            margin-top: auto;
+        }
+
+        /* ───── Modal ───── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.7);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 16px;
+            overflow-y: auto;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 640px;
+            padding: 32px;
+            position: relative;
+            animation: slideUp .25s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.4rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-close:hover { color: var(--text); }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            display: block;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: .9rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { border-color: var(--accent); }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+
+        .form-row { display: flex; gap: 14px; }
+        .form-row .form-group { flex: 1; }
+
+        .checkbox-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .9rem;
+            color: var(--text);
+            text-transform: none;
+            letter-spacing: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+        .checkbox-group input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-toggle .lang-btn {
+            padding: 8px 18px;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--muted);
+            font-size: .9rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .lang-toggle .lang-btn.active {
+            border-color: var(--accent);
+            background: rgba(59,130,246,.12);
+            color: var(--text);
+        }
+
+        .photo-input-wrap {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .photo-input-wrap input[type="text"] { flex: 1; }
+        .photo-input-wrap .upload-btn {
+            flex-shrink: 0;
+        }
+        .photo-preview {
+            margin-top: 10px;
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            display: none;
+        }
+        .photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-preview.has-img { display: block; }
+
+        .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+
+        /* ───── Toast ───── */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--green);
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: .9rem;
+            font-weight: 600;
+            z-index: 300;
+            animation: fadeInUp .3s;
+            pointer-events: none;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ───── Empty state ───── */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 24px;
+            color: var(--muted);
+        }
+        .empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+        .empty-state p { font-size: 1rem; }
+
+        /* ───── Hidden file input ───── */
+        #fileUpload, #csvImport { display: none; }
+
+        /* ───── Responsive ───── */
+        @media (max-width: 640px) {
+            .grid { grid-template-columns: 1fr; padding: 0 12px 32px; }
+            .stats-bar { padding: 12px; }
+            .toolbar { padding: 0 12px 12px; }
+            .topbar { padding: 12px 16px; }
+            .modal { padding: 20px; }
+            .form-row { flex-direction: column; gap: 0; }
+        }
+
+        /* ───── Confirm dialog ───── */
+        .confirm-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.65);
+            z-index: 250;
+            justify-content: center;
+            align-items: center;
+        }
+        .confirm-overlay.active { display: flex; }
+        .confirm-box {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+        }
+        .confirm-box p { margin-bottom: 20px; font-size: .95rem; }
+        .confirm-box .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <a href="index.html" class="back-link">← Dashboard</a>
+            <h1>📢 OCS Ad Manager</h1>
+        </div>
+        <div class="topbar-actions">
+            <button class="btn" onclick="exportCSV()">📥 Export CSV</button>
+            <label class="btn" for="csvImport">📤 Import CSV</label>
+            <input type="file" id="csvImport" accept=".csv" onchange="importCSV(event)">
+            <button class="btn btn-primary" onclick="openModal()">➕ Add Ad</button>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="statsBar"></div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="search-wrap">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search by description or Post ID…" oninput="renderCards()">
+        </div>
+        <select class="filter-select" id="filterStatus" onchange="renderCards()">
+            <option value="">All Statuses</option>
+            <option value="Draft">Draft</option>
+            <option value="Loading SP">Loading SP</option>
+            <option value="Ready">Ready</option>
+            <option value="Live">Live</option>
+        </select>
+        <select class="filter-select" id="filterLang" onchange="renderCards()">
+            <option value="">All Languages</option>
+            <option value="EN">🇬🇧 EN</option>
+            <option value="GR">🇬🇷 GR</option>
+        </select>
+        <select class="filter-select" id="filterCampaign" onchange="renderCards()">
+            <option value="">All Campaigns</option>
+            <option value="Social Proof">Social Proof</option>
+            <option value="EU English">EU English</option>
+            <option value="Greece">Greece</option>
+        </select>
+        <select class="filter-select" id="sortBy" onchange="renderCards()">
+            <option value="dateDesc">Newest first</option>
+            <option value="dateAsc">Oldest first</option>
+            <option value="status">By status</option>
+            <option value="likes">By likes ↓</option>
+        </select>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid" id="adGrid"></div>
+
+    <!-- Add / Edit Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2 id="modalTitle">Add New Ad</h2>
+            <input type="hidden" id="editId">
+
+            <div class="form-group">
+                <label>Post ID</label>
+                <input type="text" id="fPostId" placeholder="e.g. 123456789012345">
+            </div>
+
+            <div class="form-group">
+                <label>Photo (URL or upload)</label>
+                <div class="photo-input-wrap">
+                    <input type="text" id="fPhotoUrl" placeholder="Paste image URL…" oninput="previewPhoto()">
+                    <label class="btn btn-sm upload-btn" for="fileUpload">📷 Upload</label>
+                    <input type="file" id="fileUpload" accept="image/*" onchange="handleFileUpload(event)">
+                </div>
+                <div class="photo-preview" id="photoPreview"><img id="photoPreviewImg" src="" alt=""></div>
+            </div>
+
+            <div class="form-group">
+                <label>Description (Ad Copy)</label>
+                <textarea id="fDesc" placeholder="Write the ad copy here…"></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Language</label>
+                    <div class="lang-toggle">
+                        <button type="button" class="lang-btn active" data-lang="EN" onclick="setLang('EN')">🇬🇧 EN</button>
+                        <button type="button" class="lang-btn" data-lang="GR" onclick="setLang('GR')">🇬🇷 GR</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="fStatus">
+                        <option>Draft</option>
+                        <option>Loading SP</option>
+                        <option>Ready</option>
+                        <option>Live</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Campaign Assignment</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="cSP" value="Social Proof"> Social Proof</label>
+                    <label><input type="checkbox" id="cEU" value="EU English"> EU English</label>
+                    <label><input type="checkbox" id="cGR" value="Greece"> Greece</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>👍 Likes</label>
+                    <input type="number" id="fLikes" placeholder="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>👁️ Video Views</label>
+                    <input type="number" id="fViews" placeholder="0" min="0">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Notes (optional)</label>
+                <input type="text" id="fNotes" placeholder="Any notes…">
+            </div>
+
+            <div class="form-actions">
+                <button class="btn" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveAd()">💾 Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm dialog -->
+    <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-box">
+            <p id="confirmMsg">Delete this ad?</p>
+            <div class="confirm-actions">
+                <button class="btn" onclick="closeConfirm()">Cancel</button>
+                <button class="btn btn-danger" id="confirmYes">Delete</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+/* ═══════════ DATA ═══════════ */
+const STORAGE_KEY = 'ocs-manager-data';
+let ads = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(ads)); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+/* ═══════════ STATS ═══════════ */
+function renderStats() {
+    const bar = document.getElementById('statsBar');
+    const total = ads.length;
+    const byStatus = { Draft: 0, 'Loading SP': 0, Ready: 0, Live: 0 };
+    const byLang = { EN: 0, GR: 0 };
+    const byCamp = { 'Social Proof': 0, 'EU English': 0, Greece: 0 };
+    ads.forEach(a => {
+        byStatus[a.status] = (byStatus[a.status] || 0) + 1;
+        byLang[a.lang] = (byLang[a.lang] || 0) + 1;
+        (a.campaigns || []).forEach(c => { byCamp[c] = (byCamp[c] || 0) + 1; });
+    });
+    bar.innerHTML = `
+        <div class="stat-chip"><span class="num">${total}</span><span class="label">Total Ads</span></div>
+        <div class="stat-chip draft"><span class="num">${byStatus.Draft}</span><span class="label">Draft</span></div>
+        <div class="stat-chip loading"><span class="num">${byStatus['Loading SP']}</span><span class="label">Loading SP</span></div>
+        <div class="stat-chip ready"><span class="num">${byStatus.Ready}</span><span class="label">Ready</span></div>
+        <div class="stat-chip live"><span class="num">${byStatus.Live}</span><span class="label">Live</span></div>
+        <div class="stat-chip"><span class="num">${byLang.EN}</span><span class="label">🇬🇧 EN</span></div>
+        <div class="stat-chip"><span class="num">${byLang.GR}</span><span class="label">🇬🇷 GR</span></div>
+        <div class="stat-chip"><span class="num">${byCamp['Social Proof']}</span><span class="label">Social Proof</span></div>
+        <div class="stat-chip"><span class="num">${byCamp['EU English']}</span><span class="label">EU English</span></div>
+        <div class="stat-chip"><span class="num">${byCamp.Greece}</span><span class="label">Greece</span></div>
+    `;
+}
+
+/* ═══════════ RENDER CARDS ═══════════ */
+function renderCards() {
+    const grid = document.getElementById('adGrid');
+    const search = document.getElementById('searchBox').value.toLowerCase().trim();
+    const fStatus = document.getElementById('filterStatus').value;
+    const fLang = document.getElementById('filterLang').value;
+    const fCamp = document.getElementById('filterCampaign').value;
+    const sortBy = document.getElementById('sortBy').value;
+
+    let list = ads.filter(a => {
+        if (search && !a.desc.toLowerCase().includes(search) && !(a.postId || '').toLowerCase().includes(search)) return false;
+        if (fStatus && a.status !== fStatus) return false;
+        if (fLang && a.lang !== fLang) return false;
+        if (fCamp && !(a.campaigns || []).includes(fCamp)) return false;
+        return true;
+    });
+
+    const statusOrder = { Draft: 0, 'Loading SP': 1, Ready: 2, Live: 3 };
+    if (sortBy === 'dateDesc') list.sort((a, b) => b.created - a.created);
+    else if (sortBy === 'dateAsc') list.sort((a, b) => a.created - b.created);
+    else if (sortBy === 'status') list.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+    else if (sortBy === 'likes') list.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+
+    if (!list.length) {
+        grid.innerHTML = `<div class="empty-state"><div class="empty-icon">📢</div><p>${ads.length ? 'No ads match your filters' : 'No ads yet — click ➕ Add Ad to get started'}</p></div>`;
+        renderStats();
+        return;
+    }
+
+    grid.innerHTML = list.map(a => {
+        const statusClass = { Draft: 'draft', 'Loading SP': 'loading', Ready: 'ready', Live: 'live' }[a.status] || 'draft';
+        const langBadge = a.lang === 'GR'
+            ? '<span class="badge badge-lang-gr">🇬🇷 GR</span>'
+            : '<span class="badge badge-lang-en">🇬🇧 EN</span>';
+        const campBadges = (a.campaigns || []).map(c => `<span class="badge badge-campaign">${c}</span>`).join('');
+        const thumb = a.photo
+            ? `<img src="${a.photo}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>🖼️</div>'">`
+            : '<div class="no-img">🖼️</div>';
+        const likes = a.likes ? Number(a.likes).toLocaleString() : '0';
+        const views = a.views ? Number(a.views).toLocaleString() : '0';
+        const notes = a.notes ? `<div class="card-notes">${esc(a.notes)}</div>` : '';
+
+        return `
+        <div class="ad-card" data-id="${a.id}">
+            <div class="card-thumb">${thumb}</div>
+            <div class="card-body">
+                <div class="card-postid">${a.postId ? 'ID: ' + esc(a.postId) : 'No Post ID'}</div>
+                <div class="card-desc">${esc(a.desc || '(no description)')}</div>
+                <div class="card-badges">
+                    ${langBadge}
+                    <span class="badge badge-status-${statusClass}">${a.status}</span>
+                    ${campBadges}
+                </div>
+                <div class="card-stats">
+                    <span>👍 ${likes}</span>
+                    <span>👁️ ${views}</span>
+                </div>
+                ${notes}
+                <div class="card-actions">
+                    <button class="btn btn-sm" onclick="editAd('${a.id}')">✏️ Edit</button>
+                    <button class="btn btn-sm" onclick="copyDesc('${a.id}')">📋 Copy</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteAd('${a.id}')">🗑️ Delete</button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+
+    renderStats();
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+/* ═══════════ MODAL ═══════════ */
+let selectedLang = 'EN';
+
+function openModal(id) {
+    document.getElementById('modalOverlay').classList.add('active');
+    document.getElementById('editId').value = id || '';
+    document.getElementById('modalTitle').textContent = id ? 'Edit Ad' : 'Add New Ad';
+
+    if (id) {
+        const a = ads.find(x => x.id === id);
+        if (!a) return;
+        document.getElementById('fPostId').value = a.postId || '';
+        document.getElementById('fPhotoUrl').value = (a.photo && !a.photo.startsWith('data:')) ? a.photo : '';
+        document.getElementById('fDesc').value = a.desc || '';
+        document.getElementById('fStatus').value = a.status || 'Draft';
+        document.getElementById('fLikes').value = a.likes || '';
+        document.getElementById('fViews').value = a.views || '';
+        document.getElementById('fNotes').value = a.notes || '';
+        document.getElementById('cSP').checked = (a.campaigns || []).includes('Social Proof');
+        document.getElementById('cEU').checked = (a.campaigns || []).includes('EU English');
+        document.getElementById('cGR').checked = (a.campaigns || []).includes('Greece');
+        setLang(a.lang || 'EN');
+        // show photo preview
+        if (a.photo) {
+            document.getElementById('photoPreviewImg').src = a.photo;
+            document.getElementById('photoPreview').classList.add('has-img');
+        } else {
+            document.getElementById('photoPreview').classList.remove('has-img');
+        }
+        // store base64 photo if present
+        window._uploadedBase64 = (a.photo && a.photo.startsWith('data:')) ? a.photo : null;
+    } else {
+        document.getElementById('fPostId').value = '';
+        document.getElementById('fPhotoUrl').value = '';
+        document.getElementById('fDesc').value = '';
+        document.getElementById('fStatus').value = 'Draft';
+        document.getElementById('fLikes').value = '';
+        document.getElementById('fViews').value = '';
+        document.getElementById('fNotes').value = '';
+        document.getElementById('cSP').checked = false;
+        document.getElementById('cEU').checked = false;
+        document.getElementById('cGR').checked = false;
+        document.getElementById('photoPreview').classList.remove('has-img');
+        setLang('EN');
+        window._uploadedBase64 = null;
+    }
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    window._uploadedBase64 = null;
+}
+
+function setLang(l) {
+    selectedLang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === l);
+    });
+}
+
+function previewPhoto() {
+    const url = document.getElementById('fPhotoUrl').value.trim();
+    const prev = document.getElementById('photoPreview');
+    const img = document.getElementById('photoPreviewImg');
+    if (url) {
+        img.src = url;
+        prev.classList.add('has-img');
+        window._uploadedBase64 = null;
+    } else if (!window._uploadedBase64) {
+        prev.classList.remove('has-img');
+    }
+}
+
+function handleFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        window._uploadedBase64 = ev.target.result;
+        document.getElementById('photoPreviewImg').src = ev.target.result;
+        document.getElementById('photoPreview').classList.add('has-img');
+        document.getElementById('fPhotoUrl').value = '';
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+}
+
+function saveAd() {
+    const editId = document.getElementById('editId').value;
+    const postId = document.getElementById('fPostId').value.trim();
+    const photoUrl = document.getElementById('fPhotoUrl').value.trim();
+    const photo = window._uploadedBase64 || photoUrl || '';
+    const desc = document.getElementById('fDesc').value.trim();
+    const status = document.getElementById('fStatus').value;
+    const likes = parseInt(document.getElementById('fLikes').value) || 0;
+    const views = parseInt(document.getElementById('fViews').value) || 0;
+    const notes = document.getElementById('fNotes').value.trim();
+    const campaigns = [];
+    if (document.getElementById('cSP').checked) campaigns.push('Social Proof');
+    if (document.getElementById('cEU').checked) campaigns.push('EU English');
+    if (document.getElementById('cGR').checked) campaigns.push('Greece');
+
+    if (!desc && !postId) {
+        toast('Please enter at least a description or Post ID', true);
+        return;
+    }
+
+    if (editId) {
+        const idx = ads.findIndex(a => a.id === editId);
+        if (idx >= 0) {
+            ads[idx] = { ...ads[idx], postId, photo, desc, lang: selectedLang, status, campaigns, likes, views, notes, updated: Date.now() };
+        }
+    } else {
+        ads.push({ id: uid(), postId, photo, desc, lang: selectedLang, status, campaigns, likes, views, notes, created: Date.now(), updated: Date.now() });
+    }
+
+    save();
+    closeModal();
+    renderCards();
+    toast(editId ? 'Ad updated ✓' : 'Ad added ✓');
+}
+
+/* ═══════════ ACTIONS ═══════════ */
+function editAd(id) { openModal(id); }
+
+function copyDesc(id) {
+    const a = ads.find(x => x.id === id);
+    if (!a || !a.desc) return;
+    navigator.clipboard.writeText(a.desc).then(() => toast('Description copied ✓'));
+}
+
+function deleteAd(id) {
+    const overlay = document.getElementById('confirmOverlay');
+    overlay.classList.add('active');
+    document.getElementById('confirmYes').onclick = () => {
+        ads = ads.filter(a => a.id !== id);
+        save();
+        renderCards();
+        closeConfirm();
+        toast('Ad deleted');
+    };
+}
+
+function closeConfirm() { document.getElementById('confirmOverlay').classList.remove('active'); }
+
+/* ═══════════ CSV EXPORT ═══════════ */
+function exportCSV() {
+    if (!ads.length) { toast('No ads to export', true); return; }
+    const headers = ['ID', 'PostID', 'Description', 'Language', 'Status', 'Campaigns', 'Likes', 'Views', 'Notes', 'PhotoURL', 'Created'];
+    const rows = ads.map(a => [
+        a.id,
+        a.postId || '',
+        '"' + (a.desc || '').replace(/"/g, '""') + '"',
+        a.lang,
+        a.status,
+        (a.campaigns || []).join(';'),
+        a.likes || 0,
+        a.views || 0,
+        '"' + (a.notes || '').replace(/"/g, '""') + '"',
+        (a.photo && !a.photo.startsWith('data:')) ? a.photo : '',
+        a.created || ''
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ocs-ads-${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+    toast('CSV exported ✓');
+}
+
+/* ═══════════ CSV IMPORT ═══════════ */
+function importCSV(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        try {
+            const lines = ev.target.result.split('\n').filter(l => l.trim());
+            if (lines.length < 2) { toast('Empty CSV', true); return; }
+
+            // Simple CSV parser that handles quoted fields
+            function parseLine(line) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+                for (let i = 0; i < line.length; i++) {
+                    const ch = line[i];
+                    if (ch === '"') {
+                        if (inQuotes && line[i+1] === '"') { current += '"'; i++; }
+                        else inQuotes = !inQuotes;
+                    } else if (ch === ',' && !inQuotes) {
+                        result.push(current); current = '';
+                    } else {
+                        current += ch;
+                    }
+                }
+                result.push(current);
+                return result;
+            }
+
+            const imported = [];
+            for (let i = 1; i < lines.length; i++) {
+                const cols = parseLine(lines[i]);
+                if (cols.length < 7) continue;
+                imported.push({
+                    id: cols[0] || uid(),
+                    postId: cols[1] || '',
+                    desc: cols[2] || '',
+                    lang: cols[3] || 'EN',
+                    status: cols[4] || 'Draft',
+                    campaigns: cols[5] ? cols[5].split(';').filter(Boolean) : [],
+                    likes: parseInt(cols[6]) || 0,
+                    views: parseInt(cols[7]) || 0,
+                    notes: cols[8] || '',
+                    photo: cols[9] || '',
+                    created: parseInt(cols[10]) || Date.now(),
+                    updated: Date.now()
+                });
+            }
+            ads = imported;
+            save();
+            renderCards();
+            toast(`Imported ${imported.length} ads ✓`);
+        } catch (err) {
+            toast('Import failed: ' + err.message, true);
+        }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+}
+
+/* ═══════════ TOAST ═══════════ */
+function toast(msg, isError) {
+    const t = document.createElement('div');
+    t.className = 'toast';
+    if (isError) t.style.background = '#ef4444';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2500);
+}
+
+/* ═══════════ KEYBOARD ═══════════ */
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (document.getElementById('confirmOverlay').classList.contains('active')) closeConfirm();
+        else if (document.getElementById('modalOverlay').classList.contains('active')) closeModal();
+    }
+});
+
+/* ═══════════ INIT ═══════════ */
+renderCards();
+</script>
+</body>
+</html>
