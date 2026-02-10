@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-08T08:00:13.892107",
+  "lastUpdated": "2026-02-10T08:01:11.330648",
   "refreshType": "scheduled",
   "properties": {
     "BG": {
@@ -7,207 +7,224 @@
       "name": "Alessa Bulgaria",
       "currency": "BGN",
       "yesterday": {
-        "date": "2026-02-07",
-        "users": 9235,
-        "newUsers": 4333,
-        "sessions": 12326,
-        "pageviews": 43037,
-        "bounceRate": 50.4,
-        "avgSessionDuration": 146.8,
-        "transactions": 113,
-        "revenue": 11877.7,
-        "addToCarts": 488,
-        "checkouts": 247,
-        "cvr": 0.92,
-        "aov": 105.11
+        "users": 7041,
+        "newUsers": 2881,
+        "sessions": 9894,
+        "pageviews": 37398,
+        "bounceRate": 50.2,
+        "avgSessionDuration": 189.7,
+        "transactions": 153,
+        "revenue": 16686.9,
+        "addToCarts": 512,
+        "checkouts": 304,
+        "cvr": 1.55,
+        "aov": 109.06,
+        "date": "2026-02-09"
       },
       "last7Days": {
-        "dateRange": "2026-02-01 to 2026-02-07",
-        "users": 52132,
-        "newUsers": 34438,
-        "sessions": 87907,
-        "pageviews": 293714,
-        "bounceRate": 52.7,
-        "avgSessionDuration": 149.2,
-        "transactions": 947,
-        "revenue": 103015.86,
-        "addToCarts": 3749,
-        "checkouts": 2176,
-        "cvr": 1.08,
-        "aov": 108.78,
+        "users": 48354,
+        "newUsers": 31490,
+        "sessions": 84489,
+        "pageviews": 287668,
+        "bounceRate": 53.1,
+        "avgSessionDuration": 157.3,
+        "transactions": 987,
+        "revenue": 106475.86,
+        "addToCarts": 3654,
+        "checkouts": 2183,
+        "cvr": 1.17,
+        "aov": 107.88,
+        "dateRange": "2026-02-03 to 2026-02-09",
         "changes": {
-          "sessions": 9.5,
-          "users": 21.0,
-          "revenue": 10.1,
-          "cvr": -6.9,
-          "aov": 8.0,
-          "transactions": 1.9,
-          "bounceRate": 1.7
+          "sessions": 3.9,
+          "users": 6.8,
+          "bounceRate": 0.8,
+          "revenue": 16.7,
+          "cvr": 6.4,
+          "aov": 5.6,
+          "transactions": 10.5
         }
       },
       "last30Days": {
-        "dateRange": "2026-01-09 to 2026-02-07",
-        "users": 168848,
-        "newUsers": 132016,
-        "sessions": 381955,
-        "pageviews": 1660921,
-        "bounceRate": 47.6,
-        "avgSessionDuration": 195.1,
-        "transactions": 5869,
-        "revenue": 591978.78,
-        "addToCarts": 4608,
-        "checkouts": 2615,
-        "cvr": 1.54,
-        "aov": 100.87,
+        "users": 167121,
+        "newUsers": 130406,
+        "sessions": 382482,
+        "pageviews": 1650662,
+        "bounceRate": 47.9,
+        "avgSessionDuration": 193.9,
+        "transactions": 5815,
+        "revenue": 583093.29,
+        "addToCarts": 5510,
+        "checkouts": 3145,
+        "cvr": 1.52,
+        "aov": 100.27,
+        "dateRange": "2026-01-11 to 2026-02-09",
         "changes": {
-          "sessions": 6.6,
-          "users": 4.4,
-          "revenue": 4.5,
-          "cvr": 7.7,
-          "aov": -8.7,
-          "transactions": 14.5,
-          "bounceRate": 0.1
+          "sessions": 9.4,
+          "users": 6.3,
+          "bounceRate": 3.9,
+          "revenue": 4.0,
+          "cvr": 4.8,
+          "aov": -9.6,
+          "transactions": 15.0
         }
       },
       "monthToDate": {
-        "dateRange": "2026-02-01 to 2026-02-07",
-        "users": 52132,
-        "newUsers": 34438,
-        "sessions": 87907,
-        "pageviews": 293714,
-        "bounceRate": 52.7,
-        "avgSessionDuration": 149.2,
-        "transactions": 947,
-        "revenue": 103015.86,
-        "addToCarts": 3749,
-        "checkouts": 2176,
-        "cvr": 1.08,
-        "aov": 108.78
+        "users": 59909,
+        "newUsers": 40147,
+        "sessions": 107336,
+        "pageviews": 365020,
+        "bounceRate": 53.0,
+        "avgSessionDuration": 154.0,
+        "transactions": 1195,
+        "revenue": 128839.46,
+        "addToCarts": 4651,
+        "checkouts": 2706,
+        "cvr": 1.11,
+        "aov": 107.82,
+        "dateRange": "2026-02-01 to 2026-02-09",
+        "changes": {
+          "sessions": 3.8,
+          "users": 16.2,
+          "bounceRate": 12.3,
+          "revenue": -18.6,
+          "cvr": -16.5,
+          "aov": -6.0,
+          "transactions": -13.4
+        }
       },
       "trafficSources": {
         "Paid Social": {
-          "sessions": 34649,
-          "percentage": 39.5
+          "sessions": 31549,
+          "percentage": 37.1
         },
         "Organic Search": {
-          "sessions": 17724,
-          "percentage": 20.2
+          "sessions": 18469,
+          "percentage": 21.7
         },
         "Organic Social": {
-          "sessions": 14794,
-          "percentage": 16.9
+          "sessions": 14723,
+          "percentage": 17.3
         },
         "Direct": {
-          "sessions": 13302,
-          "percentage": 15.2
+          "sessions": 12332,
+          "percentage": 14.5
         },
         "Paid Other": {
-          "sessions": 3553,
-          "percentage": 4.1
+          "sessions": 4018,
+          "percentage": 4.7
         },
         "Unassigned": {
-          "sessions": 2277,
-          "percentage": 2.6
+          "sessions": 2574,
+          "percentage": 3.0
         },
         "Referral": {
-          "sessions": 814,
-          "percentage": 0.9
+          "sessions": 811,
+          "percentage": 1.0
         },
         "Paid Search": {
-          "sessions": 370,
+          "sessions": 333,
           "percentage": 0.4
         },
-        "Cross-network": {
-          "sessions": 187,
-          "percentage": 0.2
-        },
         "(other)": {
-          "sessions": 42,
+          "sessions": 78,
+          "percentage": 0.1
+        },
+        "Cross-network": {
+          "sessions": 29,
+          "percentage": 0.0
+        },
+        "Display": {
+          "sessions": 29,
+          "percentage": 0.0
+        },
+        "Organic Shopping": {
+          "sessions": 6,
           "percentage": 0.0
         }
       },
       "deviceBreakdown": {
         "mobile": {
-          "sessions": 76706,
-          "users": 43187,
-          "percentage": 87.0
+          "sessions": 74174,
+          "users": 40675,
+          "percentage": 87.5
         },
         "desktop": {
-          "sessions": 10862,
-          "users": 8318,
-          "percentage": 12.3
+          "sessions": 10013,
+          "users": 7248,
+          "percentage": 11.8
         },
         "tablet": {
-          "sessions": 626,
-          "users": 421,
+          "sessions": 591,
+          "users": 379,
           "percentage": 0.7
         },
         "(other)": {
-          "sessions": 18,
-          "users": 13,
+          "sessions": 31,
+          "users": 25,
           "percentage": 0.0
         }
       },
       "topProducts": [
         {
-          "name": "Winter Bunny \u041f\u0430\u043b\u0442\u0435\u043d\u0446\u0435 \u041e\u0442 \u0415\u043a\u043e \u041a\u043e\u0441\u044a\u043c - Ecru",
-          "revenue": 7763.0,
-          "quantity": 59,
-          "views": 40173
+          "name": "Winter Bunny Палтенце От Еко Косъм - Ecru",
+          "revenue": 7636.0,
+          "quantity": 58,
+          "views": 51973
         },
         {
-          "name": "Winter Bunny \u041f\u0430\u043b\u0442\u0435\u043d\u0446\u0435 \u041e\u0442 \u0415\u043a\u043e \u041a\u043e\u0441\u044a\u043c - Pink",
+          "name": "Winter Bunny Палтенце От Еко Косъм - Pink",
           "revenue": 2776.0,
           "quantity": 21,
-          "views": 16638
+          "views": 30646
         },
         {
-          "name": "Elegant Essence \u0411\u043b\u0435\u0439\u0437\u044a\u0440 - Grey",
-          "revenue": 2206.0,
-          "quantity": 17,
-          "views": 53881
+          "name": "Bright Future Блейзър С Вълна - Black",
+          "revenue": 2634.0,
+          "quantity": 19,
+          "views": 60672
         },
         {
-          "name": "Bright Future \u0411\u043b\u0435\u0439\u0437\u044a\u0440 \u0421 \u0412\u044a\u043b\u043d\u0430 - Black",
-          "revenue": 1919.0,
-          "quantity": 14,
-          "views": 59594
+          "name": "Elegant Essence Блейзър - Grey",
+          "revenue": 2606.0,
+          "quantity": 20,
+          "views": 60468
         },
         {
-          "name": "Scent of a Woman \u041f\u043e\u043b\u0430-\u041f\u0430\u043d\u0442\u0430\u043b\u043e\u043d - Grey",
-          "revenue": 1292.0,
-          "quantity": 17,
-          "views": 57410
+          "name": "Scent of a Woman Пола-Панталон - Grey",
+          "revenue": 1609.0,
+          "quantity": 21,
+          "views": 58477
         },
         {
-          "name": "Office Star \u041f\u0430\u043d\u0442\u0430\u043b\u043e\u043d \u0421 \u0412\u0433\u0440\u0430\u0434\u0435\u043d \u041a\u043e\u043b\u0430\u043d - Black",
-          "revenue": 1161.0,
+          "name": "Come with me bodycon рокля",
+          "revenue": 1251.0,
+          "quantity": 18,
+          "views": 54004
+        },
+        {
+          "name": "Office Star Панталон С Вграден Колан - Black",
+          "revenue": 1176.0,
           "quantity": 13,
-          "views": 57483
+          "views": 58140
         },
         {
-          "name": "Denim Dream \u0414\u044a\u043d\u043a\u0438 - Soft Beige",
+          "name": "Denim Dream Дънки - Soft Beige",
           "revenue": 1121.0,
           "quantity": 12,
-          "views": 44603
+          "views": 58151
         },
         {
-          "name": "Denim & Cold \u0417\u0438\u043c\u043d\u043e \u042f\u043a\u0435",
-          "revenue": 1075.0,
-          "quantity": 5,
-          "views": 8575
+          "name": "Touch of Elegance Блузка - Light Pink",
+          "revenue": 969.0,
+          "quantity": 15,
+          "views": 59931
         },
         {
-          "name": "Luminous Whisper \u0420\u043e\u043a\u043b\u044f",
-          "revenue": 993.0,
-          "quantity": 6,
-          "views": 37365
-        },
-        {
-          "name": "Fantasy Flaw \u0411\u043e\u0434\u0438 - Black",
-          "revenue": 959.0,
-          "quantity": 16,
-          "views": 57748
+          "name": "Gold Fever Рокля",
+          "revenue": 941.0,
+          "quantity": 7,
+          "views": 60721
         }
       ]
     },
@@ -216,100 +233,105 @@
       "name": "Alessa Greece",
       "currency": "EUR",
       "yesterday": {
-        "date": "2026-02-07",
-        "users": 285,
-        "newUsers": 212,
-        "sessions": 333,
-        "pageviews": 796,
-        "bounceRate": 53.5,
-        "avgSessionDuration": 80.6
+        "users": 532,
+        "newUsers": 407,
+        "sessions": 615,
+        "pageviews": 2137,
+        "bounceRate": 49.8,
+        "avgSessionDuration": 134.7,
+        "date": "2026-02-09"
       },
       "last7Days": {
-        "dateRange": "2026-02-01 to 2026-02-07",
-        "users": 1834,
-        "newUsers": 1478,
-        "sessions": 2442,
-        "pageviews": 7822,
-        "bounceRate": 52.0,
-        "avgSessionDuration": 117.0,
+        "users": 2261,
+        "newUsers": 1855,
+        "sessions": 2843,
+        "pageviews": 9314,
+        "bounceRate": 50.8,
+        "avgSessionDuration": 118.4,
+        "dateRange": "2026-02-03 to 2026-02-09",
         "changes": {
-          "sessions": -3.5,
-          "users": 6.1,
-          "bounceRate": 6.1
+          "sessions": 10.6,
+          "users": 25.9,
+          "bounceRate": 3.0
         }
       },
       "last30Days": {
-        "dateRange": "2026-01-09 to 2026-02-07",
-        "users": 9956,
-        "newUsers": 8986,
-        "sessions": 14438,
-        "pageviews": 47577,
-        "bounceRate": 48.5,
-        "avgSessionDuration": 132.3,
+        "users": 10197,
+        "newUsers": 9203,
+        "sessions": 14788,
+        "pageviews": 48012,
+        "bounceRate": 48.6,
+        "avgSessionDuration": 130.3,
+        "dateRange": "2026-01-11 to 2026-02-09",
         "changes": {
-          "sessions": 67.9,
-          "users": 62.7,
-          "bounceRate": 4.2
+          "sessions": 58.3,
+          "users": 54.5,
+          "bounceRate": 6.1
         }
       },
       "monthToDate": {
-        "dateRange": "2026-02-01 to 2026-02-07",
-        "users": 1834,
-        "newUsers": 1478,
-        "sessions": 2442,
-        "pageviews": 7822,
-        "bounceRate": 52.0,
-        "avgSessionDuration": 117.0
+        "users": 2828,
+        "newUsers": 2335,
+        "sessions": 3676,
+        "pageviews": 12075,
+        "bounceRate": 50.5,
+        "avgSessionDuration": 121.7,
+        "dateRange": "2026-02-01 to 2026-02-09",
+        "changes": {
+          "sessions": -40.5,
+          "users": -38.7,
+          "bounceRate": 6.1
+        }
       },
       "trafficSources": {
         "Paid Social": {
-          "sessions": 1465,
-          "percentage": 59.8
-        },
-        "Direct": {
-          "sessions": 425,
-          "percentage": 17.4
+          "sessions": 1830,
+          "percentage": 62.6
         },
         "Organic Social": {
-          "sessions": 318,
-          "percentage": 13.0
+          "sessions": 436,
+          "percentage": 14.9
+        },
+        "Direct": {
+          "sessions": 404,
+          "percentage": 13.8
         },
         "Organic Search": {
-          "sessions": 158,
-          "percentage": 6.5
+          "sessions": 154,
+          "percentage": 5.3
         },
         "Unassigned": {
-          "sessions": 54,
-          "percentage": 2.2
+          "sessions": 60,
+          "percentage": 2.1
         },
         "Paid Other": {
-          "sessions": 20,
-          "percentage": 0.8
-        },
-        "Referral": {
-          "sessions": 7,
-          "percentage": 0.3
+          "sessions": 30,
+          "percentage": 1.0
         },
         "Cross-network": {
-          "sessions": 1,
-          "percentage": 0.0
+          "sessions": 7,
+          "percentage": 0.2
+        },
+        "Referral": {
+          "sessions": 4,
+          "percentage": 0.1
         }
       },
       "deviceBreakdown": {
         "mobile": {
-          "sessions": 2121,
-          "users": 1570,
-          "percentage": 86.8
+          "sessions": 2606,
+          "users": 2004,
+          "percentage": 89.3
         },
         "desktop": {
-          "sessions": 293,
-          "users": 237,
-          "percentage": 12.0
+          "sessions": 274,
+          "users": 226,
+          "percentage": 9.4
         },
         "tablet": {
-          "sessions": 30,
-          "users": 27,
-          "percentage": 1.2
+          "sessions": 38,
+          "users": 31,
+          "percentage": 1.3
         }
       }
     }
