@@ -1765,20 +1765,26 @@ function renderMethodology() {
     </div>
   `).join('');
   
-  const filters = (m.filters || []).map(f => `<li style="color:var(--text-secondary);font-size:13px;padding:3px 0;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:var(--accent-amber)">⚡</span>${f}</li>`).join('');
+  const investFilter = (m.investmentFilter || []).map(f => `<li style="color:var(--text-secondary);font-size:13px;padding:3px 0;padding-left:16px;position:relative"><span style="position:absolute;left:0">🎯</span>${f}</li>`).join('');
+  
+  const dualOut = (m.dualOutput || []).map(f => `<li style="color:var(--text-secondary);font-size:13px;padding:3px 0;padding-left:16px;position:relative"><span style="position:absolute;left:0">🔀</span>${f}</li>`).join('');
   
   container.innerHTML = `
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
         <div style="color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:13px">⏰ ${m.schedule}</div>
         <div style="color:var(--accent-purple);font-family:'JetBrains Mono',monospace;font-size:13px">🧠 ${m.thinkingLevel}</div>
       </div>
       ${phases}
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-        <div style="color:var(--accent-amber);font-weight:600;font-size:14px;margin-bottom:8px">Quality Filters</div>
-        <ul style="list-style:none;padding:0">${filters}</ul>
+        <div style="color:var(--accent-amber);font-weight:600;font-size:14px;margin-bottom:8px">Investment Filter</div>
+        <ul style="list-style:none;padding:0">${investFilter}</ul>
       </div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text-muted)">→ Feeds into: ${m.feedsInto}</div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="color:var(--accent-cyan);font-weight:600;font-size:14px;margin-bottom:8px">Dual Output</div>
+        <ul style="list-style:none;padding:0">${dualOut}</ul>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--text-muted)">→ ${m.feedsInto}</div>
     </div>
   `;
 }

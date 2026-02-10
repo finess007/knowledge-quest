@@ -17,107 +17,155 @@
       {
         "tier": "1",
         "name": "Leveraged BTC",
-        "icon": "⚡",
+        "icon": "\u26a1",
         "description": "Higher beta, same direction. Miners, MSTR. You're betting on BTC with extra steps and extra risk.",
-        "examples": ["BTC miners pivoting to AI (CORZ, WULF, CLSK)", "Strategy/MSTR", "WGMI Mining ETF"],
+        "examples": [
+          "BTC miners pivoting to AI (CORZ, WULF, CLSK)",
+          "Strategy/MSTR",
+          "WGMI Mining ETF"
+        ],
         "verdict": "Can outperform BTC on the way up, but leverage works both ways"
       },
       {
         "tier": "2",
         "name": "Earn BTC + Hold BTC",
-        "icon": "🏗️",
+        "icon": "\ud83c\udfd7\ufe0f",
         "description": "Build a business where revenue comes IN as Bitcoin, then never sell it. Two S-curves multiplied.",
-        "examples": ["Agent infra settling in BTC/Lightning", "x402 payment processors", "BTC-native marketplaces"],
+        "examples": [
+          "Agent infra settling in BTC/Lightning",
+          "x402 payment processors",
+          "BTC-native marketplaces"
+        ],
         "verdict": "The only way to genuinely beat BTC long-term. Operational BTC inflow + BTC treasury appreciation."
       },
       {
         "tier": "3",
         "name": "BTC-Native Innovation Waves",
-        "icon": "🌊",
+        "icon": "\ud83c\udf0a",
         "description": "Catch emerging technology built ON Bitcoin early. Ordinals, Bitmap, Runes, BTC DeFi, L2s.",
-        "examples": ["Ordinals (2023)", "Bitmap land grab", "Runes", "BTC L2 DeFi", "Taproot Assets"],
+        "examples": [
+          "Ordinals (2023)",
+          "Bitmap land grab",
+          "Runes",
+          "BTC L2 DeFi",
+          "Taproot Assets"
+        ],
         "verdict": "Asymmetric returns if you're early. The next wave is always forming."
       },
       {
         "tier": "4",
-        "name": "Quick Wins — 30x in 1-2 Years",
-        "icon": "🎯",
-        "description": "ANY sector. BTC may 100x but could take 20 years. Something new — health, space, energy, AI, crypto — can 30x in 1-2 years. Catch these early and you beat BTC's near-term return.",
-        "examples": ["Early-stage AI startups", "Space tech breakthroughs", "Health/biotech moonshots", "Energy disruption", "Platform economy land grabs", "Emerging market plays"],
-        "verdict": "Doesn't need to beat BTC's lifetime return. Just needs to beat BTC's next 1-2 years. Speed matters — the broad scan catches these."
+        "name": "Quick Wins \u2014 30x in 1-2 Years",
+        "icon": "\ud83c\udfaf",
+        "description": "ANY sector. BTC may 100x but could take 20 years. Something new \u2014 health, space, energy, AI, crypto \u2014 can 30x in 1-2 years. Catch these early and you beat BTC's near-term return.",
+        "examples": [
+          "Early-stage AI startups",
+          "Space tech breakthroughs",
+          "Health/biotech moonshots",
+          "Energy disruption",
+          "Platform economy land grabs",
+          "Emerging market plays"
+        ],
+        "verdict": "Doesn't need to beat BTC's lifetime return. Just needs to beat BTC's next 1-2 years. Speed matters \u2014 the broad scan catches these."
       }
     ],
-    "killZone": "Slow, incremental gains (5-20% plays like copper ETFs or mature stocks) — these will NEVER beat BTC. Only deploy capital outside BTC for asymmetric 10x-30x+ opportunities you can catch early."
+    "killZone": "Slow, incremental gains (5-20% plays like copper ETFs or mature stocks) \u2014 these will NEVER beat BTC. Only deploy capital outside BTC for asymmetric 10x-30x+ opportunities you can catch early."
   },
   "dualOutput": {
-    "title": "Dual Output: Every Signal → Two Questions",
+    "title": "Dual Output: Every Signal \u2192 Two Questions",
     "subtitle": "Knowing the future opens two doors. The Radar evaluates both for every signal.",
     "outputs": [
       {
-        "icon": "💰",
+        "icon": "\ud83d\udcb0",
         "name": "INVEST",
-        "description": "Buy exposure to the trend — stocks, tokens, assets. Capture the wave financially. Works when you spot it early.",
+        "description": "Buy exposure to the trend \u2014 stocks, tokens, assets. Capture the wave financially. Works when you spot it early.",
         "question": "What can I buy NOW to ride this trend?",
-        "example": "Seeing AI compute demand → buying NVIDIA in 2019 → 28x in 5 years"
+        "example": "Seeing AI compute demand \u2192 buying NVIDIA in 2019 \u2192 28x in 5 years"
       },
       {
-        "icon": "🚀",
+        "icon": "\ud83d\ude80",
         "name": "ACT",
-        "description": "Don't just invest — DO something. Build a business, adopt a tool before competitors, learn a rare skill, position yourself on a new platform. First-movers who ACT often beat first-movers who only invest.",
+        "description": "Don't just invest \u2014 DO something. Build a business, adopt a tool before competitors, learn a rare skill, position yourself on a new platform. First-movers who ACT often beat first-movers who only invest.",
         "question": "What can I BUILD, ADOPT, LEARN, or POSITION in this space before everyone else?",
-        "example": "Adopting OpenClaw early → 24/7 AI assistant while competitors wait. Using Seedance for video ads → 10x creative at 1/100th cost. Building Alessa early in BG e-commerce → €1M/month."
+        "example": "Adopting OpenClaw early \u2192 24/7 AI assistant while competitors wait. Using Seedance for video ads \u2192 10x creative at 1/100th cost. Building Alessa early in BG e-commerce \u2192 \u20ac1M/month."
       }
     ],
-    "insight": "The investor captures the wave. The one who ACTS — builds, adopts, learns, positions — captures the wave AND builds a moat. That's where billion-dollar advantages come from.",
+    "insight": "The investor captures the wave. The one who ACTS \u2014 builds, adopts, learns, positions \u2014 captures the wave AND builds a moat. That's where billion-dollar advantages come from.",
     "actTypes": [
-      {"icon": "🏗️", "type": "Build", "desc": "Start a business in this space"},
-      {"icon": "⚡", "type": "Adopt", "desc": "Use the tool before competitors do"},
-      {"icon": "🧠", "type": "Learn", "desc": "Master the skill while it's still rare"},
-      {"icon": "📍", "type": "Position", "desc": "Get in early on a platform or protocol"}
+      {
+        "icon": "\ud83c\udfd7\ufe0f",
+        "type": "Build",
+        "desc": "Start a business in this space"
+      },
+      {
+        "icon": "\u26a1",
+        "type": "Adopt",
+        "desc": "Use the tool before competitors do"
+      },
+      {
+        "icon": "\ud83e\udde0",
+        "type": "Learn",
+        "desc": "Master the skill while it's still rare"
+      },
+      {
+        "icon": "\ud83d\udccd",
+        "type": "Position",
+        "desc": "Get in early on a platform or protocol"
+      }
     ]
   },
   "researchMethodology": {
-    "schedule": "Every night at 4:00 AM Sofia time",
-    "thinkingLevel": "Extended (maximum) \u2014 deep pattern analysis",
+    "schedule": "Every night, 3:00\u20134:30 AM Sofia time (3-phase pipeline)",
+    "thinkingLevel": "Max (Phase 1 & 2) \u2014 deep pattern analysis",
     "phases": [
       {
-        "name": "Phase 1: Data Collection (~10 min)",
+        "name": "Phase 1: Wide Scan \u2014 3:00 AM (~30 min)",
         "steps": [
-          "web_search \u00d7 10-15 queries across all 5 paths",
-          "X/Twitter scan via bird CLI \u2014 trending AI, crypto, tech threads",
-          "Crypto market data \u2014 prices, volume anomalies, new protocols",
-          "AI news \u2014 startups, funding rounds, product launches",
-          "E-commerce trends \u2014 DTC scaling, fashion, global expansion"
+          "36+ searches across 4 sections \u2014 NO shortcuts, ALL executed",
+          "Section A: 9 BTC-Native searches (L2s, Runes, Stacks, Spark, Taproot Assets, BitVM, Ordinals)",
+          "Section B: 5 BTC + AI intersection searches (x402, miners\u2192AI, DeFi agents)",
+          "Section C: 18 Broad World searches (space, health, robotics, nuclear, copper, RWA, platforms)",
+          "Section D: 4 X/Twitter searches via bird CLI (BTC DeFi, AI agents, alpha, Lightning)",
+          "Every signal tagged: [BTC-NATIVE] [BTC+AI] [PLATFORM] [INFRA] [SPACE] [HEALTH] [EMERGING]",
+          "Quick-win flag \ud83c\udfaf on anything with 30x potential in 1-2 years",
+          "Raw output saved to memory/daily-scan/YYYY-MM-DD-phase1-raw.md"
         ]
       },
       {
-        "name": "Phase 2: Deep Analysis (~5 min, extended thinking)",
+        "name": "Phase 2: Deep Dives \u2014 3:45 AM (~40 min)",
         "steps": [
-          "Pattern matching: does this signal look like early BTC/NVIDIA/TSLA?",
-          "Ecosystem mapping: what's forming that could produce billionaires?",
-          "Ivo-fit analysis: does this match his skills (AI + e-commerce + technical)?",
-          "Asymmetry ranking: upside vs downside, timing, fit",
-          "Intersection analysis: where do BTC + AI rivers meet?"
+          "Reads Phase 1 raw signals, ranks ALL through Investment Filter",
+          "Scoring: filter tier + axiom fit + asymmetry + timing + speed + Ivo-fit + pattern match + blind spot",
+          "Top 5-7 signals get full deep dives (3+ web searches each, 300-500 words)",
+          "Each dive includes: numbers, who's building, contrarian angle, \ud83d\udcb0 INVEST + \ud83d\ude80 ACT actions",
+          "BTC-Native Watch section \u2014 what's building on Bitcoin this week",
+          "\ud83c\udfaf Quick Win Candidates \u2014 30x plays across ALL sectors",
+          "Report + radar-data.json updated \u2192 dashboard auto-deployed"
         ]
       },
       {
-        "name": "Phase 3: Report (~3 min)",
+        "name": "Phase 3: Radar Delivery \u2014 9:30 AM",
         "steps": [
-          "Top 3-5 opportunity signals ranked by importance",
-          "One paragraph per wealth path update",
-          "Raw links and data points for morning brief",
-          "Saved to memory/daily-scan/YYYY-MM-DD.md"
+          "Reads Phase 2 report, delivers to Telegram as separate messages",
+          "Each signal = its own message with full depth (no compression)",
+          "No cap on messages \u2014 sends as many as content demands",
+          "Every signal tagged with Investment Filter tier (\u26a1/\ud83c\udfd7\ufe0f/\ud83c\udf0a/\ud83c\udfaf)",
+          "Every signal gets dual output: \ud83d\udcb0 INVEST action + \ud83d\ude80 ACT action",
+          "Includes blind spots, pattern matches, and weekly action items"
         ]
       }
     ],
-    "filters": [
-      "Must pass axiom test: relevant to BTC backbone OR AI backbone",
-      "Must have asymmetric upside (100x potential vs limited downside)",
-      "Must connect to Ivo's specific position and skills",
-      "One great insight > ten generic headlines",
-      "Look beyond obvious \u2014 platform economies, 'toys' making real money"
+    "investmentFilter": [
+      "\u26a1 Leveraged BTC \u2014 miners, MSTR (higher beta on BTC)",
+      "\ud83c\udfd7\ufe0f Earn BTC + Hold BTC \u2014 business with BTC revenue + treasury",
+      "\ud83c\udf0a BTC-Native Innovation \u2014 L2s, Runes, Ordinals, Taproot Assets, DeFi on Bitcoin",
+      "\ud83c\udfaf Quick Wins \u2014 30x in 1-2yr, ANY sector (health, space, energy, AI, crypto)",
+      "\u26d4 Kill zone: slow 5-20% plays \u2014 these NEVER beat BTC"
     ],
-    "feedsInto": "10:00 AM Morning Brief via Telegram"
+    "dualOutput": [
+      "\ud83d\udcb0 INVEST: What to BUY (stocks, tokens, assets, early-stage)",
+      "\ud83d\ude80 ACT: What to DO \u2014 \ud83c\udfd7\ufe0f Build / \u26a1 Adopt / \ud83e\udde0 Learn / \ud83d\udccd Position"
+    ],
+    "feedsInto": "9:30 AM Radar Delivery \u2192 Telegram (separate from 10:00/10:30 Morning Brief)"
   },
   "realExamples": [
     {
@@ -181,7 +229,7 @@
       "emoji": "\ud83d\udcc8",
       "description": "Active trading \u2014 crypto, stocks, derivatives",
       "score": 9,
-      "status": "\ud83d\udd34 BTC MINERS → AI = BIGGEST PLAY. $65B in AI/HPC contracts. CORZ undervalued at $4M/MW vs $7M/MW peers. Copper 4.3x YoY demand explosion. Feb earnings = catalysts.",
+      "status": "\ud83d\udd34 BTC MINERS \u2192 AI = BIGGEST PLAY. $65B in AI/HPC contracts. CORZ undervalued at $4M/MW vs $7M/MW peers. Copper 4.3x YoY demand explosion. Feb earnings = catalysts.",
       "signals": [
         "BTC miners signed $65B+ AI/HPC contracts in 2025 (CoinShares). WGMI ETF +72% in 1yr",
         "CORZ at $4M/MW vs $7M/MW peer valuation = 75% re-rating upside. Target $26.53",
@@ -189,7 +237,7 @@
         "WULF up 200%+ YTD. Nuclear/hydro/solar powered. Morgan Stanley initiated coverage.",
         "Copper DC demand: 475K tons in 2026 vs 110K in 2025 (4.3x, JPMorgan). FCX, SCCO, COPX plays.",
         "JPM copper target $12,500/ton Q2, UBS $13,000 EOY. AI DCs use 50K tons each.",
-        "Nuclear basket: CCJ, SMR, OKLO — but SMRs not at scale until 2030s"
+        "Nuclear basket: CCJ, SMR, OKLO \u2014 but SMRs not at scale until 2030s"
       ]
     },
     "E": {
@@ -205,7 +253,7 @@
         "Tokenized equities: $963M market value, up 2,878% YoY. Ondo + Securitize dominate.",
         "RWA total: $19-36B on-chain, 300%+ growth. BlackRock BUIDL on Ethereum.",
         "BTC L2s: $447M raised, 65+ projects. Franklin Templeton in Bitlayer (first ETF institution).",
-        "Crypto VC reality check (Feb 9): retreating from speculation → revenue + stablecoin focus. Maturation."
+        "Crypto VC reality check (Feb 9): retreating from speculation \u2192 revenue + stablecoin focus. Maturation."
       ]
     },
     "F": {
@@ -234,7 +282,7 @@
         "Skild AI: $1.4B Series C at $14B valuation (SoftBank + NVIDIA). General-purpose robotics foundation model. 3x valuation in 7 months.",
         "Figure: $1.9B total for humanoid robots. 1X released world model for robot learning.",
         "Agent marketplaces: Kore.ai (300+ agents), ServiceNow, AI Agent Store. App Store moment coming?",
-        "Deloitte: S-curves compressing — emerging→mainstream gap collapsing. Speed is the blind spot."
+        "Deloitte: S-curves compressing \u2014 emerging\u2192mainstream gap collapsing. Speed is the blind spot."
       ]
     }
   },
@@ -258,7 +306,7 @@
     {
       "id": "sig-042",
       "date": "2026-02-10",
-      "text": "\ud83d\udd34 CHINA DOC 42 (Feb 6): First formal RWA tokenization regulation. Offshore tokenization of Chinese assets via filing framework. RMB stablecoin loophole ('with consent'). NOT a ban — a framework.",
+      "text": "\ud83d\udd34 CHINA DOC 42 (Feb 6): First formal RWA tokenization regulation. Offshore tokenization of Chinese assets via filing framework. RMB stablecoin loophole ('with consent'). NOT a ban \u2014 a framework.",
       "path": "E",
       "importance": "critical",
       "source": "Reuters, PANews, Phemex, CoinPedia"
