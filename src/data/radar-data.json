@@ -61,14 +61,20 @@
         "example": "Seeing AI compute demand → buying NVIDIA in 2019 → 28x in 5 years"
       },
       {
-        "icon": "🏗️",
-        "name": "BUILD",
-        "description": "Start a business or activity that rides the trend before it's crowded. Capture the wave AND build a moat. Often 10-100x bigger than investing.",
-        "question": "What can I BUILD in this space before everyone else?",
-        "example": "Seeing e-commerce fashion in Bulgaria → building Alessa early → €1M/month while competitors scramble"
+        "icon": "🚀",
+        "name": "ACT",
+        "description": "Don't just invest — DO something. Build a business, adopt a tool before competitors, learn a rare skill, position yourself on a new platform. First-movers who ACT often beat first-movers who only invest.",
+        "question": "What can I BUILD, ADOPT, LEARN, or POSITION in this space before everyone else?",
+        "example": "Adopting OpenClaw early → 24/7 AI assistant while competitors wait. Using Seedance for video ads → 10x creative at 1/100th cost. Building Alessa early in BG e-commerce → €1M/month."
       }
     ],
-    "insight": "The investor captures the wave. The builder captures the wave AND builds a moat. Path 2 is where billion-dollar companies come from."
+    "insight": "The investor captures the wave. The one who ACTS — builds, adopts, learns, positions — captures the wave AND builds a moat. That's where billion-dollar advantages come from.",
+    "actTypes": [
+      {"icon": "🏗️", "type": "Build", "desc": "Start a business in this space"},
+      {"icon": "⚡", "type": "Adopt", "desc": "Use the tool before competitors do"},
+      {"icon": "🧠", "type": "Learn", "desc": "Master the skill while it's still rare"},
+      {"icon": "📍", "type": "Position", "desc": "Get in early on a platform or protocol"}
+    ]
   },
   "researchMethodology": {
     "schedule": "Every night at 4:00 AM Sofia time",

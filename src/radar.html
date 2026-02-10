@@ -799,7 +799,23 @@ body::before {
 }
 
 .dual-card.invest::before { background: linear-gradient(90deg, var(--accent-amber), #f97316); }
-.dual-card.build::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.dual-card.act::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+
+.act-types {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 6px;
+}
+
+.act-type {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 6px;
+  color: var(--accent-green);
+}
 
 .dual-icon { font-size: 2.5rem; margin-bottom: 10px; }
 
@@ -1387,13 +1403,17 @@ function renderDualOutput() {
   if (!d) return;
   document.getElementById('dual-output-section').style.display = 'block';
   const container = document.getElementById('dual-output-container');
+  const actTypes = d.actTypes ? `<div class="act-types">${d.actTypes.map(a => 
+    `<span class="act-type">${a.icon} ${a.type}: ${a.desc}</span>`
+  ).join('')}</div>` : '';
   const cards = d.outputs.map(o => `
     <div class="dual-card ${o.name.toLowerCase()}">
       <div class="dual-icon">${o.icon}</div>
       <div class="dual-name">${o.name}</div>
       <div class="dual-desc">${o.description}</div>
+      ${o.name === 'ACT' ? actTypes : ''}
       <div class="dual-question">${o.question}</div>
-      <div class="dual-example">Example: ${o.example}</div>
+      <div class="dual-example">${o.example}</div>
     </div>
   `).join('');
   container.innerHTML = `
