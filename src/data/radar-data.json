@@ -49,6 +49,27 @@
     ],
     "killZone": "Slow, incremental gains (5-20% plays like copper ETFs or mature stocks) — these will NEVER beat BTC. Only deploy capital outside BTC for asymmetric 10x-30x+ opportunities you can catch early."
   },
+  "dualOutput": {
+    "title": "Dual Output: Every Signal → Two Questions",
+    "subtitle": "Knowing the future opens two doors. The Radar evaluates both for every signal.",
+    "outputs": [
+      {
+        "icon": "💰",
+        "name": "INVEST",
+        "description": "Buy exposure to the trend — stocks, tokens, assets. Capture the wave financially. Works when you spot it early.",
+        "question": "What can I buy NOW to ride this trend?",
+        "example": "Seeing AI compute demand → buying NVIDIA in 2019 → 28x in 5 years"
+      },
+      {
+        "icon": "🏗️",
+        "name": "BUILD",
+        "description": "Start a business or activity that rides the trend before it's crowded. Capture the wave AND build a moat. Often 10-100x bigger than investing.",
+        "question": "What can I BUILD in this space before everyone else?",
+        "example": "Seeing e-commerce fashion in Bulgaria → building Alessa early → €1M/month while competitors scramble"
+      }
+    ],
+    "insight": "The investor captures the wave. The builder captures the wave AND builds a moat. Path 2 is where billion-dollar companies come from."
+  },
   "researchMethodology": {
     "schedule": "Every night at 4:00 AM Sofia time",
     "thinkingLevel": "Extended (maximum) \u2014 deep pattern analysis",

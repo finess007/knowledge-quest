@@ -770,6 +770,86 @@ body::before {
   font-weight: 500;
 }
 
+/* ── DUAL OUTPUT ── */
+.dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .dual-grid { grid-template-columns: 1fr; }
+}
+
+.dual-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dual-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.dual-card.invest::before { background: linear-gradient(90deg, var(--accent-amber), #f97316); }
+.dual-card.build::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+
+.dual-icon { font-size: 2.5rem; margin-bottom: 10px; }
+
+.dual-name {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.dual-card.invest .dual-name { color: var(--accent-amber); }
+.dual-card.build .dual-name { color: var(--accent-green); }
+
+.dual-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.dual-question {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: rgba(34, 211, 238, 0.06);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-cyan);
+}
+
+.dual-example {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.dual-insight {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.06), rgba(168, 85, 247, 0.06));
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  border-radius: 8px;
+}
+
 /* ── BLIND SPOTS ── */
 .blindspot-grid {
   display: grid;
@@ -1107,6 +1187,15 @@ body::before {
     <div id="investment-filter-container"></div>
   </div>
 
+  <!-- DUAL OUTPUT -->
+  <div id="dual-output-section" style="display:none;">
+    <div class="section-header">
+      <h2>🔀 Dual Output</h2>
+      <span class="tag">Every Signal → Two Questions</span>
+    </div>
+    <div id="dual-output-container"></div>
+  </div>
+
   <!-- WEALTH PATHS -->
   <div class="section-header">
     <h2>🛤️ Wealth Paths</h2>
@@ -1240,6 +1329,7 @@ function renderAll() {
   renderStats();
   renderAxioms();
   renderInvestmentFilter();
+  renderDualOutput();
   renderPaths();
   renderFilters();
   renderSignals();
@@ -1288,6 +1378,27 @@ function renderInvestmentFilter() {
     <div class="filter-subtitle">${f.subtitle}</div>
     <div class="filter-grid">${cards}</div>
     <div class="filter-killzone">${f.killZone}</div>
+  `;
+}
+
+// ── DUAL OUTPUT ──
+function renderDualOutput() {
+  const d = radarData.dualOutput;
+  if (!d) return;
+  document.getElementById('dual-output-section').style.display = 'block';
+  const container = document.getElementById('dual-output-container');
+  const cards = d.outputs.map(o => `
+    <div class="dual-card ${o.name.toLowerCase()}">
+      <div class="dual-icon">${o.icon}</div>
+      <div class="dual-name">${o.name}</div>
+      <div class="dual-desc">${o.description}</div>
+      <div class="dual-question">${o.question}</div>
+      <div class="dual-example">Example: ${o.example}</div>
+    </div>
+  `).join('');
+  container.innerHTML = `
+    <div class="dual-grid">${cards}</div>
+    <div class="dual-insight">${d.insight}</div>
   `;
 }
 
