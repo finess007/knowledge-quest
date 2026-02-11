@@ -1,8 +1,8 @@
 {
   "meta": {
     "startDate": "2026-02-07",
-    "version": "2.1",
-    "lastUpdated": "2026-02-10T04:30:00+02:00"
+    "version": "2.2",
+    "lastUpdated": "2026-02-11T04:30:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -230,15 +230,15 @@
       "emoji": "\ud83d\udcc8",
       "description": "Active trading \u2014 crypto, stocks, derivatives",
       "score": 9,
-      "status": "\ud83d\udd34 BTC MINERS \u2192 AI = BIGGEST PLAY. $65B in AI/HPC contracts. CORZ undervalued at $4M/MW vs $7M/MW peers. Copper 4.3x YoY demand explosion. Feb earnings = catalysts.",
+      "status": "\ud83d\udd34 IREN CRASH = ENTRY? $9.7B Microsoft deal, stock -33.5%. TAO at $154 (extreme fear). BTC miners flipping to AI. $602B capex committed by Big 5. Copper + nuclear = bottleneck plays.",
       "signals": [
-        "BTC miners signed $65B+ AI/HPC contracts in 2025 (CoinShares). WGMI ETF +72% in 1yr",
-        "CORZ at $4M/MW vs $7M/MW peer valuation = 75% re-rating upside. Target $26.53",
-        "CLSK at $12.81 vs $23.12 analyst target. 1.5GW + 447 acres TX. Biggest gap to target.",
-        "WULF up 200%+ YTD. Nuclear/hydro/solar powered. Morgan Stanley initiated coverage.",
-        "Copper DC demand: 475K tons in 2026 vs 110K in 2025 (4.3x, JPMorgan). FCX, SCCO, COPX plays.",
-        "JPM copper target $12,500/ton Q2, UBS $13,000 EOY. AI DCs use 50K tons each.",
-        "Nuclear basket: CCJ, SMR, OKLO \u2014 but SMRs not at scale until 2030s"
+        "IREN: $9.7B Microsoft deal, $1.9B prepaid, 140K GPUs. Stock crashed 33.5% on earnings miss — potential entry.",
+        "TAO (Bittensor) at $154: 78% below ATH. 128+ subnets, Chutes = 160B tokens/day. Grayscale trust filing pending.",
+        "BTC miners signed $65B+ AI/HPC contracts. Mining revenue dropping from 85% to <20% by late 2026.",
+        "Big 5 cloud: $602B capex committed for 2026 (36% YoY). Meta $115-135B alone. Irreversible.",
+        "Copper DC demand: 475K tons in 2026 vs 110K in 2025 (4.3x). JPM $12,500, UBS $13,000.",
+        "SaaS destruction: $1T wiped in one week (Feb 6). Salesforce -40%. Jensen Huang: 'illogical.'",
+        "Nuclear: Constellation restarting Three Mile Island for Microsoft. Sovereign cloud $80B (Gartner)."
       ]
     },
     "E": {
@@ -246,15 +246,15 @@
       "emoji": "\u20bf",
       "description": "BTC L2, Lightning, AI agent payments, DeFi",
       "score": 10,
-      "status": "\ud83d\udd34 x402 V2 LAUNCHED + 100M+ flows. China Doc 42 = RWA framework. Tokenized equities +2,878% YoY. Agent economy infrastructure solidifying.",
+      "status": "\ud83d\udd34 TAPROOT ASSETS REVOLUTION. Tether → USDT on Bitcoin via Lightning. Amboss RailsX = first Lightning DEX targeting $9.5T FX. STX $0.25 + Fireblocks catalyst Q1. x402 agent payments maturing. POLY token filing.",
       "signals": [
+        "Taproot Assets: Tether issuing USDT natively on Bitcoin. RailsX DEX launched. Speed $1.5B volume.",
+        "STX at $0.25: Fireblocks integration Q1 2026. 2,400+ institutional clients. BTC DeFi unlocking.",
         "x402 V2 launched (Jan 2026): multi-chain, fiat support, wallet identity, modular SDK. 100M+ payment flows.",
-        "x402 Foundation (Coinbase + Cloudflare) + Google AP2 + ERC-8004 = complete agent commerce stack",
-        "China Document 42 (Feb 6): First formal RWA tokenization regulation. Offshore tokenization of Chinese assets permitted.",
-        "Tokenized equities: $963M market value, up 2,878% YoY. Ondo + Securitize dominate.",
-        "RWA total: $19-36B on-chain, 300%+ growth. BlackRock BUIDL on Ethereum.",
-        "BTC L2s: $447M raised, 65+ projects. Franklin Templeton in Bitlayer (first ETF institution).",
-        "Crypto VC reality check (Feb 9): retreating from speculation \u2192 revenue + stablecoin focus. Maturation."
+        "Polymarket POLY trademark filed Feb 4. Token + airdrop confirmed. 70.8% probability 2026 launch.",
+        "BTC L2s: $447M raised, 65+ projects. Franklin Templeton in Bitlayer.",
+        "Lightning Network ATH: 5,637 BTC capacity. $1M record transaction. Tether invested $8M in Speed.",
+        "Liquid Network: $3.27B TVL, $1.8B tokenized private credit via AMP."
       ]
     },
     "F": {
@@ -275,19 +275,67 @@
       "emoji": "\ud83d\ude80",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "\ud83d\udd34 AGENT INFRA SOLIDIFYING. 170+ startups (CB Insights). Vertical agents eating SaaS (Bain). Sovereign AI = $100B globally. Robotics: Skild $14B, Figure $1.9B.",
+      "status": "\ud83d\udd34 SAAS APOCALYPSE = BUILD OPPORTUNITY. $1T wiped from software stocks. Anthropic Cowork + OpenAI Frontier eating enterprise. Agent infra solidifying. x402 + ERC-8004 = agent commerce stack.",
       "signals": [
-        "170+ AI agent infrastructure startups mapped (CB Insights market map)",
-        "Vertical AI agents replacing SaaS AND teams (Bain). Caseflood.ai: 1/3 cost of law firm ops.",
-        "Sovereign AI factories: $100B globally in 2026. NVIDIA 20 AI Factories across Europe. Germany launched largest EU AI factory (Feb 5).",
-        "Skild AI: $1.4B Series C at $14B valuation (SoftBank + NVIDIA). General-purpose robotics foundation model. 3x valuation in 7 months.",
-        "Figure: $1.9B total for humanoid robots. 1X released world model for robot learning.",
-        "Agent marketplaces: Kore.ai (300+ agents), ServiceNow, AI Agent Store. App Store moment coming?",
-        "Deloitte: S-curves compressing \u2014 emerging\u2192mainstream gap collapsing. Speed is the blind spot."
+        "$1T wiped from software market value in one week (Feb 6). S&P 500 Software Index -20% YTD.",
+        "Anthropic Claude Cowork + OpenAI Frontier = enterprise agent platforms replacing SaaS.",
+        "Martin Casado (a16z): built personal CRM with AI because easier than Salesforce. SaaS disintermediation.",
+        "x402 + ERC-8004 = agent identity + payments. The Graph + MultiversX + Google AP2 integrating.",
+        "170+ AI agent infrastructure startups (CB Insights). $50B agentic AI spending (KPMG).",
+        "Bittensor subnets: 128+, scaling to 256. Decentralized AI compute 90% cheaper than AWS.",
+        "Deloitte: S-curves compressing — emerging→mainstream gap collapsing. Speed is the blind spot."
       ]
     }
   },
   "signals": [
+    {
+      "id": "sig-055",
+      "date": "2026-02-11",
+      "text": "\ud83d\udd34 TAPROOT ASSETS + LIGHTNING STABLECOINS: Tether committed to USDT as Taproot Asset. Amboss RailsX = first Lightning-native DEX (Jan 30). Speed: $1.5B volume, 1.2M users. Targeting $9.5T daily FX market. BTC DeFi TVL $6.11B. Lightning ATH 5,637 BTC capacity.",
+      "path": "E",
+      "importance": "critical",
+      "source": "Coinlaw, Amboss, AI Journal, Morningstar"
+    },
+    {
+      "id": "sig-056",
+      "date": "2026-02-11",
+      "text": "\ud83d\udd34 STX FIREBLOCKS CATALYST: Fireblocks ($5T+ secured annually) integrating Stacks. Live Q1 2026. 2,400+ institutional clients access BTC DeFi: Zest lending, Granite, Hermetica vaults. STX at $0.25, mcap $461M. Draper portfolio.",
+      "path": "E",
+      "importance": "critical",
+      "source": "DailyHodl, Benzinga, Chainwire, Bitget"
+    },
+    {
+      "id": "sig-057",
+      "date": "2026-02-11",
+      "text": "\ud83d\udd34 SAAS DESTRUCTION: $1T wiped from software stocks in one week (Feb 6). Salesforce -40% in 1yr. Anthropic Cowork + OpenAI Frontier = enterprise agent platforms eating SaaS. $24B shorted by hedge funds. Jensen Huang calls panic 'illogical' — contrarian signal?",
+      "path": "NEW",
+      "importance": "critical",
+      "source": "Reuters, CNBC, Fortune, BusinessInsider"
+    },
+    {
+      "id": "sig-058",
+      "date": "2026-02-11",
+      "text": "\ud83d\udfe1 BITTENSOR (TAO) EXTREME FEAR: $154 (down 78% from ATH). 128+ subnets, Chutes processes 160B tokens/day at 90% less than AWS. Halving done (25%→12.5%). Grayscale trust filing pending. Staked TAO ETP launched. Scaling to 256 subnets.",
+      "path": "D",
+      "importance": "high",
+      "source": "tao.media, ainvest, CoinMarketCap"
+    },
+    {
+      "id": "sig-059",
+      "date": "2026-02-11",
+      "text": "\ud83d\udfe1 POLYMARKET POLY TOKEN: Trademark filed Feb 4 with USPTO. Token launch + airdrop confirmed by executives. 70.8% probability of 2026 launch. Draper portfolio company. Prediction markets have product-market fit.",
+      "path": "E",
+      "importance": "high",
+      "source": "Benzinga, TheBlock, Bitget"
+    },
+    {
+      "id": "sig-060",
+      "date": "2026-02-11",
+      "text": "\ud83d\udfe1 BIG 5 CAPEX $602B: 36% YoY increase. Meta $115-135B alone. Sovereign cloud IaaS $80B (Gartner, Feb 9). China $47B. This spending is committed and irreversible — creates massive downstream demand for compute, power, copper.",
+      "path": "D",
+      "importance": "high",
+      "source": "Forbes, Gartner, CNBC"
+    },
     {
       "id": "sig-040",
       "date": "2026-02-10",
