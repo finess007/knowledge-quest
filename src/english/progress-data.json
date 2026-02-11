@@ -1,7 +1,7 @@
 {
   "startDate": "2026-01-31",
   "lastSession": "2026-02-10T00:15:00+02:00",
-  "totalSessions": 10,
+  "totalSessions": 11,
   "totalQuestions": 269,
   "totalCorrect": 188,
   "currentStreak": 8,
@@ -170,5 +170,70 @@
   ],
   "masteredFromBook": 35,
   "masteredExtra": 17,
-  "remainingToLearn": 277
+  "remainingToLearn": 277,
+  "lastSessionDate": "2026-02-11",
+  "history": [
+    {
+      "session": 11,
+      "date": "2026-02-11",
+      "score": "10/12",
+      "percentage": 83,
+      "round1": "5/7 (71%)",
+      "round2": "5/5 (100%)",
+      "newLearned": [
+        "gave up"
+      ],
+      "retained": [
+        "put off"
+      ],
+      "notes": "Strong midnight session. Basics solid."
+    }
+  ],
+  "streak": 1,
+  "boxes": {
+    "get ready": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "fill in": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "takes after": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "look into": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "put off": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "turn on": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "get up": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "carry on": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "took off": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "come up with": {
+      "box": 1,
+      "lastReview": "2026-02-11"
+    },
+    "give up": {
+      "box": 0,
+      "lastReview": "2026-02-11"
+    }
+  }
 }
