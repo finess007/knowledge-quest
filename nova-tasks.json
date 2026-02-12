@@ -1,11 +1,6 @@
 {
-  "lastUpdated": "2026-02-05T03:15:00+02:00",
-  "ivo": {
-    "backlog": [],
-    "next": [],
-    "doing": [],
-    "done": []
-  },
+  "lastUpdated": "2026-02-06T10:00:00+02:00",
+  "ivo": {"backlog": [], "next": [], "doing": [], "done": []},
   "nova": {
     "backlog": [
       {"id": 33, "task": "Image Gen Sub-Agent (Nano Banana Pro)", "priority": "P2", "added": "2026-01-30", "blocked": "Needs Google Cloud billing enabled"},
@@ -15,6 +10,34 @@
       {"id": 4, "task": "Mimi's Clawdbot memory setup", "priority": "P2", "added": "2026-01-31"}
     ],
     "next": [
+      {
+        "id": 0,
+        "task": "Аз вече знам! — Educational quiz for Avia (5yo)",
+        "priority": "P0",
+        "added": "2026-02-05",
+        "note": "MUST BUILD TONIGHT",
+        "spec": {
+          "format": "Quiz with 2-3 picture answers",
+          "language": "Bulgarian",
+          "features": ["Stars for correct answers", "Animations on success", "Progress per category"],
+          "categories": [
+            "🌍 Светът около мен (~12)",
+            "🇧🇬 България (~10)",
+            "🦁 Животни (~15)",
+            "👤 Човешкото тяло (~10)",
+            "📅 Време (~10)",
+            "🎨 Цветове и форми (~10)",
+            "🔢 Числа (~8)",
+            "🌌 Космос (~8)",
+            "🍎 Храна и здраве",
+            "🚗 Превозни средства",
+            "👨‍🚒 Професии",
+            "🌦️ Времето"
+          ],
+          "totalQuestions": "~120"
+        }
+      },
+      {"id": 1, "task": "Буквички — Reading app for Avia", "priority": "P1", "added": "2026-02-05", "note": "COMPLETED Feb 11 nightly build"},
       {"id": 35, "task": "Polymarket Arbitrage Bot", "priority": "P1", "added": "2026-01-31"},
       {"id": 34, "task": "Agentic SEO for Alessa", "priority": "P1", "added": "2026-01-31"}
     ],
@@ -29,7 +52,11 @@
       {"id": 106, "task": "Build Knowledge Graph Viewer", "completed": "2026-02-02"},
       {"id": 107, "task": "Build Meta Ads Knowledge Base", "completed": "2026-02-03"},
       {"id": 108, "task": "Build Copy Progress Dashboard", "completed": "2026-02-04"},
-      {"id": 109, "task": "Build Macro Calculator", "completed": "2026-02-05"}
+      {"id": 109, "task": "Build Macro Calculator", "completed": "2026-02-05"},
+      {"id": 110, "task": "Build Avia Quiz - Аз вече знам!", "completed": "2026-02-06"},
+      {"id": 111, "task": "Upgrade Nutrition Tracker 2.0", "completed": "2026-02-06"},
+      {"id": 112, "task": "Build Буквички — Bulgarian alphabet learning app", "completed": "2026-02-11"},
+      {"id": 113, "task": "Build Ad Copy Scorer — Bencivenga Persuasion Equation", "completed": "2026-02-12"}
     ]
   },
   "shared": {
@@ -55,35 +82,14 @@
     "done": []
   },
   "overnightBuilds": [
-    {
-      "date": "2026-02-01",
-      "title": "Habit Streaks Dashboard",
-      "description": "Unified habit tracker with streaks, heatmap, and daily check-ins. Pre-loaded with English Practice, 300 Figures Quiz, and Trading Journal habits.",
-      "url": "https://finess007.github.io/knowledge-quest/habits/"
-    },
-    {
-      "date": "2026-02-02",
-      "title": "Knowledge Graph Viewer",
-      "description": "Dashboard to browse all entities in Nova's memory: people, companies, projects, investments. Shows summaries and active facts for each entity. Includes sync script to keep data fresh.",
-      "url": "https://knowledge-quest-tan.vercel.app/knowledge-graph.html"
-    },
-    {
-      "date": "2026-02-03",
-      "title": "Meta Ads Knowledge Base",
-      "description": "Searchable dashboard of Meta Ads expert strategies. Features 12 experts (8 researched), topic filtering (Creative/Structure/Bidding/Scaling/Tracking), key frameworks, and quick-reference tactics. Built to make the Deep Research findings easily accessible during campaign work.",
-      "url": "https://knowledge-quest-tan.vercel.app/meta-ads-kb.html"
-    },
-    {
-      "date": "2026-02-04",
-      "title": "Copy Progress Dashboard",
-      "description": "Visual tracker for the Alessa product descriptions project. Shows 50% progress (477/952), session history chart, milestone bar, and estimated days to completion. Motivational messages based on progress percentage.",
-      "url": "https://knowledge-quest-tan.vercel.app/copy-progress.html"
-    },
-    {
-      "date": "2026-02-05",
-      "title": "Macro Calculator",
-      "description": "Quick food macro lookup tool for nutrition tracking. 100+ foods database with instant calories, protein, carbs, fat. Supports grams, ounces, and piece-based units. Includes micronutrient tags and copy-to-clipboard for easy logging.",
-      "url": "https://knowledge-quest-tan.vercel.app/macro-calculator.html"
-    }
+    {"date": "2026-02-01", "title": "Habit Streaks Dashboard", "description": "Unified habit tracker with streaks, heatmap, and daily check-ins.", "url": "https://finess007.github.io/knowledge-quest/habits/"},
+    {"date": "2026-02-02", "title": "Knowledge Graph Viewer", "description": "Dashboard to browse all entities in Nova's memory.", "url": "https://knowledge-quest-tan.vercel.app/knowledge-graph.html"},
+    {"date": "2026-02-03", "title": "Meta Ads Knowledge Base", "description": "Searchable dashboard of Meta Ads expert strategies.", "url": "https://knowledge-quest-tan.vercel.app/meta-ads-kb.html"},
+    {"date": "2026-02-04", "title": "Copy Progress Dashboard", "description": "Visual tracker for Alessa descriptions project.", "url": "https://knowledge-quest-tan.vercel.app/copy-progress.html"},
+    {"date": "2026-02-05", "title": "Macro Calculator", "description": "Quick food macro lookup for nutrition tracking.", "url": "https://knowledge-quest-tan.vercel.app/macro-calculator.html"},
+    {"date": "2026-02-06", "title": "Avia Quiz — Аз вече знам!", "description": "Educational quiz for Avia (5yo): 34 categories, 205 questions in Bulgarian, emoji answers, stars, confetti.", "url": "https://avia-quiz.vercel.app"},
+    {"date": "2026-02-06", "title": "Nutrition Tracker 2.0", "description": "Full rebuild: food database with 25+ foods, micronutrient tracking, weekly trends, insights engine.", "url": "https://nutrition-tracker-neon.vercel.app/"},
+    {"date": "2026-02-11", "title": "Буквички — Bulgarian Alphabet App", "description": "Interactive alphabet learning for Avia: 30 letters, emoji word associations, speech synthesis, practice quizzes, star progress.", "url": "https://bukvichki.vercel.app"},
+    {"date": "2026-02-12", "title": "Ad Copy Scorer", "description": "Score ads with Bencivenga's Persuasion Equation: 4 elements + CrackerJack (120 pts max), 12 proof elements checklist, Bridge Principle check, history tracking.", "url": "https://knowledge-quest-tan.vercel.app/ad-scorer.html"}
   ]
 }
