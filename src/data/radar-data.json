@@ -2,7 +2,7 @@
   "meta": {
     "startDate": "2026-02-07",
     "version": "2.2",
-    "lastUpdated": "2026-02-11T04:30:00+02:00"
+    "lastUpdated": "2026-02-12T04:30:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -246,15 +246,15 @@
       "emoji": "\u20bf",
       "description": "BTC L2, Lightning, AI agent payments, DeFi",
       "score": 10,
-      "status": "\ud83d\udd34 TAPROOT ASSETS REVOLUTION. Tether → USDT on Bitcoin via Lightning. Amboss RailsX = first Lightning DEX targeting $9.5T FX. STX $0.25 + Fireblocks catalyst Q1. x402 agent payments maturing. POLY token filing.",
+      "status": "\ud83d\udd34 BTC DeFi INFRASTRUCTURE WEEK. Spark $9B institutional lending live. Citrea mainnet + ctUSD stablecoin. Stripe x402 machine payments preview. RailsX Lightning DEX. STX $0.26 + Fireblocks. BTC is building a complete financial stack.",
       "signals": [
-        "Taproot Assets: Tether issuing USDT natively on Bitcoin. RailsX DEX launched. Speed $1.5B volume.",
-        "STX at $0.25: Fireblocks integration Q1 2026. 2,400+ institutional clients. BTC DeFi unlocking.",
-        "x402 V2 launched (Jan 2026): multi-chain, fiat support, wallet identity, modular SDK. 100M+ payment flows.",
-        "Polymarket POLY trademark filed Feb 4. Token + airdrop confirmed. 70.8% probability 2026 launch.",
-        "BTC L2s: $447M raised, 65+ projects. Franklin Templeton in Bitlayer.",
-        "Lightning Network ATH: 5,637 BTC capacity. $1M record transaction. Tether invested $8M in Speed.",
-        "Liquid Network: $3.27B TVL, $1.8B tokenized private credit via AMP."
+        "Spark: $5.24B TVL, 80% of Coinbase BTC loan liquidity, $500M PayPal PYUSD. New institutional lending suite.",
+        "Citrea mainnet (Jan 28): ZK Bitcoin L2, Founders Fund backed, ctUSD stablecoin, BitVM2 bridge.",
+        "Stripe x402 machine payments: AI agents pay USDC on Base per HTTP request. CoinGecko integrated.",
+        "Taproot Assets: Tether USDT native on BTC committed. RailsX = first Lightning DEX. Speed $1.5B volume.",
+        "STX at $0.26: Fireblocks integration (2,400+ institutions, $5T+ secured). Zest lending. sBTC live.",
+        "Lightning: $1M record payment SDM→Kraken. Revolut + SoFi via Lightspark. 117M+ Ordinals inscriptions.",
+        "BTC DeFi TVL: $6.11B vs ETH $100B+ — massive gap to close. Copper ATH $14,527/ton."
       ]
     },
     "F": {
@@ -275,19 +275,67 @@
       "emoji": "\ud83d\ude80",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "\ud83d\udd34 SAAS APOCALYPSE = BUILD OPPORTUNITY. $1T wiped from software stocks. Anthropic Cowork + OpenAI Frontier eating enterprise. Agent infra solidifying. x402 + ERC-8004 = agent commerce stack.",
+      "status": "\ud83d\udd34 SAASPOCALYPSE = MISPRICED OPPORTUNITY. SiliconANGLE: markets wrong — Systems of Record ≠ Workflow Wrappers. CRM -26% is a contrarian buy if they become Systems of Action. Build the AI replacement for the wrappers that are dying.",
       "signals": [
-        "$1T wiped from software market value in one week (Feb 6). S&P 500 Software Index -20% YTD.",
-        "Anthropic Claude Cowork + OpenAI Frontier = enterprise agent platforms replacing SaaS.",
-        "Martin Casado (a16z): built personal CRM with AI because easier than Salesforce. SaaS disintermediation.",
-        "x402 + ERC-8004 = agent identity + payments. The Graph + MultiversX + Google AP2 integrating.",
-        "170+ AI agent infrastructure startups (CB Insights). $50B agentic AI spending (KPMG).",
-        "Bittensor subnets: 128+, scaling to 256. Decentralized AI compute 90% cheaper than AWS.",
-        "Deloitte: S-curves compressing — emerging→mainstream gap collapsing. Speed is the blind spot."
+        "SaaSpocalypse deepening: CRM -26%, Thomson Reuters -16%, LegalZoom -20%. $285B wipeout on Feb 3.",
+        "Key insight: 'Capabilities improve in months. Context accumulates in years.' — SoR companies mispriced.",
+        "Stripe x402 machine payments + OpenAI Frontier = agent economy infrastructure solidifying.",
+        "AI agent companies raised $25B+ (top 25). $650B Big Tech AI capex in 2026.",
+        "AI retail spending: $20.9B in 2026 (4x 2025). E-commerce AI personalization = standard.",
+        "Anthropic Claude Cowork + OpenAI Codex desktop = per-seat SaaS model dying.",
+        "Build opportunity: vertical AI agents for e-commerce (Ivo's domain) before giants consolidate."
       ]
     }
   },
   "signals": [
+    {
+      "id": "sig-066",
+      "date": "2026-02-12",
+      "text": "🔴 SPARK $9B INSTITUTIONAL LENDING: Ex-MakerDAO team launched Spark Prime + Spark Institutional Lending. $5.24B TVL, $9B peak. 80% of Coinbase BTC loan liquidity ($600M+). $500M for PayPal PYUSD. $150M institutional commitments at launch, 'capacity to scale to billions.' Anchorage Digital custody. DeFi → TradFi bridge.",
+      "path": "E",
+      "importance": "critical",
+      "source": "Cointelegraph, CoinDesk, Metaverse Post"
+    },
+    {
+      "id": "sig-065",
+      "date": "2026-02-12",
+      "text": "🔴 x402 + STRIPE MACHINE PAYMENTS: Stripe preview of AI agent payments using USDC on Base via x402 protocol. CoinGecko: $0.01/request for agents. No accounts, no auth — pay per HTTP request. Google AP2 parallel. Stripe handles tax/refunds/compliance. The HTTP of money is forming.",
+      "path": "E",
+      "importance": "critical",
+      "source": "TheBlock, Coinlaw, Coinbase, ForkLog"
+    },
+    {
+      "id": "sig-064",
+      "date": "2026-02-12",
+      "text": "🔴 CITREA MAINNET LIVE (Jan 28): ZK Bitcoin L2 by Chainway Labs. Founders Fund + Galaxy Ventures backed ($16.7M raised). ctUSD stablecoin (MoonPay + M0, GENIUS Act compliant). BTC-backed lending via Morpho. 61% of BTC idle >1yr = $800B+ unlockable. BitVM2 Clementine bridge.",
+      "path": "E",
+      "importance": "critical",
+      "source": "PR Newswire, CryptoBreaking, BitcoinEthereumNews"
+    },
+    {
+      "id": "sig-063",
+      "date": "2026-02-12",
+      "text": "🔴 SAASPOCALYPSE DEEPENS: CRM -26%, Thomson Reuters -16%, LegalZoom -20%. SiliconANGLE analysis: markets MISPRICING — lumping Systems of Record with Workflow Wrappers. SoR companies have years of context AI labs can't replicate. 'Capabilities improve in months. Context accumulates in years.' Contrarian long opportunity.",
+      "path": "NEW",
+      "importance": "critical",
+      "source": "SiliconANGLE, Decoding Discontinuity, FinancialContent"
+    },
+    {
+      "id": "sig-062",
+      "date": "2026-02-12",
+      "text": "🟡 BTC MINER DUAL-PLAY ACCELERATING: IREN $9.7B Microsoft deal, $1.94B ARR when commissioned. CIFR $870M projected revenue, 76% EBITDA, analyst target $25.27 (+71%). MARA revenue +92% YoY. 8+ publicly traded miners pivoting to AI. BTC mining income dropping from 85% to <20% by late 2026.",
+      "path": "D",
+      "importance": "high",
+      "source": "Seeking Alpha, WIRED, CoinGeek, Yahoo Finance"
+    },
+    {
+      "id": "sig-061",
+      "date": "2026-02-12",
+      "text": "🟡 CLAWSTR: Nostr-powered social network for AI agents. Token on Base, 33x in 24h at launch ($13.7M mcap). AI agents discussing, rating, sharing across communities on decentralized protocol. Narrative proxy for agent social layer. Tiny but signals emerging pattern.",
+      "path": "E",
+      "importance": "high",
+      "source": "BingX, GitHub, Clawstr.com"
+    },
     {
       "id": "sig-055",
       "date": "2026-02-11",
@@ -610,6 +658,20 @@
     }
   ],
   "blindSpots": [
+    {
+      "id": "bs-012",
+      "title": "Lightning Is Becoming a DEX — Not Just Payments",
+      "text": "Most people think Lightning = fast BTC payments. Wrong. RailsX + Taproot Assets = Lightning is now a full P2P exchange. BTC↔stablecoin atomic swaps. No bridges, no custodians. Tether committed USDT as Taproot Asset. Speed handles $1.5B/yr. This is Bitcoin's answer to Uniswap — but on the most secure network with near-zero fees. Targeting $9.5T daily FX market.",
+      "pattern": "Payment network evolves into financial exchange → value capture explodes → early liquidity providers win",
+      "addedDate": "2026-02-12"
+    },
+    {
+      "id": "bs-011",
+      "title": "Spark Is Quietly Becoming DeFi's Biggest Liquidity Engine",
+      "text": "Built by ex-MakerDAO team. $5.24B TVL. Supplies 80% of Coinbase's BTC loan liquidity. $500M for PayPal PYUSD. Just launched institutional lending with $150M day-one commitments. Nobody's talking about Spark because it has no hype-token or meme culture. This is how real financial infrastructure gets built — quietly, with institutional capital.",
+      "pattern": "Boring infrastructure that powers other people's products → becomes indispensable → captures most value",
+      "addedDate": "2026-02-12"
+    },
     {
       "id": "bs-007",
       "title": "x402 = TCP/IP of Money (NOBODY sees this yet)",
