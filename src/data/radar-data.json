@@ -2,7 +2,7 @@
   "meta": {
     "startDate": "2026-02-07",
     "version": "2.2",
-    "lastUpdated": "2026-02-13T04:30:00+02:00"
+    "lastUpdated": "2026-02-13T10:00:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -277,7 +277,7 @@
       "emoji": "\ud83d\ude80",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "\ud83d\udd34 SAASPOCALYPSE + AGENT ECONOMY CONVERGING. $285B wiped. Coinbase Agentic Wallets = agents can now transact autonomously. Anthropic $30B at $380B (2nd largest VC deal EVER). Service-as-Software replacing Software-as-a-Service. Build the replacements.",
+      "status": "\ud83d\udd34 SAASPOCALYPSE + 3-LAYER FRAMEWORK LIVE. $285B wiped. Layer 1 (Agent-on-SaaS) happening NOW \u2014 Claude Cowork, Frontier. Layer 2 (Agent-native Platforms) emerging \u2014 Composio, Lindy.ai. Layer 3 (Outcome-as-a-Service) = THE endgame \u2014 wide open. See dd-004. Anthropic $30B at $380B. Build the replacements.",
       "signals": [
         "SaaSpocalypse: $285B wipeout Feb 3. Salesforce, ServiceNow, HubSpot, Indian IT all hit. Per-seat model dying.",
         "Anthropic $30B raise at $380B — second-largest venture deal OF ALL TIME. AI infrastructure monopolizing capital.",
@@ -781,9 +781,10 @@
     {
       "id": "bs-006",
       "title": "SaaS Crash = Talent Firesale",
-      "text": "SaaS companies laying off as stock prices crater. Top engineers, sales teams, product people becoming available at discount. An AI-native company starting NOW can hire talent that would have been impossible 6 months ago. Timing advantage.",
+      "text": "SaaS companies laying off as stock prices crater. Top engineers, sales teams, product people becoming available at discount. An AI-native company starting NOW can hire talent that was impossible to get 6 months ago. Timing advantage. See Deep Dive dd-004: Service-as-Software \u2014 the 3-layer model (Agent-on-SaaS \u2192 Agent-native Platforms \u2192 Outcome-as-a-Service) shows exactly WHERE this talent should be deployed.",
       "pattern": "Industry disruption \u2192 talent displacement \u2192 opportunity for new entrants",
-      "addedDate": "2026-02-07"
+      "addedDate": "2026-02-07",
+      "relatedDeepDive": "dd-004"
     },
     {
       "id": "bs-002",
@@ -1296,6 +1297,96 @@
       ],
       "recommendation": "The Saylor playbook proves Bitcoin-standard banking works at $50B+ scale. Erebor will bring it to retail/institutional with a federal charter. The gap: nobody is building agent treasury management yet. That's the builder opportunity. For investing: MSTR for Bitcoin bank exposure, watch Erebor for first product launch, accumulate BTC as the base layer of everything.",
       "discoveryTitle": "\ud83d\udc80 The Paradigm Shift"
+    },
+    {
+      "id": "dd-004",
+      "title": "Service-as-Software \u2014 The 3-Layer SaaS Replacement",
+      "subtitle": "Per-seat software is dead. Here\u2019s what replaces it.",
+      "icon": "\ud83d\udd04",
+      "priority": "critical",
+      "date": "2026-02-13",
+      "layers": [
+        {
+          "name": "Layer 1: Agent-on-top-of-SaaS",
+          "status": "\ud83d\udfe2",
+          "statusLabel": "HAPPENING NOW",
+          "description": "An agent operates existing SaaS FOR you. Same software (Klaviyo, Salesforce, HubSpot), but you never touch it. Claude Cowork does this \u2014 clicks through Salesforce like a human. SaaS company still gets paid, but you don\u2019t need 5 employees to run it.",
+          "players": "Anthropic (Claude Cowork), OpenAI (Frontier), UiPath, Automation Anywhere",
+          "detail": "This is the transitional phase. SaaS companies survive temporarily because the agent still needs their UI. But it exposes how much of SaaS value was \u201cease of use\u201d \u2014 which agents don\u2019t need."
+        },
+        {
+          "name": "Layer 2: Agent-native Platforms",
+          "status": "\ud83d\udfe1",
+          "statusLabel": "EMERGING",
+          "description": "New platforms built FOR agents, not humans. No fancy UI needed \u2014 just APIs. Why build a beautiful dashboard if the \u201cuser\u201d is a bot? Way cheaper to build, way faster to iterate. Kills old SaaS on cost structure alone.",
+          "players": "Composio, Relevance AI, Lindy.ai, emerging startups",
+          "detail": "The \u201cheadless SaaS\u201d movement. Strip the UI, keep the logic, expose APIs. Building cost drops 80%+ because you don\u2019t need design, frontend, or UX teams. This is where the real disruption happens."
+        },
+        {
+          "name": "Layer 3: Outcome-as-a-Service",
+          "status": "\ud83d\udd34",
+          "statusLabel": "THE ENDGAME",
+          "description": "You don\u2019t get software. You don\u2019t get an agent operating software. You just get the RESULT. Instead of Klaviyo: \u201cHere\u2019s your email tool, good luck.\u201d You get: \u201cYour emails are sent. I A/B tested 47 variants. The winner converts at 4.2%. Here are the results.\u201d You\u2019re buying the OUTCOME, not the tool.",
+          "players": "Nobody dominant yet \u2014 THIS IS THE BILLION-DOLLAR OPPORTUNITY",
+          "detail": "Every SaaS category becomes a target. Klaviyo \u2192 \u201cEmail agent that maximizes revenue.\u201d Salesforce \u2192 \u201cSales agent that closes deals.\u201d Zendesk \u2192 \u201cCS agent that resolves tickets.\u201d Pricing flips from per-seat ($150/user/month) to per-outcome or per-result. A company paying $350K/year for 200 Salesforce seats pays $50K/year for an agent that does MORE."
+        }
+      ],
+      "entryPoints": [
+        {
+          "level": "easy",
+          "label": "\ud83d\udfe2 Audit Your Own SaaS Stack (this week)",
+          "description": "List every SaaS tool Alessa pays for. For each: what does it do? Could an AI agent do it? What would you pay for just the OUTCOME? This exercise alone could save \u20ac50-100K/year AND reveal which agent to build first.",
+          "ideas": [
+            "Email marketing (Klaviyo) \u2014 what\u2019s the per-email outcome worth?",
+            "Customer service (Zendesk/similar) \u2014 per-ticket resolution cost?",
+            "Analytics reporting \u2014 per-insight or per-dashboard?",
+            "Social media scheduling \u2014 per-post or per-engagement?",
+            "Inventory management \u2014 per-SKU optimization?"
+          ]
+        },
+        {
+          "level": "medium",
+          "label": "\ud83d\udfe1 Build a Vertical Outcome Agent for Fashion E-commerce",
+          "description": "Take ONE SaaS category you know deeply (email marketing, ad optimization, customer service) and build the agent replacement for fashion e-commerce specifically. Charge per outcome: $/email sent, $/ad created, $/ticket resolved. Not per seat.",
+          "ideas": [
+            "\u201cEmail Revenue Agent\u201d \u2014 give it your product catalog + customer segments, it handles everything",
+            "\u201cAd Creative Agent\u201d \u2014 give it brand guidelines + products, it generates, tests, and optimizes ads",
+            "\u201cCS Resolution Agent\u201d \u2014 handles returns, complaints, sizing questions with brand voice",
+            "Start with Alessa as customer zero \u2014 product-market fit from day one"
+          ]
+        },
+        {
+          "level": "hard",
+          "label": "\ud83d\udd34 Build the Outcome-as-a-Service Platform",
+          "description": "The Shopify of outcome agents. Non-technical businesses browse a marketplace of vertical agents, plug them in, pay for results. You provide the platform + marketplace + payments + trust layer. This is THE billion-dollar play. Nobody\u2019s built it yet.",
+          "ideas": [
+            "Agent marketplace + x402/L402 payments + reputation scoring + vertical specialization",
+            "Non-technical businesses browse, plug in agents, pay for results",
+            "Trust layer: verified outcomes, SLAs, refund policies",
+            "Whoever assembles this stack = wins the SaaS replacement market"
+          ]
+        }
+      ],
+      "keyInsights": [
+        {
+          "label": "The Pricing Revolution",
+          "text": "SaaS charges per seat because humans are the bottleneck. Agents don\u2019t have seats. The entire pricing model of B2B software ($300B+ market) gets rebuilt around outcomes. Per-email, per-ticket, per-lead, per-sale. This is a structural repricing, not a feature update."
+        },
+        {
+          "label": "Alessa Is the Perfect Test Case",
+          "text": "Ivo runs a \u20ac1M/month e-commerce business with a full SaaS stack. He knows EXACTLY which tools deliver value and which are just dashboards. Building the agent replacement for his own stack = product-market fit from day one."
+        },
+        {
+          "label": "The SaaS Talent Firesale",
+          "text": "$285B wiped from SaaS stocks means layoffs. Top engineers, product people, sales teams becoming available at discount. An outcome-agent company starting NOW can hire talent that was impossible to get 6 months ago."
+        },
+        {
+          "label": "x402/L402 Enables Per-Outcome Pricing",
+          "text": "Traditional SaaS needed subscriptions because payment friction was too high for micropayments. x402 (Coinbase) and L402 (Lightning) enable fractions-of-a-cent payments. Agent sends 47 emails \u2192 pays $0.002 each \u2192 total $0.094 instead of $150/month Klaviyo seat. The payment infrastructure for outcome pricing ALREADY EXISTS."
+        }
+      ],
+      "recommendation": "Start with your own SaaS stack. Audit every tool, calculate the \u2018outcome cost\u2019 (what you\u2019d pay for just the result). Then build the first vertical agent for fashion e-commerce \u2014 you already have the domain expertise, the data, and the customer (yourself). If it works for Alessa, it works for every fashion brand. That\u2019s the billion-dollar company.",
+      "layersTitle": "The Three Layers of SaaS Replacement"
     }
   ],
   "draperModel": {
