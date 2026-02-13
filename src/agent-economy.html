@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Economy — Nova</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 20px; max-width: 900px; margin: 0 auto; }
+  h1 { color: #f7931a; margin-bottom: 8px; font-size: 28px; }
+  .subtitle { color: #888; margin-bottom: 30px; font-size: 14px; }
+  .card { background: #151520; border: 1px solid #252535; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { color: #fff; font-size: 18px; margin-bottom: 12px; }
+  .card h3 { color: #f7931a; font-size: 15px; margin: 16px 0 8px; }
+  .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .status-item { background: #1a1a2e; border-radius: 8px; padding: 14px; text-align: center; }
+  .status-item .label { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .status-item .value { color: #fff; font-size: 20px; font-weight: 700; margin-top: 4px; }
+  .status-item .value.live { color: #00ff88; }
+  .status-item .value.pending { color: #f7931a; }
+  .status-item .value.todo { color: #666; }
+  .step { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #252535; }
+  .step:last-child { border: none; }
+  .step-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .step-icon.done { background: #00ff8820; color: #00ff88; }
+  .step-icon.active { background: #f7931a20; color: #f7931a; }
+  .step-icon.next { background: #ffffff10; color: #666; }
+  .step-text { flex: 1; }
+  .step-text .title { font-weight: 600; color: #fff; }
+  .step-text .desc { color: #888; font-size: 13px; margin-top: 2px; }
+  .specialty { display: inline-block; background: #f7931a20; color: #f7931a; padding: 4px 12px; border-radius: 20px; font-size: 13px; margin: 4px; }
+  .revenue-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .revenue-table th { text-align: left; color: #888; font-size: 12px; text-transform: uppercase; padding: 8px; border-bottom: 1px solid #252535; }
+  .revenue-table td { padding: 8px; border-bottom: 1px solid #151520; }
+  .revenue-table .sats { color: #f7931a; font-weight: 600; }
+  .flywheel { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .flywheel-step { background: #1a1a2e; padding: 8px 14px; border-radius: 20px; font-size: 13px; }
+  .flywheel-arrow { color: #f7931a; font-size: 18px; }
+  .mono { font-family: 'SF Mono', monospace; font-size: 12px; color: #888; word-break: break-all; }
+  .highlight { background: #f7931a15; border-left: 3px solid #f7931a; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .highlight p { color: #ccc; font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<h1>⚡ Agent Economy — Nova</h1>
+<p class="subtitle">AI agent earning Bitcoin via Lightning Network on Nostr/NIP-90</p>
+
+<div class="status-grid">
+  <div class="status-item">
+    <div class="label">Lightning Node</div>
+    <div class="value live">● LIVE</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Wallet Balance</div>
+    <div class="value">58,141 sats</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Channel</div>
+    <div class="value pending">● PENDING</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Nostr Identity</div>
+    <div class="value live">● PUBLISHED</div>
+  </div>
+  <div class="status-item">
+    <div class="label">DVM Service</div>
+    <div class="value todo">○ TODO</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Jobs Completed</div>
+    <div class="value">0</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🗺️ The Plan</h2>
+  <div class="highlight">
+    <p><strong>Build an AI agent that operates on Nostr, offers services via NIP-90, and gets paid in Lightning.</strong> The agent economy's version of "build a Shopify store." Early mover advantage = zero competition right now.</p>
+  </div>
+
+  <h3>Setup Progress</h3>
+  <div class="step">
+    <div class="step-icon done">✓</div>
+    <div class="step-text">
+      <div class="title">Install LND + Go</div>
+      <div class="desc">LND v0.20.1-beta compiled from source. Neutrino light mode.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon done">✓</div>
+    <div class="step-text">
+      <div class="title">Create Wallet + Fund</div>
+      <div class="desc">58,141 sats deposited. Seed phrase backed up.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon done">✓</div>
+    <div class="step-text">
+      <div class="title">Nova Macaroon (Scoped Permissions)</div>
+      <div class="desc">Can check balance, send/receive payments. Cannot touch on-chain funds or channels.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon active">⏳</div>
+    <div class="step-text">
+      <div class="title">Open Lightning Channel</div>
+      <div class="desc">20,000 sats channel pending 3 confirmations (~30 min).</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon done">✓</div>
+    <div class="step-text">
+      <div class="title">Nostr Identity</div>
+      <div class="desc">Profile published to damus.io + nos.lol relays.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon next">○</div>
+    <div class="step-text">
+      <div class="title">NIP-90 DVM Service</div>
+      <div class="desc">Build persistent service: listen for jobs → do work → submit → collect sats.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon next">○</div>
+    <div class="step-text">
+      <div class="title">First Paid Job</div>
+      <div class="desc">Complete first real copywriting job and earn sats.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🎯 Nova's Specialties</h2>
+  <p style="color: #888; font-size: 13px; margin-bottom: 12px;">What Nova offers that generic agents can't:</p>
+  <div>
+    <span class="specialty">Fashion E-commerce Copy</span>
+    <span class="specialty">Meta Ad Copy</span>
+    <span class="specialty">Bencivenga Framework</span>
+    <span class="specialty">10R Emotional Angles</span>
+    <span class="specialty">Product Descriptions</span>
+    <span class="specialty">EN → Bulgarian Translation</span>
+    <span class="specialty">EN → Greek Translation</span>
+    <span class="specialty">UGC Video Ad Copy</span>
+    <span class="specialty">Brand Voice Matching</span>
+  </div>
+  <div class="highlight" style="margin-top: 16px;">
+    <p>💡 <strong>The Moat:</strong> 950+ approved Alessa product descriptions as calibration data. Bencivenga + Makepeace copywriting frameworks. Months of client-specific feedback. This knowledge base IS the product.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>💰 Revenue Model</h2>
+  <table class="revenue-table">
+    <tr><th>Service</th><th>Price (sats)</th><th>Price (€)</th><th>Time</th></tr>
+    <tr><td>Product description</td><td class="sats">500-1,000</td><td>€0.40-0.80</td><td>~30s</td></tr>
+    <tr><td>Meta ad (short)</td><td class="sats">1,000-2,000</td><td>€0.80-1.60</td><td>~1 min</td></tr>
+    <tr><td>Meta ad (Bencivenga full)</td><td class="sats">5,000-10,000</td><td>€4-8</td><td>~3 min</td></tr>
+    <tr><td>Translation (EN→BG/GR)</td><td class="sats">500-1,500</td><td>€0.40-1.20</td><td>~30s</td></tr>
+    <tr><td>UGC video ad copy</td><td class="sats">2,000-5,000</td><td>€1.60-4</td><td>~2 min</td></tr>
+  </table>
+
+  <h3>Scale Projections (Speculative)</h3>
+  <table class="revenue-table">
+    <tr><th>Scenario</th><th>Jobs/Day</th><th>Avg Sats</th><th>Daily</th><th>Monthly</th></tr>
+    <tr><td>Early (Month 1-3)</td><td>10-20</td><td class="sats">1,000</td><td>€8-16</td><td>€240-480</td></tr>
+    <tr><td>Growth (Month 3-6)</td><td>50-100</td><td class="sats">2,000</td><td>€80-160</td><td>€2.4K-4.8K</td></tr>
+    <tr><td>Premium (Month 6+)</td><td>100-200</td><td class="sats">3,000</td><td>€240-480</td><td>€7.2K-14.4K</td></tr>
+    <tr><td>Multi-agent (10 agents)</td><td>500-1000</td><td class="sats">2,000</td><td>€800-1600</td><td>€24K-48K</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>🔄 The Flywheel</h2>
+  <div class="flywheel">
+    <span class="flywheel-step">🧠 Better Knowledge</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">✍️ Better Output</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">👥 More Clients</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">⭐ More Reputation</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">💰 Higher Prices</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">📈 More Revenue</span>
+    <span class="flywheel-arrow">→</span>
+    <span class="flywheel-step">🤖 Fund More Agents</span>
+    <span class="flywheel-arrow">→ 🔁</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🔧 Infrastructure</h2>
+  <div style="margin-top: 8px;">
+    <p><strong>Node:</strong> Nova-Node (LND v0.20.1-beta, Neutrino)</p>
+    <p><strong>Host:</strong> Mac mini (arm64, macOS Sequoia)</p>
+    <p class="mono" style="margin-top: 8px;">LN Node ID: 02c4e355fe0778682dbba3968fcf38a32a68bca1590a2ea278cf999f9e6398d8a2</p>
+    <p class="mono">Nostr Pubkey: b03a70ec9722b153cd8ff3c329c6ed3485fafb9aa360b361336f82af1be9324a</p>
+    <p class="mono">Deposit: bc1qsecalyrudhgwpyxv9qzwx3jgmf0s80mgcluvs0</p>
+  </div>
+</div>
+
+<div class="card" style="border-color: #f7931a40;">
+  <h2>🎯 Next Actions</h2>
+  <div class="step">
+    <div class="step-icon active">1</div>
+    <div class="step-text">
+      <div class="title">Build NIP-90 DVM Service</div>
+      <div class="desc">Persistent listener for Nostr job requests. Accept → Process → Deliver → Invoice.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon next">2</div>
+    <div class="step-text">
+      <div class="title">Complete First Job</div>
+      <div class="desc">Find or create a test job. Earn first sats from copywriting.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon next">3</div>
+    <div class="step-text">
+      <div class="title">Set Up LND as LaunchAgent</div>
+      <div class="desc">Auto-start on reboot. Auto-unlock wallet.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-icon next">4</div>
+    <div class="step-text">
+      <div class="title">Reputation Building</div>
+      <div class="desc">Complete 100 jobs. Build verifiable track record on Nostr.</div>
+    </div>
+  </div>
+</div>
+
+<p style="text-align: center; color: #444; margin-top: 30px; font-size: 12px;">Last updated: Feb 14, 2026 · Nova × Ivo</p>
+
+</body>
+</html>
