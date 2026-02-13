@@ -2,7 +2,7 @@
   "meta": {
     "startDate": "2026-02-07",
     "version": "2.2",
-    "lastUpdated": "2026-02-12T04:30:00+02:00"
+    "lastUpdated": "2026-02-13T04:30:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -229,15 +229,16 @@
       "name": "Trading",
       "emoji": "\ud83d\udcc8",
       "description": "Active trading \u2014 crypto, stocks, derivatives",
-      "score": 9,
-      "status": "\ud83d\udd34 IREN CRASH = ENTRY? $9.7B Microsoft deal, stock -33.5%. TAO at $154 (extreme fear). BTC miners flipping to AI. $602B capex committed by Big 5. Copper + nuclear = bottleneck plays.",
+      "score": 10,
+      "status": "\ud83d\udd34 CIFR & WULF = MORGAN STANLEY 150%+ TARGETS. CIFR $14.70→$38 (Amazon $5.5B lease). WULF $17.50→$37 (Google $3.2B + 14% stake). BTC miners = cheapest AI infrastructure play. STX $0.27 with Fireblocks institutional integration live.",
       "signals": [
-        "IREN: $9.7B Microsoft deal, $1.9B prepaid, 140K GPUs. Stock crashed 33.5% on earnings miss — potential entry.",
-        "TAO (Bittensor) at $154: 78% below ATH. 128+ subnets, Chutes = 160B tokens/day. Grayscale trust filing pending.",
+        "CIFR: MS target $38 (158% upside). Amazon 15yr $5.5B lease + Google 10yr contract. Up 183% in 12mo.",
+        "WULF: MS target $37 (111% upside from $17.50). Google 14% stake + $3.2B funding. 52-week high.",
+        "Equity value creation per watt: $7→$18 (Jun-Dec 2025). Systematic AI compute supply shortage.",
+        "STX at $0.27: Fireblocks integration ($5T/yr custodian). Zest Protocol + Granite lending active.",
         "BTC miners signed $65B+ AI/HPC contracts. Mining revenue dropping from 85% to <20% by late 2026.",
         "Big 5 cloud: $602B capex committed for 2026 (36% YoY). Meta $115-135B alone. Irreversible.",
         "Copper DC demand: 475K tons in 2026 vs 110K in 2025 (4.3x). JPM $12,500, UBS $13,000.",
-        "SaaS destruction: $1T wiped in one week (Feb 6). Salesforce -40%. Jensen Huang: 'illogical.'",
         "Nuclear: Constellation restarting Three Mile Island for Microsoft. Sovereign cloud $80B (Gartner)."
       ]
     },
@@ -246,15 +247,16 @@
       "emoji": "\u20bf",
       "description": "BTC L2, Lightning, AI agent payments, DeFi",
       "score": 10,
-      "status": "\ud83d\udd34 BTC DeFi INFRASTRUCTURE WEEK. Spark $9B institutional lending live. Citrea mainnet + ctUSD stablecoin. Stripe x402 machine payments preview. RailsX Lightning DEX. STX $0.26 + Fireblocks. BTC is building a complete financial stack.",
+      "status": "\ud83d\udd34 BTC APPLICATION LAYER EXPLODING. Citrea ZK L2 mainnet live + ctUSD. Coinbase Agentic Wallets for AI agents. RailsX Lightning DEX. Spark $9B institutional lending. Clawstr = AI agents on Nostr+BTC. 50% Africa via Lightning. Complete BTC financial stack forming.",
       "signals": [
-        "Spark: $5.24B TVL, 80% of Coinbase BTC loan liquidity, $500M PayPal PYUSD. New institutional lending suite.",
-        "Citrea mainnet (Jan 28): ZK Bitcoin L2, Founders Fund backed, ctUSD stablecoin, BitVM2 bridge.",
-        "Stripe x402 machine payments: AI agents pay USDC on Base per HTTP request. CoinGecko integrated.",
-        "Taproot Assets: Tether USDT native on BTC committed. RailsX = first Lightning DEX. Speed $1.5B volume.",
-        "STX at $0.26: Fireblocks integration (2,400+ institutions, $5T+ secured). Zest lending. sBTC live.",
-        "Lightning: $1M record payment SDM→Kraken. Revolut + SoFi via Lightspark. 117M+ Ordinals inscriptions.",
-        "BTC DeFi TVL: $6.11B vs ETH $100B+ — massive gap to close. Copper ATH $14,527/ton."
+        "Citrea mainnet: ZK Bitcoin L2, $16.7M raised (Founders Fund + Galaxy), ctUSD stablecoin, 30+ ₿apps. BTCFi pitched at Consensus HK.",
+        "Coinbase Agentic Wallets: First crypto wallets for AI agents. 50M+ x402 transactions. Autonomous trading, DeFi, payments.",
+        "Spark $9B: Institutional lending suite live. Spark Prime + Institutional Lending. Powered 80% of Coinbase BTC borrowing.",
+        "RailsX: First Lightning-native DEX. Taproot Assets + BTC P2P trading. 0.29% processing cost. Targeting $9.5T FX market.",
+        "Clawstr: Nostr-powered social network for AI agents. BTC Zaps, Cashu tokens. Agent economy on BTC rails.",
+        "Lightning milestones: $1M largest-ever LN transaction. 50% of Africa BTC via Lightning. Dominican Republic Cashu+LN.",
+        "Stacks + Fireblocks: $5T/yr custodian now supports BTC DeFi. STX at $0.27. Zest + Granite lending.",
+        "117M Ordinals inscriptions. BTC DeFi TVL ~$6B vs ETH $100B+ — massive gap closing."
       ]
     },
     "F": {
@@ -275,19 +277,67 @@
       "emoji": "\ud83d\ude80",
       "description": "Build a billion-dollar company at the intersection of AI agents + commerce",
       "score": 10,
-      "status": "\ud83d\udd34 SAASPOCALYPSE = MISPRICED OPPORTUNITY. SiliconANGLE: markets wrong — Systems of Record ≠ Workflow Wrappers. CRM -26% is a contrarian buy if they become Systems of Action. Build the AI replacement for the wrappers that are dying.",
+      "status": "\ud83d\udd34 SAASPOCALYPSE + AGENT ECONOMY CONVERGING. $285B wiped. Coinbase Agentic Wallets = agents can now transact autonomously. Anthropic $30B at $380B (2nd largest VC deal EVER). Service-as-Software replacing Software-as-a-Service. Build the replacements.",
       "signals": [
-        "SaaSpocalypse deepening: CRM -26%, Thomson Reuters -16%, LegalZoom -20%. $285B wipeout on Feb 3.",
-        "Key insight: 'Capabilities improve in months. Context accumulates in years.' — SoR companies mispriced.",
-        "Stripe x402 machine payments + OpenAI Frontier = agent economy infrastructure solidifying.",
-        "AI agent companies raised $25B+ (top 25). $650B Big Tech AI capex in 2026.",
-        "AI retail spending: $20.9B in 2026 (4x 2025). E-commerce AI personalization = standard.",
-        "Anthropic Claude Cowork + OpenAI Codex desktop = per-seat SaaS model dying.",
-        "Build opportunity: vertical AI agents for e-commerce (Ivo's domain) before giants consolidate."
+        "SaaSpocalypse: $285B wipeout Feb 3. Salesforce, ServiceNow, HubSpot, Indian IT all hit. Per-seat model dying.",
+        "Anthropic $30B raise at $380B — second-largest venture deal OF ALL TIME. AI infrastructure monopolizing capital.",
+        "Coinbase Agentic Wallets: AI agents hold funds, trade, pay APIs autonomously. 50M+ x402 transactions.",
+        "Amazon Rufus generated $12B incremental sales from AI shopping agent. 300M+ users.",
+        "AI retail spending $20.9B in 2026 (4x 2025). E-commerce AI personalization = standard.",
+        "AI spending $2.52T worldwide in 2026 (+44% YoY, Gartner). 80% enterprises deploying GenAI in production.",
+        "Build opportunity: SaaS replacement agency + vertical AI agents for e-commerce before giants consolidate."
       ]
     }
   },
   "signals": [
+    {
+      "id": "sig-072",
+      "date": "2026-02-13",
+      "text": "🔴 COINBASE AGENTIC WALLETS: First crypto wallet for AI agents. Hold funds, trade on-chain, pay APIs — all autonomous. Built on x402 (50M+ txns). Session caps + transaction limits for safety. VIRTUAL token pumped. The payment rails for the agent economy are live.",
+      "path": "E",
+      "importance": "critical",
+      "source": "PYMNTS, ForkLog, Gadgets360, BanklessTimes"
+    },
+    {
+      "id": "sig-071",
+      "date": "2026-02-13",
+      "text": "🔴 CIFR & WULF — MORGAN STANLEY 150%+ TARGETS: CIFR $14.70→$38 (158% upside, Amazon $5.5B 15yr lease). WULF $17.50→$37 (Google 14% stake + $3.2B). Equity value per watt: $7→$18 in 6mo. BTC miners = cheapest path to AI compute for hyperscalers.",
+      "path": "D",
+      "importance": "critical",
+      "source": "Business Insider, Bitcoin Magazine, Motley Fool, Morgan Stanley"
+    },
+    {
+      "id": "sig-070",
+      "date": "2026-02-13",
+      "text": "🔴 BTCFI AT CONSENSUS HK: Citrea (ZK L2), Rootstock, BlockSpaceForce pitch institutions. 'Next unlock = financial system around Bitcoin.' Parker: 'Wrapped BTC is 3-of-5 multisig — not scalable for trillions.' Protocol-based not counterparty-based assumptions needed.",
+      "path": "E",
+      "importance": "critical",
+      "source": "CoinDesk (Consensus Hong Kong 2026)"
+    },
+    {
+      "id": "sig-069",
+      "date": "2026-02-13",
+      "text": "🔴 ANTHROPIC $30B AT $380B: Second-largest venture deal OF ALL TIME. Blackstone added $1B. Claude Cowork triggered SaaSpocalypse. The company that killed per-seat SaaS is now worth more than most SaaS companies combined.",
+      "path": "NEW",
+      "importance": "critical",
+      "source": "Crunchbase, Reuters"
+    },
+    {
+      "id": "sig-068",
+      "date": "2026-02-13",
+      "text": "🟡 BTC-NATIVE WEEK: Lightning $1M record tx. 50% Africa BTC via Lightning (Chipper Cash). Dominican Republic Cashu+LN node. 117M Ordinals inscriptions. RailsX early access open. Cash App BTC expansion. Bitcoin's application layer exploding.",
+      "path": "E",
+      "importance": "high",
+      "source": "CoinLaw, PlanB Forum, AfriBitcoinNews"
+    },
+    {
+      "id": "sig-067",
+      "date": "2026-02-13",
+      "text": "🟡 AGENT ECONOMY INFRASTRUCTURE FORMING: Clawstr (Nostr AI agent social), NIP-90 Data Vending Machines, x402 payments, Agentic Wallets, RailsX trading = complete stack for AI agents to communicate, earn, spend, and trade on BTC rails.",
+      "path": "E",
+      "importance": "high",
+      "source": "Soapbox, TFTC, dev.to, BingX"
+    },
     {
       "id": "sig-066",
       "date": "2026-02-12",
