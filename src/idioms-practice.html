@@ -163,7 +163,7 @@ header .sub{color:#9ca3af;font-size:.85rem}
 <div class="container">
 <header>
   <h1>🔥 Idioms Practice</h1>
-  <div class="sub">Spaced repetition — 949 expressions from Clayton Makepeace</div>
+  <div class="sub">Spaced repetition — <span id="totalCount">895</span> expressions from Clayton Makepeace</div>
 </header>
 
 <!-- Stats -->
@@ -192,7 +192,7 @@ header .sub{color:#9ca3af;font-size:.85rem}
   <div id="practice-setup">
     <div class="practice-config">
       <select class="cat-select" id="catFilter">
-        <option value="">All Categories (949)</option>
+        <option value="">All Categories</option>
       </select>
       <div class="session-size-row">
         <label>Session size:</label>
@@ -287,6 +287,8 @@ let isFlipped=false;
 
 // === INIT ===
 function init(){
+  document.getElementById('totalCount').textContent=DATA.length;
+  document.querySelector('#catFilter option[value=""]').textContent=`All Categories (${DATA.length})`;
   updateStats();
   populateCatFilter();
   updateQueueInfo();
