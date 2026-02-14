@@ -1,10 +1,10 @@
 {
   "startDate": "2026-01-31",
-  "lastSession": "2026-02-12T16:55:00+02:00",
-  "totalSessions": 13,
-  "totalQuestions": 304,
-  "totalCorrect": 217,
-  "currentStreak": 10,
+  "lastSession": "2026-02-14",
+  "totalSessions": 14,
+  "totalQuestions": 318,
+  "totalCorrect": 229,
+  "currentStreak": 11,
   "bestStreak": 8,
   "masterListSource": "The Ultimate Phrasal Verb Book",
   "masterListFile": "phrasal-verbs-master.json",
@@ -92,6 +92,14 @@
       "correct": 13,
       "pct": 93,
       "note": "2 rounds, Megan watching. R1 6/7 (missed stock up), R2 7/7 PERFECT. Streak: 10."
+    },
+    {
+      "date": "2026-02-12",
+      "session": 14,
+      "questions": 14,
+      "correct": 12,
+      "pct": 86,
+      "note": "2 rounds. R1 6/7 (missed tear down), R2 7/7 PERFECT. Streak: 11."
     }
   ],
   "verbsToDrill": [
@@ -100,7 +108,9 @@
     "fill up",
     "plug in",
     "get dressed",
-    "stock up"
+    "tear down",
+    "get ready",
+    "get up"
   ],
   "verbsMastered": [
     "look into",
@@ -176,7 +186,8 @@
     "hang up",
     "takes after",
     "throw away",
-    "blow out"
+    "blow out",
+    "stock up"
   ],
   "masteredFromBook": 35,
   "masteredExtra": 17,
@@ -197,41 +208,82 @@
         "put off"
       ],
       "notes": "Strong midnight session. Basics solid."
+    },
+    {
+      "session": 12,
+      "date": "2026-02-12",
+      "score": "16/21",
+      "percentage": 76,
+      "round1": "5/7 (71%)",
+      "round2": "5/7 (71%)",
+      "round3": "6/7 (86%)",
+      "newLearned": [
+        "put on",
+        "blow out",
+        "put out",
+        "dress up"
+      ],
+      "retained": [
+        "came up with",
+        "brought up",
+        "takes after",
+        "plug in",
+        "stand up",
+        "fill up"
+      ],
+      "notes": "2:26 AM session after ads + BTC thesis. Drill system working \u2014 came up with and brought up both drilled and retained within minutes. Learned blow out vs put out distinction."
+    },
+    {
+      "date": "2026-02-14",
+      "time": "02:15",
+      "score": "5/7",
+      "pct": 71,
+      "missed": [
+        "get ready",
+        "get up"
+      ]
     }
   ],
-  "streak": 1,
+  "streak": 2,
   "boxes": {
     "get ready": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 0,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-14"
     },
     "fill in": {
       "box": 1,
       "lastReview": "2026-02-11"
     },
     "takes after": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 2,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-17"
     },
     "look into": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 2,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-17"
     },
     "put off": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 2,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-17"
     },
     "turn on": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 2,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-17"
     },
     "get up": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 0,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-14"
     },
     "carry on": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 2,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-17"
     },
     "took off": {
       "box": 1,
@@ -246,13 +298,5 @@
       "lastReview": "2026-02-11"
     }
   },
-  "sessions": [
-    {
-      "session": 12,
-      "date": "2026-02-12",
-      "score": "16/21",
-      "percentage": 76,
-      "rounds": 3
-    }
-  ]
+  "sessionCount": 1
 }
