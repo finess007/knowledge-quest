@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idioms Practice — Spaced Repetition</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#e5e7eb;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 20%,rgba(245,158,11,.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(234,88,12,.08) 0%,transparent 50%);z-index:-1;pointer-events:none}
+
+/* Nav */
+.nav{display:flex;align-items:center;gap:12px;padding:16px 20px;max-width:800px;margin:0 auto}
+.nav a{color:#9ca3af;text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:4px;transition:color .2s}
+.nav a:hover{color:#f59e0b}
+.nav .sep{color:#4b5563}
+
+/* Container */
+.container{max-width:800px;margin:0 auto;padding:0 20px 40px}
+
+/* Header */
+header{text-align:center;margin-bottom:24px}
+header h1{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b,#ea580c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+header .sub{color:#9ca3af;font-size:.85rem}
+
+/* Stats Row */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 8px;text-align:center}
+.stat .val{font-size:1.4rem;font-weight:700;color:#fbbf24}
+.stat .lbl{font-size:.62rem;color:#9ca3af;text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+
+/* Box bar */
+.box-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-bottom:4px;background:rgba(255,255,255,.05)}
+.box-bar div{height:100%;transition:width .4s}
+.b0c{background:#4b5563}.b1c{background:#ef4444}.b2c{background:#f97316}.b3c{background:#eab308}.b4c{background:#84cc16}.b5c{background:#22c55e}
+.box-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+.box-legend span{font-size:.65rem;color:#9ca3af;display:flex;align-items:center;gap:3px}
+.box-legend .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:20px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px}
+.tab{flex:1;text-align:center;padding:10px;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;color:#9ca3af;transition:all .2s;border:none;background:none;font-family:inherit}
+.tab.active{background:rgba(245,158,11,.15);color:#fbbf24}
+.tab:hover:not(.active){background:rgba(255,255,255,.06);color:#e5e7eb}
+
+/* Views */
+.view{display:none}
+.view.active{display:block}
+
+/* === PRACTICE VIEW === */
+.practice-config{text-align:center;margin-bottom:16px}
+.cat-select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;padding:8px 12px;font-size:.85rem;width:100%;max-width:300px;outline:none;font-family:inherit}
+.cat-select:focus{border-color:#f59e0b}
+.cat-select option{background:#1a1a2e;color:#e5e7eb}
+
+.session-size-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px}
+.session-size-row label{font-size:.8rem;color:#9ca3af}
+.size-btn{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#e5e7eb;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.size-btn:hover{background:rgba(245,158,11,.15);border-color:#f59e0b;color:#fbbf24}
+.size-val{font-size:1.1rem;font-weight:600;color:#fbbf24;min-width:30px;text-align:center}
+
+.start-btn{display:block;margin:20px auto;padding:14px 40px;background:linear-gradient(135deg,#f59e0b,#ea580c);border:none;border-radius:12px;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.start-btn:hover{transform:scale(1.03);box-shadow:0 4px 24px rgba(245,158,11,.3)}
+.start-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.queue-info{text-align:center;color:#6b7280;font-size:.78rem;margin-top:8px}
+.queue-info strong{color:#fbbf24}
+
+/* Flashcard */
+.card-area{perspective:1000px;max-width:500px;margin:0 auto}
+.progress-bar-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.progress-bar{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#ea580c);border-radius:3px;transition:width .3s}
+.progress-text{font-size:.75rem;color:#9ca3af;white-space:nowrap}
+
+.flashcard{position:relative;width:100%;min-height:260px;cursor:pointer;transition:transform .6s;transform-style:preserve-3d}
+.flashcard.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;top:0;left:0;right:0;bottom:0;backface-visibility:hidden;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.card-front{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1)}
+.card-back{background:linear-gradient(145deg,rgba(245,158,11,.08),rgba(234,88,12,.04));border:1px solid rgba(245,158,11,.2);transform:rotateY(180deg)}
+.card-expression{font-size:1.5rem;font-weight:600;line-height:1.4;color:#fff;margin-bottom:12px}
+.card-cat{font-size:.72rem;color:#9ca3af;padding:3px 10px;background:rgba(255,255,255,.06);border-radius:20px;margin-bottom:8px}
+.card-box-badge{font-size:.68rem;color:#6b7280;margin-top:4px}
+.card-box-badge .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
+.card-hint{font-size:.85rem;color:#9ca3af;margin-top:8px}
+.tap-hint{font-size:.75rem;color:#4b5563;margin-top:12px}
+
+.card-back .card-expression{color:#fbbf24;font-size:1.3rem}
+.card-back .prompt{font-size:.9rem;color:#d1d5db;margin-bottom:16px;line-height:1.5}
+
+/* Grade buttons */
+.grade-btns{display:flex;gap:10px;margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;opacity:0;pointer-events:none;transition:opacity .3s}
+.grade-btns.show{opacity:1;pointer-events:auto}
+.grade-btn{flex:1;padding:14px;border-radius:12px;border:none;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.grade-btn.know{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e}
+.grade-btn.know:hover{background:rgba(34,197,94,.25)}
+.grade-btn.dunno{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#ef4444}
+.grade-btn.dunno:hover{background:rgba(239,68,68,.25)}
+.grade-btn.kinda{background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.25);color:#eab308}
+.grade-btn.kinda:hover{background:rgba(234,179,8,.2)}
+
+/* Session Result */
+.session-result{text-align:center;padding:32px 20px}
+.result-emoji{font-size:3.5rem;margin-bottom:16px}
+.result-title{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.result-sub{color:#9ca3af;font-size:.9rem;margin-bottom:24px}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.result-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px}
+.result-stat .val{font-size:1.6rem;font-weight:700}
+.result-stat .val.green{color:#22c55e}
+.result-stat .val.red{color:#ef4444}
+.result-stat .val.yellow{color:#eab308}
+.result-stat .lbl{font-size:.7rem;color:#9ca3af;text-transform:uppercase;margin-top:2px}
+.result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* === HISTORY VIEW === */
+.history-list{display:flex;flex-direction:column;gap:8px}
+.history-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.history-date{font-size:.8rem;color:#9ca3af;min-width:90px}
+.history-score{font-size:1.1rem;font-weight:700;min-width:50px}
+.history-bar{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.history-bar-fill{height:100%;border-radius:3px}
+.history-count{font-size:.75rem;color:#6b7280}
+.empty-state{text-align:center;padding:40px 20px;color:#6b7280}
+.empty-state .emoji{font-size:2.5rem;margin-bottom:12px}
+
+/* === CATEGORY PROGRESS VIEW === */
+.cat-progress{display:flex;flex-direction:column;gap:8px}
+.cat-prog-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px}
+.cat-prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cat-prog-name{font-size:.85rem;font-weight:500}
+.cat-prog-count{font-size:.75rem;color:#9ca3af}
+.cat-prog-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.cat-prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#f59e0b,#22c55e);transition:width .3s}
+.cat-prog-detail{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.cat-prog-detail span{font-size:.65rem;color:#6b7280}
+
+/* Responsive */
+@media(max-width:640px){
+  .container{padding:0 12px 40px}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stats .stat:nth-child(4),.stats .stat:nth-child(5){grid-column:span 1}
+  header h1{font-size:1.4rem}
+  .card-expression{font-size:1.2rem}
+  .flashcard{min-height:220px}
+  .grade-btns{flex-wrap:wrap}
+  .grade-btn{padding:12px}
+}
+@media(max-width:380px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<div class="nav">
+  <a href="/">← Command Center</a>
+  <span class="sep">·</span>
+  <a href="idioms.html">Browse All</a>
+</div>
+
+<div class="container">
+<header>
+  <h1>🔥 Idioms Practice</h1>
+  <div class="sub">Spaced repetition — 949 expressions from Clayton Makepeace</div>
+</header>
+
+<!-- Stats -->
+<div class="stats" id="statsGrid"></div>
+
+<!-- Box bar -->
+<div class="box-bar" id="boxBar"></div>
+<div class="box-legend">
+  <span><span class="dot" style="background:#4b5563"></span>New</span>
+  <span><span class="dot" style="background:#ef4444"></span>Box 1</span>
+  <span><span class="dot" style="background:#f97316"></span>Box 2</span>
+  <span><span class="dot" style="background:#eab308"></span>Box 3</span>
+  <span><span class="dot" style="background:#84cc16"></span>Box 4</span>
+  <span><span class="dot" style="background:#22c55e"></span>Mastered</span>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" data-view="practice" onclick="switchTab('practice')">⚡ Practice</button>
+  <button class="tab" data-view="categories" onclick="switchTab('categories')">📊 Categories</button>
+  <button class="tab" data-view="history" onclick="switchTab('history')">📋 History</button>
+</div>
+
+<!-- PRACTICE VIEW -->
+<div class="view active" id="view-practice">
+  <div id="practice-setup">
+    <div class="practice-config">
+      <select class="cat-select" id="catFilter">
+        <option value="">All Categories (949)</option>
+      </select>
+      <div class="session-size-row">
+        <label>Session size:</label>
+        <button class="size-btn" onclick="changeSize(-5)">−</button>
+        <span class="size-val" id="sizeVal">15</span>
+        <button class="size-btn" onclick="changeSize(5)">+</button>
+      </div>
+    </div>
+    <div class="queue-info" id="queueInfo"></div>
+    <button class="start-btn" id="startBtn" onclick="startSession()">Start Practice</button>
+  </div>
+
+  <div id="practice-active" style="display:none">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"><div class="progress-bar-fill" id="progFill"></div></div>
+      <div class="progress-text" id="progText">0/15</div>
+    </div>
+    <div class="card-area">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="card-face card-front" id="cardFront">
+          <div class="card-cat" id="cardCat"></div>
+          <div class="card-expression" id="cardExpr"></div>
+          <div class="card-box-badge" id="cardBox"></div>
+          <div class="tap-hint">tap to flip</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="prompt">Do you know this expression?<br>Can you use it in a sentence?</div>
+          <div class="card-expression" id="cardExprBack"></div>
+          <div class="card-hint" id="cardHint"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grade-btns" id="gradeBtns">
+      <button class="grade-btn dunno" onclick="grade(0)">❌ Don't Know</button>
+      <button class="grade-btn kinda" onclick="grade(1)">🤔 Sort Of</button>
+      <button class="grade-btn know" onclick="grade(2)">✅ Got It!</button>
+    </div>
+  </div>
+
+  <div id="practice-result" style="display:none"></div>
+</div>
+
+<!-- CATEGORIES VIEW -->
+<div class="view" id="view-categories">
+  <div class="cat-progress" id="catProgress"></div>
+</div>
+
+<!-- HISTORY VIEW -->
+<div class="view" id="view-history">
+  <div id="historyList"></div>
+</div>
+
+</div>
+
+<script>
+// === EXPRESSION DATA (949 items) ===
+const DATA=[{"e":"Abandon ship","c":"🌊 General / Other"},{"e":"About face","c":"🌊 General / Other"},{"e":"Above board","c":"🎯 Accuracy & Truth"},{"e":"Ace in the hole","c":"💪 Success & Achievement"},{"e":"Ace up his sleeve","c":"🧠 Intelligence & Strategy"},{"e":"Achilles heel","c":"🌊 General / Other"},{"e":"Acid test","c":"🎯 Accuracy & Truth"},{"e":"Acorn doesn't fall far from the tree, The","c":"🧠 Intelligence & Strategy"},{"e":"All ears","c":"💬 Communication & Persuasion"},{"e":"All for one, and one for all","c":"🌊 General / Other"},{"e":"All hell breaks loose","c":"⚔️ Conflict & Competition"},{"e":"All in a day's work","c":"🌊 General / Other"},{"e":"All over the map","c":"🌊 General / Other"},{"e":"All talk and no action","c":"💬 Communication & Persuasion"},{"e":"All the bits and pieces","c":"🌊 General / Other"},{"e":"All thumbs","c":"🌊 General / Other"},{"e":"An apple a day keeps the doctor away","c":"❤️ Emotions & Relationships"},{"e":"An arm and a leg","c":"💰 Money & Business"},{"e":"An oldie, but a goodie","c":"🌊 General / Other"},{"e":"An ounce of prevention is worth a pound of cure","c":"💰 Money & Business"},{"e":"Another one bites the dust","c":"🌊 General / Other"},{"e":"Anything goes","c":"🎲 Risk & Chance"},{"e":"As far as the eye can see","c":"🌊 General / Other"},{"e":"As good as gold","c":"💰 Money & Business"},{"e":"Asleep at the wheel","c":"🛡️ Caution & Warning"},{"e":"At the crack of dawn","c":"⏰ Time & Urgency"},{"e":"At the drop of a hat","c":"🎲 Risk & Chance"},{"e":"Ax to grind, An","c":"⚔️ Conflict & Competition"},{"e":"Babe in the woods","c":"🛡️ Caution & Warning"},{"e":"Back against the wall","c":"🛡️ Caution & Warning"},{"e":"Backhanded compliment, A","c":"⚔️ Conflict & Competition"},{"e":"Bad blood","c":"⚔️ Conflict & Competition"},{"e":"Bad call","c":"📉 Failure & Defeat"},{"e":"Bait and switch","c":"💰 Money & Business"},{"e":"Baker's dozen, A","c":"💰 Money & Business"},{"e":"Balls to the wall","c":"🔥 Energy & Action"},{"e":"Banging your head against a brick wall","c":"🌊 General / Other"},{"e":"Bare bones","c":"🌊 General / Other"},{"e":"Barking up the wrong tree","c":"📉 Failure & Defeat"},{"e":"Bat the idea around","c":"🧠 Intelligence & Strategy"},{"e":"Be in the same boat","c":"🌊 General / Other"},{"e":"Bear down","c":"🔥 Energy & Action"},{"e":"Beat a dead horse, To","c":"🌊 General / Other"},{"e":"Beat around the bush","c":"💬 Communication & Persuasion"},{"e":"Beat the bushes","c":"🌊 General / Other"},{"e":"Beats me","c":"🌊 General / Other"},{"e":"Beauty is in the eye of the beholder","c":"❤️ Emotions & Relationships"},{"e":"Beauty is only skin deep","c":"❤️ Emotions & Relationships"},{"e":"Behind the eight ball","c":"🛡️ Caution & Warning"},{"e":"Behind the times","c":"⏰ Time & Urgency"},{"e":"Bells and whistles, To have all the","c":"💪 Success & Achievement"},{"e":"Bend over backwards","c":"⚔️ Conflict & Competition"},{"e":"Best thing since sliced bread, The","c":"💪 Success & Achievement"},{"e":"Bet the farm","c":"🎲 Risk & Chance"},{"e":"Big mouth, A","c":"💬 Communication & Persuasion"},{"e":"Bird in the hand is worth two in the bush, A","c":"💰 Money & Business"},{"e":"Birds of a feather flock together","c":"❤️ Emotions & Relationships"},{"e":"Bite off more than you can chew, To","c":"📉 Failure & Defeat"},{"e":"Bite the bullet","c":"🔥 Energy & Action"},{"e":"Black eye, A","c":"⚔️ Conflict & Competition"},{"e":"Blast from the past","c":"🌊 General / Other"},{"e":"Blaze a new trail","c":"💪 Success & Achievement"},{"e":"Blew him away","c":"⚔️ Conflict & Competition"},{"e":"Blind as a bat","c":"🌊 General / Other"},{"e":"Blood money","c":"💰 Money & Business"},{"e":"Blow it","c":"📉 Failure & Defeat"},{"e":"Blow the whistle on","c":"💬 Communication & Persuasion"},{"e":"Blowing smoke","c":"💬 Communication & Persuasion"},{"e":"Bombed","c":"📉 Failure & Defeat"},{"e":"Bone to pick, A","c":"⚔️ Conflict & Competition"},{"e":"Both barrels","c":"⚔️ Conflict & Competition"},{"e":"Both feet on the ground, To have","c":"🧠 Intelligence & Strategy"},{"e":"Bottom out","c":"💰 Money & Business"},{"e":"Boxed in, To be","c":"🛡️ Caution & Warning"},{"e":"Bragging rights","c":"💪 Success & Achievement"},{"e":"Break the ice, To","c":"💬 Communication & Persuasion"},{"e":"Bright future, To have a","c":"💪 Success & Achievement"},{"e":"Bring home the bacon, To","c":"💰 Money & Business"},{"e":"Broke the bank","c":"💰 Money & Business"},{"e":"Buckle down","c":"💰 Money & Business"},{"e":"Bump in the road, A","c":"🌊 General / Other"},{"e":"Burn the candle at both ends","c":"🔥 Energy & Action"},{"e":"Burn the midnight oil","c":"⏰ Time & Urgency"},{"e":"Burn your bridges","c":"🔥 Energy & Action"},{"e":"Bury the hatchet","c":"⚔️ Conflict & Competition"},{"e":"Business at hand","c":"💰 Money & Business"},{"e":"By the book","c":"💬 Communication & Persuasion"},{"e":"Call it a day, To","c":"🌊 General / Other"},{"e":"Call the shots, To","c":"🌊 General / Other"},{"e":"Can of worms, Open a","c":"🌊 General / Other"},{"e":"Can't have your cake and eat it too","c":"🛡️ Caution & Warning"},{"e":"Can't hold a candle to","c":"🌊 General / Other"},{"e":"Can't teach an old dog new tricks","c":"🌊 General / Other"},{"e":"Cash cow, A","c":"💰 Money & Business"},{"e":"Cash in your chips, To","c":"💰 Money & Business"},{"e":"Cash is king","c":"💰 Money & Business"},{"e":"Caught with your hand in the cookie jar","c":"🌊 General / Other"},{"e":"Chain is only as strong as its weakest link, A","c":"🌊 General / Other"},{"e":"Cheap shot, A","c":"💰 Money & Business"},{"e":"Chip on your shoulder","c":"❤️ Emotions & Relationships"},{"e":"Clean sweep","c":"💪 Success & Achievement"},{"e":"Clear the air, To","c":"🌊 General / Other"},{"e":"Close call","c":"🌊 General / Other"},{"e":"Close, but no cigar","c":"🌊 General / Other"},{"e":"Cold as ice","c":"🌊 General / Other"},{"e":"Cold feet","c":"❤️ Emotions & Relationships"},{"e":"Cookie cutter","c":"🌊 General / Other"},{"e":"Crack the whip","c":"🧠 Intelligence & Strategy"},{"e":"Cream of the crop","c":"💪 Success & Achievement"},{"e":"Cry all the way to the bank, To","c":"💰 Money & Business"},{"e":"Cry over spilled milk, To","c":"❤️ Emotions & Relationships"},{"e":"Cry wolf, To","c":"❤️ Emotions & Relationships"},{"e":"Cut and dry","c":"🌊 General / Other"},{"e":"Cut corners, To","c":"🌊 General / Other"},{"e":"Cut your losses","c":"🌊 General / Other"},{"e":"Cuts to the core","c":"🌊 General / Other"},{"e":"Dagger in the heart, A","c":"⚔️ Conflict & Competition"},{"e":"Damned if you do and damned if you don't","c":"🌊 General / Other"},{"e":"Dark horse","c":"🎲 Risk & Chance"},{"e":"Day late and a dollar short, A","c":"💰 Money & Business"},{"e":"Dead as a doornail","c":"🌊 General / Other"},{"e":"Deal with it, To","c":"💰 Money & Business"},{"e":"Deer in headlights, Like a","c":"🌊 General / Other"},{"e":"Diamond in the rough","c":"🌊 General / Other"},{"e":"Dig for gold, To","c":"💰 Money & Business"},{"e":"Dig yourself into a hole, To","c":"🌊 General / Other"},{"e":"Dip your toe in the water","c":"🌊 General / Other"},{"e":"Dirt cheap","c":"💰 Money & Business"},{"e":"Do a one-eighty","c":"🌊 General / Other"},{"e":"Doesn't stand a chance","c":"🎲 Risk & Chance"},{"e":"Dog eat dog","c":"⚔️ Conflict & Competition"},{"e":"Don't bite the hand that feeds you","c":"🌊 General / Other"},{"e":"Don't count your chickens before they've hatched","c":"🌊 General / Other"},{"e":"Don't hold your breath","c":"🌊 General / Other"},{"e":"Don't judge a book by its cover","c":"💬 Communication & Persuasion"},{"e":"Don't put all your eggs in one basket","c":"🌊 General / Other"},{"e":"Don't rock the boat","c":"🌊 General / Other"},{"e":"Don't shoot me, I'm just the messenger","c":"⚔️ Conflict & Competition"},{"e":"Don't sweat it","c":"🌊 General / Other"},{"e":"Don't tempt fate","c":"🎲 Risk & Chance"},{"e":"Down on your luck","c":"🎲 Risk & Chance"},{"e":"Draw a blank, To","c":"🌊 General / Other"},{"e":"Drop me a line","c":"🌊 General / Other"},{"e":"Dropping like flies","c":"🌊 General / Other"},{"e":"Early bird catches the worm, The","c":"🌊 General / Other"},{"e":"Easy as pie","c":"🌊 General / Other"},{"e":"Eat crow","c":"🌊 General / Other"},{"e":"Emotional roller coaster, An","c":"❤️ Emotions & Relationships"},{"e":"Even keel","c":"🌊 General / Other"},{"e":"Every dog has his day","c":"🌊 General / Other"},{"e":"Eye for an eye","c":"🌊 General / Other"},{"e":"Fair weather friend","c":"❤️ Emotions & Relationships"},{"e":"Fall through the cracks","c":"🌊 General / Other"},{"e":"Fan the flames","c":"🔥 Energy & Action"},{"e":"Far cry, A","c":"❤️ Emotions & Relationships"},{"e":"Fast buck, A","c":"💰 Money & Business"},{"e":"Fat chance","c":"🎲 Risk & Chance"},{"e":"Feather in his cap, A","c":"💪 Success & Achievement"},{"e":"Fight like cats and dogs","c":"⚔️ Conflict & Competition"},{"e":"Figure it out","c":"🧠 Intelligence & Strategy"},{"e":"Filthy rich","c":"💰 Money & Business"},{"e":"Fine line","c":"🌊 General / Other"},{"e":"Firing on all cylinders","c":"🔥 Energy & Action"},{"e":"Fish out of water, A","c":"🌊 General / Other"},{"e":"Fit as a fiddle","c":"🌊 General / Other"},{"e":"Fits like a glove","c":"❤️ Emotions & Relationships"},{"e":"Flash in the pan, A","c":"🌊 General / Other"},{"e":"Fly by night","c":"🌊 General / Other"},{"e":"Fly by the seat of your pants, To","c":"🌊 General / Other"},{"e":"Following in his footsteps","c":"🌊 General / Other"},{"e":"Fools gold","c":"💰 Money & Business"},{"e":"Free as a bird","c":"🌊 General / Other"},{"e":"Full of hot air","c":"🌊 General / Other"},{"e":"Funny business","c":"💰 Money & Business"},{"e":"Game is on the line, The","c":"🎲 Risk & Chance"},{"e":"Get a word in edgewise","c":"🧠 Intelligence & Strategy"},{"e":"Get over the hump","c":"💪 Success & Achievement"},{"e":"Get to the bottom of it","c":"🎯 Accuracy & Truth"},{"e":"Get with the program","c":"🧠 Intelligence & Strategy"},{"e":"Get your ducks in a row","c":"🌊 General / Other"},{"e":"Get your feet wet","c":"🌊 General / Other"},{"e":"Get your foot in the door","c":"🌊 General / Other"},{"e":"Get your head in the game","c":"🌊 General / Other"},{"e":"Give and take","c":"🌊 General / Other"},{"e":"Glimmer of hope","c":"❤️ Emotions & Relationships"},{"e":"Go belly up, To","c":"🌊 General / Other"},{"e":"Go for broke","c":"🌊 General / Other"},{"e":"Go head to head","c":"⚔️ Conflict & Competition"},{"e":"Go out in a blaze of glory","c":"🔥 Energy & Action"},{"e":"Go out on a limb","c":"🌊 General / Other"},{"e":"Go the extra mile, To","c":"🌊 General / Other"},{"e":"Go through the roof, To","c":"🌊 General / Other"},{"e":"Go with your gut","c":"🌊 General / Other"},{"e":"Good call","c":"🌊 General / Other"},{"e":"Good rule of thumb, A","c":"🌊 General / Other"},{"e":"Got burned","c":"🔥 Energy & Action"},{"e":"Got off on the wrong foot","c":"🌊 General / Other"},{"e":"Grasping at straws","c":"🌊 General / Other"},{"e":"Grass is always greener on the other side","c":"🌊 General / Other"},{"e":"Green with envy","c":"❤️ Emotions & Relationships"},{"e":"Guns blazing","c":"⚔️ Conflict & Competition"},{"e":"Half-baked idea, A","c":"🧠 Intelligence & Strategy"},{"e":"Happy as a clam","c":"❤️ Emotions & Relationships"},{"e":"Hare brained idea","c":"🧠 Intelligence & Strategy"},{"e":"Have the last laugh","c":"❤️ Emotions & Relationships"},{"e":"He is money in the bank","c":"💰 Money & Business"},{"e":"He learned his lesson","c":"🧠 Intelligence & Strategy"},{"e":"He who hesitates is lost","c":"🌊 General / Other"},{"e":"Heard it through the grapevine","c":"💬 Communication & Persuasion"},{"e":"High octane","c":"🌊 General / Other"},{"e":"His bark is bigger than his bite","c":"🌊 General / Other"},{"e":"Hit the nail on the head, To","c":"💪 Success & Achievement"},{"e":"Hit the road","c":"🌊 General / Other"},{"e":"Hold your horses","c":"🌊 General / Other"},{"e":"Holding all the cards","c":"🧠 Intelligence & Strategy"},{"e":"Hot water, In","c":"🛡️ Caution & Warning"},{"e":"I wasn't born yesterday","c":"🌊 General / Other"},{"e":"If the shoe fits, wear it","c":"🌊 General / Other"},{"e":"If you can't beat them, join them","c":"🌊 General / Other"},{"e":"If you can't stand the heat, get out of the kitchen","c":"🌊 General / Other"},{"e":"Ignorance is bliss","c":"🌊 General / Other"},{"e":"In the nick of time","c":"⏰ Time & Urgency"},{"e":"In the red, To be","c":"💰 Money & Business"},{"e":"In two shakes of a lamb's tail","c":"⏰ Time & Urgency"},{"e":"It ain't over till the fat lady sings","c":"🌊 General / Other"},{"e":"It ain't rocket science","c":"💪 Success & Achievement"},{"e":"It takes two to tango","c":"🌊 General / Other"},{"e":"It's in the bag","c":"💰 Money & Business"},{"e":"It's never too late to learn","c":"🧠 Intelligence & Strategy"},{"e":"It's not a sprint, it's a marathon","c":"🌊 General / Other"},{"e":"Jack of all trades and a master of none, A","c":"💪 Success & Achievement"},{"e":"Jump in with both feet","c":"🔥 Energy & Action"},{"e":"Jump on the bandwagon","c":"🔥 Energy & Action"},{"e":"Jump the gun","c":"⚔️ Conflict & Competition"},{"e":"Jury is still out, The","c":"🌊 General / Other"},{"e":"Keep your eyes open","c":"🧠 Intelligence & Strategy"},{"e":"Keep your nose to the grindstone","c":"🔥 Energy & Action"},{"e":"Keeps his cards close to his chest","c":"🌊 General / Other"},{"e":"Kick some butt","c":"🔥 Energy & Action"},{"e":"Kid in a candy store, A","c":"🌊 General / Other"},{"e":"Knock it out of the park","c":"⚔️ Conflict & Competition"},{"e":"Knock your socks off, To","c":"⚔️ Conflict & Competition"},{"e":"Know it like the back of my hand","c":"🌊 General / Other"},{"e":"Know the ropes","c":"🧠 Intelligence & Strategy"},{"e":"Know the score","c":"💪 Success & Achievement"},{"e":"Last ditch effort, A","c":"🌊 General / Other"},{"e":"Laugh all the way to the bank, To","c":"💰 Money & Business"},{"e":"Leave no stone unturned","c":"🌊 General / Other"},{"e":"Lesser of two evils, The","c":"🌊 General / Other"},{"e":"Let bygones be bygones","c":"❤️ Emotions & Relationships"},{"e":"Let the cat out of the bag, To","c":"💬 Communication & Persuasion"},{"e":"Light at the end of the tunnel, The","c":"🌊 General / Other"},{"e":"Lightning fast","c":"🔥 Energy & Action"},{"e":"Like a bull in a china shop","c":"🌊 General / Other"},{"e":"Line in the sand, A","c":"🌊 General / Other"},{"e":"Lion's share, The","c":"🌊 General / Other"},{"e":"Live and learn","c":"🧠 Intelligence & Strategy"},{"e":"Lock, stock, and barrel","c":"💰 Money & Business"},{"e":"Long shot, A","c":"🎲 Risk & Chance"},{"e":"Loose cannon, A","c":"🌊 General / Other"},{"e":"Lose your shirt, To","c":"🌊 General / Other"},{"e":"Luck of the draw, The","c":"🎲 Risk & Chance"},{"e":"Made of money","c":"💰 Money & Business"},{"e":"Make a mountain out of a mole hill","c":"🌊 General / Other"},{"e":"Make ends meet","c":"🌊 General / Other"},{"e":"Make or break, To","c":"🌊 General / Other"},{"e":"Make out like a bandit","c":"🌊 General / Other"},{"e":"Make the grade, To","c":"🌊 General / Other"},{"e":"Make waves, To","c":"🌊 General / Other"},{"e":"Makes my blood boil","c":"⚔️ Conflict & Competition"},{"e":"Making money hand over fist","c":"💰 Money & Business"},{"e":"Matter-of-fact","c":"🎯 Accuracy & Truth"},{"e":"Milk it for all it's worth","c":"💰 Money & Business"},{"e":"Mind like a steel trap","c":"🧠 Intelligence & Strategy"},{"e":"Missed the boat","c":"📉 Failure & Defeat"},{"e":"Money doesn't grow on trees","c":"💰 Money & Business"},{"e":"Money is the root of all evil","c":"💰 Money & Business"},{"e":"More the merrier, The","c":"🌊 General / Other"},{"e":"Murphy's law","c":"🌊 General / Other"},{"e":"My hands are tied","c":"🌊 General / Other"},{"e":"Nail in the coffin","c":"🌊 General / Other"},{"e":"Near and dear to my heart","c":"❤️ Emotions & Relationships"},{"e":"Necessity is the mother of invention","c":"💪 Success & Achievement"},{"e":"Nerves of steel","c":"🌊 General / Other"},{"e":"Never judge a book by its cover","c":"💬 Communication & Persuasion"},{"e":"New lease on life, A","c":"🌊 General / Other"},{"e":"Nice guys finish last","c":"🌊 General / Other"},{"e":"Nip it in the bud","c":"🌊 General / Other"},{"e":"No brainer, A","c":"🧠 Intelligence & Strategy"},{"e":"No news is good news","c":"💬 Communication & Persuasion"},{"e":"No strings attached","c":"🌊 General / Other"},{"e":"Nothing to write home about","c":"💬 Communication & Persuasion"},{"e":"Now or never","c":"🌊 General / Other"},{"e":"Off the cuff","c":"💬 Communication & Persuasion"},{"e":"Old habits die hard","c":"🌊 General / Other"},{"e":"On a roll, To be","c":"💪 Success & Achievement"},{"e":"On fire","c":"🌊 General / Other"},{"e":"On pins and needles","c":"🌊 General / Other"},{"e":"On the back burner","c":"🔥 Energy & Action"},{"e":"On the ball, To be","c":"🧠 Intelligence & Strategy"},{"e":"On the cutting edge","c":"🌊 General / Other"},{"e":"On the same page","c":"💬 Communication & Persuasion"},{"e":"On the tip of my tongue","c":"💬 Communication & Persuasion"},{"e":"On the up and up","c":"💪 Success & Achievement"},{"e":"On track, To be","c":"💪 Success & Achievement"},{"e":"One bad apple spoils the barrel","c":"🌊 General / Other"},{"e":"One in a million","c":"🌊 General / Other"},{"e":"Open book, An","c":"💬 Communication & Persuasion"},{"e":"Opportunity doesn't knock twice","c":"⚔️ Conflict & Competition"},{"e":"Out of sight, out of mind","c":"🧠 Intelligence & Strategy"},{"e":"Over the top","c":"🌊 General / Other"},{"e":"Pain in the neck","c":"❤️ Emotions & Relationships"},{"e":"Par for the course","c":"🌊 General / Other"},{"e":"Pass the buck","c":"💰 Money & Business"},{"e":"Pay through the nose, To","c":"💰 Money & Business"},{"e":"Penny saved is a penny earned, A","c":"💰 Money & Business"},{"e":"Penny wise and pound foolish","c":"💰 Money & Business"},{"e":"Pick the low hanging fruit","c":"🌊 General / Other"},{"e":"Picture's worth a thousand words, A","c":"💰 Money & Business"},{"e":"Piece of cake, A","c":"🌊 General / Other"},{"e":"Plain as day, As","c":"🎯 Accuracy & Truth"},{"e":"Play it by ear","c":"🎲 Risk & Chance"},{"e":"Play the hand you're dealt","c":"💰 Money & Business"},{"e":"Play with the big boys","c":"⚔️ Conflict & Competition"},{"e":"Poor as a church mouse","c":"💰 Money & Business"},{"e":"Pot calling the kettle black, The","c":"🌊 General / Other"},{"e":"Pot of gold at the end of the rainbow, The","c":"💰 Money & Business"},{"e":"Practice makes perfect","c":"🌊 General / Other"},{"e":"Preach to the choir, To","c":"🌊 General / Other"},{"e":"Pretty penny","c":"💰 Money & Business"},{"e":"Pull a rabbit out of a hat","c":"💪 Success & Achievement"},{"e":"Pull the wool over your eyes, To","c":"🔥 Energy & Action"},{"e":"Push the envelope","c":"🔥 Energy & Action"},{"e":"Put the pedal to the metal, To","c":"🔥 Energy & Action"},{"e":"Put two and two together, To","c":"🧠 Intelligence & Strategy"},{"e":"Put your best foot forward, To","c":"⚔️ Conflict & Competition"},{"e":"Put your foot in your mouth, To","c":"💬 Communication & Persuasion"},{"e":"Put your heart into it, To","c":"❤️ Emotions & Relationships"},{"e":"Quick buck, A","c":"💰 Money & Business"},{"e":"Raise the bar, To","c":"💪 Success & Achievement"},{"e":"Raking in the money","c":"💰 Money & Business"},{"e":"Raw end of the deal, The","c":"💰 Money & Business"},{"e":"Read the fine print","c":"🌊 General / Other"},{"e":"Real McCoy, The","c":"🎯 Accuracy & Truth"},{"e":"Reinvent the wheel, Don't","c":"🧠 Intelligence & Strategy"},{"e":"Rest on your laurels, To","c":"🌊 General / Other"},{"e":"Revenge is a dish best served cold","c":"⚔️ Conflict & Competition"},{"e":"Right on the money","c":"💰 Money & Business"},{"e":"Right up your alley","c":"🌊 General / Other"},{"e":"Ring a bell, To","c":"🌊 General / Other"},{"e":"Road less traveled, The","c":"🌊 General / Other"},{"e":"Roll of the dice, A","c":"🎲 Risk & Chance"},{"e":"Rolling in the dough, To be","c":"🌊 General / Other"},{"e":"Rome wasn't built in a day","c":"🌊 General / Other"},{"e":"Rotten to the core","c":"🌊 General / Other"},{"e":"Rub salt in the wound","c":"⚔️ Conflict & Competition"},{"e":"Run circles around, To","c":"🔥 Energy & Action"},{"e":"Run for your money, A","c":"💰 Money & Business"},{"e":"Same song and dance","c":"🌊 General / Other"},{"e":"Save your breath","c":"🌊 General / Other"},{"e":"Scraping the bottom of the barrel","c":"💰 Money & Business"},{"e":"Scratch my back and I'll scratch yours","c":"🌊 General / Other"},{"e":"Second wind","c":"🌊 General / Other"},{"e":"See eye to eye, To","c":"🌊 General / Other"},{"e":"See the light, To","c":"💪 Success & Achievement"},{"e":"Sell out, To","c":"💰 Money & Business"},{"e":"Separate the wheat from the chaff","c":"🌊 General / Other"},{"e":"Sharp as a tack","c":"🧠 Intelligence & Strategy"},{"e":"Shoot from the hip, To","c":"⚔️ Conflict & Competition"},{"e":"Shoot yourself in the foot","c":"⚔️ Conflict & Competition"},{"e":"Shooting fish in a barrel","c":"⚔️ Conflict & Competition"},{"e":"Shooting for the moon","c":"⚔️ Conflict & Competition"},{"e":"Shot in the dark, A","c":"🎲 Risk & Chance"},{"e":"Show me the money!","c":"💰 Money & Business"},{"e":"Show some backbone","c":"🔥 Energy & Action"},{"e":"Sink or swim, To","c":"📉 Failure & Defeat"},{"e":"Skate on thin ice, To","c":"🛡️ Caution & Warning"},{"e":"Skeletons in the closet","c":"🌊 General / Other"},{"e":"Slam dunk, A","c":"💪 Success & Achievement"},{"e":"Slippery slope","c":"💬 Communication & Persuasion"},{"e":"Small potatoes","c":"🌊 General / Other"},{"e":"Smoking gun","c":"⚔️ Conflict & Competition"},{"e":"Smooth operator, A","c":"🌊 General / Other"},{"e":"Snowball's chance in hell, A","c":"🎲 Risk & Chance"},{"e":"Solid as a rock","c":"🌊 General / Other"},{"e":"Sound like a broken record, To","c":"🌊 General / Other"},{"e":"Sounds like a plan","c":"🧠 Intelligence & Strategy"},{"e":"Spinning your wheels","c":"🌊 General / Other"},{"e":"Splitting hairs","c":"💬 Communication & Persuasion"},{"e":"Spread the word","c":"💬 Communication & Persuasion"},{"e":"Squeaky wheel gets the grease, The","c":"🌊 General / Other"},{"e":"Stack the deck, To","c":"🌊 General / Other"},{"e":"State of the art","c":"💪 Success & Achievement"},{"e":"Stay tuned","c":"🌊 General / Other"},{"e":"Stick a fork in it","c":"📉 Failure & Defeat"},{"e":"Stick to your guns, To","c":"⚔️ Conflict & Competition"},{"e":"Stop the presses!","c":"🌊 General / Other"},{"e":"Straight arrow, A","c":"🎯 Accuracy & Truth"},{"e":"Stretch a dollar, To","c":"💰 Money & Business"},{"e":"Strong as an ox","c":"🌊 General / Other"},{"e":"Stubborn as a mule","c":"🌊 General / Other"},{"e":"Sugarcoat something, To","c":"💬 Communication & Persuasion"},{"e":"Sweat equity","c":"🌊 General / Other"},{"e":"Sweep it under the rug","c":"🌊 General / Other"},{"e":"Sweet deal, A","c":"💰 Money & Business"},{"e":"Sweeten the pot","c":"🌊 General / Other"},{"e":"Swim with the sharks","c":"🌊 General / Other"},{"e":"Tail between his legs","c":"🌊 General / Other"},{"e":"Take a step back, To","c":"🌊 General / Other"},{"e":"Take it with a grain of salt, To","c":"💬 Communication & Persuasion"},{"e":"Take one for the team, To","c":"⚔️ Conflict & Competition"},{"e":"Take stock of, To","c":"💰 Money & Business"},{"e":"Take the gloves off","c":"⚔️ Conflict & Competition"},{"e":"Take the plunge, To","c":"🌊 General / Other"},{"e":"Take the world by storm, To","c":"🔥 Energy & Action"},{"e":"Taken for a ride","c":"🌊 General / Other"},{"e":"Taken to the cleaners","c":"🌊 General / Other"},{"e":"Takes its toll on you","c":"🌊 General / Other"},{"e":"Talk is cheap","c":"💰 Money & Business"},{"e":"Talk until you are blue in the face","c":"💬 Communication & Persuasion"},{"e":"Taste of your own medicine, A","c":"🌊 General / Other"},{"e":"Tell it to me straight","c":"💬 Communication & Persuasion"},{"e":"Test the waters, To","c":"🌊 General / Other"},{"e":"Thank your lucky stars","c":"🎲 Risk & Chance"},{"e":"That takes the cake","c":"🌊 General / Other"},{"e":"That's water under the bridge","c":"🌊 General / Other"},{"e":"The bigger the better","c":"🌊 General / Other"},{"e":"The pen is mightier than the sword","c":"⚔️ Conflict & Competition"},{"e":"The road to hell is paved with good intentions","c":"🌊 General / Other"},{"e":"There is more than one way to skin a cat","c":"🌊 General / Other"},{"e":"There's no such thing as a free lunch","c":"💰 Money & Business"},{"e":"There's something fishy about that","c":"🌊 General / Other"},{"e":"Think outside the box, To","c":"🧠 Intelligence & Strategy"},{"e":"Third time's a charm, The","c":"⏰ Time & Urgency"},{"e":"Thorn in my side, A","c":"🌊 General / Other"},{"e":"Threw a curve ball","c":"🌊 General / Other"},{"e":"Throw in the towel, To","c":"📉 Failure & Defeat"},{"e":"Throw to the wolves, To","c":"⚔️ Conflict & Competition"},{"e":"Time after time","c":"⏰ Time & Urgency"},{"e":"Time flies when you're having fun","c":"⏰ Time & Urgency"},{"e":"Time is money","c":"💰 Money & Business"},{"e":"Time is running out","c":"⏰ Time & Urgency"},{"e":"To each his own","c":"🌊 General / Other"},{"e":"To the victor go the spoils","c":"🌊 General / Other"},{"e":"Too many cooks spoil the soup","c":"🌊 General / Other"},{"e":"Too rich for my blood","c":"💰 Money & Business"},{"e":"Top dog","c":"💪 Success & Achievement"},{"e":"Trial by fire","c":"🌊 General / Other"},{"e":"Tried and true","c":"🌊 General / Other"},{"e":"Trojan horse, A","c":"🌊 General / Other"},{"e":"Turn over a new leaf","c":"🌊 General / Other"},{"e":"Twist my arm","c":"🌊 General / Other"},{"e":"Twist of fate","c":"🎲 Risk & Chance"},{"e":"Two heads are better than one","c":"🌊 General / Other"},{"e":"Two wrongs don't make a right","c":"🌊 General / Other"},{"e":"Under the gun, To be","c":"⚔️ Conflict & Competition"},{"e":"Up a creek without a paddle","c":"📉 Failure & Defeat"},{"e":"Up for grabs","c":"🌊 General / Other"},{"e":"Up the ante","c":"🌊 General / Other"},{"e":"Uphill battle, An","c":"⚔️ Conflict & Competition"},{"e":"Walking on eggshells","c":"🛡️ Caution & Warning"},{"e":"Washed up, To be","c":"📉 Failure & Defeat"},{"e":"Wave the white flag, To","c":"🌊 General / Other"},{"e":"We'll cross that bridge when we come to it","c":"🌊 General / Other"},{"e":"Wet behind the ears","c":"💬 Communication & Persuasion"},{"e":"What's wrong with this picture?","c":"🌊 General / Other"},{"e":"When hell freezes over","c":"🌊 General / Other"},{"e":"When pigs fly","c":"🌊 General / Other"},{"e":"Where there's smoke, there's fire","c":"🌊 General / Other"},{"e":"Whole nine yards, The","c":"🌊 General / Other"},{"e":"Wing it","c":"🌊 General / Other"},{"e":"Wipe the slate clean","c":"🌊 General / Other"},{"e":"Wolf in sheep's clothing, A","c":"🛡️ Caution & Warning"},{"e":"Work like a dog","c":"🌊 General / Other"},{"e":"Worth its weight in gold","c":"💰 Money & Business"},{"e":"You ain't seen nothin' yet","c":"🌊 General / Other"},{"e":"You can say that again","c":"💬 Communication & Persuasion"},{"e":"You snooze, you lose","c":"🌊 General / Other"},{"e":"Your goose is cooked","c":"📉 Failure & Defeat"},{"e":"You're never too old to learn","c":"🧠 Intelligence & Strategy"},{"e":"Raining cats and dogs","c":"🌊 General / Other"},{"e":"Actions speak louder than words","c":"💬 Communication & Persuasion"},{"e":"All bets are off","c":"🎲 Risk & Chance"},{"e":"All that glitters is not gold","c":"🌊 General / Other"},{"e":"Always look on the bright side","c":"🌊 General / Other"},{"e":"Bad to the bone","c":"🌊 General / Other"},{"e":"Back breaker, A","c":"🌊 General / Other"},{"e":"Boys will be boys","c":"❤️ Emotions & Relationships"},{"e":"Clean bill of health","c":"🌊 General / Other"},{"e":"Climbing the walls","c":"🌊 General / Other"},{"e":"Dangle a carrot in front of him","c":"🌊 General / Other"},{"e":"Don't put the cart before the horse","c":"🌊 General / Other"},{"e":"Early bird","c":"🌊 General / Other"},{"e":"Everything but the kitchen sink","c":"📉 Failure & Defeat"},{"e":"Fly on the wall, A","c":"🌊 General / Other"},{"e":"Follow the leader","c":"🌊 General / Other"},{"e":"For Pete's sake","c":"🌊 General / Other"},{"e":"Fork it over","c":"🌊 General / Other"},{"e":"Full of himself","c":"❤️ Emotions & Relationships"},{"e":"Give your right arm, To","c":"🌊 General / Other"},{"e":"Go overboard","c":"🌊 General / Other"},{"e":"Go through the motions","c":"🌊 General / Other"},{"e":"Got a leg up","c":"🌊 General / Other"},{"e":"Got beat like a drum","c":"🌊 General / Other"},{"e":"Got lost in the shuffle","c":"🌊 General / Other"},{"e":"Greener pastures","c":"🌊 General / Other"},{"e":"Gut check, A","c":"🌊 General / Other"},{"e":"Hammered","c":"🔥 Energy & Action"},{"e":"Hands on","c":"🌊 General / Other"},{"e":"Happy camper","c":"❤️ Emotions & Relationships"},{"e":"Hard headed","c":"🌊 General / Other"},{"e":"Hard to swallow","c":"🔥 Energy & Action"},{"e":"Have a shot, To","c":"🌊 General / Other"},{"e":"He has egg on his face","c":"🌊 General / Other"},{"e":"He silenced the critics","c":"🌊 General / Other"},{"e":"He who laughs last, laughs best","c":"❤️ Emotions & Relationships"},{"e":"He who lives by the sword, shall die by the sword","c":"⚔️ Conflict & Competition"},{"e":"Head over heels","c":"🌊 General / Other"},{"e":"Heading for the poor house","c":"💰 Money & Business"},{"e":"Heaven help us","c":"🌊 General / Other"},{"e":"Hell in a hand basket, To","c":"🌊 General / Other"},{"e":"Holy cow","c":"🌊 General / Other"},{"e":"Hunker down, To","c":"🌊 General / Other"},{"e":"I beg to differ","c":"🌊 General / Other"},{"e":"I need that like I need a hole in my head","c":"🌊 General / Other"},{"e":"If I've said it once, I've said it a thousand times","c":"⏰ Time & Urgency"},{"e":"Imitation is the sincerest form of flattery","c":"🌊 General / Other"},{"e":"In harm's way","c":"🌊 General / Other"},{"e":"In on the ground floor","c":"🌊 General / Other"},{"e":"In one fell swoop","c":"🌊 General / Other"},{"e":"In the hot seat","c":"🌊 General / Other"},{"e":"Isn't all it's cracked up to be","c":"🌊 General / Other"},{"e":"It's a game of inches","c":"🌊 General / Other"},{"e":"It's not the size of the dog in the fight","c":"⚔️ Conflict & Competition"},{"e":"I'll bet dollars to doughnuts","c":"💰 Money & Business"},{"e":"I'm not getting any younger","c":"⏰ Time & Urgency"},{"e":"I've had it up to here","c":"🌊 General / Other"},{"e":"Jockeying for position","c":"🌊 General / Other"},{"e":"Just around the bend","c":"🌊 General / Other"},{"e":"Justice is blind","c":"🌊 General / Other"},{"e":"Keeps on ticking","c":"⏰ Time & Urgency"},{"e":"King's ransom, A","c":"🌊 General / Other"},{"e":"Know where you stand","c":"🌊 General / Other"},{"e":"Last hurrah","c":"🌊 General / Other"},{"e":"Laugh a minute, A","c":"❤️ Emotions & Relationships"},{"e":"Lay down the law, To","c":"🌊 General / Other"},{"e":"Lay my cards on the table","c":"🌊 General / Other"},{"e":"Leave your mark, To","c":"🌊 General / Other"},{"e":"Leave well enough alone","c":"🌊 General / Other"},{"e":"Let the big dog eat","c":"🌊 General / Other"},{"e":"Lickety-split","c":"🌊 General / Other"},{"e":"Licking one's wounds","c":"⚔️ Conflict & Competition"},{"e":"Like there is no tomorrow","c":"🌊 General / Other"},{"e":"Lion's den, The","c":"🌊 General / Other"},{"e":"Litmus test","c":"🌊 General / Other"},{"e":"Living high off the hog","c":"🌊 General / Other"},{"e":"Look over your shoulder, To","c":"🌊 General / Other"},{"e":"Looking for a needle in a haystack","c":"🌊 General / Other"},{"e":"Made it by the skin of my teeth","c":"🌊 General / Other"},{"e":"Make heads or tails of, To","c":"🌊 General / Other"},{"e":"Make your move, To","c":"🔥 Energy & Action"},{"e":"Marriage of two minds","c":"🧠 Intelligence & Strategy"},{"e":"Money grubbing","c":"💰 Money & Business"},{"e":"Money hungry, To be","c":"💰 Money & Business"},{"e":"More we learn, the less we know, The","c":"🧠 Intelligence & Strategy"},{"e":"My stomach is tied up in knots","c":"🌊 General / Other"},{"e":"Nail biter, A","c":"🌊 General / Other"},{"e":"Necessary evil, A","c":"🌊 General / Other"},{"e":"Nervous as a cat on a hot tin roof","c":"🌊 General / Other"},{"e":"Never say die","c":"💬 Communication & Persuasion"},{"e":"No man is an island","c":"🌊 General / Other"},{"e":"No skin off my nose","c":"🌊 General / Other"},{"e":"Not playing with a full deck","c":"🌊 General / Other"},{"e":"Nothing personal","c":"🌊 General / Other"},{"e":"Nothing up my sleeve","c":"🌊 General / Other"},{"e":"Object of desire","c":"🌊 General / Other"},{"e":"Off and running","c":"🔥 Energy & Action"},{"e":"Off the top of my head","c":"🌊 General / Other"},{"e":"Old as dirt","c":"🌊 General / Other"},{"e":"Old school","c":"🌊 General / Other"},{"e":"On a short leash","c":"🌊 General / Other"},{"e":"On your toes","c":"🌊 General / Other"},{"e":"One good turn deserves another","c":"🌊 General / Other"},{"e":"One man's garbage is another man's treasure","c":"🌊 General / Other"},{"e":"Opposites attract","c":"🌊 General / Other"},{"e":"Out of gas","c":"🌊 General / Other"},{"e":"Out of pocket","c":"🌊 General / Other"},{"e":"Out of the clear blue","c":"🌊 General / Other"},{"e":"Out of whack","c":"🌊 General / Other"},{"e":"Over and over again","c":"🌊 General / Other"},{"e":"Over my head","c":"🌊 General / Other"},{"e":"Over the hill","c":"🌊 General / Other"},{"e":"Pack it in, To","c":"🔥 Energy & Action"},{"e":"Paint yourself into a corner, To","c":"❤️ Emotions & Relationships"},{"e":"Pandora's box, Open","c":"🌊 General / Other"},{"e":"Pass away, To","c":"🌊 General / Other"},{"e":"Path of least resistance, To take the","c":"🌊 General / Other"},{"e":"Pay as you go, To","c":"💰 Money & Business"},{"e":"Pay lip service, To","c":"💰 Money & Business"},{"e":"Pay the piper, To","c":"💰 Money & Business"},{"e":"Payback is a b*tch","c":"💰 Money & Business"},{"e":"Peas in a pod","c":"🌊 General / Other"},{"e":"Phone it in, To","c":"🌊 General / Other"},{"e":"Pick of the litter, The","c":"🌊 General / Other"},{"e":"Play ball, To","c":"🌊 General / Other"},{"e":"Play second fiddle to","c":"🌊 General / Other"},{"e":"Play the field","c":"🧠 Intelligence & Strategy"},{"e":"Plenty of other fish in the sea","c":"🌊 General / Other"},{"e":"Pop a vein, To","c":"🌊 General / Other"},{"e":"Pound for pound","c":"🌊 General / Other"},{"e":"Pound the pavement, To","c":"🌊 General / Other"},{"e":"Pull any stunts, To","c":"🔥 Energy & Action"},{"e":"Pull your leg, To","c":"🔥 Energy & Action"},{"e":"Push your buttons","c":"🔥 Energy & Action"},{"e":"Put a cork in it","c":"🌊 General / Other"},{"e":"Put that in your pipe and smoke it","c":"🌊 General / Other"},{"e":"Rain on my parade, Don't","c":"🌊 General / Other"},{"e":"Rattle your cage, To","c":"🌊 General / Other"},{"e":"Red carpet treatment, The","c":"🌊 General / Other"},{"e":"Reopen an old wound, To","c":"⚔️ Conflict & Competition"},{"e":"Right on the button","c":"🌊 General / Other"},{"e":"Right on the nose","c":"🎯 Accuracy & Truth"},{"e":"Roll out the red carpet, To","c":"🌊 General / Other"},{"e":"Rough around the edges","c":"🔥 Energy & Action"},{"e":"Rough road, A","c":"🌊 General / Other"},{"e":"Rub your nose in it, To","c":"🌊 General / Other"},{"e":"Rubs me the wrong way","c":"🌊 General / Other"},{"e":"Run circles around, To","c":"🔥 Energy & Action"},{"e":"Scared of his own shadow","c":"🌊 General / Other"},{"e":"See which way the winds blow, To","c":"🌊 General / Other"},{"e":"Sensory overload","c":"🌊 General / Other"},{"e":"Separate the men from the boys","c":"🌊 General / Other"},{"e":"Short end of the stick, The","c":"🌊 General / Other"},{"e":"Short fuse, A","c":"🌊 General / Other"},{"e":"Sick as a dog","c":"🌊 General / Other"},{"e":"Signed, sealed and delivered","c":"🌊 General / Other"},{"e":"Sit tight, To","c":"🌊 General / Other"},{"e":"Slap on the back","c":"🌊 General / Other"},{"e":"Sly as a fox, To be","c":"🌊 General / Other"},{"e":"Small world, isn't it?","c":"🌊 General / Other"},{"e":"Snail's pace, A","c":"🌊 General / Other"},{"e":"Snow job, A","c":"💬 Communication & Persuasion"},{"e":"So close, you can taste it","c":"🌊 General / Other"},{"e":"Stick in the mud, To be a","c":"🔥 Energy & Action"},{"e":"Stick it to you","c":"🌊 General / Other"},{"e":"Stick with it","c":"🌊 General / Other"},{"e":"Sticky subject","c":"🌊 General / Other"},{"e":"Stop and smell the roses","c":"🌊 General / Other"},{"e":"Stop on a dime","c":"💰 Money & Business"},{"e":"Straighten up and fly right","c":"🎯 Accuracy & Truth"},{"e":"Stress out","c":"🌊 General / Other"},{"e":"String him along","c":"🌊 General / Other"},{"e":"Stuck out like a sore thumb","c":"🌊 General / Other"},{"e":"Sweat the details, To","c":"🌊 General / Other"},{"e":"Sweetheart deal, A","c":"💰 Money & Business"},{"e":"Swim against the tide","c":"🌊 General / Other"},{"e":"Take a breather, To","c":"🌊 General / Other"},{"e":"Take it easy","c":"🌊 General / Other"},{"e":"Take it to the limit","c":"🌊 General / Other"},{"e":"Take the easy way out","c":"🌊 General / Other"},{"e":"Take the wind out of your sail","c":"🌊 General / Other"},{"e":"Take your life in your own hands","c":"🌊 General / Other"},{"e":"Taking the scenic route","c":"🌊 General / Other"},{"e":"Talk shop","c":"💬 Communication & Persuasion"},{"e":"Teeth into it, Sink your","c":"📉 Failure & Defeat"},{"e":"That burns me up","c":"🔥 Energy & Action"},{"e":"That chaps my hide","c":"🛡️ Caution & Warning"},{"e":"That's a wrap","c":"🌊 General / Other"},{"e":"That's for the birds","c":"🌊 General / Other"},{"e":"That's no joke","c":"🌊 General / Other"},{"e":"That's the ticket","c":"🌊 General / Other"},{"e":"That's the way the cookie crumbles","c":"🌊 General / Other"},{"e":"The apple doesn't fall far from the tree","c":"🌊 General / Other"},{"e":"There is no I in team","c":"🌊 General / Other"},{"e":"There'll be hell to pay","c":"💰 Money & Business"},{"e":"There's a sucker born every minute","c":"⏰ Time & Urgency"},{"e":"There's no place like home","c":"🌊 General / Other"},{"e":"Things aren't what they used to be","c":"🌊 General / Other"},{"e":"Throw gas on the fire, To","c":"🌊 General / Other"},{"e":"Thumb your nose at, To","c":"🌊 General / Other"},{"e":"Thumbs up","c":"🌊 General / Other"},{"e":"Time of your life, The","c":"⏰ Time & Urgency"},{"e":"Time out","c":"⏰ Time & Urgency"},{"e":"Toe the line","c":"🌊 General / Other"},{"e":"Tongue lashing, A","c":"💬 Communication & Persuasion"},{"e":"Too much information","c":"💬 Communication & Persuasion"},{"e":"Toot his own horn","c":"🌊 General / Other"},{"e":"Tooth and nail","c":"⚔️ Conflict & Competition"},{"e":"Tow the line","c":"🌊 General / Other"},{"e":"Turn on a dime","c":"💰 Money & Business"},{"e":"Two left feet","c":"🌊 General / Other"},{"e":"Two ships passing in the night","c":"🌊 General / Other"},{"e":"Two-faced","c":"🌊 General / Other"},{"e":"Two's company, but three's a crowd","c":"❤️ Emotions & Relationships"},{"e":"Ugly as sin","c":"🌊 General / Other"},{"e":"Under a microscope","c":"🌊 General / Other"},{"e":"Under her thumb","c":"🌊 General / Other"},{"e":"Under the knife, To be","c":"🌊 General / Other"},{"e":"Up in arms, To be","c":"🌊 General / Other"},{"e":"Waiting for the dust to settle","c":"🌊 General / Other"},{"e":"Waiting for the other shoe to drop","c":"🌊 General / Other"},{"e":"Waiting with bated breath","c":"🌊 General / Other"},{"e":"Walk softly and carry a big stick","c":"🌊 General / Other"},{"e":"Walls start closing in, The","c":"🛡️ Caution & Warning"},{"e":"Watching the clock","c":"⏰ Time & Urgency"},{"e":"Welcome to the club","c":"🌊 General / Other"},{"e":"Wham, bam, thank you ma'am","c":"🌊 General / Other"},{"e":"When in Rome, do as the Romans do","c":"🌊 General / Other"},{"e":"When the cat's away, the mice will play","c":"🌊 General / Other"},{"e":"White knuckle ride, A","c":"🌊 General / Other"},{"e":"Win, hands down, To","c":"🌊 General / Other"},{"e":"Winning combination, A","c":"🌊 General / Other"},{"e":"Witch hunt, A","c":"🌊 General / Other"},{"e":"With one hand tied behind my back","c":"🌊 General / Other"},{"e":"World of hurt, A","c":"❤️ Emotions & Relationships"},{"e":"World of trouble","c":"🛡️ Caution & Warning"},{"e":"Wrong side of the tracks, The","c":"🌊 General / Other"},{"e":"Yank your chain, To","c":"🌊 General / Other"},{"e":"You can lead a horse to water, but you can't make him drink","c":"🌊 General / Other"},{"e":"You can't fit a square peg in a round hole","c":"🌊 General / Other"},{"e":"You can't have your cake and eat it too","c":"🛡️ Caution & Warning"},{"e":"You can't put the toothpaste back in the tube","c":"🌊 General / Other"},{"e":"You don't have a leg to stand on","c":"🌊 General / Other"},{"e":"You don't miss the water till the well runs dry","c":"🔥 Energy & Action"},{"e":"You got it coming to you","c":"🌊 General / Other"},{"e":"You scratch my back, and I'll scratch yours","c":"🌊 General / Other"},{"e":"Wound tighter than a spring","c":"⚔️ Conflict & Competition"},{"e":"Throw your hat in the ring, To","c":"🎲 Risk & Chance"},{"e":"Shop talk","c":"💬 Communication & Persuasion"},{"e":"Shoestring budget, A","c":"🌊 General / Other"},{"e":"People who live in glass houses shouldn't throw stones","c":"❤️ Emotions & Relationships"},{"e":"Never put off until tomorrow what you can do today","c":"🌊 General / Other"},{"e":"Call off the dogs","c":"🌊 General / Other"},{"e":"Carry the team, To","c":"🌊 General / Other"},{"e":"Close ranks, To","c":"🌊 General / Other"},{"e":"Come in under the wire, To","c":"🌊 General / Other"},{"e":"Complete picture, The","c":"💪 Success & Achievement"},{"e":"Cool your jets, To","c":"🌊 General / Other"},{"e":"Cut off your nose to spite your face","c":"🌊 General / Other"},{"e":"Cuts like a knife","c":"🌊 General / Other"},{"e":"Dealt a fatal blow","c":"💰 Money & Business"},{"e":"Don't throw the baby out with the bathwater","c":"❤️ Emotions & Relationships"},{"e":"Free reign","c":"🌊 General / Other"},{"e":"From here to Timbuktu","c":"🌊 General / Other"},{"e":"Get all worked up","c":"🌊 General / Other"},{"e":"Get your arms around it","c":"🌊 General / Other"},{"e":"Give it a rest","c":"🌊 General / Other"},{"e":"Give the shirt off your back, To","c":"🌊 General / Other"},{"e":"Go down hill, To","c":"🌊 General / Other"},{"e":"Go fly a kite","c":"🌊 General / Other"},{"e":"Go too far, To","c":"🌊 General / Other"},{"e":"Go together hand in hand","c":"🌊 General / Other"},{"e":"Good man is hard to find, A","c":"🌊 General / Other"},{"e":"Good to go","c":"🌊 General / Other"},{"e":"Got schooled","c":"🌊 General / Other"},{"e":"Grey hairs","c":"🌊 General / Other"},{"e":"He couldn't hit the broad side of a barn","c":"🌊 General / Other"},{"e":"He doesn't know what time it is","c":"⏰ Time & Urgency"},{"e":"Hot head, A","c":"🌊 General / Other"},{"e":"I heard that!","c":"🌊 General / Other"},{"e":"In a wink","c":"⏰ Time & Urgency"},{"e":"In the clear","c":"🌊 General / Other"},{"e":"It's a wash","c":"🌊 General / Other"},{"e":"I'll be damned","c":"🌊 General / Other"},{"e":"Knock on wood","c":"⚔️ Conflict & Competition"},{"e":"Knockout, A","c":"⚔️ Conflict & Competition"},{"e":"Know which side your bread is buttered on","c":"🌊 General / Other"},{"e":"No go, A","c":"🌊 General / Other"},{"e":"No if's, and's, or but's about it","c":"🌊 General / Other"},{"e":"Not for all the tea in China","c":"🌊 General / Other"},{"e":"Old ball and chain, The","c":"🌊 General / Other"},{"e":"One man's meat is another man's poison","c":"🌊 General / Other"},{"e":"Out to lunch","c":"🌊 General / Other"},{"e":"Put a sock in it","c":"🌊 General / Other"},{"e":"Quit horsing around!","c":"🌊 General / Other"},{"e":"Say your prayers","c":"💬 Communication & Persuasion"},{"e":"See the glass as half empty, To","c":"🌊 General / Other"},{"e":"Sees the glass as half full, To","c":"🌊 General / Other"},{"e":"Shed light on, To","c":"🌊 General / Other"},{"e":"Short changed","c":"🌊 General / Other"},{"e":"Shut out, A","c":"🌊 General / Other"},{"e":"Slapped on the back","c":"🌊 General / Other"},{"e":"Slow as molasses in January","c":"🌊 General / Other"},{"e":"Smooth over, To","c":"🌊 General / Other"},{"e":"Someday, you will thank me for this","c":"🌊 General / Other"},{"e":"Son of a gun","c":"⚔️ Conflict & Competition"},{"e":"Split second","c":"⏰ Time & Urgency"},{"e":"Spruce up","c":"🌊 General / Other"},{"e":"Step on it, To","c":"🌊 General / Other"},{"e":"Stepping on people's toes","c":"🌊 General / Other"},{"e":"Straight arrow, A","c":"🎯 Accuracy & Truth"},{"e":"Sucker","c":"🌊 General / Other"},{"e":"Swim up stream","c":"🌊 General / Other"},{"e":"Thank goodness","c":"🌊 General / Other"},{"e":"That's a joke","c":"🌊 General / Other"},{"e":"That's a load off my mind","c":"🧠 Intelligence & Strategy"},{"e":"That's bogus","c":"🌊 General / Other"},{"e":"That's the sixty-four thousand dollar question","c":"🌊 General / Other"},{"e":"There is a god","c":"🌊 General / Other"},{"e":"There is no honor among thieves","c":"🌊 General / Other"},{"e":"Tight as a drum","c":"⚔️ Conflict & Competition"},{"e":"Tight wad, A","c":"🌊 General / Other"},{"e":"Times, they are a changing","c":"⏰ Time & Urgency"},{"e":"Time's up","c":"⏰ Time & Urgency"},{"e":"Took off like a bat out of hell","c":"🌊 General / Other"},{"e":"Took off like a shot","c":"🌊 General / Other"},{"e":"World on a string, To have the","c":"🌊 General / Other"},{"e":"Go jump in the lake","c":"🔥 Energy & Action"},{"e":"Quicker than a New York minute","c":"⏰ Time & Urgency"},{"e":"Quiet as a church mouse","c":"🌊 General / Other"},{"e":"Bowl someone over, To","c":"🌊 General / Other"},{"e":"Bite the dust, To","c":"🌊 General / Other"},{"e":"Beat the street","c":"🌊 General / Other"},{"e":"Black eye, A","c":"⚔️ Conflict & Competition"},{"e":"Gloss over, To","c":"🌊 General / Other"},{"e":"Glutton for punishment","c":"🌊 General / Other"},{"e":"Go back to the well","c":"🌊 General / Other"},{"e":"God speed","c":"⏰ Time & Urgency"},{"e":"Knockout blow","c":"⚔️ Conflict & Competition"},{"e":"Marked man, A","c":"🌊 General / Other"},{"e":"Don't have two nickels to rub together","c":"💰 Money & Business"},{"e":"Money out the wazoo","c":"💰 Money & Business"},{"e":"Bought the farm","c":"💰 Money & Business"},{"e":"Kick back, To","c":"🔥 Energy & Action"},{"e":"Kick him to the curb, To","c":"🔥 Energy & Action"},{"e":"Slipped through your fingers","c":"💬 Communication & Persuasion"},{"e":"Pure as the driven snow","c":"🔥 Energy & Action"},{"e":"Piss-poor","c":"💰 Money & Business"},{"e":"Bust your chops","c":"📉 Failure & Defeat"},{"e":"Busted","c":"📉 Failure & Defeat"},{"e":"Buy into","c":"🌊 General / Other"},{"e":"Going gang-busters","c":"📉 Failure & Defeat"},{"e":"Flip flop","c":"📉 Failure & Defeat"},{"e":"Don't bite off more than you can chew","c":"📉 Failure & Defeat"},{"e":"Baby boomer","c":"❤️ Emotions & Relationships"},{"e":"Even Steven","c":"🌊 General / Other"},{"e":"Easy does it","c":"🌊 General / Other"},{"e":"Easy as ABC","c":"🌊 General / Other"},{"e":"Easy as 123","c":"🌊 General / Other"},{"e":"Ill-fated idea, An","c":"🧠 Intelligence & Strategy"},{"e":"Federal case, A","c":"🌊 General / Other"},{"e":"Fine and dandy","c":"🌊 General / Other"},{"e":"Fit to be tied","c":"🌊 General / Other"},{"e":"Fat as a pig","c":"🌊 General / Other"},{"e":"Dumber than a bag of hammers","c":"🔥 Energy & Action"},{"e":"Dumber than a box of rocks","c":"🌊 General / Other"},{"e":"Punched in the gut","c":"⚔️ Conflict & Competition"},{"e":"Go through the motions","c":"🌊 General / Other"},{"e":"If you're going to talk the talk, you better walk the walk","c":"💬 Communication & Persuasion"},{"e":"Doesn't stand a prayer","c":"🌊 General / Other"},{"e":"Get cleaned out, To","c":"🌊 General / Other"},{"e":"Bet it all, To","c":"🌊 General / Other"},{"e":"Biological clock is ticking, Her","c":"❤️ Emotions & Relationships"},{"e":"Big wig, A","c":"🌊 General / Other"},{"e":"Back it up, To","c":"🌊 General / Other"},{"e":"Bad wrap, A","c":"🌊 General / Other"},{"e":"Blow a gasket, To","c":"🌊 General / Other"},{"e":"Spoon full of sugar helps the medicine go down","c":"🌊 General / Other"},{"e":"It takes a thief to catch a thief","c":"🌊 General / Other"},{"e":"It's what's on the inside that counts","c":"🌊 General / Other"},{"e":"Joined at the hip, To be","c":"🌊 General / Other"},{"e":"Just fell off the turnip truck","c":"🌊 General / Other"},{"e":"Newbie, A","c":"🌊 General / Other"},{"e":"None of your business","c":"💰 Money & Business"},{"e":"Out sowing your wild oats","c":"🌊 General / Other"},{"e":"Punched in the gut","c":"⚔️ Conflict & Competition"},{"e":"Rhyme or reason","c":"🔥 Energy & Action"},{"e":"Riding on","c":"🌊 General / Other"},{"e":"Stacking the deck","c":"🌊 General / Other"},{"e":"Stop and smell the roses","c":"🌊 General / Other"},{"e":"There now, that wasn't so bad, was it?","c":"🌊 General / Other"},{"e":"Tight as a drum, Wound","c":"⚔️ Conflict & Competition"},{"e":"I'll be the judge of that, thank you","c":"🌊 General / Other"},{"e":"In the wink of an eye","c":"🌊 General / Other"},{"e":"Close early and often","c":"🌊 General / Other"},{"e":"Coast to coast","c":"🌊 General / Other"},{"e":"Changes hands","c":"🌊 General / Other"},{"e":"Chew on, To","c":"🌊 General / Other"},{"e":"Cheap trick","c":"💰 Money & Business"},{"e":"Cheap date, A","c":"💰 Money & Business"},{"e":"Can't squeeze blood out of a turnip","c":"⚔️ Conflict & Competition"},{"e":"Cast a very long shadow","c":"🌊 General / Other"},{"e":"Catch on, To","c":"🌊 General / Other"},{"e":"Caught with his pants down","c":"🌊 General / Other"},{"e":"Bat the idea around","c":"🧠 Intelligence & Strategy"},{"e":"Ball of wax, The whole","c":"🌊 General / Other"},{"e":"Kit and kaboodle, The whole","c":"🌊 General / Other"},{"e":"Enchilada, The whole","c":"🌊 General / Other"},{"e":"Shoot straight","c":"⚔️ Conflict & Competition"},{"e":"Slow down","c":"🌊 General / Other"},{"e":"Somebody's got a lot of explaining to do","c":"🌊 General / Other"},{"e":"Straighten up and fly right","c":"🎯 Accuracy & Truth"},{"e":"In the cards, It's","c":"🌊 General / Other"},{"e":"In the joint","c":"🌊 General / Other"},{"e":"Get crushed, To","c":"⏰ Time & Urgency"}];
+
+// === CATEGORIES ===
+const CATS=["⏰ Time & Urgency","⚔️ Conflict & Competition","❤️ Emotions & Relationships","🌊 General / Other","🎯 Accuracy & Truth","🎲 Risk & Chance","💪 Success & Achievement","💬 Communication & Persuasion","💰 Money & Business","📉 Failure & Defeat","🔥 Energy & Action","🛡️ Caution & Warning","🧠 Intelligence & Strategy"];
+
+// === STORAGE ===
+const STORAGE_KEY='idioms-practice-v1';
+const BOX_INTERVALS=[0,1,3,7,14,30]; // days
+
+function loadProgress(){
+  try{
+    const d=JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(d&&d.version===1) return d;
+  }catch(e){}
+  return {
+    version:1,
+    totalSessions:0,
+    streak:0,
+    lastSessionDate:null,
+    bestStreak:0,
+    boxes:{}, // key=expression index, val={box:0-5, lastReview:timestamp, correct:0, wrong:0}
+    sessions:[] // [{date,total,correct,wrong,sortOf,newLearned}]
+  };
+}
+
+function saveProgress(p){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(p));
+}
+
+let progress=loadProgress();
+let sessionSize=15;
+let sessionQueue=[];
+let sessionIdx=0;
+let sessionResults=[];
+let isFlipped=false;
+
+// === INIT ===
+function init(){
+  updateStats();
+  populateCatFilter();
+  updateQueueInfo();
+  renderCategories();
+  renderHistory();
+}
+
+function updateStats(){
+  const total=DATA.length;
+  const practiced=Object.keys(progress.boxes).length;
+  const mastered=Object.values(progress.boxes).filter(b=>b.box>=5).length;
+  const masteryPct=total>0?Math.round(mastered/total*100):0;
+  
+  // Update streak (check if continued from yesterday or today)
+  const today=new Date().toISOString().split('T')[0];
+  if(progress.lastSessionDate){
+    const last=new Date(progress.lastSessionDate);
+    const diff=Math.floor((new Date(today)-last)/(86400000));
+    if(diff>1) progress.streak=0; // broken
+  }
+
+  const html=`
+    <div class="stat"><div class="val">${total}</div><div class="lbl">Total</div></div>
+    <div class="stat"><div class="val">${practiced}</div><div class="lbl">Practiced</div></div>
+    <div class="stat"><div class="val">${mastered}</div><div class="lbl">Mastered</div></div>
+    <div class="stat"><div class="val">${masteryPct}%</div><div class="lbl">Mastery</div></div>
+    <div class="stat"><div class="val" style="color:#f59e0b">${progress.streak}🔥</div><div class="lbl">Streak</div></div>
+  `;
+  document.getElementById('statsGrid').innerHTML=html;
+
+  // Box bar
+  const boxCounts=[0,0,0,0,0,0];
+  let unstartedCount=total;
+  Object.values(progress.boxes).forEach(b=>{
+    boxCounts[b.box]++;
+    unstartedCount--;
+  });
+  boxCounts[0]+=unstartedCount; // unstarted = box 0
+
+  let barHTML='';
+  const colors=['b0c','b1c','b2c','b3c','b4c','b5c'];
+  for(let i=0;i<=5;i++){
+    const pct=boxCounts[i]/total*100;
+    if(pct>0) barHTML+=`<div class="${colors[i]}" style="width:${pct}%" title="Box ${i}: ${boxCounts[i]}"></div>`;
+  }
+  document.getElementById('boxBar').innerHTML=barHTML;
+}
+
+function populateCatFilter(){
+  const sel=document.getElementById('catFilter');
+  const catCounts={};
+  DATA.forEach(d=>catCounts[d.c]=(catCounts[d.c]||0)+1);
+  CATS.forEach(c=>{
+    if(catCounts[c]){
+      const opt=document.createElement('option');
+      opt.value=c;
+      opt.textContent=`${c} (${catCounts[c]})`;
+      sel.appendChild(opt);
+    }
+  });
+  sel.addEventListener('change',updateQueueInfo);
+}
+
+function updateQueueInfo(){
+  const cat=document.getElementById('catFilter').value;
+  const {due,newItems}=getQueueCounts(cat);
+  const info=document.getElementById('queueInfo');
+  info.innerHTML=`<strong>${due}</strong> due for review · <strong>${newItems}</strong> new available`;
+  document.getElementById('startBtn').disabled=(due+newItems===0);
+}
+
+function getQueueCounts(cat){
+  const now=Date.now();
+  let due=0,newItems=0;
+  DATA.forEach((d,i)=>{
+    if(cat&&d.c!==cat) return;
+    const p=progress.boxes[i];
+    if(!p){newItems++;return;}
+    const interval=BOX_INTERVALS[p.box]||0;
+    const elapsed=(now-p.lastReview)/(86400000);
+    if(elapsed>=interval) due++;
+  });
+  return {due,newItems};
+}
+
+function changeSize(delta){
+  sessionSize=Math.max(5,Math.min(50,sessionSize+delta));
+  document.getElementById('sizeVal').textContent=sessionSize;
+}
+
+// === PRACTICE SESSION ===
+function startSession(){
+  const cat=document.getElementById('catFilter').value;
+  sessionQueue=buildQueue(cat,sessionSize);
+  if(sessionQueue.length===0) return;
+  sessionIdx=0;
+  sessionResults=[];
+  isFlipped=false;
+
+  document.getElementById('practice-setup').style.display='none';
+  document.getElementById('practice-active').style.display='block';
+  document.getElementById('practice-result').style.display='none';
+  document.getElementById('gradeBtns').classList.remove('show');
+
+  showCard();
+}
+
+function buildQueue(cat,size){
+  const now=Date.now();
+  const dueItems=[];
+  const newItems=[];
+
+  DATA.forEach((d,i)=>{
+    if(cat&&d.c!==cat) return;
+    const p=progress.boxes[i];
+    if(!p){newItems.push(i);return;}
+    if(p.box>=5){
+      // mastered — only review if 30+ days
+      const elapsed=(now-p.lastReview)/(86400000);
+      if(elapsed>=30) dueItems.push({idx:i,priority:0});
+      return;
+    }
+    const interval=BOX_INTERVALS[p.box]||0;
+    const elapsed=(now-p.lastReview)/(86400000);
+    if(elapsed>=interval) dueItems.push({idx:i,priority:p.box});
+  });
+
+  // Sort due: lower box = higher priority
+  dueItems.sort((a,b)=>a.priority-b.priority);
+  
+  // Shuffle new items
+  for(let i=newItems.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [newItems[i],newItems[j]]=[newItems[j],newItems[i]];
+  }
+
+  const queue=[];
+  // Fill with due first
+  dueItems.forEach(d=>{if(queue.length<size) queue.push(d.idx)});
+  // Then new
+  newItems.forEach(i=>{if(queue.length<size) queue.push(i)});
+
+  // Shuffle the final queue for variety
+  for(let i=queue.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [queue[i],queue[j]]=[queue[j],queue[i]];
+  }
+
+  return queue;
+}
+
+function showCard(){
+  if(sessionIdx>=sessionQueue.length){
+    endSession();
+    return;
+  }
+
+  const idx=sessionQueue[sessionIdx];
+  const d=DATA[idx];
+  const p=progress.boxes[idx];
+  const box=p?p.box:0;
+  const boxColors=['#4b5563','#ef4444','#f97316','#eab308','#84cc16','#22c55e'];
+  const boxLabels=['New','Box 1','Box 2','Box 3','Box 4','Mastered'];
+
+  document.getElementById('cardCat').textContent=d.c;
+  document.getElementById('cardExpr').textContent=d.e;
+  document.getElementById('cardBox').innerHTML=`<span class="dot" style="background:${boxColors[box]}"></span> ${boxLabels[box]}`;
+  document.getElementById('cardExprBack').textContent=d.e;
+  document.getElementById('cardHint').textContent=p?`Reviewed ${p.correct+p.wrong} times · ${p.correct} correct`:'First time seeing this!';
+
+  // Update progress bar
+  document.getElementById('progFill').style.width=`${(sessionIdx/sessionQueue.length)*100}%`;
+  document.getElementById('progText').textContent=`${sessionIdx+1}/${sessionQueue.length}`;
+
+  // Reset flip
+  isFlipped=false;
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('gradeBtns').classList.remove('show');
+}
+
+function flipCard(){
+  if(isFlipped) return;
+  isFlipped=true;
+  document.getElementById('flashcard').classList.add('flipped');
+  document.getElementById('gradeBtns').classList.add('show');
+}
+
+function grade(level){
+  // level: 0=don't know, 1=sort of, 2=got it
+  const idx=sessionQueue[sessionIdx];
+  const p=progress.boxes[idx]||{box:0,lastReview:0,correct:0,wrong:0};
+
+  if(level===2){
+    // Got it — promote
+    p.box=Math.min(5,p.box+1);
+    p.correct++;
+  } else if(level===1){
+    // Sort of — stay in place, count as partial
+    p.correct++;
+  } else {
+    // Don't know — reset to box 0
+    p.box=0;
+    p.wrong++;
+  }
+  p.lastReview=Date.now();
+  progress.boxes[idx]=p;
+  saveProgress(progress);
+
+  sessionResults.push({idx,level});
+  sessionIdx++;
+  
+  // Brief delay before next card
+  setTimeout(showCard,300);
+}
+
+function endSession(){
+  const correct=sessionResults.filter(r=>r.level===2).length;
+  const sortOf=sessionResults.filter(r=>r.level===1).length;
+  const wrong=sessionResults.filter(r=>r.level===0).length;
+  const total=sessionResults.length;
+  const pct=total>0?Math.round(correct/total*100):0;
+
+  // Update session tracking
+  const today=new Date().toISOString().split('T')[0];
+  if(progress.lastSessionDate!==today){
+    const last=progress.lastSessionDate?new Date(progress.lastSessionDate):null;
+    const diff=last?Math.floor((new Date(today)-last)/(86400000)):999;
+    if(diff===1) progress.streak++;
+    else if(diff>1) progress.streak=1;
+    else progress.streak=Math.max(1,progress.streak);
+  }
+  progress.lastSessionDate=today;
+  progress.totalSessions++;
+  if(progress.streak>progress.bestStreak) progress.bestStreak=progress.streak;
+
+  progress.sessions.push({
+    date:today,
+    total,
+    correct,
+    wrong,
+    sortOf,
+    newLearned:sessionResults.filter(r=>{
+      const p=progress.boxes[r.idx];
+      return p&&p.correct===1&&r.level>=1;
+    }).length
+  });
+
+  // Keep last 50 sessions
+  if(progress.sessions.length>50) progress.sessions=progress.sessions.slice(-50);
+  saveProgress(progress);
+
+  // Show result
+  const emoji=pct>=80?'🔥':pct>=60?'💪':pct>=40?'🤔':'📚';
+  const title=pct>=80?'Crushing it!':pct>=60?'Good session!':pct>=40?'Getting there!':'Keep practicing!';
+
+  document.getElementById('practice-active').style.display='none';
+  document.getElementById('practice-result').style.display='block';
+  document.getElementById('practice-result').innerHTML=`
+    <div class="session-result">
+      <div class="result-emoji">${emoji}</div>
+      <div class="result-title">${title}</div>
+      <div class="result-sub">Session ${progress.totalSessions} · Streak: ${progress.streak} days</div>
+      <div class="result-stats">
+        <div class="result-stat"><div class="val green">${correct}</div><div class="lbl">Got It</div></div>
+        <div class="result-stat"><div class="val yellow">${sortOf}</div><div class="lbl">Sort Of</div></div>
+        <div class="result-stat"><div class="val red">${wrong}</div><div class="lbl">Missed</div></div>
+      </div>
+      <div class="result-stats" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
+        <div class="result-stat"><div class="val" style="color:#fbbf24">${pct}%</div><div class="lbl">Accuracy</div></div>
+        <div class="result-stat"><div class="val" style="color:#fbbf24">${Object.values(progress.boxes).filter(b=>b.box>=5).length}</div><div class="lbl">Mastered</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="start-btn" onclick="resetToSetup()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)">← Back</button>
+        <button class="start-btn" onclick="startSession()">Practice Again</button>
+      </div>
+    </div>
+  `;
+
+  updateStats();
+  renderHistory();
+  renderCategories();
+}
+
+function resetToSetup(){
+  document.getElementById('practice-setup').style.display='block';
+  document.getElementById('practice-active').style.display='none';
+  document.getElementById('practice-result').style.display='none';
+  updateQueueInfo();
+}
+
+// === TABS ===
+function switchTab(view){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+view));
+}
+
+// === CATEGORIES VIEW ===
+function renderCategories(){
+  const catData={};
+  DATA.forEach((d,i)=>{
+    if(!catData[d.c]) catData[d.c]={total:0,practiced:0,mastered:0,boxes:[0,0,0,0,0,0]};
+    catData[d.c].total++;
+    const p=progress.boxes[i];
+    if(p){
+      catData[d.c].practiced++;
+      catData[d.c].boxes[p.box]++;
+      if(p.box>=5) catData[d.c].mastered++;
+    }
+  });
+
+  let html='';
+  CATS.forEach(c=>{
+    const cd=catData[c];
+    if(!cd) return;
+    const pct=cd.total>0?Math.round(cd.mastered/cd.total*100):0;
+    html+=`
+      <div class="cat-prog-item">
+        <div class="cat-prog-header">
+          <span class="cat-prog-name">${c}</span>
+          <span class="cat-prog-count">${cd.mastered}/${cd.total} mastered (${pct}%)</span>
+        </div>
+        <div class="cat-prog-bar"><div class="cat-prog-fill" style="width:${pct}%"></div></div>
+        <div class="cat-prog-detail">
+          <span>📦 Practiced: ${cd.practiced}</span>
+          <span>🆕 New: ${cd.total-cd.practiced}</span>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('catProgress').innerHTML=html||'<div class="empty-state"><div class="emoji">📊</div><p>Start practicing to see category progress!</p></div>';
+}
+
+// === HISTORY VIEW ===
+function renderHistory(){
+  const sessions=progress.sessions.slice().reverse();
+  if(sessions.length===0){
+    document.getElementById('historyList').innerHTML='<div class="empty-state"><div class="emoji">📋</div><p>No sessions yet. Start practicing!</p></div>';
+    return;
+  }
+
+  let html='<div class="history-list">';
+  sessions.forEach(s=>{
+    const pct=s.total>0?Math.round(s.correct/s.total*100):0;
+    const color=pct>=80?'#22c55e':pct>=60?'#eab308':'#ef4444';
+    html+=`
+      <div class="history-item">
+        <div class="history-date">${s.date}</div>
+        <div class="history-score" style="color:${color}">${pct}%</div>
+        <div class="history-bar"><div class="history-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+        <div class="history-count">${s.correct}/${s.total}</div>
+      </div>
+    `;
+  });
+  html+='</div>';
+  document.getElementById('historyList').innerHTML=html;
+}
+
+// === KEYBOARD SHORTCUTS ===
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('practice-active').style.display!=='block') return;
+  if(e.key===' '||e.key==='Enter'){
+    e.preventDefault();
+    if(!isFlipped) flipCard();
+  }
+  if(isFlipped){
+    if(e.key==='1'||e.key==='ArrowLeft') grade(0);
+    if(e.key==='2'||e.key==='ArrowDown') grade(1);
+    if(e.key==='3'||e.key==='ArrowRight') grade(2);
+  }
+});
+
+init();
+</script>
+</body>
+</html>
