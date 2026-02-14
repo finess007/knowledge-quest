@@ -2,7 +2,7 @@
   "meta": {
     "startDate": "2026-02-07",
     "version": "2.2",
-    "lastUpdated": "2026-02-13T10:00:00+02:00"
+    "lastUpdated": "2026-02-14T03:45:00+02:00"
   },
   "axioms": [
     "Bitcoin = backbone of future finance",
@@ -230,7 +230,7 @@
       "emoji": "\ud83d\udcc8",
       "description": "Active trading \u2014 crypto, stocks, derivatives",
       "score": 10,
-      "status": "\ud83d\udd34 CIFR & WULF = MORGAN STANLEY 150%+ TARGETS. CIFR $14.70→$38 (Amazon $5.5B lease). WULF $17.50→$37 (Google $3.2B + 14% stake). BTC miners = cheapest AI infrastructure play. STX $0.27 with Fireblocks institutional integration live.",
+      "status": "\ud83d\udd34 BTC MINERS → AI FACTORIES. IREN $14B mcap, $3.4B ARR target, 140K GPUs. Mining rev 85%→<20% by late 2026. CIFR $14.70→$38 (Amazon $5.5B). WULF $17.50→$37 (Google $3.2B). Copper $12,500/ton target (JPM). STX $0.27 with Fireblocks.",
       "signals": [
         "CIFR: MS target $38 (158% upside). Amazon 15yr $5.5B lease + Google 10yr contract. Up 183% in 12mo.",
         "WULF: MS target $37 (111% upside from $17.50). Google 14% stake + $3.2B funding. 52-week high.",
@@ -247,7 +247,7 @@
       "emoji": "\u20bf",
       "description": "BTC L2, Lightning, AI agent payments, DeFi",
       "score": 10,
-      "status": "\ud83d\udd34 BTC APPLICATION LAYER EXPLODING. Citrea ZK L2 mainnet live + ctUSD. Coinbase Agentic Wallets for AI agents. RailsX Lightning DEX. Spark $9B institutional lending. Clawstr = AI agents on Nostr+BTC. 50% Africa via Lightning. Complete BTC financial stack forming.",
+      "status": "\ud83d\udd34 MACHINE PAYMENTS WAR: L402 vs x402 BOTH live (Feb 11). OpenClaw agent self-replicated via Lightning (Feb 13). BIP 360 quantum defense merged. Citrea ZK L2 mainnet + ctUSD. Stacks/Fireblocks = 2,400 institutions. BTC DeFi TVL +11.5%. Most active Bitcoin dev week in years.",
       "signals": [
         "Citrea mainnet: ZK Bitcoin L2, $16.7M raised (Founders Fund + Galaxy), ctUSD stablecoin, 30+ ₿apps. BTCFi pitched at Consensus HK.",
         "Coinbase Agentic Wallets: First crypto wallets for AI agents. 50M+ x402 transactions. Autonomous trading, DeFi, payments.",
@@ -290,6 +290,54 @@
     }
   },
   "signals": [
+    {
+      "id": "sig-078",
+      "date": "2026-02-14",
+      "text": "🔴 MACHINE PAYMENTS WAR BEGINS: Lightning L402 + Coinbase x402 BOTH launched Feb 11. Same HTTP 402 pattern, competing rails. L402 = decentralized/BTC-native micropayments. x402 = corporate/stablecoin/developer-friendly (50M+ txns). Winner captures $trillion AI agent economy. Build on BOTH rails.",
+      "path": "E",
+      "importance": "critical",
+      "source": "Bitcoin Magazine, WebProNews, CryptoBriefing, Bitget"
+    },
+    {
+      "id": "sig-077",
+      "date": "2026-02-14",
+      "text": "🔴 AI AGENT SELF-REPLICATION VIA BITCOIN: OpenClaw agent autonomously bought VPS via Lightning, installed copy of itself, purchased AI API credits. Bitcoin.com: 'First documented AI autonomously creating its own infrastructure.' Also: MoltCourt = AI jury for disputes. The BTC+AI agent economy isn't theory anymore.",
+      "path": "E",
+      "importance": "critical",
+      "source": "Bitcoin.com, BitcoinEthereumNews, X/@Yasmina11ll1"
+    },
+    {
+      "id": "sig-076",
+      "date": "2026-02-14",
+      "text": "🔴 BIP 360 QUANTUM DEFENSE: P2MR (Pay-to-Merkle-Root) merged into BIP repo Feb 11. Quantum-resistant output type for Bitcoin. + Lowery's 4-post thread: 'Bitcoin rewards WORK (thermodynamically irreversible), not STATE (quantum-vulnerable). Blockspace = most valuable digital real estate.' + BTC Quantum testnets running NIST PQC algos.",
+      "path": "E",
+      "importance": "critical",
+      "source": "Bitcoin Magazine, Bankless, Cryptopolitan, X/@JasonPLowery"
+    },
+    {
+      "id": "sig-075",
+      "date": "2026-02-14",
+      "text": "🔴 BTC MINERS → AI FACTORIES: $600B+ Mag 7 AI spend. IREN $800M PPE/quarter, $14B mcap, 140K GPU target, $3.4B ARR. TeraWulf $6.7B + Hut8 $7B Google-backed contracts. Mining revenue 85%→<20% by late 2026. CleanSpark: 'Mining not worthwhile vs AI lease returns.' 400% CapEx increase Mar 2025-Feb 2026.",
+      "path": "D",
+      "importance": "critical",
+      "source": "Futunn, BitcoinEthereumNews, Phemex, CoinDesk"
+    },
+    {
+      "id": "sig-074",
+      "date": "2026-02-14",
+      "text": "🟡 STACKS + FIREBLOCKS LIVE: 2,400+ institutional clients ($5T/yr transfers) can now custody STX, mint sBTC, access BTC DeFi from Fireblocks console. Muneeb: 'Not going anywhere. Bitcoin on-chain economy for a billion users.' New BTC staking product coming. STX $0.27 ($275M mcap) — massively underpriced vs institutional pipeline.",
+      "path": "E",
+      "importance": "high",
+      "source": "Chainwire, Benzinga, CoinSpeaker, Yahoo Finance"
+    },
+    {
+      "id": "sig-073",
+      "date": "2026-02-14",
+      "text": "🟡 COPPER SUPERCYCLE: JPM $12,500/ton peak Q2 2026, 330K ton deficit. Data center copper demand 475K tons (4.3x from 110K in 2025). Each hyperscale DC = 50,000 tons. S&P Global warns supply will fall short. ⚠️ Goldman warns mid-2026 correction. Time-sensitive trade.",
+      "path": "D",
+      "importance": "high",
+      "source": "Yahoo Finance, Investing.com, S&P Global, Economic Times"
+    },
     {
       "id": "sig-072",
       "date": "2026-02-13",
