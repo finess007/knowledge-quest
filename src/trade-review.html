@@ -527,6 +527,16 @@ function initChart() {
     scaleMargins: { top: 0.93, bottom: 0 },
   });
   
+  // Invisible overlay series for precise entry/exit markers at exact prices
+  state.markerSeries = state.chart.addLineSeries({
+    color: 'transparent',
+    lineWidth: 0,
+    crosshairMarkerVisible: false,
+    lastValueVisible: false,
+    priceLineVisible: false,
+    priceScaleId: 'right',
+  });
+  
   // Resize handler
   const ro = new ResizeObserver(() => {
     state.chart.applyOptions({
@@ -634,7 +644,14 @@ async function selectTrade(idx) {
     // Actually, we can use removePriceLine if we track them
     // Simpler: remove and re-add markers
     
-    // Entry marker — small circle, no price text (price line handles that)
+    // Place markers on invisible overlay series at EXACT entry/exit prices
+    // This ensures markers appear at the price level, not at candle high/low
+    const markerData = [
+      { time: trade.et, value: trade.ep },
+      { time: trade.xt, value: trade.xp },
+    ].sort((a, b) => a.time - b.time);
+    state.markerSeries.setData(markerData);
+    
     const markers = [];
     markers.push({
       time: trade.et,
@@ -643,8 +660,6 @@ async function selectTrade(idx) {
       shape: 'circle',
       text: 'ENTRY',
     });
-    
-    // Exit marker — small circle, no price text (price line handles that)
     markers.push({
       time: trade.xt,
       position: trade.r >= 0 ? (trade.d === 'L' ? 'aboveBar' : 'belowBar') : (trade.d === 'L' ? 'belowBar' : 'aboveBar'),
@@ -652,10 +667,9 @@ async function selectTrade(idx) {
       shape: 'circle',
       text: trade.ex === 'stop' ? 'STOP' : 'EXIT',
     });
-    
-    // Sort markers by time (required by lightweight-charts)
     markers.sort((a, b) => a.time - b.time);
-    state.candleSeries.setMarkers(markers);
+    state.markerSeries.setMarkers(markers);
+    state.candleSeries.setMarkers([]); // Clear any old candle markers
     
     // Price lines for entry, stop, exit
     // Remove existing ones first - we recreate the series approach
