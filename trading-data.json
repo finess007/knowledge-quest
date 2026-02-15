@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-02-15T13:08:49.061522+00:00",
+  "updated_at": "2026-02-15T20:26:20.680600+00:00",
   "account": {
-    "balance": 75.227096,
-    "equity": 75.227096,
+    "balance": 74.850401,
+    "equity": 74.850401,
     "unrealized_pnl": 0.0,
-    "available": 75.227096,
+    "available": 74.850401,
     "starting_balance": 75.23
   },
   "positions": [],
   "stats": {
-    "total_signals": 0,
+    "total_signals": 21,
     "total_exits": 0,
     "total_r": 0,
     "live_wins": 0,
     "live_losses": 0,
-    "simulated_trades": 0
+    "simulated_trades": 21
   },
   "completed_trades": [],
   "active_trades": {},

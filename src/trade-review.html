@@ -367,6 +367,21 @@ const TF_MINUTES = { '1m': 1, '15m': 15, '1H': 60 };
 const CANDLE_PADDING = { '1m': 120, '15m': 80, '1H': 80 };
 const BINANCE_API = 'https://api.binance.com/api/v3/klines';
 
+// Fix timezone: backtest dates were UTC but Python .timestamp() on Sofia machine
+// interpreted them as local time, subtracting 2h (winter EET) or 3h (summer EEST).
+// Reverse this per-trade using the actual Sofia offset at each timestamp.
+function getSofiaOffset(ts) {
+  const d = new Date(ts * 1000);
+  const utc = new Date(d.toLocaleString('en-US', {timeZone: 'UTC'}));
+  const sofia = new Date(d.toLocaleString('en-US', {timeZone: 'Europe/Sofia'}));
+  return (sofia - utc) / 1000;
+}
+TRADE_DATA.forEach(t => {
+  const off = getSofiaOffset(t.et);
+  t.et += off;
+  t.xt += off;
+});
+
 // ============= STATE =============
 let state = {
   filters: { pair: 'ALL', tf: 'ALL', dir: 'ALL', exit: 'ALL', result: 'ALL' },
@@ -646,15 +661,17 @@ async function selectTrade(idx) {
     
     // Place markers on invisible overlay series at EXACT entry/exit prices
     // This ensures markers appear at the price level, not at candle high/low
+    // Entry marker: et points to the stop hunt candle (entry at its close)
+    const entryMarkerTime = trade.et;
     const markerData = [
-      { time: trade.et, value: trade.ep },
+      { time: entryMarkerTime, value: trade.ep },
       { time: trade.xt, value: trade.xp },
     ].sort((a, b) => a.time - b.time);
     state.markerSeries.setData(markerData);
     
     const markers = [];
     markers.push({
-      time: trade.et,
+      time: entryMarkerTime,
       position: trade.d === 'L' ? 'belowBar' : 'aboveBar',
       color: '#00bcd4',
       shape: 'circle',
