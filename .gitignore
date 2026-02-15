@@ -6,3 +6,4 @@ node_modules
 .env
 .env.*
 !.env.example
+v11c-trades.json
