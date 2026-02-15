@@ -1,7 +1,7 @@
 {
   "startDate": "2026-01-31",
   "lastSession": "2026-02-14",
-  "totalSessions": 14,
+  "totalSessions": 18,
   "totalQuestions": 318,
   "totalCorrect": 229,
   "currentStreak": 11,
@@ -102,10 +102,7 @@
       "note": "2 rounds. R1 6/7 (missed tear down), R2 7/7 PERFECT. Streak: 11."
     }
   ],
-  "verbsToDrill": [
-    "stand up",
-    "get ready"
-  ],
+  "verbsToDrill": [],
   "verbsMastered": [
     "look into",
     "put off",
@@ -243,33 +240,78 @@
       "score": "7/7",
       "pct": 100,
       "missed": []
+    },
+    {
+      "session": 15,
+      "date": "2026-02-15",
+      "score": "5/7",
+      "accuracy": 71,
+      "missed": [
+        "fill in (said fill up)",
+        "tear down (said bring down)"
+      ],
+      "cleared": [
+        "get ready"
+      ]
+    },
+    {
+      "session": 16,
+      "date": "2026-02-15",
+      "score": "7/7",
+      "accuracy": 100,
+      "missed": [],
+      "cleared": [
+        "fill in",
+        "tear down"
+      ]
+    },
+    {
+      "session": 17,
+      "date": "2026-02-15",
+      "score": "6/7",
+      "accuracy": 86,
+      "missed": [
+        "start up (said bring back)"
+      ],
+      "cleared": [
+        "stand up"
+      ]
+    },
+    {
+      "session": 18,
+      "date": "2026-02-15",
+      "score": "7/7",
+      "accuracy": 100,
+      "missed": [],
+      "cleared": []
     }
   ],
-  "streak": 2,
+  "streak": 6,
   "boxes": {
     "get ready": {
-      "box": 0,
+      "box": 2,
       "lastReview": "2026-02-11",
-      "nextReview": "2026-02-14"
+      "nextReview": "2026-02-18"
     },
     "fill in": {
       "box": 1,
-      "lastReview": "2026-02-11"
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-16"
     },
     "takes after": {
-      "box": 2,
+      "box": 3,
       "lastReview": "2026-02-11",
-      "nextReview": "2026-02-17"
+      "nextReview": "2026-02-22"
     },
     "look into": {
-      "box": 2,
+      "box": 3,
       "lastReview": "2026-02-11",
-      "nextReview": "2026-02-17"
+      "nextReview": "2026-02-22"
     },
     "put off": {
-      "box": 2,
+      "box": 3,
       "lastReview": "2026-02-11",
-      "nextReview": "2026-02-17"
+      "nextReview": "2026-02-22"
     },
     "turn on": {
       "box": 2,
@@ -277,9 +319,9 @@
       "nextReview": "2026-02-17"
     },
     "get up": {
-      "box": 1,
+      "box": 3,
       "lastReview": "2026-02-11",
-      "nextReview": "2026-02-15"
+      "nextReview": "2026-02-22"
     },
     "carry on": {
       "box": 2,
@@ -287,8 +329,9 @@
       "nextReview": "2026-02-17"
     },
     "took off": {
-      "box": 1,
-      "lastReview": "2026-02-11"
+      "box": 3,
+      "lastReview": "2026-02-11",
+      "nextReview": "2026-02-22"
     },
     "come up with": {
       "box": 2,
@@ -300,8 +343,8 @@
       "lastReview": "2026-02-11"
     },
     "looks after": {
-      "box": 1,
-      "nextReview": "2026-02-15"
+      "box": 2,
+      "nextReview": "2026-02-18"
     },
     "fill up": {
       "box": 1,
@@ -309,15 +352,63 @@
     },
     "tear down": {
       "box": 1,
-      "nextReview": "2026-02-15"
+      "nextReview": "2026-02-16"
     },
     "plug in": {
-      "box": 1,
-      "nextReview": "2026-02-15"
+      "box": 3,
+      "nextReview": "2026-02-22"
     },
     "get dressed": {
       "box": 1,
       "nextReview": "2026-02-15"
+    },
+    "figure out": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "brings up": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "stand up": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "start up": {
+      "box": 0,
+      "nextReview": "2026-02-15"
+    },
+    "put up with": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "cut down on": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "turned down": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "look after": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "call off": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "came up with": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "cut out": {
+      "box": 1,
+      "nextReview": "2026-02-16"
+    },
+    "ramp up": {
+      "box": 1,
+      "nextReview": "2026-02-16"
     }
   },
   "sessionCount": 2

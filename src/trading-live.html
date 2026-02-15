@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Trading — Nova Bot</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #111118;
+    --bg-card-hover: #16161f;
+    --border: #1e1e2e;
+    --border-glow: rgba(0, 255, 136, 0.15);
+    --green: #00ff88;
+    --green-dim: rgba(0, 255, 136, 0.12);
+    --red: #ff4444;
+    --red-dim: rgba(255, 68, 68, 0.12);
+    --text: #e4e4e7;
+    --text-dim: #71717a;
+    --text-muted: #a1a1aa;
+    --accent: #00ff88;
+    --gold: #fbbf24;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --yellow: #fbbf24;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    text-align: center;
+    padding: 32px 20px 24px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header-title .bot-name {
+    background: linear-gradient(135deg, var(--green), #00cc6a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .status-badge.live { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,255,136,0.2); }
+  .status-badge.stale { background: rgba(251,191,36,0.12); color: var(--gold); border: 1px solid rgba(251,191,36,0.2); }
+  .status-badge.offline { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,68,68,0.2); }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .status-badge.live .status-dot { background: var(--green); }
+  .status-badge.stale .status-dot { background: var(--gold); animation: none; }
+  .status-badge.offline .status-dot { background: var(--red); animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .header-stats {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .header-stats .value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .header-stats .profit { color: var(--green); }
+  .header-stats .loss { color: var(--red); }
+
+  .last-update {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  /* ─── SECTION TITLES ─── */
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  /* ─── EQUITY CURVE (HERO) ─── */
+  .equity-section {
+    margin-bottom: 32px;
+  }
+
+  .equity-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .equity-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    opacity: 0.5;
+  }
+
+  .chart-container {
+    position: relative;
+    height: 320px;
+    width: 100%;
+  }
+
+  .chart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 320px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  .chart-empty span:first-child {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  /* ─── METRICS ROW ─── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .metric-card:hover {
+    border-color: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .metric-sub {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .metric-value.profit { color: var(--green); }
+  .metric-value.loss { color: var(--red); }
+  .metric-value.neutral { color: var(--text); }
+
+  /* ─── TABLES ─── */
+  .table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 32px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  thead th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(30,30,46,0.5);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  tbody tr { transition: background 0.2s ease; }
+  tbody tr:hover { background: var(--bg-card-hover); }
+
+  .dir-long { color: var(--green); font-weight: 600; }
+  .dir-short { color: var(--red); font-weight: 600; }
+  .pnl-pos { color: var(--green); }
+  .pnl-neg { color: var(--red); }
+
+  .row-win { border-left: 3px solid var(--green); }
+  .row-loss { border-left: 3px solid var(--red); }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  .empty-state span:first-child {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  /* ─── FILTERS ─── */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .filter-btn:hover { border-color: var(--text-muted); color: var(--text-muted); }
+  .filter-btn.active { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+
+  /* ─── BOT STATUS ─── */
+  .bot-status {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+
+  .bot-status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bot-status-label {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bot-status-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  .footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover { color: var(--green); }
+
+  .footer-info {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+
+  /* ─── FADE ANIMATION ─── */
+  .fade-update {
+    animation: fadeHighlight 1.5s ease;
+  }
+
+  @keyframes fadeHighlight {
+    0% { background: rgba(0,255,136,0.1); }
+    100% { background: transparent; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .chart-container {
+      height: 220px;
+    }
+    .header-title { font-size: 1.3rem; }
+    .bot-status { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .metrics-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .metric-value { font-size: 1.2rem; }
+    .container { padding: 12px 10px 40px; }
+  }
+
+  /* ─── TOOLTIP ─── */
+  .chart-tooltip {
+    position: absolute;
+    background: rgba(17,17,24,0.95);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+    display: none;
+  }
+
+  /* ─── DATA SOURCE TOGGLE ─── */
+  .data-source-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .source-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 6px 16px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .source-btn:hover { border-color: var(--text-muted); }
+  .source-btn.active { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+
+  /* Running total R column */
+  .running-r { color: var(--text-muted); font-size: 0.75rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div id="statusBadge" class="status-badge live">
+      <span class="status-dot"></span>
+      <span id="statusText">LIVE</span>
+    </div>
+    <div class="header-title">
+      🤖 <span class="bot-name">Nova Trading Bot</span>
+    </div>
+    <div class="header-stats">
+      Balance: <span class="value" id="hdrBalance">$--</span>
+      &nbsp;|&nbsp;
+      P&L: <span class="value" id="hdrPnl">--</span>
+      &nbsp;|&nbsp;
+      Trades: <span class="value" id="hdrTrades">0</span>
+      &nbsp;|&nbsp;
+      Win Rate: <span class="value" id="hdrWinRate">--</span>
+    </div>
+    <div class="last-update">Last update: <span id="lastUpdate">never</span></div>
+  </div>
+
+  <!-- DATA SOURCE TOGGLE -->
+  <div class="data-source-toggle">
+    <button class="source-btn active" onclick="setSource('live')" id="srcLive">📡 Live Data</button>
+    <button class="source-btn" onclick="setSource('manual')" id="srcManual">✏️ Manual Mode</button>
+  </div>
+
+  <!-- EQUITY CURVE -->
+  <div class="equity-section">
+    <div class="section-title">📈 Equity Curve</div>
+    <div class="equity-card">
+      <div class="chart-container" id="chartContainer">
+        <canvas id="equityChart"></canvas>
+      </div>
+      <div class="chart-empty" id="chartEmpty" style="display:none;">
+        <span>📊</span>
+        <span>No trade data yet. Equity curve will appear after the first trade.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="section-title">📊 Performance</div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Total P&L</div>
+      <div class="metric-value neutral" id="metricPnl">$0.00</div>
+      <div class="metric-sub" id="metricPnlPct">(+0.0%)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Win Rate</div>
+      <div class="metric-value neutral" id="metricWinRate">--</div>
+      <div class="metric-sub" id="metricWL">(0W / 0L)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Profit Factor</div>
+      <div class="metric-value neutral" id="metricPF">--</div>
+      <div class="metric-sub" id="metricPFSub">(Win$ / Loss$)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Total R</div>
+      <div class="metric-value neutral" id="metricR">0.0R</div>
+      <div class="metric-sub" id="metricAvgR">avg: --</div>
+    </div>
+  </div>
+
+  <!-- OPEN POSITIONS -->
+  <div class="section-title">🔴 Open Positions <span id="posCount" style="color:var(--green);font-size:0.75rem;"></span></div>
+  <div class="card table-wrapper" style="margin-bottom:32px;">
+    <div class="empty-state" id="posEmpty">
+      <span>📭</span>
+      <span>No open positions</span>
+    </div>
+    <table id="posTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>Pair</th><th>TF</th><th>Dir</th><th>Entry</th><th>Current</th>
+          <th>P&L</th><th>Stop</th><th>Duration</th>
+        </tr>
+      </thead>
+      <tbody id="posBody"></tbody>
+    </table>
+  </div>
+
+  <!-- ACTIVE SCANNER TRADES (no exchange position yet) -->
+  <div class="section-title">⏳ Active Scanner Trades <span id="activeCount" style="color:var(--yellow);font-size:0.75rem;"></span></div>
+  <div class="card table-wrapper" style="margin-bottom:32px;">
+    <div class="empty-state" id="activeEmpty">
+      <span>📭</span>
+      <span>No active scanner trades</span>
+    </div>
+    <table id="activeTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>Pair</th><th>TF</th><th>Dir</th><th>Entry</th>
+          <th>Stop</th><th>Risk%</th><th>Daily</th><th>Since</th>
+        </tr>
+      </thead>
+      <tbody id="activeBody"></tbody>
+    </table>
+  </div>
+
+  <!-- TRADE HISTORY -->
+  <div class="section-title">📜 Trade History <span id="histCount" style="color:var(--text-dim);font-size:0.75rem;"></span></div>
+  <div class="filters" id="histFilters">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter(this,'all')">All</button>
+    <button class="filter-btn" data-filter="BTC" onclick="setFilter(this,'BTC')">BTC</button>
+    <button class="filter-btn" data-filter="ETH" onclick="setFilter(this,'ETH')">ETH</button>
+    <button class="filter-btn" data-filter="SOL" onclick="setFilter(this,'SOL')">SOL</button>
+    <span style="width:1px;background:var(--border);margin:0 4px;"></span>
+    <button class="filter-btn" data-filter="LONG" onclick="setFilter(this,'LONG')">Long</button>
+    <button class="filter-btn" data-filter="SHORT" onclick="setFilter(this,'SHORT')">Short</button>
+    <span style="width:1px;background:var(--border);margin:0 4px;"></span>
+    <button class="filter-btn" data-filter="1m" onclick="setFilter(this,'1m')">1m</button>
+    <button class="filter-btn" data-filter="15m" onclick="setFilter(this,'15m')">15m</button>
+    <button class="filter-btn" data-filter="1H" onclick="setFilter(this,'1H')">1H</button>
+  </div>
+  <div class="card table-wrapper" style="margin-bottom:32px;">
+    <div class="empty-state" id="histEmpty">
+      <span>📭</span>
+      <span>No completed trades yet</span>
+    </div>
+    <table id="histTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>#</th><th>Time</th><th>Pair</th><th>TF</th><th>Dir</th>
+          <th>Entry</th><th>Exit</th><th>R</th><th>Cum R</th><th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="histBody"></tbody>
+    </table>
+  </div>
+
+  <!-- BOT STATUS -->
+  <div class="section-title">🤖 Bot Status</div>
+  <div class="bot-status" id="botStatus">
+    <div>
+      <div class="bot-status-label">Scanner</div>
+      <div class="bot-status-value" id="bsScanner">⏳ Unknown</div>
+    </div>
+    <div>
+      <div class="bot-status-label">Mode</div>
+      <div class="bot-status-value" id="bsMode">--</div>
+    </div>
+    <div>
+      <div class="bot-status-label">Risk</div>
+      <div class="bot-status-value" id="bsRisk">2.0%</div>
+    </div>
+    <div>
+      <div class="bot-status-label">Pairs</div>
+      <div class="bot-status-value" id="bsPairs">BTC, ETH, SOL</div>
+    </div>
+    <div>
+      <div class="bot-status-label">Timeframes</div>
+      <div class="bot-status-value" id="bsTFs">1m, 15m, 1H</div>
+    </div>
+    <div>
+      <div class="bot-status-label">Data Source</div>
+      <div class="bot-status-value" id="bsSource">Live JSON</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <a href="index.html">← Back to Dashboard</a>
+    <div class="footer-info">
+      V5.2 System &nbsp;|&nbsp; Started: Feb 15, 2026 &nbsp;|&nbsp;
+      <a href="trading-rules.html">Trading Rules</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════
+let currentData = null;
+let equityChart = null;
+let dataSource = 'live'; // 'live' or 'manual'
+let activeFilter = 'all';
+const STARTING_BALANCE = 79.03;
+const REFRESH_INTERVAL = 30000; // 30s
+const STALE_THRESHOLD = 5 * 60 * 1000; // 5 min
+const OFFLINE_THRESHOLD = 30 * 60 * 1000; // 30 min
+
+// ══════════════════════════════════════════════════════════
+// DATA SOURCE
+// ══════════════════════════════════════════════════════════
+function setSource(src) {
+  dataSource = src;
+  document.getElementById('srcLive').classList.toggle('active', src === 'live');
+  document.getElementById('srcManual').classList.toggle('active', src === 'manual');
+  document.getElementById('bsSource').textContent = src === 'live' ? 'Live JSON' : 'LocalStorage';
+  loadData();
+}
+
+async function fetchLiveData() {
+  try {
+    const resp = await fetch('trading-data.json?t=' + Date.now());
+    if (!resp.ok) return null;
+    return await resp.json();
+  } catch(e) {
+    console.warn('Failed to fetch live data:', e);
+    return null;
+  }
+}
+
+function getManualData() {
+  try {
+    const raw = localStorage.getItem('trading-dashboard-manual');
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function saveManualData(data) {
+  localStorage.setItem('trading-dashboard-manual', JSON.stringify(data));
+}
+
+async function loadData() {
+  let data = null;
+  if (dataSource === 'live') {
+    data = await fetchLiveData();
+    if (!data) {
+      // Fallback: try manual
+      data = getManualData();
+      if (data) {
+        document.getElementById('bsSource').textContent = 'LocalStorage (fallback)';
+      }
+    }
+  } else {
+    data = getManualData();
+  }
+
+  if (!data) {
+    // Create empty structure
+    data = createEmptyData();
+  }
+
+  currentData = data;
+  render(data);
+}
+
+function createEmptyData() {
+  return {
+    updated_at: new Date().toISOString(),
+    account: { balance: STARTING_BALANCE, equity: STARTING_BALANCE, unrealized_pnl: 0, available: STARTING_BALANCE, starting_balance: STARTING_BALANCE },
+    positions: [],
+    stats: { total_signals: 0, total_exits: 0, total_r: 0 },
+    completed_trades: [],
+    active_trades: {},
+    equity_curve: [{ time: new Date().toISOString(), balance: STARTING_BALANCE }]
+  };
+}
+
+// ══════════════════════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════════════════════
+function render(data) {
+  renderHeader(data);
+  renderChart(data);
+  renderMetrics(data);
+  renderPositions(data);
+  renderActiveTrades(data);
+  renderHistory(data);
+  renderBotStatus(data);
+}
+
+// ─── Header ───
+function renderHeader(data) {
+  const acc = data.account || {};
+  const stats = data.stats || {};
+  const balance = acc.balance || STARTING_BALANCE;
+  const startBal = acc.starting_balance || STARTING_BALANCE;
+  const pnl = balance - startBal + (acc.unrealized_pnl || 0);
+  const pnlPct = startBal > 0 ? (pnl / startBal * 100) : 0;
+
+  document.getElementById('hdrBalance').textContent = '$' + fmtNum(balance, 2);
+
+  const pnlEl = document.getElementById('hdrPnl');
+  pnlEl.textContent = (pnl >= 0 ? '+' : '') + '$' + fmtNum(Math.abs(pnl), 2) + ' (' + (pnl >= 0 ? '+' : '') + fmtNum(pnlPct, 1) + '%)';
+  pnlEl.className = 'value ' + (pnl >= 0 ? 'profit' : 'loss');
+
+  const completedTrades = data.completed_trades || [];
+  document.getElementById('hdrTrades').textContent = completedTrades.length;
+
+  const wins = completedTrades.filter(t => (t.r_mult || 0) > 0).length;
+  const total = completedTrades.length;
+  document.getElementById('hdrWinRate').textContent = total > 0 ? Math.round(wins / total * 100) + '%' : '--';
+
+  // Status badge
+  const updatedAt = data.updated_at ? new Date(data.updated_at) : null;
+  const age = updatedAt ? (Date.now() - updatedAt.getTime()) : Infinity;
+  const badge = document.getElementById('statusBadge');
+  const statusText = document.getElementById('statusText');
+
+  if (age > OFFLINE_THRESHOLD) {
+    badge.className = 'status-badge offline';
+    statusText.textContent = 'OFFLINE';
+  } else if (age > STALE_THRESHOLD) {
+    badge.className = 'status-badge stale';
+    statusText.textContent = 'STALE';
+  } else {
+    badge.className = 'status-badge live';
+    statusText.textContent = 'LIVE';
+  }
+
+  // Last update
+  if (updatedAt) {
+    const secs = Math.floor(age / 1000);
+    if (secs < 60) document.getElementById('lastUpdate').textContent = secs + ' seconds ago';
+    else if (secs < 3600) document.getElementById('lastUpdate').textContent = Math.floor(secs / 60) + ' minutes ago';
+    else document.getElementById('lastUpdate').textContent = updatedAt.toLocaleString();
+  }
+}
+
+// ─── Chart ───
+function renderChart(data) {
+  const curve = data.equity_curve || [];
+
+  if (curve.length < 2) {
+    document.getElementById('chartContainer').style.display = 'none';
+    document.getElementById('chartEmpty').style.display = 'flex';
+    return;
+  }
+
+  document.getElementById('chartContainer').style.display = 'block';
+  document.getElementById('chartEmpty').style.display = 'none';
+
+  const labels = curve.map(p => {
+    const d = new Date(p.time);
+    // Auto-scale: if range < 24h, show HH:MM; else show date
+    return d;
+  });
+  const values = curve.map(p => p.balance);
+  const trades = curve.map(p => p.trade || '');
+  const startBal = data.account?.starting_balance || STARTING_BALANCE;
+
+  // Determine fill color: green if last value >= start, red otherwise
+  const lastVal = values[values.length - 1];
+  const isProfit = lastVal >= startBal;
+
+  if (equityChart) equityChart.destroy();
+
+  const ctx = document.getElementById('equityChart').getContext('2d');
+
+  // Gradient fill
+  const gradient = ctx.createLinearGradient(0, 0, 0, 320);
+  if (isProfit) {
+    gradient.addColorStop(0, 'rgba(0, 255, 136, 0.25)');
+    gradient.addColorStop(1, 'rgba(0, 255, 136, 0.01)');
+  } else {
+    gradient.addColorStop(0, 'rgba(255, 68, 68, 0.25)');
+    gradient.addColorStop(1, 'rgba(255, 68, 68, 0.01)');
+  }
+
+  equityChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Balance',
+          data: values,
+          borderColor: isProfit ? '#00ff88' : '#ff4444',
+          backgroundColor: gradient,
+          borderWidth: 2.5,
+          pointRadius: values.length > 50 ? 0 : 3,
+          pointHoverRadius: 6,
+          pointBackgroundColor: isProfit ? '#00ff88' : '#ff4444',
+          pointBorderColor: '#111118',
+          pointBorderWidth: 2,
+          fill: true,
+          tension: 0.3,
+        },
+        {
+          label: 'Starting Balance',
+          data: Array(values.length).fill(startBal),
+          borderColor: 'rgba(255,255,255,0.15)',
+          borderWidth: 1,
+          borderDash: [6, 4],
+          pointRadius: 0,
+          fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(17,17,24,0.95)',
+          borderColor: 'rgba(30,30,46,1)',
+          borderWidth: 1,
+          titleColor: '#a1a1aa',
+          bodyColor: '#e4e4e7',
+          padding: 12,
+          displayColors: false,
+          callbacks: {
+            title: function(ctx) {
+              const d = ctx[0].label;
+              return new Date(d).toLocaleString();
+            },
+            label: function(ctx) {
+              if (ctx.datasetIndex === 1) return null; // hide start line tooltip
+              const bal = ctx.parsed.y;
+              const pnl = bal - startBal;
+              const trade = trades[ctx.dataIndex];
+              let lines = ['Balance: $' + fmtNum(bal, 2), 'P&L: ' + (pnl >= 0 ? '+' : '') + '$' + fmtNum(Math.abs(pnl), 2)];
+              if (trade) lines.push('Trade: ' + trade);
+              return lines;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            displayFormats: {
+              minute: 'HH:mm',
+              hour: 'HH:mm',
+              day: 'MMM d',
+              week: 'MMM d'
+            }
+          },
+          ticks: { color: '#71717a', maxTicksLimit: 8, font: { size: 11 } },
+          grid: { color: 'rgba(30,30,46,0.5)', drawBorder: false }
+        },
+        y: {
+          ticks: {
+            color: '#71717a',
+            font: { size: 11 },
+            callback: v => '$' + fmtNum(v, 2)
+          },
+          grid: { color: 'rgba(30,30,46,0.5)', drawBorder: false }
+        }
+      }
+    }
+  });
+}
+
+// ─── Metrics ───
+function renderMetrics(data) {
+  const acc = data.account || {};
+  const stats = data.stats || {};
+  const completedTrades = data.completed_trades || [];
+  const balance = acc.balance || STARTING_BALANCE;
+  const startBal = acc.starting_balance || STARTING_BALANCE;
+  const pnl = balance - startBal + (acc.unrealized_pnl || 0);
+  const pnlPct = startBal > 0 ? (pnl / startBal * 100) : 0;
+
+  // Total P&L
+  const pnlEl = document.getElementById('metricPnl');
+  pnlEl.textContent = (pnl >= 0 ? '+' : '-') + '$' + fmtNum(Math.abs(pnl), 2);
+  pnlEl.className = 'metric-value ' + (pnl >= 0 ? 'profit' : (pnl < 0 ? 'loss' : 'neutral'));
+  document.getElementById('metricPnlPct').textContent = '(' + (pnl >= 0 ? '+' : '') + fmtNum(pnlPct, 1) + '%)';
+
+  // Win Rate
+  const wins = completedTrades.filter(t => (t.r_mult || 0) > 0).length;
+  const losses = completedTrades.filter(t => (t.r_mult || 0) <= 0).length;
+  const total = completedTrades.length;
+  const wrEl = document.getElementById('metricWinRate');
+  if (total > 0) {
+    const wr = Math.round(wins / total * 100);
+    wrEl.textContent = wr + '%';
+    wrEl.className = 'metric-value ' + (wr >= 50 ? 'profit' : 'loss');
+  } else {
+    wrEl.textContent = '--';
+    wrEl.className = 'metric-value neutral';
+  }
+  document.getElementById('metricWL').textContent = '(' + wins + 'W / ' + losses + 'L)';
+
+  // Profit Factor
+  const totalWin = completedTrades.filter(t => (t.r_mult || 0) > 0).reduce((s, t) => s + Math.abs(t.r_mult || 0), 0);
+  const totalLoss = completedTrades.filter(t => (t.r_mult || 0) <= 0).reduce((s, t) => s + Math.abs(t.r_mult || 0), 0);
+  const pfEl = document.getElementById('metricPF');
+  if (totalLoss > 0) {
+    const pf = (totalWin / totalLoss).toFixed(1);
+    pfEl.textContent = pf;
+    pfEl.className = 'metric-value ' + (parseFloat(pf) >= 1.5 ? 'profit' : (parseFloat(pf) >= 1 ? 'neutral' : 'loss'));
+    document.getElementById('metricPFSub').textContent = '(' + fmtNum(totalWin, 1) + 'R / ' + fmtNum(totalLoss, 1) + 'R)';
+  } else if (totalWin > 0) {
+    pfEl.textContent = '∞';
+    pfEl.className = 'metric-value profit';
+    document.getElementById('metricPFSub').textContent = '(no losses yet)';
+  } else {
+    pfEl.textContent = '--';
+    pfEl.className = 'metric-value neutral';
+    document.getElementById('metricPFSub').textContent = '';
+  }
+
+  // Total R
+  const totalR = stats.total_r || 0;
+  const rEl = document.getElementById('metricR');
+  rEl.textContent = (totalR >= 0 ? '+' : '') + fmtNum(totalR, 1) + 'R';
+  rEl.className = 'metric-value ' + (totalR >= 0 ? 'profit' : 'loss');
+  const avgR = total > 0 ? (totalR / total) : 0;
+  document.getElementById('metricAvgR').textContent = 'avg: ' + (total > 0 ? ((avgR >= 0 ? '+' : '') + fmtNum(avgR, 2) + 'R') : '--');
+}
+
+// ─── Positions ───
+function renderPositions(data) {
+  const positions = data.positions || [];
+  const posEmpty = document.getElementById('posEmpty');
+  const posTable = document.getElementById('posTable');
+  const posBody = document.getElementById('posBody');
+  const posCount = document.getElementById('posCount');
+
+  if (positions.length === 0) {
+    posEmpty.style.display = 'block';
+    posTable.style.display = 'none';
+    posCount.textContent = '';
+    return;
+  }
+
+  posEmpty.style.display = 'none';
+  posTable.style.display = 'table';
+  posCount.textContent = '(' + positions.length + ')';
+
+  posBody.innerHTML = positions.map(p => {
+    const isLong = p.direction === 'LONG';
+    const pnl = p.unrealized_pnl || 0;
+    const pnlClass = pnl >= 0 ? 'pnl-pos' : 'pnl-neg';
+    const rowClass = pnl >= 0 ? 'row-win' : 'row-loss';
+    // Duration: if entry_time exists, calculate from now
+    let dur = '--';
+    if (p.entry_time) {
+      const entry = new Date(p.entry_time);
+      const diff = Date.now() - entry.getTime();
+      dur = formatDuration(diff);
+    }
+    const stopDist = p.stop_price && p.entry_price ? (Math.abs(p.stop_price - p.entry_price) / p.entry_price * 100).toFixed(2) + '%' : '--';
+
+    return `<tr class="${rowClass}">
+      <td><strong>${p.pair}</strong></td>
+      <td>${p.tf || '--'}</td>
+      <td class="${isLong ? 'dir-long' : 'dir-short'}">${p.direction}</td>
+      <td>$${fmtPrice(p.entry_price)}</td>
+      <td>$${fmtPrice(p.mark_price)}</td>
+      <td class="${pnlClass}">${pnl >= 0 ? '+' : ''}$${fmtNum(Math.abs(pnl), 2)}</td>
+      <td>${p.stop_price ? '$' + fmtPrice(p.stop_price) + ' (' + stopDist + ')' : '--'}</td>
+      <td>${dur}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Active Scanner Trades ───
+function renderActiveTrades(data) {
+  let trades = data.active_trades || {};
+  // Handle both object and array
+  if (Array.isArray(trades)) {
+    // already an array — keep it
+  } else {
+    trades = Object.values(trades);
+  }
+
+  const activeEmpty = document.getElementById('activeEmpty');
+  const activeTable = document.getElementById('activeTable');
+  const activeBody = document.getElementById('activeBody');
+  const activeCount = document.getElementById('activeCount');
+
+  if (trades.length === 0) {
+    activeEmpty.style.display = 'block';
+    activeTable.style.display = 'none';
+    activeCount.textContent = '';
+    return;
+  }
+
+  activeEmpty.style.display = 'none';
+  activeTable.style.display = 'table';
+  activeCount.textContent = '(' + trades.length + ')';
+
+  activeBody.innerHTML = trades.map(t => {
+    const isLong = t.direction === 'LONG';
+    let dur = '--';
+    if (t.entry_time) {
+      const entry = new Date(t.entry_time.replace(' ', 'T'));
+      const diff = Date.now() - entry.getTime();
+      dur = formatDuration(diff);
+    }
+    const aligned = t.daily_aligned === true || t.daily_aligned === 'True' ? '✅' : '⚠️';
+
+    return `<tr>
+      <td><strong>${t.pair}</strong></td>
+      <td>${t.tf}</td>
+      <td class="${isLong ? 'dir-long' : 'dir-short'}">${t.direction}</td>
+      <td>$${fmtPrice(t.entry_price)}</td>
+      <td>$${fmtPrice(t.stop_price)}</td>
+      <td>${t.risk_pct}%</td>
+      <td>${aligned}</td>
+      <td>${dur}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Trade History ───
+function renderHistory(data) {
+  const completedTrades = data.completed_trades || [];
+  const histEmpty = document.getElementById('histEmpty');
+  const histTable = document.getElementById('histTable');
+  const histBody = document.getElementById('histBody');
+  const histCount = document.getElementById('histCount');
+
+  // Apply filter
+  let filtered = [...completedTrades];
+  if (activeFilter !== 'all') {
+    filtered = filtered.filter(t =>
+      t.pair === activeFilter || t.direction === activeFilter || t.tf === activeFilter
+    );
+  }
+
+  // Sort newest first
+  filtered.sort((a, b) => {
+    const ta = a.exit_time || a.entry_time || '';
+    const tb = b.exit_time || b.entry_time || '';
+    return tb.localeCompare(ta);
+  });
+
+  if (filtered.length === 0) {
+    histEmpty.style.display = 'block';
+    histTable.style.display = 'none';
+    histCount.textContent = completedTrades.length > 0 ? '(' + completedTrades.length + ' total, 0 matching)' : '';
+    return;
+  }
+
+  histEmpty.style.display = 'none';
+  histTable.style.display = 'table';
+  histCount.textContent = '(' + filtered.length + (filtered.length !== completedTrades.length ? ' of ' + completedTrades.length : '') + ')';
+
+  // Calculate running R (cumulative, from oldest to newest)
+  const forRunning = [...filtered].reverse();
+  let cumR = 0;
+  const cumRArr = forRunning.map(t => { cumR += (t.r_mult || 0); return cumR; });
+  cumRArr.reverse();
+
+  histBody.innerHTML = filtered.map((t, i) => {
+    const isWin = (t.r_mult || 0) > 0;
+    const rMult = t.r_mult || 0;
+    const isLong = t.direction === 'LONG';
+    const exitTime = t.exit_time ? new Date(t.exit_time.replace(' ', 'T')) : null;
+    const timeStr = exitTime ? exitTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' + exitTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }) : '--';
+    const exitTypeMap = {
+      'vector_exit': 'Vector Exit',
+      'stop': 'Stop Hit',
+      'stop_sync': 'Stop (Sync)',
+      'breakeven': 'Breakeven'
+    };
+    const exitLabel = exitTypeMap[t.exit_type] || t.exit_type || '--';
+    const runR = cumRArr[i];
+
+    return `<tr class="${isWin ? 'row-win' : 'row-loss'}">
+      <td>${filtered.length - i}</td>
+      <td>${timeStr}</td>
+      <td><strong>${t.pair}</strong></td>
+      <td>${t.tf}</td>
+      <td class="${isLong ? 'dir-long' : 'dir-short'}">${t.direction}</td>
+      <td>$${fmtPrice(t.entry_price)}</td>
+      <td>$${fmtPrice(t.exit_price)}</td>
+      <td class="${isWin ? 'pnl-pos' : 'pnl-neg'}">${rMult >= 0 ? '+' : ''}${fmtNum(rMult, 1)}R</td>
+      <td class="running-r">${runR >= 0 ? '+' : ''}${fmtNum(runR, 1)}R</td>
+      <td>${exitLabel}</td>
+    </tr>`;
+  }).join('');
+}
+
+function setFilter(btn, filter) {
+  // Toggle: if already active, reset to 'all'
+  if (btn.classList.contains('active') && filter !== 'all') {
+    activeFilter = 'all';
+    document.querySelectorAll('#histFilters .filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('#histFilters .filter-btn[data-filter="all"]').classList.add('active');
+  } else {
+    activeFilter = filter;
+    document.querySelectorAll('#histFilters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  if (currentData) renderHistory(currentData);
+}
+
+// ─── Bot Status ───
+function renderBotStatus(data) {
+  const updatedAt = data.updated_at ? new Date(data.updated_at) : null;
+  const age = updatedAt ? (Date.now() - updatedAt.getTime()) : Infinity;
+
+  if (age < STALE_THRESHOLD) {
+    document.getElementById('bsScanner').innerHTML = '🟢 Running';
+  } else if (age < OFFLINE_THRESHOLD) {
+    document.getElementById('bsScanner').innerHTML = '🟡 Stale (' + Math.floor(age / 60000) + 'm ago)';
+  } else {
+    document.getElementById('bsScanner').innerHTML = '🔴 Offline';
+  }
+
+  // Mode: check if any trades are executed
+  const activeTrades = data.active_trades || {};
+  const tradesList = Array.isArray(activeTrades) ? activeTrades : Object.values(activeTrades);
+  const hasExecuted = tradesList.some(t => t.executed);
+  document.getElementById('bsMode').textContent = hasExecuted ? 'LIVE EXECUTION' : 'ALERTS ONLY';
+}
+
+// ══════════════════════════════════════════════════════════
+// UTILITIES
+// ══════════════════════════════════════════════════════════
+function fmtNum(n, dec) {
+  return Number(n).toFixed(dec);
+}
+
+function fmtPrice(p) {
+  if (!p && p !== 0) return '--';
+  p = Number(p);
+  if (p >= 1000) return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  if (p >= 1) return p.toFixed(2);
+  return p.toFixed(4);
+}
+
+function formatDuration(ms) {
+  if (ms < 0) return '--';
+  const hours = Math.floor(ms / 3600000);
+  const mins = Math.floor((ms % 3600000) / 60000);
+  if (hours > 24) {
+    const days = Math.floor(hours / 24);
+    return days + 'd ' + (hours % 24) + 'h';
+  }
+  if (hours > 0) return hours + 'h ' + mins + 'm';
+  return mins + 'm';
+}
+
+// ══════════════════════════════════════════════════════════
+// INIT & AUTO-REFRESH
+// ══════════════════════════════════════════════════════════
+loadData();
+
+// Auto-refresh every 30s
+setInterval(() => {
+  loadData();
+}, REFRESH_INTERVAL);
+
+// Update "last update" text every 10s without re-fetching
+setInterval(() => {
+  if (currentData) renderHeader(currentData);
+}, 10000);
+
+// Chart.js time adapter (simple implementation for 'time' scale)
+// We need the date adapter for time scale - load it
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</body>
+</html>
