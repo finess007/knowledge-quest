@@ -1,0 +1,467 @@
+{
+  "last_updated": "2026-02-15T08:01:20.686222",
+  "date": "2026-02-15",
+  "properties": {
+    "BG": {
+      "name": "Alessa Bulgaria",
+      "currency": "BGN",
+      "yesterday": {
+        "users": 7288,
+        "new_users": 2807,
+        "sessions": 10010,
+        "pageviews": 34835,
+        "bounce_rate": 52.11,
+        "avg_session_duration": 145.0,
+        "transactions": 117,
+        "revenue": 10719.0,
+        "add_to_carts": 422,
+        "checkouts": 243,
+        "cvr": 1.17,
+        "aov": 91.62
+      },
+      "dod_change": {
+        "users": -4.0,
+        "new_users": -21.1,
+        "sessions": -9.7,
+        "pageviews": -15.6,
+        "bounce_rate": 5.8,
+        "avg_session_duration": -18.8,
+        "transactions": -16.4,
+        "revenue": -28.3,
+        "add_to_carts": -24.0,
+        "checkouts": -16.2,
+        "cvr": -7.1,
+        "aov": -14.2
+      },
+      "last_7d": {
+        "users": 41335,
+        "new_users": 24826,
+        "sessions": 77377,
+        "pageviews": 274805,
+        "bounce_rate": 50.84,
+        "avg_session_duration": 170.2,
+        "transactions": 959,
+        "revenue": 107334.3,
+        "add_to_carts": 3726,
+        "checkouts": 2046,
+        "cvr": 1.24,
+        "aov": 111.92
+      },
+      "wow_change": {
+        "users": -25.8,
+        "new_users": -33.4,
+        "sessions": -20.3,
+        "pageviews": -16.1,
+        "bounce_rate": -4.9,
+        "avg_session_duration": 12.9,
+        "transactions": -8.0,
+        "revenue": -4.3,
+        "add_to_carts": -10.0,
+        "checkouts": -14.8,
+        "cvr": 15.9,
+        "aov": 4.0
+      },
+      "last_30d": {
+        "users": 164140,
+        "new_users": 127055,
+        "sessions": 372585,
+        "pageviews": 1411341,
+        "bounce_rate": 50.58,
+        "avg_session_duration": 173.0,
+        "transactions": 4756,
+        "revenue": 494544.55,
+        "add_to_carts": 8334,
+        "checkouts": 4661,
+        "cvr": 1.28,
+        "aov": 103.98
+      },
+      "mom_change": {
+        "users": 6.1,
+        "new_users": 6.3,
+        "sessions": 6.1,
+        "pageviews": -10.1,
+        "bounce_rate": 12.6,
+        "avg_session_duration": -14.4,
+        "transactions": -20.9,
+        "revenue": -21.0,
+        "add_to_carts": 0,
+        "checkouts": 0,
+        "cvr": -25.1,
+        "aov": -0.2
+      },
+      "mtd": {
+        "users": 84317,
+        "new_users": 59410,
+        "sessions": 169219,
+        "pageviews": 568519,
+        "bounce_rate": 53.0,
+        "avg_session_duration": 155.3,
+        "transactions": 1906,
+        "revenue": 210350.17,
+        "add_to_carts": 7475,
+        "checkouts": 4222,
+        "cvr": 1.13,
+        "aov": 110.36
+      },
+      "traffic_sources": [
+        {
+          "channel": "Paid Social",
+          "sessions": 26970,
+          "users": 16553,
+          "revenue": 23970.8
+        },
+        {
+          "channel": "Organic Search",
+          "sessions": 16712,
+          "users": 8339,
+          "revenue": 34241.9
+        },
+        {
+          "channel": "Organic Social",
+          "sessions": 15477,
+          "users": 8492,
+          "revenue": 18452.0
+        },
+        {
+          "channel": "Direct",
+          "sessions": 8823,
+          "users": 5547,
+          "revenue": 10590.3
+        },
+        {
+          "channel": "Paid Other",
+          "sessions": 3803,
+          "users": 2110,
+          "revenue": 46.0
+        },
+        {
+          "channel": "Unassigned",
+          "sessions": 3269,
+          "users": 2113,
+          "revenue": 14008.3
+        },
+        {
+          "channel": "Referral",
+          "sessions": 773,
+          "users": 137,
+          "revenue": 1736.0
+        },
+        {
+          "channel": "Paid Search",
+          "sessions": 223,
+          "users": 68,
+          "revenue": 323.0
+        },
+        {
+          "channel": "(other)",
+          "sessions": 65,
+          "users": 58,
+          "revenue": 3892.0
+        },
+        {
+          "channel": "Display",
+          "sessions": 27,
+          "users": 7,
+          "revenue": 74.0
+        }
+      ],
+      "devices": [
+        {
+          "device": "mobile",
+          "sessions": 68002,
+          "users": 35753,
+          "revenue": 87377.65
+        },
+        {
+          "device": "desktop",
+          "sessions": 7883,
+          "users": 5053,
+          "revenue": 19498.65
+        },
+        {
+          "device": "tablet",
+          "sessions": 557,
+          "users": 360,
+          "revenue": 458.0
+        },
+        {
+          "device": "(other)",
+          "sessions": 54,
+          "users": 35,
+          "revenue": 0.0
+        },
+        {
+          "device": "smart tv",
+          "sessions": 1,
+          "users": 1,
+          "revenue": 0.0
+        }
+      ],
+      "top_products": [
+        {
+          "name": "Bright Future \u0411\u043b\u0435\u0439\u0437\u044a\u0440 \u0421 \u0412\u044a\u043b\u043d\u0430 - Black",
+          "revenue": 2487.0,
+          "quantity": 18,
+          "views": 58990
+        },
+        {
+          "name": "Winter Pulse \u0417\u0438\u043c\u043d\u043e \u041f\u0430\u043b\u0442\u043e - \u0411\u043e\u043c\u0431\u044a\u0440 \u041e\u0442 \u041a\u0430\u0448\u043c\u0438\u0440 - Soft Beige",
+          "revenue": 2470.0,
+          "quantity": 14,
+          "views": 24124
+        },
+        {
+          "name": "Winter Bunny \u041f\u0430\u043b\u0442\u0435\u043d\u0446\u0435 \u041e\u0442 \u0415\u043a\u043e \u041a\u043e\u0441\u044a\u043c - Black",
+          "revenue": 2442.0,
+          "quantity": 19,
+          "views": 24198
+        },
+        {
+          "name": "Elegant Essence \u0411\u043b\u0435\u0439\u0437\u044a\u0440 - Grey",
+          "revenue": 2373.0,
+          "quantity": 18,
+          "views": 46049
+        },
+        {
+          "name": "Winter Bunny \u041f\u0430\u043b\u0442\u0435\u043d\u0446\u0435 \u041e\u0442 \u0415\u043a\u043e \u041a\u043e\u0441\u044a\u043c - Mocha",
+          "revenue": 2330.0,
+          "quantity": 18,
+          "views": 12611
+        },
+        {
+          "name": "Alessa Royalty Slim Fit \u0414\u044a\u043d\u043a\u0438 - Black",
+          "revenue": 2221.0,
+          "quantity": 25,
+          "views": 4914
+        },
+        {
+          "name": "Elite Embrace \u0420\u043e\u043a\u043b\u044f \u041e\u0442 \u041f\u043b\u0435\u0442\u0438\u0432\u043e - Black",
+          "revenue": 1388.0,
+          "quantity": 18,
+          "views": 59534
+        },
+        {
+          "name": "Elevated Essentials \u0420\u043e\u043a\u043b\u044f-\u0442\u0440\u0435\u043d\u0447 - Military",
+          "revenue": 1359.0,
+          "quantity": 9,
+          "views": 1097
+        },
+        {
+          "name": "Scent of a Woman \u041f\u043e\u043b\u0430-\u041f\u0430\u043d\u0442\u0430\u043b\u043e\u043d - Grey",
+          "revenue": 1279.0,
+          "quantity": 16,
+          "views": 44653
+        },
+        {
+          "name": "Warm Wishes \u041a\u0443\u0431\u0438\u043d\u043a\u0438 - Black",
+          "revenue": 1237.0,
+          "quantity": 8,
+          "views": 51539
+        },
+        {
+          "name": "Winter Bunny \u041f\u0430\u043b\u0442\u0435\u043d\u0446\u0435 \u041e\u0442 \u0415\u043a\u043e \u041a\u043e\u0441\u044a\u043c - Ecru",
+          "revenue": 1231.0,
+          "quantity": 9,
+          "views": 58094
+        },
+        {
+          "name": "Steal my style \u041f\u0430\u043d\u0442\u0430\u043b\u043e\u043d \u0441 \u043f\u043e\u0434\u0432\u0438\u0436\u0435\u043d \u043a\u043e\u043b\u0430\u043d - \u0427\u0435\u0440\u0435\u043d",
+          "revenue": 1190.0,
+          "quantity": 15,
+          "views": 39132
+        },
+        {
+          "name": "Goddess of style bodycon \u0440\u043e\u043a\u043b\u044f",
+          "revenue": 1130.0,
+          "quantity": 16,
+          "views": 56905
+        },
+        {
+          "name": "Fantasy Flaw \u0411\u043e\u0434\u0438 - Black",
+          "revenue": 1081.0,
+          "quantity": 18,
+          "views": 56667
+        },
+        {
+          "name": "Alessa Desire \u0411\u043e\u0434\u0438 - Black",
+          "revenue": 916.0,
+          "quantity": 16,
+          "views": 4413
+        }
+      ]
+    },
+    "GR": {
+      "name": "Alessa Greece",
+      "currency": "EUR",
+      "yesterday": {
+        "users": 283,
+        "new_users": 195,
+        "sessions": 355,
+        "pageviews": 1031,
+        "bounce_rate": 51.55,
+        "avg_session_duration": 118.3
+      },
+      "dod_change": {
+        "users": 2.5,
+        "new_users": -2.5,
+        "sessions": -2.2,
+        "pageviews": -8.4,
+        "bounce_rate": -8.7,
+        "avg_session_duration": 3.7
+      },
+      "last_7d": {
+        "users": 2525,
+        "new_users": 2071,
+        "sessions": 3312,
+        "pageviews": 10579,
+        "bounce_rate": 50.18,
+        "avg_session_duration": 116.6
+      },
+      "wow_change": {
+        "users": 7.4,
+        "new_users": 7.4,
+        "sessions": 7.8,
+        "pageviews": 6.4,
+        "bounce_rate": -1.2,
+        "avg_session_duration": -1.7
+      },
+      "last_30d": {
+        "users": 8651,
+        "new_users": 7595,
+        "sessions": 12402,
+        "pageviews": 41353,
+        "bounce_rate": 47.35,
+        "avg_session_duration": 124.0
+      },
+      "mom_change": {
+        "users": -9.1,
+        "new_users": -14.7,
+        "sessions": -6.7,
+        "pageviews": -5.9,
+        "bounce_rate": -2.0,
+        "avg_session_duration": -9.7
+      },
+      "mtd": {
+        "users": 4220,
+        "new_users": 3549,
+        "sessions": 5702,
+        "pageviews": 18401,
+        "bounce_rate": 50.47,
+        "avg_session_duration": 117.9
+      },
+      "traffic_sources": [
+        {
+          "channel": "Paid Social",
+          "sessions": 2247,
+          "users": 1697,
+          "revenue": 3520.53
+        },
+        {
+          "channel": "Organic Social",
+          "sessions": 512,
+          "users": 411,
+          "revenue": 644.67
+        },
+        {
+          "channel": "Direct",
+          "sessions": 293,
+          "users": 276,
+          "revenue": 0.0
+        },
+        {
+          "channel": "Organic Search",
+          "sessions": 127,
+          "users": 85,
+          "revenue": 167.31
+        },
+        {
+          "channel": "Paid Other",
+          "sessions": 79,
+          "users": 47,
+          "revenue": 0.0
+        },
+        {
+          "channel": "Unassigned",
+          "sessions": 72,
+          "users": 65,
+          "revenue": 0.0
+        },
+        {
+          "channel": "Referral",
+          "sessions": 4,
+          "users": 4,
+          "revenue": 0.0
+        },
+        {
+          "channel": "Cross-network",
+          "sessions": 1,
+          "users": 1,
+          "revenue": 0.0
+        }
+      ],
+      "devices": [
+        {
+          "device": "mobile",
+          "sessions": 3125,
+          "users": 2387,
+          "revenue": 3807.18
+        },
+        {
+          "device": "desktop",
+          "sessions": 139,
+          "users": 95,
+          "revenue": 0.0
+        },
+        {
+          "device": "tablet",
+          "sessions": 55,
+          "users": 43,
+          "revenue": 525.33
+        }
+      ],
+      "top_products": []
+    }
+  },
+  "alerts": [
+    {
+      "country": "BG",
+      "metric": "users",
+      "change": -25.8,
+      "period": "WoW",
+      "current": 41335,
+      "previous": 55716
+    },
+    {
+      "country": "BG",
+      "metric": "sessions",
+      "change": -20.3,
+      "period": "WoW",
+      "current": 77377,
+      "previous": 97136
+    },
+    {
+      "country": "BG",
+      "metric": "transactions",
+      "change": -20.9,
+      "period": "MoM",
+      "current": 4756,
+      "previous": 6010
+    },
+    {
+      "country": "BG",
+      "metric": "revenue",
+      "change": -21.0,
+      "period": "MoM",
+      "current": 494544.55,
+      "previous": 626193.97
+    },
+    {
+      "country": "BG",
+      "metric": "cvr",
+      "change": -25.1,
+      "period": "MoM",
+      "current": 1.28,
+      "previous": 1.71
+    }
+  ]
+}
